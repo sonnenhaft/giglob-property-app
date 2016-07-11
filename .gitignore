@@ -5,3 +5,5 @@ obj/
 *.suo
 *.user
 .idea/
+
+Client.Web/Scripts/node_modules
