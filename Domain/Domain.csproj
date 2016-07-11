@@ -30,8 +30,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ConquerorsFramework, Version=0.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ConquerorsFramework.0.1.0\lib\ConquerorsFramework.dll</HintPath>
+    <Reference Include="ConquerorsFramework, Version=0.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ConquerorsFramework.0.1.1\lib\ConquerorsFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SimpleInjector, Version=3.2.0.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <HintPath>..\packages\SimpleInjector.3.2.0\lib\net45\SimpleInjector.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -44,13 +48,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\IAggregateRootEntity.cs" />
+    <Compile Include="Extensions\ContainerExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Domain.Persistence.EntityFramework\Domain.Persistence.EntityFramework.csproj">
-      <Project>{a54fcb68-ee21-4f16-ae8f-9b725c1d0c6e}</Project>
-      <Name>Domain.Persistence.EntityFramework</Name>
-    </ProjectReference>
+    <Compile Include="Repositories\IRepository.cs" />
+    <Compile Include="UnitOfWork\CQRS\Decorators\CommandHandlerUnitOfWorkDecorator.cs" />
+    <Compile Include="UnitOfWork\IUnitOfWork.cs" />
+    <Compile Include="UnitOfWork\IUnitOfWorkFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
