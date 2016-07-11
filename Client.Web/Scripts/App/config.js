@@ -1,3 +1,2 @@
-/**
- * Created by mnikonov on 11.07.2016.
- */
+var gig =
+    angular.module('Giglob',[]);
