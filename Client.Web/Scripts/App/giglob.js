@@ -1,4 +1,4 @@
-angular.module('giglob-app').directive('giglob', function() {
+angular.module('giglob').directive('giglob-dir', function() {
     return {
         restrict: 'E',
         templateUrl: 'app/giglob.html',

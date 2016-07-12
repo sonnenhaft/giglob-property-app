@@ -1,3 +1,8 @@
+.wrap{
+  width:1440px;
+  margin:0 auto;
+  background-color: red;
+}
 header{
   position:fixed;
   top:0;
@@ -5,4 +10,12 @@ header{
   right:0;
   height:80px;
   background-color: red;
+  .user-logo{
+    position:absolute;
+    right:0;
+    top:0;
+    bottom:0;
+    background: #edfaf7;
+    width:80px;
+  }
 }

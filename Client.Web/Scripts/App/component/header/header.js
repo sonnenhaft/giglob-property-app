@@ -1,4 +1,4 @@
-angular.module('component.header', []).directive('header', function() {
+angular.module('component.header', []).directive('gheader', function() {
     return {
         restrict: 'E',
         templateUrl: 'component/header/header.html',

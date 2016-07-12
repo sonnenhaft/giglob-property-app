@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html lang="ru" ng-app="giglob-app">
+<html lang="ru">
 <head>
     <base href="app/" target="_top"/>
 
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="../lib/reset-css/reset.css">
     <script src="../lib/vendor/angular/angular.js"></script>
+    <script src="../lib/angular-foundation/mm-foundation-tpls.min.js"></script>
 
+    <script src="_giglob.js"></script>
     <script src="component/header/header.js"></script>
 <script src="giglob.js"></script>
 <script src="_giglob.js"></script>
@@ -15,8 +16,10 @@
     <link rel="stylesheet" href="component/header/header.css">
 
 </head>
-<body giglob>
-    <header></header>
+<body ng-app="giglob">
+
+    <gheader></gheader>
+
 
 </body>
 </html>
