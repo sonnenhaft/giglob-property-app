@@ -3,7 +3,7 @@ using System.IO;
 
 namespace Domain.Entities.Implementation.File
 {
-    public class File
+    public class File: IAggregateRootEntity<Guid>
     {
         public File()
         {

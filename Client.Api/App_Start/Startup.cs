@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using System.Web.Hosting;
 using System.Web.Http;
 using System.Web.Http.ExceptionHandling;
 using System.Web.Http.Validation;
@@ -8,6 +9,7 @@ using ApiVersioningModule.HttpControllerSelectors.ApiVersionResolvers.VersionNum
 using Client.Api.ActionFilters;
 using Client.Api.Elmah;
 using Client.Api.FluentValidation;
+using Domain.Persistence.EntityFramework;
 using FluentValidation.WebApi;
 using Microsoft.Owin;
 using Newtonsoft.Json;
@@ -30,6 +32,7 @@ namespace Client.Api
             FluentValidationConfiguration.Configure(GlobalConfiguration.Configuration, container.GetInstance<ModelStateValidatorActionFilter>(), new SimpeInjectorValidatorFactory(container));
             ElmahConfiguration.Configure(GlobalConfiguration.Configuration.Services);
             JsonFormatterConfiguration.Configure(GlobalConfiguration.Configuration.Formatters.JsonFormatter);
+            DbConfig.Configure(HostingEnvironment.MapPath("~/bin"));
         }
     }
 }

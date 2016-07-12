@@ -1,0 +1,15 @@
+﻿using System;
+
+namespace Domain.Entities.Implementation.Property
+{
+    public class PropertyDocument
+    {
+        public long PropertyId { get; set; }
+
+        public Guid FileId { get; set; }
+
+        public bool IsDeleted { get; set; }
+
+        public virtual File.File File { get; set; }
+    }
+}
