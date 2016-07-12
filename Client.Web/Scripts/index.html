@@ -1,23 +1,29 @@
 <!DOCTYPE html>
-<html lang="ru" ng-app="giglob-app">
+<html lang="ru">
 <head>
     <base href="app/" target="_top"/>
 
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="../lib/reset-css/reset.css">
     <script src="../lib/vendor/angular/angular.js"></script>
 
-    <script src="_giglob.js"></script>
-    <script src="giglob.js"></script>
+    <script src="../lib/vendor/angular-ui-router/angular-ui-router.min.js"></script>
+    <script src="../lib/vendor/angular-foundation/angular-foundation.min.js"></script>
 
-    <script src="component/hello-world/hello-world.js"></script>
-<script src="giglob.js"></script>
-<script src="_giglob.js"></script>
+    <script src="../_giglob.js"></script>
+    <script src="../giglob.js"></script>
 
-    <link rel="stylesheet" href="component/hello-world/hello-world.css">
+    <script src="component/header/header.js"></script>
+
+    <link rel="stylesheet" href="component/header/header.css">
+<link rel="stylesheet" href="Styles/components.css">
 
 </head>
-<body giglob>
-    <hello-world></hello-world>
+
+<body ng-app="giglob-app">
+
+    <div giglob></div>
 </body>
+
 </html>
