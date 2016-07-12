@@ -35,6 +35,7 @@ header nav {
   display: inline-block;
   vertical-align: top;
   margin-top: -18px;
+  margin-right: 250px;
 }
 
 header nav .menu-item {

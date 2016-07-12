@@ -1,0 +1,8 @@
+.button.round {
+  padding: 10px 20px;
+  font-size: 14px;
+}
+
+.button.alert {
+  background-color: #ff6f37;
+}
