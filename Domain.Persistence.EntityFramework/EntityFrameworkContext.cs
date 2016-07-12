@@ -4,9 +4,9 @@ using Domain.Entities.Implementation.City;
 
 namespace Domain.Persistence.EntityFramework
 {
-    public class EntityFrameworkContext: DbContext
+    public class EntityFrameworkContext : DbContext
     {
-        public EntityFrameworkContext(): base("Default") { }
+        public EntityFrameworkContext() : base("Default") { }
 
         public DbSet<City> Cities { get; set; }
 

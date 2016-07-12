@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity;
+using Domain.Entities.Implementation.City;
 using Domain.Persistence.EntityFramework.Repositories.Implementation;
 using Domain.Persistence.EntityFramework.UnitOfWork.Implementation;
 using Domain.Repositories;
