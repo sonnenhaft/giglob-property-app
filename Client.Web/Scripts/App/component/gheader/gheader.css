@@ -10,6 +10,7 @@
 
 .gheader .logo-green {
   height: 100%;
+  margin-right: 20px;
 }
 
 .gheader .user-logo {
@@ -21,13 +22,20 @@
   width: 80px;
 }
 
-.gheader .grey-text {
+.gheader .grey {
+  color: #aeaeae;
+  margin-right: 95px;
+}
+
+.gheader .black {
+  color: #000;
+}
+
+.gheader .text {
   display: inline-block;
   font-size: 14px;
   vertical-align: top;
-  color: #aeaeae;
   line-height: 40px;
-  margin-right: 95px;
 }
 
 .gheader nav {
@@ -49,4 +57,10 @@
 
 .gheader nav .menu-item.active {
   border-bottom: 2px solid #09c77b;
+}
+
+.gheader .button {
+  vertical-align: middle;
+  margin-bottom: 35px;
+  margin-right: 45px;
 }

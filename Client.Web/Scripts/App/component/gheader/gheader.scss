@@ -8,6 +8,7 @@
   padding:20px 30px;
   .logo-green{
     height: 100%;
+    margin-right:20px;
   }
   .user-logo {
     position: absolute;
@@ -17,13 +18,18 @@
     background: #edfaf7;
     width: 80px;
   }
-  .grey-text{
+  .grey{
+    color: #aeaeae;
+    margin-right:95px;
+  }
+  .black{
+    color:#000;
+  }
+  .text{
     display:inline-block;
     font-size: 14px;
     vertical-align:top;
-    color: #aeaeae;
     line-height:40px;
-    margin-right:95px;
   }
   nav {
     display: inline-block;
@@ -42,5 +48,10 @@
         border-bottom: 2px solid #09c77b
       }
     }
+  }
+  .button{
+    vertical-align:middle;
+    margin-bottom:35px;
+    margin-right: 45px;
   }
 }
