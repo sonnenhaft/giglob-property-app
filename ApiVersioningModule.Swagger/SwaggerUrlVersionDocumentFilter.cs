@@ -2,6 +2,7 @@
 using System.Web.Http.Description;
 using Swashbuckle.Swagger;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace ApiVersioningModule.Swagger
 {
@@ -9,10 +10,8 @@ namespace ApiVersioningModule.Swagger
     {
         public void Apply(SwaggerDocument swaggerDoc, SchemaRegistry schemaRegistry, IApiExplorer apiExplorer)
         {
-            var versionInfo = string.Format("api.v{0}.", swaggerDoc.info.version);
-
             if(swaggerDoc.paths.Any(x => x.Key.Contains("{version}") || x.Key.ToLower()
-                                                                         .Contains(versionInfo)))
+                                                                         .Contains(".")))
             {
                 var newPaths = new Dictionary<string, PathItem>();
 
@@ -25,9 +24,9 @@ namespace ApiVersioningModule.Swagger
                         newPathKey = newPathKey.Replace("{version}", swaggerDoc.info.version);
                     }
 
-                    if(newPathKey.Contains(versionInfo))
+                    if(newPathKey.Contains("."))
                     {
-                        newPathKey = newPathKey.Replace(versionInfo, "");
+                        newPathKey = Regex.Replace(newPathKey, @"(/[a-z0-9\.]+\.)([a-z0-9]+)/", x => "/" + x.Groups[2].Value + "/");
                     }
 
                     newPaths.Add(newPathKey, path.Value);
