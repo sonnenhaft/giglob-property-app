@@ -15,7 +15,7 @@ namespace Client.Api.v1.Models.Models.City
         /// <summary>
         /// Название
         /// </summary>
-        public string Title { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// Районы

@@ -15,36 +15,36 @@ namespace Client.Api.v1.Models.Models.Home.ResponseExamples
                     new CityModel
                     {
                         Id = 1,
-                        Title = "Город 1",
+                        Name = "Город 1",
                         Districts = new List<DistrictModel>
                         {
                             new DistrictModel
                             {
                                 Id = 1,
-                                Title = "Район 1"
+                                Name = "Район 1"
                             },
                             new DistrictModel
                             {
                                 Id = 2,
-                                Title = "Район 2"
+                                Name = "Район 2"
                             }
                         }
                     },
                     new CityModel
                     {
                         Id = 2,
-                        Title = "Город 2",
+                        Name = "Город 2",
                         Districts = new List<DistrictModel>
                         {
                             new DistrictModel
                             {
                                 Id = 3,
-                                Title = "Район 1"
+                                Name = "Район 1"
                             },
                             new DistrictModel
                             {
                                 Id = 4,
-                                Title = "Район 2"
+                                Name = "Район 2"
                             }
                         }
                     }

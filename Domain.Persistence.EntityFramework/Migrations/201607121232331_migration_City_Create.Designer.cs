@@ -13,7 +13,7 @@ namespace Domain.Persistence.EntityFramework.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201607121144457_migration_City_Create"; }
+            get { return "201607121232331_migration_City_Create"; }
         }
         
         string IMigrationMetadata.Source

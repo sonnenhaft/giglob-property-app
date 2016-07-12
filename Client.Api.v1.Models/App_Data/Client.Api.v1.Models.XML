@@ -14,7 +14,7 @@
             Идентификатор
             </summary>
         </member>
-        <member name="P:Client.Api.v1.Models.Models.City.CityModel.Title">
+        <member name="P:Client.Api.v1.Models.Models.City.CityModel.Name">
             <summary>
             Название
             </summary>
@@ -34,7 +34,7 @@
             Идентификатор
             </summary>
         </member>
-        <member name="P:Client.Api.v1.Models.Models.City.DistrictModel.Title">
+        <member name="P:Client.Api.v1.Models.Models.City.DistrictModel.Name">
             <summary>
             Название
             </summary>

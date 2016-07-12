@@ -49,7 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\IAggregateRootEntity.cs" />
-    <Compile Include="Entities\Implementation\City.cs" />
+    <Compile Include="Entities\Implementation\City\City.cs" />
     <Compile Include="Extensions\ContainerExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ICityRepository.cs" />
