@@ -8,6 +8,10 @@ header {
   padding: 30px;
 }
 
+header .logo-green {
+  height: 100%;
+}
+
 header .user-logo {
   position: absolute;
   right: 0;
