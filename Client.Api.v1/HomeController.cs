@@ -1,4 +1,5 @@
-﻿using System.Web.Http;
+﻿using System;
+using System.Web.Http;
 
 namespace Client.Api.v1
 {
@@ -7,7 +8,7 @@ namespace Client.Api.v1
         [HttpGet]
         public IHttpActionResult Test()
         {
-            return Ok("success");
+            throw new Exception("test");
         }
     }
 }

@@ -6,7 +6,7 @@ using ApiVersioningModule.HttpControllerSelectors.ApiVersionResolvers.VersionNum
 
 namespace ApiVersioningModule
 {
-    public class ApiVersioningConfig
+    public class ApiVersioningConfiguration
     {
         public static void Configure(HttpConfiguration config, IApiVersionResolver apiVersionResolver, INoApiVersionResolver noApiVersionResolver)
         {

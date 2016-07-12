@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.ExceptionHandling;
 using System.Web.Http.Validation;
+using ApiVersioningModule;
 using ApiVersioningModule.HttpControllerSelectors.ApiVersionResolvers.VersionNumberResolvers;
 using Client.Api.ActionFilters;
+using Client.Api.Elmah;
 using Client.Api.FluentValidation;
 using FluentValidation.WebApi;
 using Microsoft.Owin;
@@ -22,11 +25,10 @@ namespace Client.Api
         {
             var container = new Container();
             SimpleInjectorConfiguration.Configure(container);
-            ApiVersioningModule.ApiVersioningConfig.Configure(GlobalConfiguration.Configuration, new UrlApiVersionResolver(), new NoApiVersionLastResolver());
+            ApiVersioningConfiguration.Configure(GlobalConfiguration.Configuration, new UrlApiVersionResolver(), new NoApiVersionLastResolver());
             RouteConfiguration.Configure(GlobalConfiguration.Configuration.Routes);
-            GlobalConfiguration.Configuration.Filters.Add(container.GetInstance<ModelStateValidatorActionFilter>());
-            GlobalConfiguration.Configuration.Services.Clear(typeof(ModelValidatorProvider));
-            FluentValidationModelValidatorProvider.Configure(GlobalConfiguration.Configuration, provider => provider.ValidatorFactory = new SimpeInjectorValidatorFactory(container));
+            FluentValidationConfiguration.Configure(GlobalConfiguration.Configuration, container.GetInstance<ModelStateValidatorActionFilter>(), new SimpeInjectorValidatorFactory(container));
+            ElmahConfiguration.Configure(GlobalConfiguration.Configuration.Services);
             JsonFormatterConfiguration.Configure(GlobalConfiguration.Configuration.Formatters.JsonFormatter);
         }
     }
