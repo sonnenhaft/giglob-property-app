@@ -56,9 +56,9 @@
   <ItemGroup>
     <Compile Include="EntityFrameworkContext.cs" />
     <Compile Include="Extensions\ContainerExtensions.cs" />
-    <Compile Include="Migrations\201607121144457_migration_City_Create.cs" />
-    <Compile Include="Migrations\201607121144457_migration_City_Create.Designer.cs">
-      <DependentUpon>201607121144457_migration_City_Create.cs</DependentUpon>
+    <Compile Include="Migrations\201607121232331_migration_City_Create.cs" />
+    <Compile Include="Migrations\201607121232331_migration_City_Create.Designer.cs">
+      <DependentUpon>201607121232331_migration_City_Create.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -77,8 +77,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201607121144457_migration_City_Create.resx">
-      <DependentUpon>201607121144457_migration_City_Create.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201607121232331_migration_City_Create.resx">
+      <DependentUpon>201607121232331_migration_City_Create.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

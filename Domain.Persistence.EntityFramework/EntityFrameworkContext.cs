@@ -1,5 +1,6 @@
 ﻿using System.Data.Entity;
 using Domain.Entities.Implementation;
+using Domain.Entities.Implementation.City;
 
 namespace Domain.Persistence.EntityFramework
 {

@@ -12,7 +12,7 @@ namespace Domain.Persistence.EntityFramework.Migrations
                 c => new
                     {
                         Id = c.Long(nullable: false, identity: true),
-                        Title = c.String(),
+                        Name = c.String(),
                     })
                 .PrimaryKey(t => t.Id);
             
