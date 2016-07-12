@@ -60,6 +60,10 @@
     <Compile Include="Migrations\201607121232331_migration_City_Create.Designer.cs">
       <DependentUpon>201607121232331_migration_City_Create.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201607121311004_migration_File_District_MetroStation_MetroBranch_Create.cs" />
+    <Compile Include="Migrations\201607121311004_migration_File_District_MetroStation_MetroBranch_Create.Designer.cs">
+      <DependentUpon>201607121311004_migration_File_District_MetroStation_MetroBranch_Create.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\Implementation\EntityFrameworkRepository.cs" />
@@ -79,6 +83,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201607121232331_migration_City_Create.resx">
       <DependentUpon>201607121232331_migration_City_Create.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607121311004_migration_File_District_MetroStation_MetroBranch_Create.resx">
+      <DependentUpon>201607121311004_migration_File_District_MetroStation_MetroBranch_Create.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
