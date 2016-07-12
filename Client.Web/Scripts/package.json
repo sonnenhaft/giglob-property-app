@@ -8,7 +8,7 @@
     "compile:scss": "node-sass --output-style expanded -o app app",
     "autoprefixer": "postcss -u autoprefixer -r app/**/*.css",
     "uglify": "mkdir dist && uglifyjs app/component/hello-world/hello-world.js -o 'dist/app.min.js'",
-    "_connect:local": "browser-sync start --server --port 7001 --files app/**/*.css",
+    "_connect:local": "browser-sync start --server --port 7001 --files app/**/*.css app/**/*.js app/**/*.html",
     "_serve": "wiresrc -r app -i index.tpl.html -o index.html",
     "_watch:all": "run-p watch:scss _serve _connect:local",
     "dev": "npm run compile:scss && npm run _watch:all",
