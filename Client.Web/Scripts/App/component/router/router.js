@@ -3,14 +3,14 @@ angular.module('component.router', ['ui.router']).config(function($stateProvider
     $stateProvider
         .state('search', {
             url: "/search",
-            templateUrl: "component/router/search-page.html"
+            templateUrl: "app/component/router/search-page.html"
         })
         .state('my-ads', {
             url: "/my-ads",
-            templateUrl: "component/router/my-ads-page.html"
+            templateUrl: "app/component/router/my-ads-page.html"
         })
         .state('home', {
             url: "/",
-            templateUrl: "component/router/main-page.html"
+            templateUrl: "app/component/router/main-page.html"
         });
 });
