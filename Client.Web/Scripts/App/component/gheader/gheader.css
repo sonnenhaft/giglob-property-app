@@ -1,0 +1,52 @@
+header {
+  position: absolute;
+  top: 0;
+  lefT: 0;
+  right: 0;
+  height: 80px;
+  background-color: white;
+  padding: 20px 30px;
+}
+
+header .user-logo {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: #edfaf7;
+  width: 80px;
+}
+
+header .logo-green {
+  height: 100%;
+  margin-right: 20px;
+}
+
+header .grey-text {
+  display: inline-block;
+  font-size: 14px;
+  vertical-align: top;
+  color: #aeaeae;
+  line-height: 40px;
+  margin-right: 95px;
+}
+
+header nav {
+  display: inline-block;
+  vertical-align: top;
+  margin-top: -18px;
+}
+
+header nav .menu-item {
+  display: inline-block;
+  line-height: 78px;
+  color: #373737;
+  font-size: 14px;
+  text-transform: uppercase;
+  margin-right: 50px;
+  cursor: pointer;
+}
+
+header nav .menu-item.active {
+  border-bottom: 2px solid #09c77b;
+}
