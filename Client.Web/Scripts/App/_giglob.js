@@ -1,3 +1,3 @@
 angular.module('giglob-app',[
-    'component.hello-world'
+    "component.header"
 ]);
