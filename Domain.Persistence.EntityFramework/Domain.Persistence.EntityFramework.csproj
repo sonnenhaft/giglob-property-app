@@ -56,6 +56,11 @@
   <ItemGroup>
     <Compile Include="EntityFrameworkContext.cs" />
     <Compile Include="Extensions\ContainerExtensions.cs" />
+    <Compile Include="Migrations\201607121144457_migration_City_Create.cs" />
+    <Compile Include="Migrations\201607121144457_migration_City_Create.Designer.cs">
+      <DependentUpon>201607121144457_migration_City_Create.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\Implementation\EntityFrameworkRepository.cs" />
     <Compile Include="UnitOfWork\Implementation\EntityFrameworkUnitOfWork.cs" />
@@ -70,6 +75,11 @@
       <Project>{13607ee9-8b76-4fe3-bcf2-0c09eef929bb}</Project>
       <Name>Domain</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201607121144457_migration_City_Create.resx">
+      <DependentUpon>201607121144457_migration_City_Create.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
