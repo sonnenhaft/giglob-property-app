@@ -4,7 +4,7 @@ angular.module('giglob-app',[
     'component.router'
 ]).directive('giglob', function() {
     return {
-        templateUrl: '/App/giglob.html',
+        templateUrl: '/app/giglob.html',
         link: function($scope) {
             
         }

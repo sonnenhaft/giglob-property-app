@@ -59,6 +59,50 @@ gulp.task('bump', function(){
         .pipe(gulp.dest('./'));
 });
 
+gulp.task('concat', function() {
+    var concat = require('gulp-concat');
+
+    return gulp.src(src.js)
+        .pipe(concat('app.js'))
+        .pipe(gulp.dest('./dist/'));
+});
+
+gulp.task('process:templates', function() {
+    var ngHtml2Js = require("gulp-ng-html2js");
+
+    gulp.src(src.html)
+        .pipe(ngHtml2Js({
+            moduleName: 'templates',
+            rename: function (templateUrl, templateFile) {
+                return 'app/' + templateUrl;
+            }
+        }))
+        .pipe(gulp.dest('./dist'));
+});
+
+gulp.task('minify:css', function() {
+    var cleanCSS = require('gulp-clean-css');
+
+    return gulp.src(src.css)
+        .pipe(cleanCSS())
+        .pipe(gulp.dest('dist'));
+});
+
+gulp.task('uglify', function() {
+    var uglify = require('gulp-uglify');
+
+    return gulp.src('dist/app.js')
+        .pipe(uglify())
+        .pipe(gulp.dest('dist'));
+});
+
+gulp.task('annotate', function () {
+    var ngAnnotate = require('gulp-ng-annotate');
+
+    return gulp.src('src/app.js')
+        .pipe(ngAnnotate())
+        .pipe(gulp.dest('dist'));
+});
 
 gulp.task('dev', function() {
     var runSequence = require('run-sequence');
