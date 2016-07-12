@@ -42,12 +42,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\City\CityModel.cs" />
+    <Compile Include="Models\City\DistrictModel.cs" />
+    <Compile Include="Models\Home\DataModel.cs" />
+    <Compile Include="Models\Home\ResponseExamples\DataModelResponseExample.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\Client.Api.v1.Models.XML">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SwaggerResponseExampleModule\SwaggerResponseExampleModule.csproj">
+      <Project>{9084f7b6-ae3a-4ef4-9414-bf1228916974}</Project>
+      <Name>SwaggerResponseExampleModule</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

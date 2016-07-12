@@ -4,5 +4,50 @@
         <name>Client.Api.v1.Models</name>
     </assembly>
     <members>
+        <member name="T:Client.Api.v1.Models.Models.City.CityModel">
+            <summary>
+            Модель города
+            </summary>
+        </member>
+        <member name="P:Client.Api.v1.Models.Models.City.CityModel.Id">
+            <summary>
+            Идентификатор
+            </summary>
+        </member>
+        <member name="P:Client.Api.v1.Models.Models.City.CityModel.Title">
+            <summary>
+            Название
+            </summary>
+        </member>
+        <member name="P:Client.Api.v1.Models.Models.City.CityModel.Districts">
+            <summary>
+            Районы
+            </summary>
+        </member>
+        <member name="T:Client.Api.v1.Models.Models.City.DistrictModel">
+            <summary>
+            Модель района
+            </summary>
+        </member>
+        <member name="P:Client.Api.v1.Models.Models.City.DistrictModel.Id">
+            <summary>
+            Идентификатор
+            </summary>
+        </member>
+        <member name="P:Client.Api.v1.Models.Models.City.DistrictModel.Title">
+            <summary>
+            Название
+            </summary>
+        </member>
+        <member name="T:Client.Api.v1.Models.Models.Home.DataModel">
+            <summary>
+            Модель данных для выгрузки
+            </summary>
+        </member>
+        <member name="P:Client.Api.v1.Models.Models.Home.DataModel.Cities">
+            <summary>
+            Города
+            </summary>
+        </member>
     </members>
 </doc>
