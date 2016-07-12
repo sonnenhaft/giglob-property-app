@@ -3,6 +3,7 @@ var gulp = require('gulp');
 var src = {
     js: 'app/**/*.js',
     scss: 'app/**/*.scss',
+    css: 'app/**/*.css',
     html: 'app/**/*.html'
 };
 
@@ -21,12 +22,9 @@ gulp.task('connect:localhost', ['sass:reload'], function() {
 
 gulp.task('_serve', function () {
     var inject = require('gulp-inject');
-    var angular = gulp.src(['lib/vendor/angular/*.js'], {read: false});
-    var vendorStream = gulp.src(['lib/vendor/**!(angular)/*.js'], {read: false});
-    var appStream = gulp.src(['app/**/*.js', 'app/**/*.css'], {read: false});
 
     return gulp.src('resources/index.html')
-        .pipe(inject(gulp.src(['app/**/*.js', 'app/**/*.css'], {read: false})))
+        .pipe(inject(gulp.src([src.js, src.css], {read: false})))
         .pipe(gulp.dest('./'));
 });
 
