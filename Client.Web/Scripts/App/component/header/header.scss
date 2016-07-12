@@ -1,15 +1,11 @@
-.wrap{
-  width:1440px;
-  margin:0 auto;
-  background-color: red;
-}
 header{
-  position:fixed;
+  position:absolute;
   top:0;
   lefT:0;
   right:0;
   height:80px;
-  background-color: red;
+  background-color: white;
+  padding:30px;
   .user-logo{
     position:absolute;
     right:0;

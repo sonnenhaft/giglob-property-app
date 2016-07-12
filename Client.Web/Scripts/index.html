@@ -5,21 +5,24 @@
 
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="../lib/reset-css/reset.css">
     <script src="../lib/vendor/angular/angular.js"></script>
     <script src="../lib/angular-foundation/mm-foundation-tpls.min.js"></script>
 
-    <script src="_giglob.js"></script>
+
+    <script src="../_giglob.js"></script>
+    <script src="../giglob.js"></script>
+
     <script src="component/header/header.js"></script>
-<script src="giglob.js"></script>
-<script src="_giglob.js"></script>
 
     <link rel="stylesheet" href="component/header/header.css">
+<link rel="stylesheet" href="Styles/components.css">
 
 </head>
-<body ng-app="giglob">
 
-    <gheader></gheader>
+<body ng-app="giglob-app">
 
-
+    <div giglob></div>
 </body>
+
 </html>
