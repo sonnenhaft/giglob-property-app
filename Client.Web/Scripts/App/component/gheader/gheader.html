@@ -1,9 +1,12 @@
-<header>
-  <img src="images/logo-green.svg" class="logo-green"/>
+
+<header class="gheader">
+  <a ui-sref="home">
+    <img src="images/logo-green.svg" class="logo-green"/>
+  </a>
   <div class="grey-text">Решение квартирного вопроса</div>
   <nav>
-    <div class="menu-item">поиск квартиры</div>
-    <div class="menu-item active">мои объекты</div>
+    <a ui-sref="search"  class="menu-item">Поиск квартир</a>
+    <a ui-sref="my-ads" class="menu-item active">Мои объекты</a>
   </nav>
   <button type="button" class="button round alert">Продать квартиру</button>
   <div class=""></div>

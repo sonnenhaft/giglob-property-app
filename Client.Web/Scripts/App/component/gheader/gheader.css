@@ -1,14 +1,18 @@
-header {
+.gheader {
+  height: 80px;
+  background-color: white;
   position: absolute;
   top: 0;
   lefT: 0;
   right: 0;
-  height: 80px;
-  background-color: white;
   padding: 20px 30px;
 }
 
-header .user-logo {
+.gheader .logo-green {
+  height: 100%;
+}
+
+.gheader .user-logo {
   position: absolute;
   right: 0;
   top: 0;
@@ -17,12 +21,7 @@ header .user-logo {
   width: 80px;
 }
 
-header .logo-green {
-  height: 100%;
-  margin-right: 20px;
-}
-
-header .grey-text {
+.gheader .grey-text {
   display: inline-block;
   font-size: 14px;
   vertical-align: top;
@@ -31,14 +30,14 @@ header .grey-text {
   margin-right: 95px;
 }
 
-header nav {
+.gheader nav {
   display: inline-block;
   vertical-align: top;
   margin-top: -18px;
   margin-right: 250px;
 }
 
-header nav .menu-item {
+.gheader nav .menu-item {
   display: inline-block;
   line-height: 78px;
   color: #373737;
@@ -48,6 +47,6 @@ header nav .menu-item {
   cursor: pointer;
 }
 
-header nav .menu-item.active {
+.gheader nav .menu-item.active {
   border-bottom: 2px solid #09c77b;
 }

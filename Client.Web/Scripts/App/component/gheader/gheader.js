@@ -1,4 +1,4 @@
-angular.module('component.header', []).directive('gheader', function() {
+angular.module('component.gheader', []).directive('gheader', function() {
     return {
         restrict: 'E',
         templateUrl: 'component/gheader/gheader.html',

@@ -1,14 +1,14 @@
-*{
+* {
   box-sizing: border-box;
 }
-html,body{
-  height:100%;
+html,body {
+  min-height: 100%;
   background-color: red;
 }
-.wrap{
-  width:1440px;
-  margin:0 auto;
-  position:relative;
+.app-wrapper {
+  max-width: 1440px;
+  margin: 0 auto;
+  position: relative;
   background-color: #fff;
   min-height:100%;
 }

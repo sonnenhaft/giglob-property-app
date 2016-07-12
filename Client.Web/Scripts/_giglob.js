@@ -1,8 +1,5 @@
 angular.module('giglob-app',[
-
-    "component.header",
-
+    "component.gheader",
     'mm.foundation',
-    'ui.router'
-
+    'component.router'
 ]);
