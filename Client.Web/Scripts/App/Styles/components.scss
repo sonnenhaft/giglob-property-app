@@ -1,11 +1,11 @@
-*{
+* {
   box-sizing: border-box;
 }
-html,body{
-  min-height:100%;
+html,body {
+  min-height: 100%;
 }
-.wrap{
-  width:1440px;
-  margin:0 auto;
-  position:relative;
+.wrap {
+  max-width: 1440px;
+  margin: 0 auto;
+  position: relative;
 }
