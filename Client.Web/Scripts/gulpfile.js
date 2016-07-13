@@ -64,7 +64,7 @@ gulp.task('_serve:build', function () {
     var inject = require('gulp-inject');
 
     return gulp.src('resources/index.html')
-        .pipe(inject(gulp.src(['dist/**/*.js', 'dist/app.css'], {read: false})))
+        .pipe(inject(gulp.src(['dist/app.js', 'dist/app.css'], {read: false}), {relative: true, name: 'build'}))
         .pipe(gulp.dest('./dist'));
 });
 
@@ -106,7 +106,8 @@ gulp.task('concat', function() {
     return gulp.src([
         "lib/vendor/angular/angular.js",
         "lib/**/*.js",
-        "app/**/*.js"
+        "app/**/*.js",
+        'dist/templates/**/*.js'
     ])
         .pipe(concat('app.js'))
         .pipe(gulp.dest('./dist/'));
@@ -124,10 +125,10 @@ gulp.task('process:templates', function() {
         .pipe(ngHtml2Js({
             moduleName: 'templates',
             rename: function (templateUrl, templateFile) {
-                return 'app/' + templateUrl;
+                return '/app/' + templateUrl;
             }
         }))
-        .pipe(gulp.dest('./dist'));
+        .pipe(gulp.dest('dist/templates'));
 });
 
 gulp.task('minify:css', function() {
@@ -173,6 +174,11 @@ gulp.task('move:index', function() {
         .pipe(gulp.dest('dist'));
 });
 
+gulp.task('move:package', function() {
+    return gulp.src('package.json')
+        .pipe(gulp.dest('dist'));
+});
+
 gulp.task('clean:dist', function () {
     var clean = require('gulp-clean');
 
@@ -183,5 +189,5 @@ gulp.task('clean:dist', function () {
 gulp.task('build', function () {
     var runSequence = require('run-sequence');
 
-    return runSequence('clean:dist', 'sass:compile', 'concat:css', 'minify:css', 'concat', 'annotate', 'uglify', 'move:img', 'move:index', '_serve:build');
+    return runSequence('clean:dist', 'sass:compile', 'concat:css', 'minify:css', 'concat', 'process:templates', 'annotate', 'uglify', 'move:img', 'move:index', 'move:package', '_serve:build');
 });
