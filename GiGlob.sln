@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiVersioningModule.Swagger
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwaggerResponseExampleModule", "SwaggerResponseExampleModule\SwaggerResponseExampleModule.csproj", "{9084F7B6-AE3A-4EF4-9414-BF1228916974}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CQRS", "CQRS\CQRS.csproj", "{B412E005-BF9B-49BB-8DDE-6939A2456382}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -109,6 +111,14 @@ Global
 		{9084F7B6-AE3A-4EF4-9414-BF1228916974}.Stage|Any CPU.Build.0 = Stage|Any CPU
 		{9084F7B6-AE3A-4EF4-9414-BF1228916974}.Test|Any CPU.ActiveCfg = Test|Any CPU
 		{9084F7B6-AE3A-4EF4-9414-BF1228916974}.Test|Any CPU.Build.0 = Test|Any CPU
+		{B412E005-BF9B-49BB-8DDE-6939A2456382}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B412E005-BF9B-49BB-8DDE-6939A2456382}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B412E005-BF9B-49BB-8DDE-6939A2456382}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B412E005-BF9B-49BB-8DDE-6939A2456382}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B412E005-BF9B-49BB-8DDE-6939A2456382}.Stage|Any CPU.ActiveCfg = Release|Any CPU
+		{B412E005-BF9B-49BB-8DDE-6939A2456382}.Stage|Any CPU.Build.0 = Release|Any CPU
+		{B412E005-BF9B-49BB-8DDE-6939A2456382}.Test|Any CPU.ActiveCfg = Release|Any CPU
+		{B412E005-BF9B-49BB-8DDE-6939A2456382}.Test|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
