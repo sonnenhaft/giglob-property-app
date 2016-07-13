@@ -36,6 +36,10 @@
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Swashbuckle.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cd1bb07a5ac7c7bc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Swashbuckle.Core.5.3.2\lib\net40\Swashbuckle.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -54,6 +58,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="HomeController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -69,6 +74,10 @@
     <ProjectReference Include="..\Domain\Domain.csproj">
       <Project>{13607ee9-8b76-4fe3-bcf2-0c09eef929bb}</Project>
       <Name>Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SwaggerResponseExampleModule\SwaggerResponseExampleModule.csproj">
+      <Project>{9084f7b6-ae3a-4ef4-9414-bf1228916974}</Project>
+      <Name>SwaggerResponseExampleModule</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

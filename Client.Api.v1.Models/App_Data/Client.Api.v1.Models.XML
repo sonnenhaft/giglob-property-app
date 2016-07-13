@@ -4,5 +4,65 @@
         <name>Client.Api.v1.Models</name>
     </assembly>
     <members>
+        <member name="T:Client.Api.v1.Models.Models.User.AuthResultModel">
+            <summary>
+            Модель результата авторизации
+            </summary>
+        </member>
+        <member name="P:Client.Api.v1.Models.Models.User.AuthResultModel.User">
+            <summary>
+            Пользователь
+            </summary>
+        </member>
+        <member name="P:Client.Api.v1.Models.Models.User.AuthResultModel.AccessToken">
+            <summary>
+            Bearer-токен
+            </summary>
+        </member>
+        <member name="T:Client.Api.v1.Models.Models.User.UserModel">
+            <summary>
+            Модель пользоватея
+            </summary>
+        </member>
+        <member name="P:Client.Api.v1.Models.Models.User.UserModel.Id">
+            <summary>
+            Идентификатор
+            </summary>
+        </member>
+        <member name="P:Client.Api.v1.Models.Models.User.UserModel.Email">
+            <summary>
+            Адрес электронной почты
+            </summary>
+        </member>
+        <member name="T:Client.Api.v1.Models.Models.User.UserRegisterRequestModel">
+            <summary>
+            Модель регистрации пользователя
+            </summary>
+        </member>
+        <member name="P:Client.Api.v1.Models.Models.User.UserRegisterRequestModel.Email">
+            <summary>
+            Электронная почта
+            </summary>
+        </member>
+        <member name="P:Client.Api.v1.Models.Models.User.UserRegisterRequestModel.Password">
+            <summary>
+            Пароль
+            </summary>
+        </member>
+        <member name="T:Client.Api.v1.Models.Models.User.UserSignInRequestModel">
+            <summary>
+            Модель авторизации пользователя
+            </summary>
+        </member>
+        <member name="P:Client.Api.v1.Models.Models.User.UserSignInRequestModel.Email">
+            <summary>
+            Электронная почта
+            </summary>
+        </member>
+        <member name="P:Client.Api.v1.Models.Models.User.UserSignInRequestModel.Password">
+            <summary>
+            Пароль
+            </summary>
+        </member>
     </members>
 </doc>

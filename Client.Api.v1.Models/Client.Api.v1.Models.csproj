@@ -42,12 +42,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Common\ResponseExamples\BadRequestResponseExampleProvider.cs" />
+    <Compile Include="Models\User\AuthResultModel.cs" />
+    <Compile Include="Models\User\ResponseExamples\AuthResultModelResponseExample.cs" />
+    <Compile Include="Models\User\UserModel.cs" />
+    <Compile Include="Models\User\UserRegisterRequestModel.cs" />
+    <Compile Include="Models\User\UserSignInRequestModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\Client.Api.v1.Models.XML">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SwaggerResponseExampleModule\SwaggerResponseExampleModule.csproj">
+      <Project>{9084f7b6-ae3a-4ef4-9414-bf1228916974}</Project>
+      <Name>SwaggerResponseExampleModule</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
