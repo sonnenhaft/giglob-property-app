@@ -19,11 +19,7 @@ namespace Domain.Persistence.EntityFramework.Migrations
 
         protected override void Seed(EntityFrameworkContext context)
         {
-            //TODO: Проверять в файле существование записей
-            if (!context.Cities.Any())
-            {
-                context.Database.ExecuteSqlCommand(File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + "/SQL/cities.sql"));
-            }
+            context.Database.ExecuteSqlCommand(File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + "/SQL/cities.sql"));
             base.Seed(context);
         }
     }

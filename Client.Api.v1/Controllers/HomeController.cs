@@ -25,8 +25,8 @@ namespace Client.Api.v1.Controllers
         [SwaggerResponseExampleProvider(typeof(DataModelResponseExample))]
         public IHttpActionResult GetData()
         {
-            _cityRepository.Add(new City {Name = "Город которого нет на карте"});
-            _cityRepository.SaveChanges();
+            //_cityRepository.Add(new City {Name = "Город которого нет на карте"});
+            //_cityRepository.SaveChanges();
 
             return Ok(new DataModel
             {
