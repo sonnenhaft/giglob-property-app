@@ -14,10 +14,20 @@ namespace Client.Api.v1.Controllers
 {
     public class HomeController: ApiController
     {
+        private readonly ICityRepository _cityRepository;
+
+        public HomeController(ICityRepository _cityRepository)
+        {
+            this._cityRepository = _cityRepository;
+        }
+
         [HttpGet]
         [SwaggerResponseExampleProvider(typeof(DataModelResponseExample))]
         public IHttpActionResult GetData()
         {
+            _cityRepository.Add(new City {Name = "Город которого нет на карте"});
+            _cityRepository.SaveChanges();
+
             return Ok(new DataModel
             {
                 Cities = new List<CityModel>
