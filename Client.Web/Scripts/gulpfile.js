@@ -29,6 +29,15 @@ gulp.task('_serve', function () {
         .pipe(gulp.dest('./'));
 });
 
+gulp.task('_serve:build', function () {
+    var inject = require('gulp-inject');
+
+    return gulp.src('resources/index.html')
+        .pipe(inject(gulp.src(['dist/**/*.js', 'dist/app.css'], {read: false})))
+        .pipe(gulp.dest('./dist'));
+});
+
+
 gulp.task('sass:compile', function () {
     var sass = require('gulp-sass');
 
@@ -62,8 +71,12 @@ gulp.task('bump', function(){
 
 gulp.task('concat', function() {
     var concat = require('gulp-concat');
-
-    return gulp.src(src.js)
+    
+    return gulp.src([
+        "lib/vendor/angular/angular.js",
+        "lib/**/*.js",
+        "app/**/*.js"
+    ])
         .pipe(concat('app.js'))
         .pipe(gulp.dest('./dist/'));
 });
@@ -125,7 +138,7 @@ gulp.task('move:img', function() {
 });
 
 gulp.task('move:index', function() {
-    return gulp.src('index.html')
+    return gulp.src('resources/index.html')
         .pipe(gulp.dest('dist'));
 });
 
@@ -139,5 +152,5 @@ gulp.task('clean:dist', function () {
 gulp.task('build', function () {
     var runSequence = require('run-sequence');
 
-    return runSequence('clean:dist', 'sass:compile', 'concat:css', 'minify:css', 'concat', 'annotate', 'uglify', 'move:img', 'move:index');
+    return runSequence('clean:dist', 'sass:compile', 'concat:css', 'minify:css', 'concat', 'annotate', 'uglify', 'move:img', 'move:index', '_serve:build');
 });
