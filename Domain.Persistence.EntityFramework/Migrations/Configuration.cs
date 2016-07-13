@@ -1,4 +1,6 @@
-﻿namespace Domain.Persistence.EntityFramework.Migrations
+﻿using System.IO;
+
+namespace Domain.Persistence.EntityFramework.Migrations
 {
     using System;
     using System.Data.Entity;
@@ -10,6 +12,13 @@
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
+        }
+
+        protected override void Seed(EntityFrameworkContext context)
+        {
+            context.Database.ExecuteSqlCommand(File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + "/SQL/districts.sql"));
+
+            base.Seed(context);
         }
     }
 }
