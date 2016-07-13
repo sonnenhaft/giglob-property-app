@@ -46,14 +46,6 @@
     <DocumentationFile>App_Data\Client.Api.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ConquerorsFramework, Version=0.1.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ConquerorsFramework.0.1.1\lib\ConquerorsFramework.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="ConquerorsFramework.InMemoryBus, Version=0.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ConquerorsFramework.InMemoryBus.0.1.0\lib\ConquerorsFramework.InMemoryBus.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Elmah, Version=1.2.14706.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\elmah.corelibrary.1.2.2\lib\Elmah.dll</HintPath>
       <Private>True</Private>

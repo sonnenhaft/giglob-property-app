@@ -1,0 +1,57 @@
+.gheader {
+  height: 80px;
+  background-color: white;
+  position:absolute;
+  top:0;
+  lefT:0;
+  right:0;
+  padding:20px 30px;
+  .logo-green{
+    height: 100%;
+    margin-right:20px;
+  }
+  .user-logo {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: #edfaf7;
+    width: 80px;
+  }
+  .grey{
+    color: #aeaeae;
+    margin-right:95px;
+  }
+  .black{
+    color:#000;
+  }
+  .text{
+    display:inline-block;
+    font-size: 14px;
+    vertical-align:top;
+    line-height:40px;
+  }
+  nav {
+    display: inline-block;
+    vertical-align: top;
+    margin-top: -18px;
+    margin-right: 250px;
+    .menu-item {
+      display: inline-block;
+      line-height: 78px;
+      color: #373737;
+      font-size: 14px;
+      text-transform: uppercase;
+      margin-right: 50px;
+      cursor: pointer;
+      &.active {
+        border-bottom: 2px solid #09c77b
+      }
+    }
+  }
+  .button{
+    vertical-align:middle;
+    margin-bottom:35px;
+    margin-right: 45px;
+  }
+}

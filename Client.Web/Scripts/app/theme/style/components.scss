@@ -4,8 +4,10 @@
 html,body {
   min-height: 100%;
 }
-.wrap {
+.app-wrapper {
   max-width: 1440px;
   margin: 0 auto;
   position: relative;
+  background-color: #fff;
+  min-height:100%;
 }
