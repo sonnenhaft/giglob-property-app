@@ -8,6 +8,36 @@ var src = {
     img: 'app/**/*.svg'
 };
 
+//LINT: RUN BEFORE PUSH
+gulp.task('lint:css', function() {
+    var csslint = require('gulp-csslint');
+    var htmlReporter = require('gulp-csslint-report');
+    
+    return gulp.src(src.css)
+        .pipe(csslint({
+            'adjoining-classes': false
+        }))
+        .pipe(csslint.reporter())
+        .pipe(htmlReporter({
+            filename: 'css-report.html',
+            directory: 'resources/reports/'
+        }))
+});
+
+gulp.task('lint:js', function() {
+    var jshint = require('gulp-jshint');
+
+    return gulp.src(src.js)
+        .pipe(jshint())
+        .pipe(jshint.reporter('jshint-stylish', {beep: true}))
+        .pipe(jshint.reporter('gulp-jshint-html-reporter', {
+            filename:  'resources/reports/js-report.html',
+            createMissingFolders : true
+        }))
+});
+
+//
+
 gulp.task('connect:localhost', ['sass:reload'], function() {
     var browserSync = require('browser-sync');
     var reload = browserSync.reload;
