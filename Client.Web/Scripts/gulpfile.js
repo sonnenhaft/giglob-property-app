@@ -15,7 +15,8 @@ gulp.task('lint:css', function() {
     
     return gulp.src(src.css)
         .pipe(csslint({
-            'adjoining-classes': false
+            'adjoining-classes': false,
+            'box-sizing': false
         }))
         .pipe(csslint.reporter())
         .pipe(htmlReporter({
