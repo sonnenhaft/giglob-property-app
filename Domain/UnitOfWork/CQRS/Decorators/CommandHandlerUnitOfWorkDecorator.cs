@@ -1,5 +1,5 @@
 ﻿using System;
-using ConquerorsFramework;
+using CQRS;
 
 namespace Domain.UnitOfWork.CQRS.Decorators
 {
