@@ -8,5 +8,5 @@ angular.module('giglob-app',[
         link: function($scope) {
             
         }
-    }
+    };
 });
