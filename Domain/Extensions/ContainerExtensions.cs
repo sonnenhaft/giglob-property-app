@@ -1,4 +1,4 @@
-﻿using ConquerorsFramework;
+﻿using CQRS;
 using Domain.UnitOfWork.CQRS.Decorators;
 using SimpleInjector;
 

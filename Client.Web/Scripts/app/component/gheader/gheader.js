@@ -6,5 +6,5 @@ angular.module('component.gheader', []).directive('gheader', function() {
         link: function($scope) {
             $scope.header = 'Hello ';
         }
-    }
+    };
 });

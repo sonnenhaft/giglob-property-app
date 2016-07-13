@@ -1,9 +1,12 @@
+@mixin line{
+  line-height:40px;
+}
 .gheader {
   height: 80px;
   background-color: white;
   position:absolute;
   top:0;
-  lefT:0;
+  left:0;
   right:0;
   padding:20px 30px;
   .logo-green{
