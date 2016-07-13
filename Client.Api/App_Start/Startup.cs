@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Http.ExceptionHandling;
 using System.Web.Http.Validation;
 using ApiVersioningModule;
@@ -30,6 +31,7 @@ namespace Client.Api
             FluentValidationConfiguration.Configure(GlobalConfiguration.Configuration, container.GetInstance<ModelStateValidatorActionFilter>(), new SimpeInjectorValidatorFactory(container));
             ElmahConfiguration.Configure(GlobalConfiguration.Configuration.Services);
             JsonFormatterConfiguration.Configure(GlobalConfiguration.Configuration.Formatters.JsonFormatter);
+            GlobalConfiguration.Configuration.EnableCors(new EnableCorsAttribute("*", "*", "*"));
         }
     }
 }

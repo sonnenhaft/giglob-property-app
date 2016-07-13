@@ -62,7 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CQRS\CQRS.csproj">
-      <Project>{B412E005-BF9B-49BB-8DDE-6939A2456382}</Project>
+      <Project>{b412e005-bf9b-49bb-8dde-6939a2456382}</Project>
       <Name>CQRS</Name>
     </ProjectReference>
   </ItemGroup>
