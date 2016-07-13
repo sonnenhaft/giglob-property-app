@@ -4,7 +4,8 @@ var src = {
     js: 'app/**/*.js',
     scss: 'app/**/*.scss',
     css: 'app/**/*.css',
-    html: 'app/**/*.html'
+    html: 'app/**/*.html',
+    img: 'app/**/*.svg'
 };
 
 gulp.task('connect:localhost', ['sass:reload'], function() {
@@ -66,7 +67,12 @@ gulp.task('concat', function() {
         .pipe(concat('app.js'))
         .pipe(gulp.dest('./dist/'));
 });
-
+gulp.task('concat:css', function () {
+    var concatCss = require('gulp-concat-css');
+    return gulp.src(src.css)
+        .pipe(concatCss('app.css'))
+        .pipe(gulp.dest('./dist'));
+});
 gulp.task('process:templates', function() {
     var ngHtml2Js = require("gulp-ng-html2js");
 
@@ -83,7 +89,7 @@ gulp.task('process:templates', function() {
 gulp.task('minify:css', function() {
     var cleanCSS = require('gulp-clean-css');
 
-    return gulp.src(src.css)
+    return gulp.src('dist/app.css')
         .pipe(cleanCSS())
         .pipe(gulp.dest('dist'));
 });
@@ -99,7 +105,7 @@ gulp.task('uglify', function() {
 gulp.task('annotate', function () {
     var ngAnnotate = require('gulp-ng-annotate');
 
-    return gulp.src('src/app.js')
+    return gulp.src('dist/app.js')
         .pipe(ngAnnotate())
         .pipe(gulp.dest('dist'));
 });
@@ -108,4 +114,30 @@ gulp.task('dev', function() {
     var runSequence = require('run-sequence');
 
     return runSequence('sass:compile', '_serve', 'connect:localhost');
+});
+
+gulp.task('move:img', function() {
+    var rename = require('gulp-rename');
+
+    return gulp.src(src.img)
+        .pipe(rename({dirname: ''}))
+        .pipe(gulp.dest('dist/theme/img'));
+});
+
+gulp.task('move:index', function() {
+    return gulp.src('index.html')
+        .pipe(gulp.dest('dist'));
+});
+
+gulp.task('clean:dist', function () {
+    var clean = require('gulp-clean');
+
+    return gulp.src('dist', {read: false})
+        .pipe(clean());
+});
+
+gulp.task('build', function () {
+    var runSequence = require('run-sequence');
+
+    return runSequence('clean:dist', 'sass:compile', 'concat:css', 'minify:css', 'concat', 'annotate', 'uglify', 'move:img', 'move:index');
 });
