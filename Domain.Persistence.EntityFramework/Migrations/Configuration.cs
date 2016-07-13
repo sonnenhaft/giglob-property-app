@@ -17,6 +17,7 @@ namespace Domain.Persistence.EntityFramework.Migrations
         protected override void Seed(EntityFrameworkContext context)
         {
             context.Database.ExecuteSqlCommand(File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + "/SQL/districts.sql"));
+            context.Database.ExecuteSqlCommand(File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + "/SQL/metrostation.sql"));
 
             base.Seed(context);
         }

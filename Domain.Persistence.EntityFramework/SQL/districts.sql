@@ -7,7 +7,6 @@ INSERT INTO [dbo].[Districts]
             ([Name],[CityId])
      VALUES
 
-		('Москва',@name),
 		('Арбат',@name),
 		('Басманный',@name),
 		('Замоскворечье',@name),
@@ -159,8 +158,4 @@ INSERT INTO [dbo].[Districts]
 		('Черемушки',@name),
 		('Южное Бутово',@name),
 		('Ясенево',@name)
-END
-ELSE
-BEGIN
-	SELECT '';
 END
