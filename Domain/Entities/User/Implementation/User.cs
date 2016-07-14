@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.AspNet.Identity;
 
-namespace Domain.Entities.Implementation
+namespace Domain.Entities.User.Implementation
 {
     public class User: IUser<long>, IAggregateRootEntity<long>
     {

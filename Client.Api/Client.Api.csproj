@@ -191,6 +191,10 @@
       <Project>{5a4ef52a-03be-4ba3-bb4b-7d5bae2f2678}</Project>
       <Name>Client.Api.Authentication</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Client.Api.v1.Models\Client.Api.v1.Models.csproj">
+      <Project>{998906eb-aa90-47f2-8a6a-5f259185a168}</Project>
+      <Name>Client.Api.v1.Models</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Client.Api.v1\Client.Api.v1.csproj">
       <Project>{a226d174-6dd2-4290-8dbc-e201efc54789}</Project>
       <Name>Client.Api.v1</Name>

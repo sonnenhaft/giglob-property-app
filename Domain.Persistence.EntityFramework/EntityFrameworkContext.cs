@@ -1,5 +1,5 @@
 ﻿using System.Data.Entity;
-using Domain.Entities.Implementation;
+using Domain.Entities.User.Implementation;
 
 namespace Domain.Persistence.EntityFramework
 {

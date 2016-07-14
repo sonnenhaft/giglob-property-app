@@ -1,5 +1,5 @@
 ﻿using Client.Api.v1.Models.Models.User;
-using Domain.Entities.Implementation;
+using Domain.Entities.User.Implementation;
 using ExpressMapper;
 
 namespace Client.Api.v1

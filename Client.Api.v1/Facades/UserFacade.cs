@@ -1,7 +1,7 @@
 ﻿using System.Net;
 using Client.Api.v1.Models.Models.User;
-using Domain.Entities.Implementation;
-using Domain.Entities.Implementation.Commands;
+using Domain.Entities.User.Implementation.Commands;
+using Domain.Entities.User.Implementation.Queries;
 using Domain.Entities.User.Services;
 using ExpressMapper.Extensions;
 
@@ -9,10 +9,11 @@ namespace Client.Api.v1.Facades
 {
     public class UserFacade
     {
-        private readonly User_CreateCommandHandler _userCreateCommandHandler;
         private readonly IUserAuthorizationService _userAuthorizationService;
 
-        public UserFacade(User_CreateCommandHandler userCreateCommandHandler, IUserAuthorizationService userAuthorizationService)
+        private readonly User_CreateCommandHandler _userCreateCommandHandler;
+
+        public UserFacade(IUserAuthorizationService userAuthorizationService, User_CreateCommandHandler userCreateCommandHandler)
         {
             _userCreateCommandHandler = userCreateCommandHandler;
             _userAuthorizationService = userAuthorizationService;

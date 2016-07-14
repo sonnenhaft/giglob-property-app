@@ -1,6 +1,7 @@
 ﻿using System.Web;
 using System.Web.Http;
 using Client.Api.Authentication.Extensions;
+using Client.Api.v1.Models.Extensions;
 using Domain.Extensions;
 using Domain.Persistence.EntityFramework.Extensions;
 using SimpleInjector;
@@ -20,6 +21,7 @@ namespace Client.Api
             container.RegisterDomainDependencies();
             container.RegisterDomainPersistenceEntityFrameworkDependencies();
             container.RegisterClientApiAuthenticationDependencies();
+            container.RegisterClientApiV1ModelsDependencies();
             GlobalConfiguration.Configuration.DependencyResolver = new SimpleInjectorWebApiDependencyResolver(container);
         }
     }

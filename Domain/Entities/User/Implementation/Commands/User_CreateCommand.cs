@@ -1,9 +1,7 @@
 ﻿using CQRS;
 using Domain.Entities.User.Services;
-using Domain.Repositories;
-using Microsoft.AspNet.Identity;
 
-namespace Domain.Entities.Implementation.Commands
+namespace Domain.Entities.User.Implementation.Commands
 {
     public class User_CreateCommand: ICommand
     {

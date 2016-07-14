@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Security.Claims;
 using System.Text.RegularExpressions;
-using Domain.Entities.Implementation;
+using Domain.Entities.User.Implementation;
 using Domain.Entities.User.Services;
 using Domain.Repositories;
 using Microsoft.AspNet.Identity;
@@ -61,9 +61,14 @@ namespace Client.Api.Authentication.Services
             return accessToken;
         }
 
+        public bool Check(string userName, string password)
+        {
+            return _userManager.Find(userName, password) != null;
+        }
+
         private string PrepareEmail(string email)
         {
-            return Regex.Replace(email, @"^([^@]+)", x => x.Groups[1].Value.Replace(".", ""));
+            return Regex.Replace(email, @"^([^@]+)", x => x.Groups[1].Value.Replace(".", "")).ToLower();
         }
     }
 }

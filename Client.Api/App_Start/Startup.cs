@@ -29,11 +29,11 @@ namespace Client.Api
             SimpleInjectorConfiguration.Configure(container);
             ApiVersioningConfiguration.Configure(GlobalConfiguration.Configuration, new UrlApiVersionResolver(), new NoApiVersionLastResolver());
             RouteConfiguration.Configure(GlobalConfiguration.Configuration.Routes);
-            FluentValidationConfiguration.Configure(GlobalConfiguration.Configuration, container.GetInstance<ModelStateValidatorActionFilter>(), new SimpeInjectorValidatorFactory(container));
             ElmahConfiguration.Configure(GlobalConfiguration.Configuration.Services);
             JsonFormatterConfiguration.Configure(GlobalConfiguration.Configuration.Formatters.JsonFormatter);
             AuthConfiguration.ConfigureAuth(app);
             GlobalConfiguration.Configuration.EnableCors(new EnableCorsAttribute("*", "*", "*"));
+            FluentValidationConfiguration.Configure(GlobalConfiguration.Configuration, container.GetInstance<ModelStateValidatorActionFilter>(), new SimpeInjectorValidatorFactory(container));
         }
     }
 }

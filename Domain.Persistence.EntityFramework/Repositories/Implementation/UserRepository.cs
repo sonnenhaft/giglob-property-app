@@ -1,6 +1,7 @@
 ﻿using System.Data.Entity;
 using System.Linq;
-using Domain.Entities.Implementation;
+using System.Text.RegularExpressions;
+using Domain.Entities.User.Implementation;
 using Domain.Repositories;
 
 namespace Domain.Persistence.EntityFramework.Repositories.Implementation
@@ -11,8 +12,23 @@ namespace Domain.Persistence.EntityFramework.Repositories.Implementation
 
         public User Get(string userName)
         {
+            userName = PrepareEmail(userName);
+
             return GetAll()
                 .FirstOrDefault(x => x.UserName == userName);
+        }
+
+        public bool IsExists(string userName)
+        {
+            userName = PrepareEmail(userName);
+
+            return GetAll()
+                .Any(x => x.UserName == userName);
+        }
+
+        private string PrepareEmail(string email)
+        {
+            return Regex.Replace(email, @"^([^@]+)", x => x.Groups[1].Value.Replace(".", "")).ToLower();
         }
     }
 }

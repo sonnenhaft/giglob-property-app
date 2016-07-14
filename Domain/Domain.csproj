@@ -50,6 +50,8 @@
   <ItemGroup>
     <Compile Include="Entities\IAggregateRootEntity.cs" />
     <Compile Include="Entities\User\Implementation\Commands\User_CreateCommand.cs" />
+    <Compile Include="Entities\User\Implementation\Queries\User_CheckUserIsExistsByEmailQuery.cs" />
+    <Compile Include="Entities\User\Implementation\Queries\User_CheckUserIsExistsByUsernameAndPasswordQuery.cs" />
     <Compile Include="Entities\User\Implementation\User.cs" />
     <Compile Include="Entities\User\Services\IUserAuthorizationService.cs" />
     <Compile Include="Extensions\ContainerExtensions.cs" />
