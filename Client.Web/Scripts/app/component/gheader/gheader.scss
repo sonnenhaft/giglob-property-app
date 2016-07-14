@@ -1,6 +1,4 @@
-@mixin line{
-  line-height:40px;
-}
+﻿$line: 40px;
 .gheader {
   height: 80px;
   background-color: white;
@@ -12,6 +10,7 @@
   .logo-green{
     height: 100%;
     margin-right:20px;
+    vertical-align:top;
   }
   .user-logo {
     position: absolute;
@@ -32,7 +31,7 @@
     display:inline-block;
     font-size: 14px;
     vertical-align:top;
-    line-height:40px;
+    line-height:$line;
   }
   nav {
     display: inline-block;
