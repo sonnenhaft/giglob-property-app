@@ -1,4 +1,5 @@
-﻿IF NOT EXISTS(SELECT NULL FROM [dbo].[Districts])
+﻿
+IF NOT EXISTS(SELECT NULL FROM [dbo].[Districts])
 BEGIN
   DECLARE @name INT;
 select @name = Id from [dbo].[Cities] WHERE Name='Москва';
