@@ -17,7 +17,7 @@ namespace Domain.Entities.Implementation.Commands
 
         public string Password { get; set; }
 
-        public User User { get; set; }
+        public long Id { get; set; }
     }
 
     public class User_CreateCommandHandler: ICommandHandler<User_CreateCommand>
@@ -32,7 +32,7 @@ namespace Domain.Entities.Implementation.Commands
         public void Handle(User_CreateCommand command)
         {
             var user = _userAuthorizationService.Register(command.Email, command.Password);
-            command.User = user;
+            command.Id = user.Id;
         }
     }
 }

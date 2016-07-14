@@ -25,7 +25,6 @@ namespace Client.Api.v1.Facades
 
             return new AuthResultModel
             {
-                User = command.User.Map<User, UserModel>(),
                 AccessToken = _userAuthorizationService.GenerateAccessToken(requestModel.Email, requestModel.Password)
             };
         }

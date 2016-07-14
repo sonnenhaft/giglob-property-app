@@ -8,12 +8,7 @@ namespace Client.Api.v1.Models.Models.User.ResponseExamples
         {
             return new AuthResultModel
             {
-                AccessToken = "There must be a bearer token, but there is not.",
-                User = new UserModel
-                {
-                    Id = 1,
-                    Email = "abc@abc.abc"
-                }
+                AccessToken = "There must be a bearer token, but there is not."
             };
         }
     }

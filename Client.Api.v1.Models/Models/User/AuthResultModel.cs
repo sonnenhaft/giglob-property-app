@@ -6,11 +6,6 @@
     public class AuthResultModel
     {
         /// <summary>
-        /// Пользователь
-        /// </summary>
-        public UserModel User { get; set; }
-
-        /// <summary>
         /// Bearer-токен
         /// </summary>
         public string AccessToken { get; set; }
