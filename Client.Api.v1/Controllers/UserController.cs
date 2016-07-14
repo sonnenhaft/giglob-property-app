@@ -30,10 +30,7 @@ namespace Client.Api.v1.Controllers
         [SwaggerResponseExampleProvider(HttpStatusCode.BadRequest, typeof(BadRequestResponseExampleProvider))]
         public IHttpActionResult SignIn(UserSignInRequestModel reqModel)
         {
-            return Ok(new AuthResultModel
-            {
-                AccessToken = "There must be a bearer token, but there is not."
-            });
+            return Ok(_userFacade.SignIn(reqModel));
         }
 
         [HttpGet]

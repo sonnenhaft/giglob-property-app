@@ -23,9 +23,19 @@ namespace Client.Api.v1.Facades
             var command = new User_CreateCommand(requestModel.Email, requestModel.Password);
             _userCreateCommandHandler.Handle(command);
 
+            return SignIn(requestModel.Email, requestModel.Password);
+        }
+
+        public AuthResultModel SignIn(UserSignInRequestModel requestModel)
+        {
+            return SignIn(requestModel.Email, requestModel.Password);
+        }
+
+        private AuthResultModel SignIn(string email, string password)
+        {
             return new AuthResultModel
             {
-                AccessToken = _userAuthorizationService.GenerateAccessToken(requestModel.Email, requestModel.Password)
+                AccessToken = _userAuthorizationService.GenerateAccessToken(email, password)
             };
         }
     }
