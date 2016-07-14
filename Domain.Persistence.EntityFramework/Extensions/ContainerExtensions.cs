@@ -1,6 +1,7 @@
 ﻿using System.Data.Entity;
 using Domain.Persistence.EntityFramework.Repositories.Implementation;
 using Domain.Persistence.EntityFramework.UnitOfWork.Implementation;
+using Domain.Repositories;
 using Domain.UnitOfWork;
 using SimpleInjector;
 
@@ -12,6 +13,7 @@ namespace Domain.Persistence.EntityFramework.Extensions
         {
             container.Register<DbContext, EntityFrameworkContext>(Lifestyle.Scoped);
             container.Register<IUnitOfWorkFactory, EntityFrameworkUnitOfWorkFactory>(Lifestyle.Transient);
+            container.Register<IUserRepository, UserRepository>(Lifestyle.Transient);
         }
     }
 }

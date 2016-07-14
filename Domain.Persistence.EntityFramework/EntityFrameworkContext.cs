@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity;
+using Domain.Entities.Implementation;
 
 namespace Domain.Persistence.EntityFramework
 {
@@ -6,8 +7,10 @@ namespace Domain.Persistence.EntityFramework
     {
         public EntityFrameworkContext() : base("Default")
         {
-            
+
         }
+
+        public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

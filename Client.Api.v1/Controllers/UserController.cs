@@ -1,5 +1,6 @@
 ﻿using System.Net;
 using System.Web.Http;
+using Client.Api.v1.Facades;
 using Client.Api.v1.Models.Models.Common.ResponseExamples;
 using Client.Api.v1.Models.Models.User;
 using Client.Api.v1.Models.Models.User.ResponseExamples;
@@ -9,20 +10,19 @@ namespace Client.Api.v1.Controllers
 {
     public class UserController: ApiController
     {
+        private readonly UserFacade _userFacade;
+
+        public UserController(UserFacade userFacade)
+        {
+            _userFacade = userFacade;
+        }
+
         [HttpPost]
         [SwaggerResponseExampleProvider(typeof(AuthResultModelResponseExample))]
         [SwaggerResponseExampleProvider(HttpStatusCode.BadRequest, typeof(BadRequestResponseExampleProvider))]
         public IHttpActionResult Register(UserRegisterRequestModel reqModel)
         {
-            return Ok(new AuthResultModel
-            {
-                AccessToken = "There must be a bearer token, but there is not.",
-                User = new UserModel
-                {
-                    Id = 1,
-                    Email = "abc@abc.abc"
-                }
-            });
+            return Ok(_userFacade.RegisterUser(reqModel));
         }
 
         [HttpPost]
@@ -39,6 +39,13 @@ namespace Client.Api.v1.Controllers
                     Email = "abc@abc.abc"
                 }
             });
+        }
+
+        [HttpGet]
+        [Authorize]
+        public IHttpActionResult Test()
+        {
+            return Ok();
         }
     }
 }
