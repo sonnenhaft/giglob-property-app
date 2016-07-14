@@ -125,7 +125,7 @@ gulp.task('process:templates', function() {
         .pipe(ngHtml2Js({
             moduleName: 'templates',
             rename: function (templateUrl, templateFile) {
-                return '/app/' + templateUrl;
+                return templateUrl;
             }
         }))
         .pipe(gulp.dest('dist/templates'));
@@ -189,5 +189,5 @@ gulp.task('clean:dist', function () {
 gulp.task('build', function () {
     var runSequence = require('run-sequence');
 
-    return runSequence('clean:dist', 'sass:compile', 'concat:css', 'minify:css', 'concat', 'process:templates', 'annotate', 'uglify', 'move:img', 'move:index', 'move:package', '_serve:build');
+    return runSequence('clean:dist', 'sass:compile', 'concat:css', 'minify:css', 'process:templates', 'concat', 'annotate', 'uglify', 'move:img', 'move:index', 'move:package', '_serve:build');
 });
