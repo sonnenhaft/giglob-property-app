@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using System;
+using Microsoft.AspNet.Identity;
 
 namespace Domain.Entities.Implementation
 {
@@ -9,5 +10,11 @@ namespace Domain.Entities.Implementation
         public string UserName { get; set; }
 
         public string Email { get; set; }
+
+        public string PasswordHash { get; set; }
+
+        public bool EmailIsConfirmed { get; set; }
+
+        public Guid? EmailConfirmationToken { get; set; }
     }
 }
