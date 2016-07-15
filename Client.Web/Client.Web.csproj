@@ -113,14 +113,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-    <Content Include="Scripts\gulpfile.js" />
-    <Content Include="Scripts\resources\index.html" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Web.config" />
     <Content Include=".bowerrc" />
     <Content Include="bower.json" />
-    <Content Include="Scripts\app\component\gheader\gheader.scss" />
-    <Content Include="Scripts\app\theme\style\components.scss" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
