@@ -52,6 +52,15 @@ gulp.task('connect:localhost', ['sass:reload'], function() {
     gulp.watch(src.js).on('change', reload);
 });
 
+gulp.task('connect:build', function() {
+    var browserSync = require('browser-sync');
+
+    browserSync({
+        server: '../'
+    });
+
+});
+
 gulp.task('_serve', function () {
     var inject = require('gulp-inject');
 
@@ -64,8 +73,8 @@ gulp.task('_serve:build', function () {
     var inject = require('gulp-inject');
 
     return gulp.src('resources/index.html')
-        .pipe(inject(gulp.src(['dist/app.js', 'dist/app.css'], {read: false}), {relative: true, name: 'build'}))
-        .pipe(gulp.dest('./dist'));
+        .pipe(inject(gulp.src(['dist/app.js', 'dist/app.css'], {read: false}), {addPrefix: 'Scripts', name: 'build', addRootSlash: false }))
+        .pipe(gulp.dest('../'));
 });
 
 
@@ -106,8 +115,7 @@ gulp.task('concat', function() {
     return gulp.src([
         "lib/vendor/angular/angular.js",
         "lib/**/*.js",
-        "app/**/*.js",
-        'dist/templates/**/*.js'
+        "app/**/*.js"
     ])
         .pipe(concat('app.js'))
         .pipe(gulp.dest('./dist/'));
@@ -125,10 +133,10 @@ gulp.task('process:templates', function() {
         .pipe(ngHtml2Js({
             moduleName: 'templates',
             rename: function (templateUrl, templateFile) {
-                return templateUrl;
+                return 'app/' + templateUrl;
             }
         }))
-        .pipe(gulp.dest('dist/templates'));
+        .pipe(gulp.dest('app/templates'));
 });
 
 gulp.task('minify:css', function() {
@@ -171,7 +179,7 @@ gulp.task('move:img', function() {
 
 gulp.task('move:index', function() {
     return gulp.src('resources/index.html')
-        .pipe(gulp.dest('dist'));
+        .pipe(gulp.dest('../'));
 });
 
 gulp.task('move:package', function() {
@@ -185,9 +193,14 @@ gulp.task('clean:dist', function () {
     return gulp.src('dist', {read: false})
         .pipe(clean());
 });
+gulp.task('clean:templates', function () {
+    var clean = require('gulp-clean');
 
+    return gulp.src('app/templates', {read: false})
+        .pipe(clean());
+});
 gulp.task('build', function () {
     var runSequence = require('run-sequence');
 
-    return runSequence('clean:dist', 'sass:compile', 'concat:css', 'minify:css', 'process:templates', 'concat', 'annotate', 'uglify', 'move:img', 'move:index', 'move:package', '_serve:build');
+    return runSequence('clean:dist', 'process:templates', 'sass:compile', 'concat:css', 'minify:css', 'concat', 'annotate', 'uglify', 'move:img', 'move:index', 'move:package', '_serve:build', 'clean:templates');
 });
