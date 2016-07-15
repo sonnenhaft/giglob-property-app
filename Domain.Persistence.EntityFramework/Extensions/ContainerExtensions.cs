@@ -17,6 +17,7 @@ namespace Domain.Persistence.EntityFramework.Extensions
             container.Register<IUnitOfWorkFactory, EntityFrameworkUnitOfWorkFactory>(Lifestyle.Transient);
 
             container.Register(typeof(IRepository<,>), typeof(EntityFrameworkRepository<,>));
+            container.Register(typeof(ICityRepository), typeof(CityRepository));
             container.Register(typeof(ICityRepository), typeof(EntityFrameworkRepository<,>));
             container.Register(typeof(IPropertyOfferRepository), typeof(PropertyOfferRepository));
 

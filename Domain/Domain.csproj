@@ -67,6 +67,7 @@
     <Compile Include="Entities\Implementation\City\District.cs" />
     <Compile Include="Entities\Implementation\City\MetroBranch.cs" />
     <Compile Include="Entities\Implementation\City\MetroStation.cs" />
+    <Compile Include="Entities\Implementation\City\Queries\City_GetAllQuery.cs" />
     <Compile Include="Entities\Implementation\File\File.cs" />
     <Compile Include="Entities\Implementation\User.cs" />
     <Compile Include="Entities\Implementation\PropertyOffer\Enums\BuildingCategory.cs" />
@@ -90,6 +91,12 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CQRS\CQRS.csproj">
+      <Project>{b412e005-bf9b-49bb-8dde-6939a2456382}</Project>
+      <Name>CQRS</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
