@@ -1,10 +1,7 @@
-<<<<<<< HEAD
-﻿using Client.Api.v1.Models.Models.User;
-using Domain.Entities.User.Implementation;
-=======
-﻿using Client.Api.v1.Models.Models.City;
+using Client.Api.v1.Models.Models.City;
+using Client.Api.v1.Models.Models.User;
 using Domain.Entities.Implementation.City;
->>>>>>> dev
+using Domain.Entities.User.Implementation;
 using ExpressMapper;
 
 namespace Client.Api.v1
@@ -13,11 +10,8 @@ namespace Client.Api.v1
     {
         public static void Configure()
         {
-<<<<<<< HEAD
             Mapper.Register<User, UserModel>();
-=======
             Mapper.Register<City, CityModel>();
->>>>>>> dev
         }
     }
 }
