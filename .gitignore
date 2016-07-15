@@ -9,3 +9,4 @@ obj/
 Client.Web/Scripts/node_modules
 Client.Web/Scripts/app/**/*.css
 Client.Web/Scripts/index.html
+Client.Web/Scripts/dist
