@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity;
+using Domain.Persistence.EntityFramework.Conventions;
 
 namespace Domain.Persistence.EntityFramework
 {
@@ -12,6 +13,8 @@ namespace Domain.Persistence.EntityFramework
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Conventions.Add(new DateTime2Convention());
         }
     }
 }
