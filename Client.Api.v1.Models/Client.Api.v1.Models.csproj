@@ -54,10 +54,13 @@
     <Compile Include="Extensions\ContainerExtensions.cs" />
     <Compile Include="Models\Common\ResponseExamples\BadRequestResponseExampleProvider.cs" />
     <Compile Include="Models\User\AuthResultModel.cs" />
+    <Compile Include="Models\User\Mail\UserConfirmationMailModel.cs" />
     <Compile Include="Models\User\ResponseExamples\AuthResultModelResponseExample.cs" />
+    <Compile Include="Models\User\UserConfiirmEmailRequestModel.cs" />
     <Compile Include="Models\User\UserModel.cs" />
     <Compile Include="Models\User\UserRegisterRequestModel.cs" />
     <Compile Include="Models\User\UserSignInRequestModel.cs" />
+    <Compile Include="Models\User\Validators\UserConfirmEmailRequestModelValidator.cs" />
     <Compile Include="Models\User\Validators\UserSignInRequestModelValidator.cs" />
     <Compile Include="Models\User\Validators\UserRegisterRequestModelValidator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -16,5 +16,7 @@ namespace Domain.Entities.User.Implementation
         public bool EmailIsConfirmed { get; set; }
 
         public Guid? EmailConfirmationToken { get; set; }
+
+        public DateTime? EmailConfirmationTokenExpirationDate { get; set; }
     }
 }

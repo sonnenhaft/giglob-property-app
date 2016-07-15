@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using System.Linq;
 using System.Text.RegularExpressions;
 using Domain.Entities.User.Implementation;
@@ -16,6 +17,12 @@ namespace Domain.Persistence.EntityFramework.Repositories.Implementation
 
             return GetAll()
                 .FirstOrDefault(x => x.UserName == userName);
+        }
+
+        public User GetByEmailConfirmationToken(Guid token)
+        {
+            return GetAll()
+                .FirstOrDefault(x => x.EmailConfirmationToken == token && x.EmailConfirmationTokenExpirationDate > DateTime.UtcNow);
         }
 
         public bool IsExists(string userName)

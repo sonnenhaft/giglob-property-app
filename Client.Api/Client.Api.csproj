@@ -152,6 +152,10 @@
   <ItemGroup>
     <Content Include="App_Readme\Elmah.txt" />
     <Content Include="packages.config" />
+    <Content Include="mailSettings.config" />
+    <Content Include="Views\User\Mail\UserConfirmationMail.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

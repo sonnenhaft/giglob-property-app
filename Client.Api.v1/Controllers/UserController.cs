@@ -33,10 +33,11 @@ namespace Client.Api.v1.Controllers
             return Ok(_userFacade.SignIn(reqModel));
         }
 
-        [HttpGet]
-        [Authorize]
-        public IHttpActionResult Test()
+        [HttpPost]
+        public IHttpActionResult ConfirmEmail(UserConfiirmEmailRequestModel reqModel)
         {
+            _userFacade.ConfirmEmail(reqModel.Token);
+
             return Ok();
         }
     }
