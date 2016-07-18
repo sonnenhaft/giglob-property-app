@@ -46,7 +46,7 @@
     <Compile Include="Models\City\DistrictModel.cs" />
     <Compile Include="Models\City\DistrictsModel.cs" />
     <Compile Include="Models\City\MetroBranchModel.cs" />
-    <Compile Include="Models\City\MetroStationModel.cs" />
+    <Compile Include="Models\City\NearMetroStationModel.cs" />
     <Compile Include="Models\Common\IdentifyModel.cs" />
     <Compile Include="Models\Common\ResponseExamples\SuccessResponseExample.cs" />
     <Compile Include="Models\File\FileUploadResultModel.cs" />

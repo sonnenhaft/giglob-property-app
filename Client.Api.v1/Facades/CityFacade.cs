@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Client.Api.v1.Models.Models.City;
 using Client.Api.v1.Models.Models.Home;
 using CQRS;
@@ -20,14 +21,24 @@ namespace Client.Api.v1.Facades
             _cityGetAllDistrictsQueryHandler = cityGetAllDistrictsQueryHandler;
         }
 
-        public StationModel GetAllMetroStations(long id)
+        public IEnumerable<NearMetroStationModel> GetAllMetroStations(long id)
         {
-            var query = _cityGetAllMetroStationQueryHandler.Handle(new City_GetAllMetroStationQuery(id));
+            List<MetroStation> query = _cityGetAllMetroStationQueryHandler.Handle(new City_GetAllMetroStationQuery(id)).ToList();
 
-            var model = new StationModel
+            var model = new List<NearMetroStationModel>();
+
+            for (int i = 0; i < query.Count; i++)
             {
-                Stations = query.Map<IEnumerable<MetroStation>, IEnumerable<MetroStationModel>>()
-            };
+                var branches = query[i].Branches.Select((t, y) => new NearMetroStationModel
+                {
+                    Name = query[i].Name,
+                    Id = query[i].Id,
+                    HexColor = t.HexColor,
+                    MetroBranchId = t.Id
+                }).ToList();
+
+                model.AddRange(branches);
+            }
 
             return model;
         }
