@@ -18,7 +18,6 @@ namespace Domain.Persistence.EntityFramework.Extensions
 
             container.Register(typeof(IRepository<,>), typeof(EntityFrameworkRepository<,>));
             container.Register(typeof(ICityRepository), typeof(CityRepository));
-            container.Register(typeof(ICityRepository), typeof(EntityFrameworkRepository<,>));
             container.Register(typeof(IPropertyOfferRepository), typeof(PropertyOfferRepository));
 
             container.RegisterDecorator(typeof(IRepository<,>), typeof(DeletableEntityFrameworkRepository<,>), Lifestyle.Transient, context => context.ServiceType.GetGenericArguments().First().GetInterfaces().Contains(typeof(IDeletableEntity)));
