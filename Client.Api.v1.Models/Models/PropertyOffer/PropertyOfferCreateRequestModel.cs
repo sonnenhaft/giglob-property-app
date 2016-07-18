@@ -19,7 +19,7 @@ namespace Client.Api.v1.Models.Models.PropertyOffer
         /// <summary>
         /// Идентификаторы ближайших станций метро
         /// </summary>
-        public IEnumerable<long> NearMetroStationIds { get; set; }
+        public IEnumerable<PropertyOfferCreateNearMetroStationRequestModel> NearMetroStations { get; set; }
 
         /// <summary>
         /// Название улицы
