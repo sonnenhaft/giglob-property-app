@@ -44,6 +44,8 @@
   <ItemGroup>
     <Compile Include="Models\City\CityModel.cs" />
     <Compile Include="Models\City\DistrictModel.cs" />
+    <Compile Include="Models\City\MetroBranchModel.cs" />
+    <Compile Include="Models\City\MetroStationModel.cs" />
     <Compile Include="Models\Home\DataModel.cs" />
     <Compile Include="Models\Home\ResponseExamples\DataModelResponseExample.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
