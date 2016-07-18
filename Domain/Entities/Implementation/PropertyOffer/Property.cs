@@ -17,7 +17,11 @@ namespace Domain.Entities.Implementation.Property
 
         public DbGeography Location { get; set; }
 
-        public string Address { get; set; }
+        public string StreetName { get; set; }
+
+        public string HouseNumber { get; set; }
+
+        public string ApartmentNumber { get; set; }
 
         public int Level { get; set; }
 

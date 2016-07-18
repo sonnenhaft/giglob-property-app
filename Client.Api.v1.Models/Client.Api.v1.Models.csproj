@@ -47,9 +47,15 @@
     <Compile Include="Models\City\DistrictsModel.cs" />
     <Compile Include="Models\City\MetroBranchModel.cs" />
     <Compile Include="Models\City\MetroStationModel.cs" />
+    <Compile Include="Models\Common\IdentifyModel.cs" />
+    <Compile Include="Models\Common\ResponseExamples\SuccessResponseExample.cs" />
+    <Compile Include="Models\File\FileUploadResultModel.cs" />
+    <Compile Include="Models\File\ResponseExamples\FileUploadResponseExample.cs" />
     <Compile Include="Models\Home\DataModel.cs" />
     <Compile Include="Models\Home\StationModel.cs" />
     <Compile Include="Models\Home\ResponseExamples\DataModelResponseExample.cs" />
+    <Compile Include="Models\PropertyOffer\PropertyOfferCreateRequestModel.cs" />
+    <Compile Include="Models\PropertyOffer\PropertyOfferCreatePhotoRequestModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -58,6 +64,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Domain\Domain.csproj">
+      <Project>{13607ee9-8b76-4fe3-bcf2-0c09eef929bb}</Project>
+      <Name>Domain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SwaggerResponseExampleModule\SwaggerResponseExampleModule.csproj">
       <Project>{9084f7b6-ae3a-4ef4-9414-bf1228916974}</Project>
       <Name>SwaggerResponseExampleModule</Name>
@@ -65,6 +75,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\а\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
