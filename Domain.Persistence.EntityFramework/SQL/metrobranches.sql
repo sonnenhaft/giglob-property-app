@@ -767,9 +767,6 @@ select @stationId = ID from [dbo].[MetroStations] WHERE Name='Ясенево' AN
 select @colorId = ID from [dbo].[MetroBranches] WHERE HexColor='fbaa33' AND CityId =1
 INSERT INTO [dbo].[MetroStationToMetroBranchRelations]([StationId],[BranchId])VALUES (@stationId,@colorId)
 select @stationId = ID from [dbo].[MetroStations] WHERE Name='Каширская' AND CityId =1
-select @colorId = ID from [dbo].[MetroBranches] WHERE HexColor='029a55' AND CityId =1
-INSERT INTO [dbo].[MetroStationToMetroBranchRelations]([StationId],[BranchId])VALUES (@stationId,@colorId)
-select @stationId = ID from [dbo].[MetroStations] WHERE Name='Каширская' AND CityId =1
 select @colorId = ID from [dbo].[MetroBranches] WHERE HexColor='5091bb' AND CityId =1
 INSERT INTO [dbo].[MetroStationToMetroBranchRelations]([StationId],[BranchId])VALUES (@stationId,@colorId)
 select @stationId = ID from [dbo].[MetroStations] WHERE Name='Варшавская' AND CityId =1
@@ -795,4 +792,7 @@ select @colorId = ID from [dbo].[MetroBranches] WHERE HexColor='acadaf' AND City
 INSERT INTO [dbo].[MetroStationToMetroBranchRelations]([StationId],[BranchId])VALUES (@stationId,@colorId)
 select @stationId = ID from [dbo].[MetroStations] WHERE Name='Монорельса Выставочный центр' AND CityId =1
 select @colorId = ID from [dbo].[MetroBranches] WHERE HexColor='5091bb' AND CityId =1
+INSERT INTO [dbo].[MetroStationToMetroBranchRelations]([StationId],[BranchId])VALUES (@stationId,@colorId)
+select @stationId = ID from [dbo].[MetroStations] WHERE Name='Каширская' AND CityId =1
+select @colorId = ID from [dbo].[MetroBranches] WHERE HexColor='029a55' AND CityId =1
 INSERT INTO [dbo].[MetroStationToMetroBranchRelations]([StationId],[BranchId])VALUES (@stationId,@colorId)

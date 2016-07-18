@@ -37,5 +37,12 @@ namespace Client.Api.v1.Controllers
         {
             return Ok(_cityFacade.GetAllMetroStations(cityid));
         }
+
+        [HttpGet]
+        [SwaggerResponseExampleProvider(typeof(DataModelResponseExample))]
+        public IHttpActionResult Districts(long cityid)
+        {
+            return Ok(_cityFacade.GetAllDistricts(cityid));
+        }
     }
 }
