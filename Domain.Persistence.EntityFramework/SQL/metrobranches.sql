@@ -796,4 +796,3 @@ INSERT INTO [dbo].[MetroStationToMetroBranchRelations]([StationId],[BranchId])VA
 select @stationId = ID from [dbo].[MetroStations] WHERE Name='Монорельса Выставочный центр' AND CityId =1
 select @colorId = ID from [dbo].[MetroBranches] WHERE HexColor='5091bb' AND CityId =1
 INSERT INTO [dbo].[MetroStationToMetroBranchRelations]([StationId],[BranchId])VALUES (@stationId,@colorId)
-

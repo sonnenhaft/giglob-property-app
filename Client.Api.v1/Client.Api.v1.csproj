@@ -64,6 +64,7 @@
   <ItemGroup>
     <Compile Include="App_Start\MapsConfiguration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Facades\CityFacade.cs" />
     <Compile Include="Facades\DataFacade.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

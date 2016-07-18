@@ -16,10 +16,12 @@ namespace Client.Api.v1.Controllers
     public class HomeController: ApiController
     {
         private readonly DataFacade _dataFacade;
+        private readonly CityFacade _cityFacade;
 
-        public HomeController(DataFacade dataFacade)
+        public HomeController(DataFacade dataFacade, CityFacade cityFacade)
         {
             _dataFacade = dataFacade;
+            _cityFacade = cityFacade;
         }
 
         [HttpGet]
@@ -27,6 +29,13 @@ namespace Client.Api.v1.Controllers
         public IHttpActionResult GetData()
         {
             return Ok(_dataFacade.GetData());
+        }
+
+        [HttpGet]
+        [SwaggerResponseExampleProvider(typeof(DataModelResponseExample))]
+        public IHttpActionResult MetroStations(long cityid)
+        {
+            return Ok(_cityFacade.GetAllMetroStations(cityid));
         }
     }
 }

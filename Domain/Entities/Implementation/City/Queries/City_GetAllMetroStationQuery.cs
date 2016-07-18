@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using CQRS;
 using Domain.Repositories;
@@ -28,7 +29,7 @@ namespace Domain.Entities.Implementation.City.Queries
         {
             List<MetroStation> metroStations = new List<MetroStation>();
 
-            var city = _cityRepository.Get(query.Id);
+            var city = _cityRepository.GetAll().Where(x=>x.Id == query.Id).Include(x=>x.MetroStations).FirstOrDefault();
             if (city != null)
             {
                 metroStations = city.MetroStations.ToList();

@@ -9,6 +9,7 @@ namespace Client.Api.v1
         public static void Configure()
         {
             Mapper.Register<City, CityModel>();
+            Mapper.Register<MetroStation, MetroStationModel>();
         }
     }
 }
