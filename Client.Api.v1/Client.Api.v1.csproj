@@ -63,9 +63,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\MapsConfiguration.cs" />
+    <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PropertyOfferController.cs" />
     <Compile Include="Facades\DataFacade.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Results\FileResult.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
