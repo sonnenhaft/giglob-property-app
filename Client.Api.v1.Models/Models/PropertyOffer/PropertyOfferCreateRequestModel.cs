@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Domain.Entities.Implementation.Property;
 using Domain.Entities.Implementation.Property.Enums;
 
 namespace Client.Api.v1.Models.Models.PropertyOffer
@@ -19,7 +20,7 @@ namespace Client.Api.v1.Models.Models.PropertyOffer
         /// <summary>
         /// Идентификаторы ближайших станций метро
         /// </summary>
-        public IEnumerable<PropertyOfferCreateNearMetroStationRequestModel> NearMetroStations { get; set; }
+        public IEnumerable<PropertyNearMetroStation> NearMetroStations { get; set; }
 
         /// <summary>
         /// Название улицы

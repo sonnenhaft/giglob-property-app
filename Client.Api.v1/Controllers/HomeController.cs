@@ -5,6 +5,7 @@ using System.Web.Http;
 using Client.Api.v1.Facades;
 using Client.Api.v1.Models.Models;
 using Client.Api.v1.Models.Models.City;
+using Client.Api.v1.Models.Models.Common;
 using Client.Api.v1.Models.Models.Home;
 using Client.Api.v1.Models.Models.Home.ResponseExamples;
 using Domain.Entities.Implementation.City;
@@ -32,17 +33,10 @@ namespace Client.Api.v1.Controllers
         }
 
         [HttpGet]
-        [SwaggerResponseExampleProvider(typeof(DataModelResponseExample))]
-        public IHttpActionResult MetroStations(long cityid)
+        [SwaggerResponseExampleProvider(typeof(StationModelResponseExample))]
+        public IHttpActionResult MetroStations([FromUri(Name = "")]  IdentifyModel<long> reqModel)
         {
-            return Ok(_cityFacade.GetAllMetroStations(cityid));
-        }
-
-        [HttpGet]
-        [SwaggerResponseExampleProvider(typeof(DataModelResponseExample))]
-        public IHttpActionResult Districts(long cityid)
-        {
-            return Ok(_cityFacade.GetAllDistricts(cityid));
+            return Ok(_cityFacade.GetAllMetroStations(reqModel.Id));
         }
     }
 }

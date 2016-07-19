@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Client.Api.v1.Models.Models.City;
@@ -39,18 +40,6 @@ namespace Client.Api.v1.Facades
 
                 model.AddRange(branches);
             }
-
-            return model;
-        }
-
-        public DistrictsModel GetAllDistricts(long id)
-        {
-            IEnumerable<District> query = _cityGetAllDistrictsQueryHandler.Handle(new City_GetAllDistrictsQuery(id));
-
-            var model = new DistrictsModel
-            {
-                Districts = query.Map<IEnumerable<District>, IEnumerable<DistrictModel>>()
-            };
 
             return model;
         }

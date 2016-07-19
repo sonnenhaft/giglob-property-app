@@ -59,7 +59,7 @@
             Идентификатор района
             </summary>
         </member>
-        <member name="P:Client.Api.v1.Models.Models.PropertyOffer.PropertyOfferCreateRequestModel.NearMetroStationIds">
+        <member name="P:Client.Api.v1.Models.Models.PropertyOffer.PropertyOfferCreateRequestModel.NearMetroStations">
             <summary>
             Идентификаторы ближайших станций метро
             </summary>
