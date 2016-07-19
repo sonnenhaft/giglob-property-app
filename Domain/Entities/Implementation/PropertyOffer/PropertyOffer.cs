@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity.Spatial;
 using Domain.Entities.Implementation.City;
 using Domain.Entities.Implementation.Property.Enums;
+using Domain.Entities.Implementation.PropertyOffer.Enums;
 
 namespace Domain.Entities.Implementation.Property
 {

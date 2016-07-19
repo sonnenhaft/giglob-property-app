@@ -1,4 +1,5 @@
-﻿using Domain.Entities.Implementation.PropertyOffer;
+﻿using Domain.Entities.Implementation.Property;
+using Domain.Entities.Implementation.PropertyOffer;
 
 namespace Domain.Repositories
 {

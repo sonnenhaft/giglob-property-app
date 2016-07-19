@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using Domain.Entities.Implementation.Property;
+using Domain.Entities.Implementation.Property.Enums;
 using Domain.Entities.Implementation.PropertyOffer;
 using Domain.Entities.Implementation.PropertyOffer.Enums;
 
