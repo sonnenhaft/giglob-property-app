@@ -3,7 +3,7 @@ using Domain.Persistence.EntityFramework.Conventions;
 using Domain.Entities.Implementation;
 using Domain.Entities.Implementation.City;
 using Domain.Entities.Implementation.File;
-using Domain.Entities.Implementation.Property;
+using Domain.Entities.Implementation.PropertyOffer;
 
 namespace Domain.Persistence.EntityFramework
 {

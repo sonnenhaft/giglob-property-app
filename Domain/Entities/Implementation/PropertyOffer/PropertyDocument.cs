@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Domain.Entities.Implementation.Property
+namespace Domain.Entities.Implementation.PropertyOffer
 {
     public class PropertyDocument
     {

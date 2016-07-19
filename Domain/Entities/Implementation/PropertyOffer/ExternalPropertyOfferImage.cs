@@ -1,4 +1,4 @@
-﻿namespace Domain.Entities.Implementation.Property
+﻿namespace Domain.Entities.Implementation.PropertyOffer
 {
     public class ExternalPropertyOfferImage
     {

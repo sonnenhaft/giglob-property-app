@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using Domain.Entities.Implementation.City;
-using Domain.Entities.Implementation.Property.Enums;
+using Domain.Entities.Implementation.PropertyOffer.Enums;
 
-namespace Domain.Entities.Implementation.Property
+namespace Domain.Entities.Implementation.PropertyOffer
 {
     public class LocalPropertyOfferData
     {

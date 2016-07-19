@@ -1,6 +1,6 @@
 ﻿using Domain.Entities.Implementation.City;
 
-namespace Domain.Entities.Implementation.Property
+namespace Domain.Entities.Implementation.PropertyOffer
 {
     public class PropertyNearMetroStation
     {
