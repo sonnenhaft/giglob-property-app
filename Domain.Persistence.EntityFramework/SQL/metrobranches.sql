@@ -214,7 +214,8 @@ select @name1 = Id from [dbo].[Cities] WHERE Name='Москва';
      ('745c2f',@name)	
 END
 
-
+IF NOT EXISTS(SELECT NULL FROM [dbo].MetroStationToMetroBranchRelations)
+BEGIN
 DECLARE @stationId INT;
 DECLARE @colorId INT;
 select @stationId = ID from [dbo].[MetroStations] WHERE Name='Авиамоторная' AND CityId =1
@@ -796,3 +797,5 @@ INSERT INTO [dbo].[MetroStationToMetroBranchRelations]([StationId],[BranchId])VA
 select @stationId = ID from [dbo].[MetroStations] WHERE Name='Каширская' AND CityId =1
 select @colorId = ID from [dbo].[MetroBranches] WHERE HexColor='029a55' AND CityId =1
 INSERT INTO [dbo].[MetroStationToMetroBranchRelations]([StationId],[BranchId])VALUES (@stationId,@colorId)
+
+END
