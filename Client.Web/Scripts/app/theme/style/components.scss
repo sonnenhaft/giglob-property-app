@@ -1,10 +1,13 @@
 * {
   box-sizing: border-box;
 }
-html,body {
+html, body {
   min-height: 100%;
-  font-family:'Lato';
 }
+html, body, .button {
+  font-family: 'Lato', Helvetica, sans-serif !important;
+}
+
 .app-wrapper {
   max-width: 1440px;
   margin: 0 auto;
