@@ -6,7 +6,7 @@ namespace Domain.Entities.Implementation.Property
     {
         public long Id { get; set; }
 
-        public long PropertyId { get; set; }
+        public long PropertyOfferId { get; set; }
 
         public long MetroStationId { get; set; }
 

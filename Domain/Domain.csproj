@@ -73,11 +73,13 @@
     <Compile Include="Entities\Implementation\File\Commands\File_CreateCommand.cs" />
     <Compile Include="Entities\Implementation\File\File.cs" />
     <Compile Include="Entities\Implementation\File\Queries\File_GetQuery.cs" />
+    <Compile Include="Entities\Implementation\PropertyOffer\ExternalPropertyOfferData.cs" />
+    <Compile Include="Entities\Implementation\PropertyOffer\ExternalPropertyOfferImage.cs" />
+    <Compile Include="Entities\Implementation\PropertyOffer\LocalPropertyOfferData.cs" />
     <Compile Include="Entities\Implementation\User.cs" />
     <Compile Include="Entities\Implementation\PropertyOffer\Enums\BuildingCategory.cs" />
     <Compile Include="Entities\Implementation\PropertyOffer\Enums\OfferType.cs" />
     <Compile Include="Entities\Implementation\PropertyOffer\Enums\PropertyType.cs" />
-    <Compile Include="Entities\Implementation\PropertyOffer\Property.cs" />
     <Compile Include="Entities\Implementation\PropertyOffer\PropertyDocument.cs" />
     <Compile Include="Entities\Implementation\PropertyOffer\PropertyNearMetroStation.cs" />
     <Compile Include="Entities\Implementation\PropertyOffer\PropertyOffer.cs" />
