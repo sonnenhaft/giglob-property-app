@@ -71,46 +71,61 @@ namespace Domain.Persistence.EntityFramework
                         .HasKey(x => x.Id);
 
             modelBuilder.Entity<PropertyOffer>()
-                        .HasRequired(x => x.Property)
-                        .WithRequiredPrincipal();
+                        .HasOptional(x => x.LocalPropertyOfferData)
+                        .WithRequired()
+                        .WillCascadeOnDelete(true);
 
-            modelBuilder.Entity<Property>()
-                        .HasKey(x => x.Id);
+            modelBuilder.Entity<PropertyOffer>()
+                        .HasOptional(x => x.ExternalPropertyOfferData)
+                        .WithRequired()
+                        .WillCascadeOnDelete(true);
 
-            modelBuilder.Entity<Property>()
+            modelBuilder.Entity<LocalPropertyOfferData>()
+                        .HasKey(x => x.PropertyOfferId);
+
+            modelBuilder.Entity<LocalPropertyOfferData>()
                 .HasOptional(x => x.Owner)
                 .WithMany()
                 .HasForeignKey(x => x.OwnerId)
                 .WillCascadeOnDelete(true);
 
-            modelBuilder.Entity<Property>()
+            modelBuilder.Entity<LocalPropertyOfferData>()
                 .HasRequired(x => x.City)
                 .WithMany()
                 .HasForeignKey(x => x.CityId)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<Property>()
+            modelBuilder.Entity<LocalPropertyOfferData>()
                 .HasOptional(x => x.District)
                 .WithMany()
                 .HasForeignKey(x => x.DistrictId)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<Property>()
+            modelBuilder.Entity<LocalPropertyOfferData>()
                         .HasMany(x => x.NearMetroStations)
                         .WithRequired()
-                        .HasForeignKey(x => x.PropertyId)
+                        .HasForeignKey(x => x.PropertyOfferId)
                         .WillCascadeOnDelete(true);
 
-            modelBuilder.Entity<Property>()
+            modelBuilder.Entity<LocalPropertyOfferData>()
                 .HasMany(x => x.Photos)
                 .WithRequired()
-                .HasForeignKey(x => x.PropertyId)
+                .HasForeignKey(x => x.PropertyOfferId)
                 .WillCascadeOnDelete(true);
 
-            modelBuilder.Entity<Property>()
+            modelBuilder.Entity<LocalPropertyOfferData>()
                 .HasMany(x => x.Documents)
                 .WithRequired()
-                .HasForeignKey(x => x.PropertyId)
+                .HasForeignKey(x => x.PropertyOfferId)
+                .WillCascadeOnDelete(true);
+
+            modelBuilder.Entity<ExternalPropertyOfferData>()
+                        .HasKey(x => x.PropertyOfferId);
+
+            modelBuilder.Entity<ExternalPropertyOfferData>()
+                .HasMany(x => x.Images)
+                .WithRequired()
+                .HasForeignKey(x => x.PropertyOfferId)
                 .WillCascadeOnDelete(true);
 
             modelBuilder.Entity<PropertyNearMetroStation>()
@@ -129,7 +144,7 @@ namespace Domain.Persistence.EntityFramework
                 .WillCascadeOnDelete(true);
 
             modelBuilder.Entity<PropertyPhoto>()
-                        .HasKey(x => new { x.PropertyId, x.FileId });
+                        .HasKey(x => new { x.PropertyOfferId, x.FileId });
 
             modelBuilder.Entity<PropertyPhoto>()
                         .HasRequired(x => x.File)
@@ -138,7 +153,7 @@ namespace Domain.Persistence.EntityFramework
                         .WillCascadeOnDelete(true);
 
             modelBuilder.Entity<PropertyDocument>()
-                        .HasKey(x => new { x.PropertyId, x.FileId });
+                        .HasKey(x => new { x.PropertyOfferId, x.FileId });
 
             modelBuilder.Entity<PropertyDocument>()
                 .HasRequired(x => x.File)

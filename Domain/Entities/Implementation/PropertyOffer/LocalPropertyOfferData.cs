@@ -1,35 +1,18 @@
 ﻿using System.Collections.Generic;
-using System.Data.Entity.Spatial;
 using Domain.Entities.Implementation.City;
 using Domain.Entities.Implementation.Property.Enums;
 
 namespace Domain.Entities.Implementation.Property
 {
-    public class Property
+    public class LocalPropertyOfferData
     {
-        public long Id { get; set; }
+        public long PropertyOfferId { get; set; }
 
         public long? OwnerId { get; set; }
 
         public long CityId { get; set; }
 
         public long? DistrictId { get; set; }
-
-        public DbGeography Location { get; set; }
-
-        public string StreetName { get; set; }
-
-        public string HouseNumber { get; set; }
-
-        public string ApartmentNumber { get; set; }
-
-        public int Level { get; set; }
-
-        public double AreaSize { get; set; }
-
-        public int RoomCount { get; set; }
-
-        public PropertyType Type { get; set; }
 
         public BuildingCategory BuildingCategory { get; set; }
 

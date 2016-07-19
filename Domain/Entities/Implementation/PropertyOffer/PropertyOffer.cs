@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Data.Entity.Spatial;
+using Domain.Entities.Implementation.City;
 using Domain.Entities.Implementation.Property.Enums;
 
 namespace Domain.Entities.Implementation.Property
@@ -15,8 +18,28 @@ namespace Domain.Entities.Implementation.Property
 
         public OfferType OfferType { get; set; }
 
+        public DbGeography Location { get; set; }
+
+        public string StreetName { get; set; }
+
+        public string HouseNumber { get; set; }
+
+        public string ApartmentNumber { get; set; }
+
+        public int Level { get; set; }
+
+        public double AreaSize { get; set; }
+
+        public int RoomCount { get; set; }
+
+        public PropertyType Type { get; set; }
+
         public bool IsDeleted { get; set; }
 
-        public virtual Property Property { get; set; }
+        public bool IsLocal { get; set; }
+
+        public virtual LocalPropertyOfferData LocalPropertyOfferData { get; set; }
+
+        public virtual ExternalPropertyOfferData ExternalPropertyOfferData { get; set; }
     }
 }

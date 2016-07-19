@@ -4,7 +4,7 @@ namespace Domain.Entities.Implementation.Property
 {
     public class PropertyPhoto
     {
-        public long PropertyId { get; set; }
+        public long PropertyOfferId { get; set; }
 
         public Guid FileId { get; set; }
 
