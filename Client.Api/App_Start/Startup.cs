@@ -10,6 +10,7 @@ using ApiVersioningModule.HttpControllerSelectors.ApiVersionResolvers.VersionNum
 using Client.Api.ActionFilters;
 using Client.Api.Elmah;
 using Client.Api.FluentValidation;
+using Client.Api.v1;
 using Domain.Persistence.EntityFramework;
 using FluentValidation.WebApi;
 using Microsoft.Owin;
@@ -33,6 +34,7 @@ namespace Client.Api
             FluentValidationConfiguration.Configure(GlobalConfiguration.Configuration, container.GetInstance<ModelStateValidatorActionFilter>(), new SimpeInjectorValidatorFactory(container));
             ElmahConfiguration.Configure(GlobalConfiguration.Configuration.Services);
             JsonFormatterConfiguration.Configure(GlobalConfiguration.Configuration.Formatters.JsonFormatter);
+            ParameterBindingConfiguration.Configure(GlobalConfiguration.Configuration.ParameterBindingRules);
         }
     }
 }

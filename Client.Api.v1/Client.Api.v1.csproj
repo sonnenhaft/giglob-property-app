@@ -63,11 +63,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\MapsConfiguration.cs" />
+    <Compile Include="App_Start\ParameterBindingConfiguration.cs" />
     <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PropertyOfferController.cs" />
     <Compile Include="Facades\CityFacade.cs" />
     <Compile Include="Facades\DataFacade.cs" />
+    <Compile Include="Facades\FileFacade.cs" />
+    <Compile Include="HttpParameterBinding\MultipartFilesParameterBinding.cs" />
+    <Compile Include="MultipartMemoryStreamProviders\ExtendedMultipartMemoryStreamProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Results\FileResult.cs" />
   </ItemGroup>

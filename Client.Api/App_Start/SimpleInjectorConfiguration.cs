@@ -2,6 +2,7 @@
 using System.Web.Http;
 using Domain.Extensions;
 using Domain.Persistence.EntityFramework.Extensions;
+using Domain.Persistence.FileStorage.Extensions;
 using Domain.Tools;
 using SimpleInjector;
 using SimpleInjector.Extensions.ExecutionContextScoping;
@@ -20,8 +21,9 @@ namespace Client.Api
                 new ExecutionContextScopeLifestyle());
             container.RegisterDomainDependencies();
             container.RegisterDomainPersistenceEntityFrameworkDependencies();
+            container.RegisterDomainPersistenceFileStorageDependencies();
 
-            container.Register<IVirtualPathUtility, VirtualPathUtility>();
+            container.Register<IVirtualPathUtility, VirtualPathUtility>(Lifestyle.Scoped);
 
             GlobalConfiguration.Configuration.DependencyResolver = new SimpleInjectorWebApiDependencyResolver(container);
         }

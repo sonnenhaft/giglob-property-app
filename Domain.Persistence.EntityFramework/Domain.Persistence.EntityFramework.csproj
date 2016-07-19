@@ -74,6 +74,7 @@
     <Compile Include="Repositories\Implementation\DeletableEntityFrameworkRepository.cs" />
     <Compile Include="Repositories\Implementation\CityRepository.cs" />
     <Compile Include="Repositories\Implementation\EntityFrameworkRepository.cs" />
+    <Compile Include="Repositories\Implementation\FileRepository.cs" />
     <Compile Include="Repositories\Implementation\PropertyOfferRepository.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="UnitOfWork\Implementation\EntityFrameworkUnitOfWork.cs" />

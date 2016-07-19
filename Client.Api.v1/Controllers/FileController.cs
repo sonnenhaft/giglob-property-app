@@ -4,6 +4,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Web.Http;
+using Client.Api.v1.Facades;
 using Client.Api.v1.Models.Models.Common;
 using Client.Api.v1.Models.Models.Common.ResponseExamples;
 using Client.Api.v1.Models.Models.File;
@@ -15,24 +16,32 @@ namespace Client.Api.v1.Controllers
 {
     public class FileController : ApiController
     {
-        [HttpPost]
-        [SwaggerResponseExampleProvider(typeof(FileUploadResponseExample))]
-        public IHttpActionResult Upload()
+        private readonly FileFacade _fileFacade;
+
+        public FileController(FileFacade fileFacade)
         {
-            return Ok(new FileUploadResponseExample().GetResponseExample());
+            _fileFacade = fileFacade;
         }
 
         [HttpPost]
-        [SwaggerResponseExampleProvider(typeof(SuccessResponseExample))]
-        public IHttpActionResult Remove(IdentifyModel<Guid> reqModel)
+        [Authorize]
+        [SwaggerResponseExampleProvider(typeof(FileUploadResponseExample))]
+        public IHttpActionResult Upload(UploadingFile file)
         {
-            return Ok();
+            var id = _fileFacade.Create(file);
+            var result = new FileUploadResultModel
+            {
+                Id = id,
+                Url = Url.Link("Default", new { controller = "File", action = "Get", id = id }).ToLower()
+            };
+
+            return Ok(result);
         }
 
         [HttpGet]
         public IHttpActionResult Get([FromUri(Name = "")] IdentifyModel<Guid> reqModel)
         {
-            return new FileResult(reqModel.Id.ToString());
+            return _fileFacade.Get(reqModel.Id);
         }
     }   
 }

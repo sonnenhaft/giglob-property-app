@@ -200,6 +200,10 @@
       <Project>{a54fcb68-ee21-4f16-ae8f-9b725c1d0c6e}</Project>
       <Name>Domain.Persistence.EntityFramework</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Domain.Persistence.FileStorage\Domain.Persistence.FileStorage.csproj">
+      <Project>{0cb8fb68-a755-48be-bc3f-4991e46ef3c7}</Project>
+      <Name>Domain.Persistence.FileStorage</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Domain\Domain.csproj">
       <Project>{13607ee9-8b76-4fe3-bcf2-0c09eef929bb}</Project>
       <Name>Domain</Name>
