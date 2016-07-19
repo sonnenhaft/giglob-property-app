@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{998906EB-AA90-47F2-8A6A-5F259185A168}</ProjectGuid>
+    <ProjectGuid>{0CB8FB68-A755-48BE-BC3F-4991E46EF3C7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Client.Api.v1.Models</RootNamespace>
-    <AssemblyName>Client.Api.v1.Models</AssemblyName>
+    <RootNamespace>Domain.Persistence.FileStorage</RootNamespace>
+    <AssemblyName>Domain.Persistence.FileStorage</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -20,7 +20,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>App_Data\Client.Api.v1.Models.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,11 +28,11 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>App_Data\Client.Api.v1.Models.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -42,43 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\City\CityModel.cs" />
-    <Compile Include="Models\City\DistrictModel.cs" />
-    <Compile Include="Models\City\MetroBranchModel.cs" />
-    <Compile Include="Models\City\NearMetroStationModel.cs" />
-    <Compile Include="Models\Common\IdentifyModel.cs" />
-    <Compile Include="Models\Common\ResponseExamples\SuccessResponseExample.cs" />
-    <Compile Include="Models\File\FileUploadResultModel.cs" />
-    <Compile Include="Models\File\ResponseExamples\FileUploadResponseExample.cs" />
-    <Compile Include="Models\Home\DataModel.cs" />
-    <Compile Include="Models\Home\ResponseExamples\DataModelResponseExample.cs" />
-    <Compile Include="Models\Home\ResponseExamples\StationModelResponseExample.cs" />
-    <Compile Include="Models\Home\StationModel.cs" />
-    <Compile Include="Models\PropertyOffer\PropertyOfferCreateNearMetroStationRequestModel.cs" />
-    <Compile Include="Models\PropertyOffer\PropertyOfferCreateRequestModel.cs" />
-    <Compile Include="Models\PropertyOffer\PropertyOfferCreatePhotoRequestModel.cs" />
+    <Compile Include="Implementation\FileStorage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="App_Data\Client.Api.v1.Models.XML">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Domain\Domain.csproj">
       <Project>{13607ee9-8b76-4fe3-bcf2-0c09eef929bb}</Project>
       <Name>Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SwaggerResponseExampleModule\SwaggerResponseExampleModule.csproj">
-      <Project>{9084f7b6-ae3a-4ef4-9414-bf1228916974}</Project>
-      <Name>SwaggerResponseExampleModule</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\а\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

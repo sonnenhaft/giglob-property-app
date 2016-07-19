@@ -86,6 +86,8 @@
     <Compile Include="Repositories\IDeletableEntityRepository.cs" />
     <Compile Include="Repositories\IPropertyOfferRepository.cs" />
     <Compile Include="Repositories\IRepository.cs" />
+    <Compile Include="Storages\IFileStorage.cs" />
+    <Compile Include="Tools\IVirtualPathUtility.cs" />
     <Compile Include="UnitOfWork\CQRS\Decorators\CommandHandlerUnitOfWorkDecorator.cs" />
     <Compile Include="UnitOfWork\IUnitOfWork.cs" />
     <Compile Include="UnitOfWork\IUnitOfWorkFactory.cs" />

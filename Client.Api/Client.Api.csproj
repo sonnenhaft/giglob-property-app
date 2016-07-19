@@ -181,6 +181,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="Swagger\OperationFilters\ResolveDuplicateParametersOperationFilter.cs" />
+    <Compile Include="Tools\Implementation\VirtualPathUtility.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ApiVersioningModule.Swagger\ApiVersioningModule.Swagger.csproj">
