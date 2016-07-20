@@ -59,11 +59,6 @@
             Идентификатор района
             </summary>
         </member>
-        <member name="P:Client.Api.v1.Models.Models.PropertyOffer.PropertyOfferCreateRequestModel.NearMetroStations">
-            <summary>
-            Идентификаторы ближайших станций метро
-            </summary>
-        </member>
         <member name="P:Client.Api.v1.Models.Models.PropertyOffer.PropertyOfferCreateRequestModel.StreetName">
             <summary>
             Название улицы
@@ -129,6 +124,11 @@
             Тип предложения. Sale = 1, Exchange = 2
             </summary>
         </member>
+        <member name="P:Client.Api.v1.Models.Models.PropertyOffer.PropertyOfferCreateRequestModel.NearMetroStations">
+            <summary>
+            Идентификаторы ближайших станций метро
+            </summary>
+        </member>
         <member name="P:Client.Api.v1.Models.Models.PropertyOffer.PropertyOfferCreateRequestModel.Photoes">
             <summary>
             Фотографии недвижимости
@@ -147,6 +147,61 @@
         <member name="P:Client.Api.v1.Models.Models.PropertyOffer.PropertyOfferCreatePhotoRequestModel.IsCover">
             <summary>
             Является ли фотография обложкой
+            </summary>
+        </member>
+        <member name="T:Client.Api.v1.Models.Models.User.AuthResultModel">
+            <summary>
+            Модель результата авторизации
+            </summary>
+        </member>
+        <member name="P:Client.Api.v1.Models.Models.User.AuthResultModel.AccessToken">
+            <summary>
+            Bearer-токен
+            </summary>
+        </member>
+        <member name="T:Client.Api.v1.Models.Models.User.UserModel">
+            <summary>
+            Модель пользоватея
+            </summary>
+        </member>
+        <member name="P:Client.Api.v1.Models.Models.User.UserModel.Id">
+            <summary>
+            Идентификатор
+            </summary>
+        </member>
+        <member name="P:Client.Api.v1.Models.Models.User.UserModel.Email">
+            <summary>
+            Адрес электронной почты
+            </summary>
+        </member>
+        <member name="T:Client.Api.v1.Models.Models.User.UserRegisterRequestModel">
+            <summary>
+            Модель регистрации пользователя
+            </summary>
+        </member>
+        <member name="P:Client.Api.v1.Models.Models.User.UserRegisterRequestModel.Email">
+            <summary>
+            Электронная почта
+            </summary>
+        </member>
+        <member name="P:Client.Api.v1.Models.Models.User.UserRegisterRequestModel.Password">
+            <summary>
+            Пароль
+            </summary>
+        </member>
+        <member name="T:Client.Api.v1.Models.Models.User.UserSignInRequestModel">
+            <summary>
+            Модель авторизации пользователя
+            </summary>
+        </member>
+        <member name="P:Client.Api.v1.Models.Models.User.UserSignInRequestModel.Email">
+            <summary>
+            Электронная почта
+            </summary>
+        </member>
+        <member name="P:Client.Api.v1.Models.Models.User.UserSignInRequestModel.Password">
+            <summary>
+            Пароль
             </summary>
         </member>
     </members>

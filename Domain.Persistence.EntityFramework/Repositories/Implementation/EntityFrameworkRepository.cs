@@ -8,7 +8,7 @@ namespace Domain.Persistence.EntityFramework.Repositories.Implementation
     public class EntityFrameworkRepository<TEntity, TId>: IRepository<TEntity, TId>
         where TEntity : class, IAggregateRootEntity<TId>
     {
-        protected readonly DbContext DbContext;
+        protected DbContext DbContext;
 
         public EntityFrameworkRepository(DbContext dbContext)
         {

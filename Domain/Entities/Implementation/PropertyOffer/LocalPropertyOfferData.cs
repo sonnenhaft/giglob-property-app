@@ -16,7 +16,7 @@ namespace Domain.Entities.Implementation.PropertyOffer
 
         public BuildingCategory BuildingCategory { get; set; }
 
-        public virtual User Owner { get; set; }
+        public virtual User.Implementation.User Owner { get; set; }
 
         public virtual City.City City { get; set; }
 

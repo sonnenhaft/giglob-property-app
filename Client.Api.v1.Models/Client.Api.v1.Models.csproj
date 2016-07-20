@@ -32,6 +32,14 @@
     <DocumentationFile>App_Data\Client.Api.v1.Models.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FluentValidation, Version=6.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentValidation.6.2.1.0\lib\Net45\FluentValidation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SimpleInjector, Version=3.2.0.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <HintPath>..\packages\SimpleInjector.3.2.0\lib\net45\SimpleInjector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -58,6 +66,19 @@
     <Compile Include="Models\PropertyOffer\PropertyOfferCreateNearMetroStationRequestModel.cs" />
     <Compile Include="Models\PropertyOffer\PropertyOfferCreateRequestModel.cs" />
     <Compile Include="Models\PropertyOffer\PropertyOfferCreatePhotoRequestModel.cs" />
+    <Compile Include="Constants\RegexConstants.cs" />
+    <Compile Include="Extensions\ContainerExtensions.cs" />
+    <Compile Include="Models\Common\ResponseExamples\BadRequestResponseExampleProvider.cs" />
+    <Compile Include="Models\User\AuthResultModel.cs" />
+    <Compile Include="Models\User\Mail\UserConfirmationMailModel.cs" />
+    <Compile Include="Models\User\ResponseExamples\AuthResultModelResponseExample.cs" />
+    <Compile Include="Models\User\UserConfiirmEmailRequestModel.cs" />
+    <Compile Include="Models\User\UserModel.cs" />
+    <Compile Include="Models\User\UserRegisterRequestModel.cs" />
+    <Compile Include="Models\User\UserSignInRequestModel.cs" />
+    <Compile Include="Models\User\Validators\UserConfirmEmailRequestModelValidator.cs" />
+    <Compile Include="Models\User\Validators\UserSignInRequestModelValidator.cs" />
+    <Compile Include="Models\User\Validators\UserRegisterRequestModelValidator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -66,6 +87,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CQRS\CQRS.csproj">
+      <Project>{B412E005-BF9B-49BB-8DDE-6939A2456382}</Project>
+      <Name>CQRS</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Domain\Domain.csproj">
       <Project>{13607ee9-8b76-4fe3-bcf2-0c09eef929bb}</Project>
       <Name>Domain</Name>
@@ -77,6 +102,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

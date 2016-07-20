@@ -156,6 +156,10 @@
   <ItemGroup>
     <Content Include="App_Readme\Elmah.txt" />
     <Content Include="packages.config" />
+    <Content Include="mailSettings.config" />
+    <Content Include="Views\User\Mail\UserConfirmationMail.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -164,7 +168,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Swagger\Scripts\swagger.bearer.js" />
+    <EmbeddedResource Include="Swagger\Scripts\swagger.bearer.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -192,11 +196,19 @@
       <Project>{14983888-7213-46b4-a2a5-97774b02c64f}</Project>
       <Name>ApiVersioningModule</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Client.Api.Authentication\Client.Api.Authentication.csproj">
+      <Project>{5a4ef52a-03be-4ba3-bb4b-7d5bae2f2678}</Project>
+      <Name>Client.Api.Authentication</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Client.Api.v1.Models\Client.Api.v1.Models.csproj">
+      <Project>{998906eb-aa90-47f2-8a6a-5f259185a168}</Project>
+      <Name>Client.Api.v1.Models</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Client.Api.v1\Client.Api.v1.csproj">
       <Project>{a226d174-6dd2-4290-8dbc-e201efc54789}</Project>
       <Name>Client.Api.v1</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Domain.Persistance.File\Domain.Persistance.File.csproj">
+    <ProjectReference Include="..\Domain.Persistence.File\Domain.Persistence.File.csproj">
       <Project>{717604b5-8cec-4bde-86aa-ad06542e0661}</Project>
       <Name>Domain.Persistance.File</Name>
     </ProjectReference>

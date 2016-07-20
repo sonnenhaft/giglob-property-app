@@ -8,6 +8,7 @@ using System.Web.Http.Validation;
 using ApiVersioningModule;
 using ApiVersioningModule.HttpControllerSelectors.ApiVersionResolvers.VersionNumberResolvers;
 using Client.Api.ActionFilters;
+using Client.Api.Authentication;
 using Client.Api.Elmah;
 using Client.Api.FluentValidation;
 using Client.Api.v1;
@@ -31,10 +32,12 @@ namespace Client.Api
             SimpleInjectorConfiguration.Configure(container);
             ApiVersioningConfiguration.Configure(GlobalConfiguration.Configuration, new UrlApiVersionResolver(), new NoApiVersionLastResolver());
             RouteConfiguration.Configure(GlobalConfiguration.Configuration.Routes);
-            FluentValidationConfiguration.Configure(GlobalConfiguration.Configuration, container.GetInstance<ModelStateValidatorActionFilter>(), new SimpeInjectorValidatorFactory(container));
             ElmahConfiguration.Configure(GlobalConfiguration.Configuration.Services);
             JsonFormatterConfiguration.Configure(GlobalConfiguration.Configuration.Formatters.JsonFormatter);
             ParameterBindingConfiguration.Configure(GlobalConfiguration.Configuration.ParameterBindingRules);
+            AuthConfiguration.ConfigureAuth(app);
+            GlobalConfiguration.Configuration.EnableCors(new EnableCorsAttribute("*", "*", "*"));
+            FluentValidationConfiguration.Configure(GlobalConfiguration.Configuration, container.GetInstance<ModelStateValidatorActionFilter>(), new SimpeInjectorValidatorFactory(container));
         }
     }
 }
