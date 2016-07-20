@@ -27,6 +27,8 @@ namespace Domain.Entities.Implementation.PropertyOffer
 
         public string HouseNumber { get; set; }
 
+        public string Housing { get; set; }
+
         public string ApartmentNumber { get; set; }
 
         public int Level { get; set; }

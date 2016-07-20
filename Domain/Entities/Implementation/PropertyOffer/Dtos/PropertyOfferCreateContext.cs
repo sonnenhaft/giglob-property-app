@@ -27,6 +27,11 @@ namespace Domain.Entities.Implementation.PropertyOffer.Dtos
         public string HouseNumber { get; set; }
 
         /// <summary>
+        /// Корпус дома
+        /// </summary>
+        public string Housing { get; set; }
+
+        /// <summary>
         /// Номер квартиры
         /// </summary>
         public string ApartmentNumber { get; set; }
