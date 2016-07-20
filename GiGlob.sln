@@ -37,9 +37,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Persistence.FileStor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Persistence.FileStorage.Tests", "Domain.Persistence.FileStorage.Tests\Domain.Persistence.FileStorage.Tests.csproj", "{B9CD00EC-DC69-46C2-8F8B-D67AA134AFED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Persistance.File", "Domain.Persistance.File\Domain.Persistance.File.csproj", "{717604B5-8CEC-4BDE-86AA-AD06542E0661}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Persistence.File", "Domain.Persistence.File\Domain.Persistence.File.csproj", "{717604B5-8CEC-4BDE-86AA-AD06542E0661}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Persistance.File.Tests", "Domain.Persistance.File.Tests\Domain.Persistance.File.Tests.csproj", "{CA984BF0-C5BF-4FA7-8341-7B185F2EFFE7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Persistence.File.Tests", "Domain.Persistence.File.Tests\Domain.Persistence.File.Tests.csproj", "{CA984BF0-C5BF-4FA7-8341-7B185F2EFFE7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

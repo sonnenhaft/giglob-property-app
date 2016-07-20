@@ -2,15 +2,13 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Linq.Expressions;
-using Domain.Persistance.File.Implementation;
+using Domain.Persistence.File.Implementation;
 using Domain.Repositories;
 using Domain.Storages;
 using Moq;
 using NUnit.Framework;
-using NUnit.Framework.Internal;
 
-namespace Domain.Persistance.File.Tests
+namespace Domain.Persistence.File.Tests
 {
     [TestFixture]
     public class FileRepositoryStreamSetupableTests

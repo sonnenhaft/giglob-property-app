@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Http;
 using Domain.Extensions;
-using Domain.Persistance.File.Extensions;
+using Domain.Persistence.File.Extensions;
 using Domain.Persistence.EntityFramework.Extensions;
 using Domain.Persistence.FileStorage.Extensions;
 using Domain.Tools;
