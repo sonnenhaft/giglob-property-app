@@ -1,4 +1,83 @@
 $line: 40px;
 .carousel {
+  width: 100%;
+  height: 100%;
+  user-select: none;
+  .carousel-wrapper {
+    position: relative;
+    height: 100%;
+    .carousel-img-count {
+      position: absolute;
+      padding: 6px 15px 4px 16px;
+      top: 10px;
+      left: 10px;
+      background: rgba(0, 0, 0, 0.3);
+      font-size: 14px;
+      color: #fff;
+      border-radius: 3px;
+      z-index: 100;
+    }
+    .carousel-arrow {
+      position: absolute;
+      top: 50%;
+      margin-top: -30px;
+      width: 60px;
+      height: 60px;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 100;
+      &.arrow-left {
+        left: 0;
+        border-radius: 0 35px 35px 0;
+      }
+      &.arrow-right {
+        right: 0;
+        border-radius: 35px 0 0 35px;
+      }
+    }
 
+    .carousel-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      transition: opacity 0.7s ease;
+      height: 100%;
+      img {
+        height: 100%;
+      }
+      &.active {
+        position: static;
+        opacity: 1;
+      }
+    }
+    .carousel-thumbnail-wrapper {
+      position: absolute;
+      width: 100%;
+      bottom: 20px;
+      z-index: 100;
+      .carousel-thumbnail-container {
+        display: table;
+        margin: 0 auto;
+        .carousel-thumbnail {
+          display: inline-block;
+          margin-right: 7px;
+          border: 2px solid transparent;
+          opacity: 0.5;
+          &.active {
+            border-color: #fff;
+            border-radius: 3px;
+            opacity: 1;
+          };
+          &.last {
+            margin: 0;
+          }
+          .carousel-thumbnail-img {
+            width: 100px;
+            height: 80px;
+            border-radius: 3px;
+          }
+        }
+      }
+    }
+  }
 }
