@@ -95,6 +95,7 @@
     <Compile Include="Facades\CityFacade.cs" />
     <Compile Include="Facades\DataFacade.cs" />
     <Compile Include="Facades\FileFacade.cs" />
+    <Compile Include="Facades\PropertyOfferFacade.cs" />
     <Compile Include="HttpParameterBinding\MultipartFilesParameterBinding.cs" />
     <Compile Include="MultipartMemoryStreamProviders\ExtendedMultipartMemoryStreamProvider.cs" />
     <Compile Include="Controllers\UserController.cs" />

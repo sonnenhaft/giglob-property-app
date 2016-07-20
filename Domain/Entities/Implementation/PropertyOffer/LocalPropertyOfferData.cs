@@ -24,7 +24,7 @@ namespace Domain.Entities.Implementation.PropertyOffer
 
         public virtual ICollection<PropertyNearMetroStation> NearMetroStations { get; set; }
 
-        public virtual ICollection<PropertyPhoto> Photos { get; set; }
+        public virtual ICollection<PropertyPhoto> Photoes { get; set; }
 
         public virtual ICollection<PropertyDocument> Documents { get; set; }
     }

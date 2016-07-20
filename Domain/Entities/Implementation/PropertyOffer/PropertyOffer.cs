@@ -6,6 +6,11 @@ namespace Domain.Entities.Implementation.PropertyOffer
 {
     public class PropertyOffer: IAggregateRootEntity<long>, IDeletableEntity
     {
+        public PropertyOffer()
+        {
+            CreationDate = DateTime.UtcNow;
+        }
+
         public long Id { get; set; }
 
         public decimal Cost { get; set; }

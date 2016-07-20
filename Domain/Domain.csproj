@@ -38,6 +38,10 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="ExpressMapper, Version=1.8.1.0, Culture=neutral, PublicKeyToken=ac363faa09311ba0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Expressmapper.1.8.1\lib\net451\ExpressMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
     </Reference>
@@ -64,6 +68,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\MapsConfiguration.cs" />
+    <Compile Include="Authentication\ICurrentUserService.cs" />
     <Compile Include="Entities\IAggregateRootEntity.cs" />
     <Compile Include="Entities\Implementation\User\User.cs" />
     <Compile Include="Entities\IDeletableEntity.cs" />
@@ -78,6 +84,10 @@
     <Compile Include="Entities\Implementation\File\Commands\File_CreateCommand.cs" />
     <Compile Include="Entities\Implementation\File\File.cs" />
     <Compile Include="Entities\Implementation\File\Queries\File_GetQuery.cs" />
+    <Compile Include="Entities\Implementation\PropertyOffer\Commands\PropertyOffer_CreateCommand.cs" />
+    <Compile Include="Entities\Implementation\PropertyOffer\Dtos\PropertyOfferCreateContext.cs" />
+    <Compile Include="Entities\Implementation\PropertyOffer\Dtos\PropertyOfferCreateNearMetroStationContext.cs" />
+    <Compile Include="Entities\Implementation\PropertyOffer\Dtos\PropertyOfferCreatePhotoContext.cs" />
     <Compile Include="Entities\Implementation\PropertyOffer\ExternalPropertyOfferData.cs" />
     <Compile Include="Entities\Implementation\PropertyOffer\ExternalPropertyOfferImage.cs" />
     <Compile Include="Entities\Implementation\PropertyOffer\LocalPropertyOfferData.cs" />
@@ -120,6 +130,7 @@
       <Name>CQRS</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

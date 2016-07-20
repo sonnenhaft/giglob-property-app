@@ -107,7 +107,7 @@ namespace Domain.Persistence.EntityFramework
                         .WillCascadeOnDelete(true);
 
             modelBuilder.Entity<LocalPropertyOfferData>()
-                .HasMany(x => x.Photos)
+                .HasMany(x => x.Photoes)
                 .WithRequired()
                 .HasForeignKey(x => x.PropertyOfferId)
                 .WillCascadeOnDelete(true);

@@ -12,6 +12,7 @@ using Client.Api.Authentication;
 using Client.Api.Elmah;
 using Client.Api.FluentValidation;
 using Client.Api.v1;
+using Domain.Authentication;
 using Domain.Persistence.EntityFramework;
 using FluentValidation.WebApi;
 using Microsoft.Owin;
@@ -38,7 +39,7 @@ namespace Client.Api
             AuthConfiguration.ConfigureAuth(app);
             GlobalConfiguration.Configuration.EnableCors(new EnableCorsAttribute("*", "*", "*"));
             FluentValidationConfiguration.Configure(GlobalConfiguration.Configuration, container.GetInstance<ModelStateValidatorActionFilter>(), new SimpeInjectorValidatorFactory(container));
-            MapsConfiguration.Configure();
+            MapsConfiguration.Configure(container.GetInstance<ICurrentUserService>());
         }
     }
 }
