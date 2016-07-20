@@ -61,4 +61,8 @@ angular.module('component.router', ['ui.router']).config(function($stateProvider
             templateUrl: 'app/component/router/main-page.html'
         });
 
-}).constant('EXCLUDED_DEMO_ROUTERS', ['demo', 'giglob-app', 'component.router']);
+}).constant('EXCLUDED_DEMO_ROUTERS', [
+    'demo',
+    'giglob-app',
+    'component.router'
+]);
