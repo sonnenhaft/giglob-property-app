@@ -18,12 +18,10 @@ namespace Domain.Entities.Implementation.File.Queries
     public class File_GetQueryHandler: IQueryHandler<File_GetQuery, File>
     {
         private readonly IFileRepository _fileRepository;
-        private readonly IFileStorage _fileStorage;
 
-        public File_GetQueryHandler(IFileRepository fileRepository, IFileStorage fileStorage)
+        public File_GetQueryHandler(IFileRepository fileRepository)
         {
             _fileRepository = fileRepository;
-            _fileStorage = fileStorage;
         }
 
         public File Handle(File_GetQuery query)
