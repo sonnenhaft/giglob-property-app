@@ -4,7 +4,7 @@ using Domain.Storages;
 
 namespace Domain.Entities.Implementation.File
 {
-    public class File: IAggregateRootEntity<Guid>
+    public class File: IAggregateRootEntity<Guid>, IDisposable
     {
         public File(): this(Guid.NewGuid()) { }
 
@@ -27,5 +27,10 @@ namespace Domain.Entities.Implementation.File
         public bool IsDeleted { get; set; }
 
         public Stream Stream { get; set; }
+
+        public void Dispose()
+        {
+            Stream?.Dispose();
+        }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Web;
 using System.Web.Http;
 using Domain.Extensions;
+using Domain.Persistance.File.Extensions;
 using Domain.Persistence.EntityFramework.Extensions;
 using Domain.Persistence.FileStorage.Extensions;
 using Domain.Tools;
@@ -22,6 +23,7 @@ namespace Client.Api
             container.RegisterDomainDependencies();
             container.RegisterDomainPersistenceEntityFrameworkDependencies();
             container.RegisterDomainPersistenceFileStorageDependencies();
+            container.RegisterDomainPersistanceFileDependencies();
 
             container.Register<IVirtualPathUtility, VirtualPathUtility>(Lifestyle.Scoped);
 

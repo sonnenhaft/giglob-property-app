@@ -35,8 +35,6 @@ namespace Domain.Entities.Implementation.File.Queries
                 throw new ArgumentException("File not found");
             }
 
-            file.Stream = _fileStorage.Get(file.VirtualPath);
-
             return file;
         }
     }

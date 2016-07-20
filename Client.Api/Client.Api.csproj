@@ -196,6 +196,10 @@
       <Project>{a226d174-6dd2-4290-8dbc-e201efc54789}</Project>
       <Name>Client.Api.v1</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Domain.Persistance.File\Domain.Persistance.File.csproj">
+      <Project>{717604b5-8cec-4bde-86aa-ad06542e0661}</Project>
+      <Name>Domain.Persistance.File</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Domain.Persistence.EntityFramework\Domain.Persistence.EntityFramework.csproj">
       <Project>{a54fcb68-ee21-4f16-ae8f-9b725c1d0c6e}</Project>
       <Name>Domain.Persistence.EntityFramework</Name>
