@@ -20,11 +20,6 @@ namespace Client.Api.v1.Models.Models.PropertyOffer
         public long? DistrictId { get; set; }
 
         /// <summary>
-        /// Идентификаторы ближайших станций метро
-        /// </summary>
-        public IEnumerable<PropertyNearMetroStation> NearMetroStations { get; set; }
-
-        /// <summary>
         /// Название улицы
         /// </summary>
         public string StreetName { get; set; }
@@ -88,6 +83,11 @@ namespace Client.Api.v1.Models.Models.PropertyOffer
         /// Тип предложения. Sale = 1, Exchange = 2
         /// </summary>
         public OfferType OfferType { get; set; }
+
+        /// <summary>
+        /// Идентификаторы ближайших станций метро
+        /// </summary>
+        public IEnumerable<PropertyOfferCreateNearMetroStationRequestModel> NearMetroStations { get; set; }
 
         /// <summary>
         /// Фотографии недвижимости

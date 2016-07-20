@@ -1,5 +1,4 @@
 ﻿using System.Data.Entity;
-using Domain.Entities.Implementation.Property;
 using Domain.Entities.Implementation.PropertyOffer;
 using Domain.Repositories;
 
