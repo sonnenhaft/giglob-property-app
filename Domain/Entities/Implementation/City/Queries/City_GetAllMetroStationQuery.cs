@@ -16,7 +16,7 @@ namespace Domain.Entities.Implementation.City.Queries
         }
     }
 
-    public class City_GetAllMetroStationQueryHandler : IQueryHandler<City_GetAllMetroStationQuery, IEnumerable<MetroStation>>
+    public class City_GetAllMetroStationQueryHandler : IQueryHandler<City_GetAllMetroStationQuery, IEnumerable<MetroStationToMetroBranchRelations>>
     {
         private readonly ICityRepository _cityRepository;
 
@@ -25,14 +25,22 @@ namespace Domain.Entities.Implementation.City.Queries
             _cityRepository = cityRepository;
         }
 
-        public IEnumerable<MetroStation> Handle(City_GetAllMetroStationQuery query)
+        public IEnumerable<MetroStationToMetroBranchRelations> Handle(City_GetAllMetroStationQuery query)
         {
-            List<MetroStation> metroStations = new List<MetroStation>();
-
             var city = _cityRepository.GetAll().Where(x=>x.Id == query.Id).Include(x=>x.MetroStations).FirstOrDefault();
+
+            List<MetroStationToMetroBranchRelations> metroStations = new List<MetroStationToMetroBranchRelations>();
+
             if (city != null)
             {
-                metroStations = city.MetroStations.ToList();
+                List<ICollection<MetroStationToMetroBranchRelations>> res = city.MetroStations.Select(x => x.ToMetroBranchRelations).ToList();
+
+                for (int i = 0; i < res.Count(); i++)
+                {
+                    List<MetroStationToMetroBranchRelations> items = res[i].Select(x => x).ToList();
+
+                    metroStations.AddRange(items);
+                }
             }
 
             return metroStations;

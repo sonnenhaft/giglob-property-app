@@ -71,6 +71,7 @@
     <Compile Include="Entities\Implementation\City\District.cs" />
     <Compile Include="Entities\Implementation\City\MetroBranch.cs" />
     <Compile Include="Entities\Implementation\City\MetroStation.cs" />
+    <Compile Include="Entities\Implementation\City\MetroStationToMetroBranchRelations.cs" />
     <Compile Include="Entities\Implementation\City\Queries\City_GetAllDistrictsQuery.cs" />
     <Compile Include="Entities\Implementation\City\Queries\City_GetAllMetroStationQuery.cs" />
     <Compile Include="Entities\Implementation\City\Queries\City_GetAllQuery.cs" />
