@@ -2,8 +2,7 @@ angular.module('giglob-app',[
     "component.gheader",
     'mm.foundation',
     'component.router',
-    'component.carousel',
-    'demo'
+    'component.carousel'
 ]).directive('giglob', function() {
     return {
         templateUrl: '/app/giglob.html',

@@ -11,7 +11,7 @@ angular.module('component.router', ['ui.router']).config(function($stateProvider
                 });
             }
         }).state('demo-example', {
-            url: '^/:name',
+            url: '/demo/:name',
             templateUrl: function ($stateParams){
                 var name = $stateParams.name;
                 return 'app/' + name.split('.').join('/') + '/example/index.html';
