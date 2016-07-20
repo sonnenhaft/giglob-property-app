@@ -59,11 +59,6 @@
             Идентификатор района
             </summary>
         </member>
-        <member name="P:Client.Api.v1.Models.Models.PropertyOffer.PropertyOfferCreateRequestModel.NearMetroStations">
-            <summary>
-            Идентификаторы ближайших станций метро
-            </summary>
-        </member>
         <member name="P:Client.Api.v1.Models.Models.PropertyOffer.PropertyOfferCreateRequestModel.StreetName">
             <summary>
             Название улицы
@@ -127,6 +122,11 @@
         <member name="P:Client.Api.v1.Models.Models.PropertyOffer.PropertyOfferCreateRequestModel.OfferType">
             <summary>
             Тип предложения. Sale = 1, Exchange = 2
+            </summary>
+        </member>
+        <member name="P:Client.Api.v1.Models.Models.PropertyOffer.PropertyOfferCreateRequestModel.NearMetroStations">
+            <summary>
+            Идентификаторы ближайших станций метро
             </summary>
         </member>
         <member name="P:Client.Api.v1.Models.Models.PropertyOffer.PropertyOfferCreateRequestModel.Photoes">

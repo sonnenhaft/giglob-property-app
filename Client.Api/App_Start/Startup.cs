@@ -35,6 +35,7 @@ namespace Client.Api
             ElmahConfiguration.Configure(GlobalConfiguration.Configuration.Services);
             JsonFormatterConfiguration.Configure(GlobalConfiguration.Configuration.Formatters.JsonFormatter);
             ParameterBindingConfiguration.Configure(GlobalConfiguration.Configuration.ParameterBindingRules);
+            MapsConfiguration.Configure();
         }
     }
 }
