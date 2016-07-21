@@ -71,6 +71,9 @@
     <Compile Include="App_Start\MapsConfiguration.cs" />
     <Compile Include="Authentication\ICurrentUserService.cs" />
     <Compile Include="Entities\IAggregateRootEntity.cs" />
+    <Compile Include="Entities\Implementation\City\Queries\City_ContainsMetroBranchStationsWithGivenIdsQuery.cs" />
+    <Compile Include="Entities\Implementation\City\Queries\City_IsExistsQuery.cs" />
+    <Compile Include="Entities\Implementation\File\Queries\File_HasFilesWithGivenIdsAndExtensionsQuery.cs" />
     <Compile Include="Entities\Implementation\User\User.cs" />
     <Compile Include="Entities\IDeletableEntity.cs" />
     <Compile Include="Entities\Implementation\City\City.cs" />
@@ -107,6 +110,7 @@
     <Compile Include="Entities\Implementation\User\Queries\User_GetQuery.cs" />
     <Compile Include="Entities\Implementation\User\Services\IUserAuthorizationService.cs" />
     <Compile Include="Extensions\ContainerExtensions.cs" />
+    <Compile Include="Extensions\EnumExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ICityRepository.cs" />
     <Compile Include="Repositories\IDeletableEntityRepository.cs" />

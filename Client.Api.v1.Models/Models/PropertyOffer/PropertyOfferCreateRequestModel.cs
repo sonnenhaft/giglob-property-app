@@ -90,7 +90,7 @@ namespace Client.Api.v1.Models.Models.PropertyOffer
         /// <summary>
         /// Идентификаторы ближайших станций метро
         /// </summary>
-        public IEnumerable<PropertyOfferCreateNearMetroStationRequestModel> NearMetroStations { get; set; }
+        public IEnumerable<long> NearMetroBranchStationIds { get; set; }
 
         /// <summary>
         /// Фотографии недвижимости

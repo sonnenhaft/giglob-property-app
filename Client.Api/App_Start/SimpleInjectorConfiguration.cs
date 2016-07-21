@@ -1,4 +1,5 @@
-﻿using System.Web;
+﻿using System;
+using System.Web;
 using System.Web.Http;
 using Client.Api.Authentication.Extensions;
 using Client.Api.v1.Extensions;
@@ -27,6 +28,7 @@ namespace Client.Api
             container.RegisterDomainPersistenceFileStorageDependencies();
             container.RegisterDomainPersistanceFileDependencies();
 
+            container.RegisterSingleton<IServiceProvider>(container);
             container.Register<IVirtualPathUtility, VirtualPathUtility>(Lifestyle.Scoped);
 
             container.RegisterClientApiAuthenticationDependencies();

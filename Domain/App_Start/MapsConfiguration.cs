@@ -31,10 +31,12 @@ namespace Domain
                   .Member(offer => offer.LocalPropertyOfferData.BuildingCategory, context => context.BuildingCategory)
                   .Member(offer => offer.LocalPropertyOfferData.NearMetroStations, context => context.NearMetroStations)
                   .Member(offer => offer.LocalPropertyOfferData.Photoes, context => context.Photoes)
-                  .Member(offer => offer.LocalPropertyOfferData.Documents, context => context.Documents.Select(guid => new PropertyDocument
+                  .Member(offer => offer.LocalPropertyOfferData.Documents, context => context.Documents != null 
+                  ? context.Documents.Select(guid => new PropertyDocument
                   {
                       FileId = guid
-                  }));
+                  })
+                  : null);
 
             Mapper.Register<PropertyOfferCreatePhotoContext, PropertyPhoto>()
                 .Member(photo => photo.FileId, context => context.Id);

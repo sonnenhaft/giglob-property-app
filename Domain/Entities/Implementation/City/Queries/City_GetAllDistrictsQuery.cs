@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using CQRS;
@@ -27,13 +28,7 @@ namespace Domain.Entities.Implementation.City.Queries
 
         public IEnumerable<District> Handle(City_GetAllDistrictsQuery query)
         {
-            List<District> districts = new List<District>();
-
-            var city = _cityRepository.GetAll().Where(x => x.Id == query.Id).Include(x => x.Districts).FirstOrDefault();
-            if (city != null)
-            {
-                districts = city.Districts.ToList();
-            }
+            var districts = _cityRepository.GetCityDistricts(query.Id);
 
             return districts;
         }

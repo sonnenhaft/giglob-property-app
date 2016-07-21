@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data.Entity;
 using System.Linq;
+using System.Linq.Expressions;
 using Domain.Entities;
 using Domain.Repositories;
 
@@ -51,7 +52,13 @@ namespace Domain.Persistence.EntityFramework.Repositories.Implementation
 
             if(!includeDeleted)
             {
-                entities = entities.Where(x => !x.IsDeleted);
+                var parameterExpr = Expression.Parameter(typeof(TEntity));
+                var isDeletedPropExpr = Expression.Property(parameterExpr, "IsDeleted");
+                var isDeletedExpr = Expression.Constant(false, typeof(bool));
+                var eqExpr = Expression.Equal(isDeletedPropExpr, isDeletedExpr);
+                var expr = Expression.Lambda<Func<TEntity, bool>>(eqExpr, parameterExpr);
+
+                entities = entities.Where(expr);
             }
 
             return entities;
@@ -70,6 +77,11 @@ namespace Domain.Persistence.EntityFramework.Repositories.Implementation
         public void SaveChanges()
         {
             Decoratee.SaveChanges();
+        }
+
+        public bool IsExists(TId id)
+        {
+            return Decoratee.IsExists(id);
         }
     }
 }

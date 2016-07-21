@@ -4,7 +4,7 @@ using Domain.Storages;
 
 namespace Domain.Entities.Implementation.File
 {
-    public class File: IAggregateRootEntity<Guid>, IDisposable
+    public class File: IAggregateRootEntity<Guid>, IDeletableEntity, IDisposable
     {
         public File(): this(Guid.NewGuid()) { }
 
