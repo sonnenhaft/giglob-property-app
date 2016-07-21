@@ -9,7 +9,7 @@ angular.module('giglob-app',[
         templateUrl: '/app/giglob.html',
         controller:['$scope','$modal','localStorageService',function($scope,$modal,localStorageService){
             (function(){
-                //if(!localStorageService.get('city')){
+                if(!localStorageService.get('city')){
                     var modalInstance = $modal.open({
                         templateUrl: '/app/component/cityPopup/cityPopup.html',
                         controller:'cityPopupCtrl',
@@ -20,7 +20,7 @@ angular.module('giglob-app',[
                             }
                         }
                     });
-                //}
+                }
             })();
         }],
         link: function($scope) {
