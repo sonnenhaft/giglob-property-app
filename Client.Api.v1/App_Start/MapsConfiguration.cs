@@ -18,10 +18,9 @@ namespace Client.Api.v1
         {
             Mapper.Register<City, CityModel>();
 
-            Mapper.Register<MetroStationToMetroBranchRelations, NearMetroStationModel>()
+            Mapper.Register<MetroBranchStation, NearMetroStationModel>()
             .Member(x => x.HexColor, y => y.MetroBranch.HexColor)
-            .Member(x => x.Id, y => y.MetroStationId)
-            .Member(x => x.MetroBranchId, y => y.MetroBranchId)
+            .Member(x => x.Id, y => y.Id)
             .Member(x => x.Name, y => y.MetroStation.Name);
 
             Mapper.Register<User, UserModel>();

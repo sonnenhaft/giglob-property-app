@@ -10,6 +10,6 @@ namespace Domain.Entities.Implementation.City
 
         public string Name { get; set; }
 
-        public virtual ICollection<MetroStationToMetroBranchRelations> ToMetroBranchRelations { get; set; }
+        public virtual ICollection<MetroBranchStation> MetroBranches { get; set; }
     }
 }

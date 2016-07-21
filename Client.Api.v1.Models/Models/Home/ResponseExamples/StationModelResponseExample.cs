@@ -16,15 +16,14 @@ namespace Client.Api.v1.Models.Models.Home.ResponseExamples
                     {
                         Id = 1,
                         Name = "Город 1",
-                        HexColor = "ffd803",
-                        MetroBranchId = 1
+                        HexColor = "ffd803"
+
                     },
                      new NearMetroStationModel
                     {
                         Id = 2,
                         Name = "Город 2",
-                        HexColor = "b61d8e",
-                        MetroBranchId = 22
+                        HexColor = "b61d8e"
                     }
                 }
             };

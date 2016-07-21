@@ -10,6 +10,6 @@ namespace Domain.Entities.Implementation.City
 
         public string HexColor { get; set; }
 
-        public virtual ICollection<MetroStationToMetroBranchRelations> ToMetroStationRelations { get; set; }
+        public virtual ICollection<MetroBranchStation> MetroStations { get; set; }
     }
 }

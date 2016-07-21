@@ -49,8 +49,13 @@ namespace Domain.Persistence.EntityFramework
             modelBuilder.Entity<MetroStation>()
                         .HasKey(x => x.Id);
 
-            modelBuilder.Entity<MetroStationToMetroBranchRelations>()
-                       .HasKey(x => new {x.MetroStationId, x.MetroBranchId });
+            modelBuilder.Entity<MetroBranchStation>()
+                .HasKey(x => x.Id);
+
+            modelBuilder.Entity<MetroBranchStation>()
+                .HasOptional(x => x.MetroBranch)
+                .WithMany()
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<MetroBranch>()
                         .HasKey(x => x.Id);

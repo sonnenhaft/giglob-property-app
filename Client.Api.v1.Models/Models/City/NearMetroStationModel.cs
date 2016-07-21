@@ -6,8 +6,6 @@
 
         public string Name { get; set; }
 
-        public long MetroBranchId { get; set; }
-
         public string HexColor { get; set; }
     }
 }
