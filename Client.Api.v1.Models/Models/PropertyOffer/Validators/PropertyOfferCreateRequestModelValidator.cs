@@ -8,6 +8,7 @@ using CQRS;
 using Domain.Entities.Implementation.City;
 using Domain.Entities.Implementation.City.Queries;
 using Domain.Entities.Implementation.File.Queries;
+using Domain.Entities.Implementation.PropertyOffer.Enums;
 using Domain.Extensions;
 using FluentValidation;
 using FluentValidation.Resources;
@@ -77,16 +78,16 @@ namespace Client.Api.v1.Models.Models.PropertyOffer.Validators
 
 
             Custom(model => ValidateCityIdDistrictIdAndMetroStations(
-                (IQueryHandler<City_IsExistsQuery, bool>) serviceProvider.GetService(typeof(IQueryHandler<City_IsExistsQuery, bool>)),
+                (IQueryHandler<City_IsExistsQuery, bool>)serviceProvider.GetService(typeof(IQueryHandler<City_IsExistsQuery, bool>)),
                 (IQueryHandler<City_GetAllDistrictsQuery, IEnumerable<District>>)serviceProvider.GetService(typeof(IQueryHandler<City_GetAllDistrictsQuery, IEnumerable<District>>)),
-                (IQueryHandler<City_ContainsMetroBranchStationsWithGivenIdsQuery, bool>) serviceProvider.GetService(typeof(IQueryHandler<City_ContainsMetroBranchStationsWithGivenIdsQuery, bool>)),
+                (IQueryHandler<City_ContainsMetroBranchStationsWithGivenIdsQuery, bool>)serviceProvider.GetService(typeof(IQueryHandler<City_ContainsMetroBranchStationsWithGivenIdsQuery, bool>)),
                 model.CityId,
                 model.DistrictId,
                 model.NearMetroBranchStationIds
                 ));
 
             Custom(model => ValidatePhotoes(
-                (IQueryHandler<File_HasFilesWithGivenIdsAndExtensionsQuery, bool>) serviceProvider.GetService(typeof(IQueryHandler<File_HasFilesWithGivenIdsAndExtensionsQuery, bool>)),
+                (IQueryHandler<File_HasFilesWithGivenIdsAndExtensionsQuery, bool>)serviceProvider.GetService(typeof(IQueryHandler<File_HasFilesWithGivenIdsAndExtensionsQuery, bool>)),
                 model.Photoes
                 ));
 
@@ -94,17 +95,65 @@ namespace Client.Api.v1.Models.Models.PropertyOffer.Validators
                 (IQueryHandler<File_HasFilesWithGivenIdsAndExtensionsQuery, bool>)serviceProvider.GetService(typeof(IQueryHandler<File_HasFilesWithGivenIdsAndExtensionsQuery, bool>)),
                 model.Documents
                 ));
+
+            #region PropertyOfferExchangeDetails        
+
+            //-----------------------------------------------------------------------
+
+            When(x => x.OfferType == OfferType.Exchange, () =>
+              {
+                  RuleFor(model => model.ExchangeDetails)
+                    .Must(exchange => exchange != null)
+                    .WithMessage("Требуется заполнить форму \"Куда хочу переехать\"");
+
+                  RuleFor(model => model.ExchangeDetails.AreaSize)
+                    .NotEqual(0)
+                    .WithMessage("Введите площадь")
+                    .Must(areaSize => areaSize > 0 && areaSize < 10000)
+                    .WithMessage("Некорректная площадь");
+
+                  RuleFor(model => model.ExchangeDetails.RoomCount)
+                    .NotEqual(0)
+                    .WithMessage("Введите количество комнат")
+                    .Must(roomCount => roomCount > 0 && roomCount < 100)
+                    .WithMessage("Некорректное количество комнат");
+
+
+                  RuleFor(model => model.ExchangeDetails.MinCost)
+                    .Must(cost => cost > 0 && cost < 1000000000000)
+                    .WithMessage("Некорректная стоимость");
+
+
+                  RuleFor(model => model.ExchangeDetails.MaxCost)
+                    .Must(cost => cost > 0 && cost < 1000000000000)
+                    .WithMessage("Некорректная стоимость");
+
+
+                  RuleFor(model => model.ExchangeDetails)
+                      .Must(x => x.MinCost < x.MaxCost)
+                      .WithMessage("Стоимость \"От\" должна быть меньше стоимости \"До\"");
+
+                  Custom(model => ValidateCityIdDistrictId(
+                     (IQueryHandler<City_IsExistsQuery, bool>)serviceProvider.GetService(typeof(IQueryHandler<City_IsExistsQuery, bool>)),
+                     (IQueryHandler<City_GetAllDistrictsQuery, IEnumerable<District>>)serviceProvider.GetService(typeof(IQueryHandler<City_GetAllDistrictsQuery, IEnumerable<District>>)),
+                     model.CityId,
+                     model.DistrictId));
+              });
+
+            //-----------------------------------------------------------------------
+
+            #endregion PropertyOfferExchangeDetails
         }
 
         public ValidationFailure ValidateCityIdDistrictIdAndMetroStations(
             IQueryHandler<City_IsExistsQuery, bool> cityIsExistsQueryHandler,
-            IQueryHandler<City_GetAllDistrictsQuery, IEnumerable<District>> cityGetAllDistrictsQuery,  
-            IQueryHandler<City_ContainsMetroBranchStationsWithGivenIdsQuery, bool> cityContainsMetroBranchStationsWithGivenIdsQueryHandler, 
-            long cityId, 
-            long? districtId, 
+            IQueryHandler<City_GetAllDistrictsQuery, IEnumerable<District>> cityGetAllDistrictsQuery,
+            IQueryHandler<City_ContainsMetroBranchStationsWithGivenIdsQuery, bool> cityContainsMetroBranchStationsWithGivenIdsQueryHandler,
+            long cityId,
+            long? districtId,
             IEnumerable<long> nearMetroBranchStationIds)
         {
-            if(!cityIsExistsQueryHandler.Handle(new City_IsExistsQuery(cityId)))
+            if (!cityIsExistsQueryHandler.Handle(new City_IsExistsQuery(cityId)))
             {
                 return new ValidationFailure("CityId", "Некорректный город");
             }
@@ -112,12 +161,12 @@ namespace Client.Api.v1.Models.Models.PropertyOffer.Validators
             var cityDistricts = cityGetAllDistrictsQuery.Handle(new City_GetAllDistrictsQuery(cityId));
             var cityHasDistricts = cityDistricts.Any();
 
-            if(cityHasDistricts && !districtId.HasValue)
+            if (cityHasDistricts && !districtId.HasValue)
             {
                 return new ValidationFailure("DistrictId", "Укажите район");
             }
 
-            if(!cityHasDistricts && districtId.HasValue)
+            if (!cityHasDistricts && districtId.HasValue)
             {
                 return new ValidationFailure("DistrictId", "Некорректный район");
             }
@@ -127,7 +176,7 @@ namespace Client.Api.v1.Models.Models.PropertyOffer.Validators
                 return new ValidationFailure("DistrictId", "Некорректный район");
             }
 
-            if(!cityContainsMetroBranchStationsWithGivenIdsQueryHandler.Handle(new City_ContainsMetroBranchStationsWithGivenIdsQuery(cityId, nearMetroBranchStationIds)))
+            if (!cityContainsMetroBranchStationsWithGivenIdsQueryHandler.Handle(new City_ContainsMetroBranchStationsWithGivenIdsQuery(cityId, nearMetroBranchStationIds)))
             {
                 return new ValidationFailure("NearMetroBranchStationIds", "Некорректные станции метро");
             }
@@ -135,21 +184,53 @@ namespace Client.Api.v1.Models.Models.PropertyOffer.Validators
             return null;
         }
 
+        public ValidationFailure ValidateCityIdDistrictId(
+          IQueryHandler<City_IsExistsQuery, bool> cityIsExistsQueryHandler,
+          IQueryHandler<City_GetAllDistrictsQuery, IEnumerable<District>> cityGetAllDistrictsQuery,
+          long cityId,
+          long? districtId)
+        {
+            if (!cityIsExistsQueryHandler.Handle(new City_IsExistsQuery(cityId)))
+            {
+                return new ValidationFailure("CityId", "Некорректный город");
+            }
+
+            var cityDistricts = cityGetAllDistrictsQuery.Handle(new City_GetAllDistrictsQuery(cityId));
+            var cityHasDistricts = cityDistricts.Any();
+
+            if (cityHasDistricts && !districtId.HasValue)
+            {
+                return new ValidationFailure("DistrictId", "Укажите район");
+            }
+
+            if (!cityHasDistricts && districtId.HasValue)
+            {
+                return new ValidationFailure("DistrictId", "Некорректный район");
+            }
+
+            if (districtId.HasValue && !cityDistricts.Select(x => x.Id).Contains(districtId.Value))
+            {
+                return new ValidationFailure("DistrictId", "Некорректный район");
+            }
+
+            return null;
+        }
+
         public ValidationFailure ValidatePhotoes(IQueryHandler<File_HasFilesWithGivenIdsAndExtensionsQuery, bool> fileHasFilesWithGivenIdsQuery, IEnumerable<PropertyOfferCreatePhotoRequestModel> photoes)
         {
-            if(photoes != null && photoes.Any())
+            if (photoes != null && photoes.Any())
             {
-                if(photoes.Count() > 20)
+                if (photoes.Count() > 20)
                 {
                     return new ValidationFailure("Photoes", "Максимальное количество фотографий - 20");
                 }
 
-                if(!fileHasFilesWithGivenIdsQuery.Handle(new File_HasFilesWithGivenIdsAndExtensionsQuery(photoes.Select(photo => photo.Id), new[] { "jpg", "png" })))
+                if (!fileHasFilesWithGivenIdsQuery.Handle(new File_HasFilesWithGivenIdsAndExtensionsQuery(photoes.Select(photo => photo.Id), new[] { "jpg", "png" })))
                 {
                     return new ValidationFailure("Photoes", "Некорректные идентификаторы фотографий");
                 }
 
-                if(photoes.Count(photo => photo.IsCover) != 1)
+                if (photoes.Count(photo => photo.IsCover) != 1)
                 {
                     return new ValidationFailure("Photoes", "Укажите одну фотографию в качестве обложки");
                 }
@@ -160,14 +241,14 @@ namespace Client.Api.v1.Models.Models.PropertyOffer.Validators
 
         public ValidationFailure ValidateDocuments(IQueryHandler<File_HasFilesWithGivenIdsAndExtensionsQuery, bool> fileHasFilesWithGivenIdsQuery, IEnumerable<Guid> documentIds)
         {
-            if(documentIds != null && documentIds.Any())
+            if (documentIds != null && documentIds.Any())
             {
-                if(documentIds.Count() > 20)
+                if (documentIds.Count() > 20)
                 {
                     return new ValidationFailure("Documents", "Максимальное количество документов - 20");
                 }
 
-                if(!fileHasFilesWithGivenIdsQuery.Handle(new File_HasFilesWithGivenIdsAndExtensionsQuery(documentIds, new[] { "doc", "docx", "pages", "pdf", "odf" })))
+                if (!fileHasFilesWithGivenIdsQuery.Handle(new File_HasFilesWithGivenIdsAndExtensionsQuery(documentIds, new[] { "doc", "docx", "pages", "pdf", "odf" })))
                 {
                     return new ValidationFailure("Documents", "Некорректные идентификаторы документов");
                 }
