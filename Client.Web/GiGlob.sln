@@ -3,33 +3,33 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client.Web", "Client.Web\Client.Web.csproj", "{4E145111-4873-42BE-AD77-3B850C802C8E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client.Web", "\\Mac\Home\projects\giglob\Client.Web\Client.Web.csproj", "{4E145111-4873-42BE-AD77-3B850C802C8E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Client", "Client", "{B2C15DAE-DB87-46FA-9339-97D3B1905D5F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client.Api", "Client.Api\Client.Api.csproj", "{426A3D22-0A2B-4B14-B081-1C0EC046D919}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client.Api", "\\Mac\Home\projects\giglob\Client.Api\Client.Api.csproj", "{426A3D22-0A2B-4B14-B081-1C0EC046D919}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{13607EE9-8B76-4FE3-BCF2-0C09EEF929BB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "\\Mac\Home\projects\giglob\Domain\Domain.csproj", "{13607EE9-8B76-4FE3-BCF2-0C09EEF929BB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{224E3AAC-7FA5-4DCB-8551-3466F858D91C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Persistence.EntityFramework", "Domain.Persistence.EntityFramework\Domain.Persistence.EntityFramework.csproj", "{A54FCB68-EE21-4F16-AE8F-9B725C1D0C6E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Persistence.EntityFramework", "\\Mac\Home\projects\giglob\Domain.Persistence.EntityFramework\Domain.Persistence.EntityFramework.csproj", "{A54FCB68-EE21-4F16-AE8F-9B725C1D0C6E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{3F9CCB6F-EFE2-47FA-A351-C5369B220E30}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Api", "Api", "{05CD40FC-5DA9-4FCA-8FD2-3EA2AEF900BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client.Api.v1", "Client.Api.v1\Client.Api.v1.csproj", "{A226D174-6DD2-4290-8DBC-E201EFC54789}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client.Api.v1", "\\Mac\Home\projects\giglob\Client.Api.v1\Client.Api.v1.csproj", "{A226D174-6DD2-4290-8DBC-E201EFC54789}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiVersioningModule", "ApiVersioningModule\ApiVersioningModule.csproj", "{14983888-7213-46B4-A2A5-97774B02C64F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiVersioningModule", "\\Mac\Home\projects\giglob\ApiVersioningModule\ApiVersioningModule.csproj", "{14983888-7213-46B4-A2A5-97774B02C64F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client.Api.v1.Models", "Client.Api.v1.Models\Client.Api.v1.Models.csproj", "{998906EB-AA90-47F2-8A6A-5F259185A168}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client.Api.v1.Models", "\\Mac\Home\projects\giglob\Client.Api.v1.Models\Client.Api.v1.Models.csproj", "{998906EB-AA90-47F2-8A6A-5F259185A168}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiVersioningModule.Swagger", "ApiVersioningModule.Swagger\ApiVersioningModule.Swagger.csproj", "{4F7955EC-A0B6-49B2-8245-D7501A696DE5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiVersioningModule.Swagger", "\\Mac\Home\projects\giglob\ApiVersioningModule.Swagger\ApiVersioningModule.Swagger.csproj", "{4F7955EC-A0B6-49B2-8245-D7501A696DE5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwaggerResponseExampleModule", "SwaggerResponseExampleModule\SwaggerResponseExampleModule.csproj", "{9084F7B6-AE3A-4EF4-9414-BF1228916974}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwaggerResponseExampleModule", "\\Mac\Home\projects\giglob\SwaggerResponseExampleModule\SwaggerResponseExampleModule.csproj", "{9084F7B6-AE3A-4EF4-9414-BF1228916974}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CQRS", "CQRS\CQRS.csproj", "{B412E005-BF9B-49BB-8DDE-6939A2456382}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CQRS", "\\Mac\Home\projects\giglob\CQRS\CQRS.csproj", "{B412E005-BF9B-49BB-8DDE-6939A2456382}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
