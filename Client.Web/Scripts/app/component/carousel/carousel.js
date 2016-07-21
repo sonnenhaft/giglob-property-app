@@ -7,10 +7,20 @@ angular.module('component.carousel', []).directive('carousel', function() {
             disableThumbnails: '=?',
             disableArrows: '=?'
         },
-        link: function($scope) {
-            var LEFT_ARROW_CODE = 37, RIGHT_ARROW_CODE = 39;
+        link: function($scope, $element, $attrs) {
+            var LEFT_ARROW_CODE = 37, RIGHT_ARROW_CODE = 39, DEFAULT_THUMBNAIL_WIDTH = 111;
+            var thumbnailWrapper = $element[0].getElementsByClassName('carousel-thumbnail-wrapper')[0];
 
-            function changeImageOnClick(e) {
+            $scope.carouselStyle = {
+                width: $scope.images.length > 6 ? $scope.images.length * DEFAULT_THUMBNAIL_WIDTH + 5 + 'px' : 'auto',
+                'padding-left': $scope.images.length > 6 ? '5px' : 0
+            };
+
+            if($scope.images.length <= 1) {
+                $scope.disableThumbnails = $scope.disableArrows = true;
+            }
+
+            function setImageOnKeydown(e) {
                 if(e.which === LEFT_ARROW_CODE) {
                     $scope.setNextImage(-1);
                 } else if(e.which === RIGHT_ARROW_CODE) {
@@ -19,12 +29,13 @@ angular.module('component.carousel', []).directive('carousel', function() {
                 $scope.$digest();
             }
 
-            document.addEventListener('keydown', changeImageOnClick);
+            document.addEventListener('keydown', setImageOnKeydown);
 
             $scope.setActiveImage = function(index) {
                 $scope.images[$scope.currentIndex || 0].active = false;
-                $scope.currentIndex = index;
-                $scope.images[index].active = true;
+                $scope.currentIndex = $scope.images[index] ? index : 0;
+                $scope.images[$scope.currentIndex].active = true;
+                thumbnailWrapper.scrollLeft = ($scope.currentIndex - 2) * DEFAULT_THUMBNAIL_WIDTH;
             };
 
             $scope.setNextImage = function(index) {
@@ -38,7 +49,7 @@ angular.module('component.carousel', []).directive('carousel', function() {
             };
 
             $scope.$on('$destroy', function() {
-                document.removeEventListener('keydown', changeImageOnClick);
+                document.removeEventListener('keydown', setImageOnKeydown);
             });
 
             $scope.setActiveImage(2);

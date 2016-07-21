@@ -44,6 +44,14 @@ angular.module('component.router', ['ui.router']).config(function($stateProvider
                         src: 'app/component/carousel/example/images/5.jpeg'
                     }, {
                         src: 'app/component/carousel/example/images/5.jpeg'
+                    }, {
+                        src: 'app/component/carousel/example/images/5.jpeg'
+                    }, {
+                        src: 'app/component/carousel/example/images/5.jpeg'
+                    }, {
+                        src: 'app/component/carousel/example/images/5.jpeg'
+                    }, {
+                        src: 'app/component/carousel/example/images/5.jpeg'
                     }]
                 }
             }
