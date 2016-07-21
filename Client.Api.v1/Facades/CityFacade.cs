@@ -14,16 +14,16 @@ namespace Client.Api.v1.Facades
 {
     public class CityFacade
     {
-        private readonly IQueryHandler<City_GetAllMetroStationQuery, IEnumerable<MetroBranchStation>> _cityGetAllMetroStationQueryHandler;
+        private readonly IQueryHandler<City_GetAllMetroBranchStationsQuery, IEnumerable<MetroBranchStation>> _cityGetAllMetroStationQueryHandler;
 
-        public CityFacade(IQueryHandler<City_GetAllMetroStationQuery, IEnumerable<MetroBranchStation>> cityGetAllMetroStationQueryHandler)
+        public CityFacade(IQueryHandler<City_GetAllMetroBranchStationsQuery, IEnumerable<MetroBranchStation>> cityGetAllMetroStationQueryHandler)
         {
             _cityGetAllMetroStationQueryHandler = cityGetAllMetroStationQueryHandler;
         }
 
-        public IEnumerable<NearMetroStationModel> GetAllMetroStations(long id)
+        public IEnumerable<NearMetroStationModel> GetAllMetroStations(long id, string stationName)
         {
-            List<MetroBranchStation> query = _cityGetAllMetroStationQueryHandler.Handle(new City_GetAllMetroStationQuery(id)).ToList();
+            List<MetroBranchStation> query = _cityGetAllMetroStationQueryHandler.Handle(new City_GetAllMetroBranchStationsQuery(id, stationName)).ToList();
 
             return query.Select(Mapper.Map<MetroBranchStation, NearMetroStationModel>);
         }

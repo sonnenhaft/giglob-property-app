@@ -34,9 +34,9 @@ namespace Client.Api.v1.Controllers
 
         [HttpGet]
         [SwaggerResponseExampleProvider(typeof(StationModelResponseExample))]
-        public IHttpActionResult MetroStations([FromUri(Name = "")]  IdentifyModel<long> reqModel)
+        public IHttpActionResult MetroStations([FromUri(Name = "")]  AutocompleteStationsModel<long> reqModel)
         {
-            return Ok(_cityFacade.GetAllMetroStations(reqModel.Id));
+            return Ok(_cityFacade.GetAllMetroStations(reqModel.Id, reqModel.StationName));
         }
     }
 }

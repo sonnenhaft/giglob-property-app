@@ -4,6 +4,17 @@
         <name>Client.Api.v1.Models</name>
     </assembly>
     <members>
+        <member name="T:Client.Api.v1.Models.Models.City.AutocompleteStationsModel`1">
+            <summary>
+            Модель для автокомплита станций
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:Client.Api.v1.Models.Models.City.AutocompleteStationsModel`1.StationName">
+            <summary>
+            Название станций
+            </summary>
+        </member>
         <member name="T:Client.Api.v1.Models.Models.City.CityModel">
             <summary>
             Модель города

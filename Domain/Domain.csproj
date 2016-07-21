@@ -82,7 +82,7 @@
     <Compile Include="Entities\Implementation\City\MetroStation.cs" />
     <Compile Include="Entities\Implementation\City\MetroBranchStation.cs" />
     <Compile Include="Entities\Implementation\City\Queries\City_GetAllDistrictsQuery.cs" />
-    <Compile Include="Entities\Implementation\City\Queries\City_GetAllMetroStationQuery.cs" />
+    <Compile Include="Entities\Implementation\City\Queries\City_GetAllMetroBranchStationsQuery.cs" />
     <Compile Include="Entities\Implementation\City\Queries\City_GetAllQuery.cs" />
     <Compile Include="Entities\Implementation\File\Commands\File_CreateCommand.cs" />
     <Compile Include="Entities\Implementation\File\File.cs" />

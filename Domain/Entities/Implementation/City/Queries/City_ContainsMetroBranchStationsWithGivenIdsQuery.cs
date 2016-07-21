@@ -43,7 +43,7 @@ namespace Domain.Entities.Implementation.City.Queries
            var metroBranchStationsIds = _cityRepository.GetAll()
                                                     .Where(x => x.Id == query.CityId)
                                                     .SelectMany(x => x.MetroStations)
-                                                    .SelectMany(x => x.MetroBranches)
+                                                    .SelectMany(x => x.MetroStationBranches)
                                                     .Select(x => x.Id);
 
            return query.MetroBranchStationsIds.All(id => metroBranchStationsIds.Contains(id));

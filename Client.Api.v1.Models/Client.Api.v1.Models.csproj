@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\City\AutocompleteStationsModel.cs" />
     <Compile Include="Models\City\CityModel.cs" />
     <Compile Include="Models\City\DistrictModel.cs" />
     <Compile Include="Models\City\MetroBranchModel.cs" />
