@@ -4,7 +4,7 @@ var src = {
     js: 'app/**/*.js',
     scss: 'app/**/*.scss',
     css: 'app/**/*.css',
-    html: 'app/**/*.html',
+    html: 'app/**!(example)/*.html',
     img: 'app/**/*.svg'
 };
 
