@@ -3,6 +3,7 @@ angular.module('giglob-app',[
     'mm.foundation',
     "component.gheader",
     'component.router',
+    'component.flat-filter',
     'component.carousel'
 ]).directive('giglob', function() {
     return {

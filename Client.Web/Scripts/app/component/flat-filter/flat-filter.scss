@@ -1,0 +1,16 @@
+.flat-filter {
+  padding: 25px 30px 30px;
+  border-radius: 10px;
+  background: #ffffff;
+  .input-container {
+    display: inline-block;
+    vertical-align: top;
+    .input-label {
+      font-family: Lato;
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 0.5px;
+      color: #373737;
+    }
+  }
+}
