@@ -70,6 +70,7 @@
     <Compile Include="Constants\RegexConstants.cs" />
     <Compile Include="Extensions\ContainerExtensions.cs" />
     <Compile Include="Models\Common\ResponseExamples\BadRequestResponseExampleProvider.cs" />
+    <Compile Include="Models\PropertyOffer\PropertyOfferExchangeDetailsModel.cs" />
     <Compile Include="Models\PropertyOffer\Validators\PropertyOfferCreateRequestModelValidator.cs" />
     <Compile Include="Models\User\AuthResultModel.cs" />
     <Compile Include="Models\User\Mail\UserConfirmationMailModel.cs" />

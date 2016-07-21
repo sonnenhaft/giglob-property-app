@@ -100,5 +100,10 @@ namespace Domain.Entities.Implementation.PropertyOffer.Dtos
         /// Документы
         /// </summary>
         public IEnumerable<Guid> Documents { get; set; }
+
+        /// <summary>
+        /// Информация о переезде
+        /// </summary>
+        public PropertyOfferExchangeContext ExchangeDetails { get; set; }
     }
 }

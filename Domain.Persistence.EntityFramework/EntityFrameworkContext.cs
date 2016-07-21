@@ -164,6 +164,14 @@ namespace Domain.Persistence.EntityFramework
                 .WithMany()
                 .HasForeignKey(x => x.FileId)
                 .WillCascadeOnDelete(true);
+
+            modelBuilder.Entity<PropertyExchange>()
+                .HasKey(x => x.Id);
+
+            modelBuilder.Entity<PropertyOffer>()
+               .HasOptional(x => x.PropertyExchange)
+               .WithRequired(x=>x.PropertyOffer)
+               .WillCascadeOnDelete(false);
         }
     }
 }

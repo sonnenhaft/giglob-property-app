@@ -42,6 +42,8 @@ namespace Domain
                 .Member(photo => photo.FileId, context => context.Id);
 
             Mapper.Register<PropertyOfferCreateNearMetroStationContext, PropertyNearMetroStation>();
+
+            Mapper.Register<PropertyOfferExchangeContext,PropertyExchange>();
         }
     }
 }

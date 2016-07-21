@@ -101,5 +101,10 @@ namespace Client.Api.v1.Models.Models.PropertyOffer
         /// Документы
         /// </summary>
         public IEnumerable<Guid> Documents { get; set; }
+
+        /// <summary>
+        /// Информация о переезде
+        /// </summary>
+        public PropertyOfferExchangeDetailsModel ExchangeDetails { get; set; }
     }
 }

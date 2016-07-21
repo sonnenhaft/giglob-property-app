@@ -46,5 +46,8 @@ namespace Domain.Entities.Implementation.PropertyOffer
         public virtual LocalPropertyOfferData LocalPropertyOfferData { get; set; }
 
         public virtual ExternalPropertyOfferData ExternalPropertyOfferData { get; set; }
+
+        public long? PropertyExchangeId { get; set; }
+        public virtual PropertyExchange PropertyExchange { get; set; }
     }
 }
