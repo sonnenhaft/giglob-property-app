@@ -2,10 +2,19 @@
 {
     public class NearMetroStationModel
     {
-        public long Id { get; set; }
+        /// <summary>
+        /// Идентификатор, если есть
+        /// </summary>
+        public long? Id { get; set; }
 
+        /// <summary>
+        /// Название
+        /// </summary>
         public string Name { get; set; }
 
+        /// <summary>
+        /// Цвет в шестнадцатиричном формате
+        /// </summary>
         public string HexColor { get; set; }
     }
 }
