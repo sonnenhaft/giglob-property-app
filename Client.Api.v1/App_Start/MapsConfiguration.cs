@@ -1,7 +1,14 @@
-﻿using Client.Api.v1.Models.Models.City;
+﻿using System.Linq;
+using System.Net.Http;
+using Client.Api.v1.Models.Models.City;
 using Client.Api.v1.Models.Models.City;
 using Client.Api.v1.Models.Models.PropertyOffer;
 using System.Security.Cryptography.X509Certificates;
+using System.Security.Policy;
+using System.Web;
+using System.Web.Http;
+using System.Web.Http.Hosting;
+using System.Web.Http.Routing;
 using Client.Api.v1.Models.Models.City;
 using Domain.Entities.Implementation.City;
 using Client.Api.v1.Models.Models.User;
@@ -30,6 +37,36 @@ namespace Client.Api.v1
             Mapper.Register<PropertyNearMetroStation, NearMetroStationModel>()
                 .Member(model => model.Name, station => station.MetroBranchStation.MetroStation.Name)
                 .Member(model => model.HexColor, station => station.MetroBranchStation.MetroBranch != null ? station.MetroBranchStation.MetroBranch.HexColor : null);
+
+            Mapper.Register<PropertyOffer, PropertyOfferModel>()
+                .Member(model => model.Lat, offer => offer.Location.Latitude)
+                .Member(model => model.Lon, offer => offer.Location.Longitude)
+                .Member(model => model.OwnerUploadedDocuments, offer => offer.LocalPropertyOfferData != null && offer.LocalPropertyOfferData.Documents.Any())
+                .Function(model => model.PhotoUrls,
+                    offer =>
+                    {
+                        var request = new HttpRequestMessage(HttpMethod.Get, HttpContext.Current.Request.Url)
+                                      {
+                                          Properties =
+                                          {
+                                              { HttpPropertyKeys.HttpConfigurationKey, GlobalConfiguration.Configuration },
+                                              { HttpPropertyKeys.HttpRouteDataKey, new HttpRouteData(new HttpRoute()) },
+                                              { "MS_HttpContext", new HttpContextWrapper(HttpContext.Current) }
+                                          }
+                                      };
+ 
+                        var photoes = offer.LocalPropertyOfferData?.Photoes.Select(photo => new UrlHelper(request).Link("Default", new { controller = "File", action = "Get", id = photo.FileId }).ToLower());
+
+                        return photoes;
+                    })
+                  .Function(
+                      model => model.NearMetroStationModel,
+                      offer =>
+                      {
+                          var nearMetroStation = offer.LocalPropertyOfferData?.NearMetroStations.FirstOrDefault();
+
+                          return nearMetroStation;
+                      });
         }
     }
 }

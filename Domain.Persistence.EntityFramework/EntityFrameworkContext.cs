@@ -139,15 +139,9 @@ namespace Domain.Persistence.EntityFramework
                         .HasKey(x => x.Id);
 
             modelBuilder.Entity<PropertyNearMetroStation>()
-                .HasRequired(x => x.MetroStation)
+                .HasRequired(x => x.MetroBranchStation)
                 .WithMany()
-                .HasForeignKey(x => x.MetroStationId)
-                .WillCascadeOnDelete(true);
-
-            modelBuilder.Entity<PropertyNearMetroStation>()
-                .HasOptional(x => x.MetroBranch)
-                .WithMany()
-                .HasForeignKey(x => x.MetroBranchId)
+                .HasForeignKey(x => x.MetroBranchStationId)
                 .WillCascadeOnDelete(true);
 
             modelBuilder.Entity<PropertyPhoto>()
