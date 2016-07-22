@@ -33,9 +33,9 @@ namespace Domain.Persistence.EntityFramework.Repositories.Implementation
         {
             var entity = Decoratee.Get(id);
 
-            if (!includeDeleted && entity.IsDeleted)
+            if (entity != null && !includeDeleted && entity.IsDeleted)
             {
-                throw new ArgumentException("Requested entity is deleted");
+                entity = default(TEntity);
             }
 
             return entity;

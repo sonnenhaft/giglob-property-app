@@ -86,6 +86,7 @@
     <Compile Include="Entities\Implementation\PropertyOffer\Dtos\PropertyOfferExchangeContext.cs" />
     <Compile Include="Entities\Implementation\PropertyOffer\PropertyExchangeDetails.cs" />
     <Compile Include="Entities\Implementation\PropertyOffer\Queries\PropertyOffer_GetUserOffersQuery.cs" />
+    <Compile Include="Entities\Implementation\PropertyOffer\Queries\PropertyOffer_GetQuery.cs" />
     <Compile Include="Entities\Implementation\User\User.cs" />
     <Compile Include="Entities\IDeletableEntity.cs" />
     <Compile Include="Entities\Implementation\City\City.cs" />
@@ -120,6 +121,7 @@
     <Compile Include="Entities\Implementation\User\Queries\User_CheckUserIsExistsByEmailConfirmationTokenQuery.cs" />
     <Compile Include="Entities\Implementation\User\Queries\User_GetQuery.cs" />
     <Compile Include="Entities\Implementation\User\Services\IUserAuthorizationService.cs" />
+    <Compile Include="Exceptions\NotFoundException.cs" />
     <Compile Include="Extensions\ContainerExtensions.cs" />
     <Compile Include="Extensions\EnumExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
