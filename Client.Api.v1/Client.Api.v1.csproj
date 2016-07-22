@@ -31,6 +31,12 @@
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>App_Data\Client.Api.v1.XML</DocumentationFile>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test|AnyCPU'">
+    <OutputPath>bin\Test\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Stage|AnyCPU'">
+    <OutputPath>bin\Stage\</OutputPath>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="ExpressMapper, Version=1.8.1.0, Culture=neutral, PublicKeyToken=ac363faa09311ba0, processorArchitecture=MSIL">
       <HintPath>..\packages\Expressmapper.1.8.1\lib\net451\ExpressMapper.dll</HintPath>
