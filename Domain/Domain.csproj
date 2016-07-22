@@ -91,7 +91,6 @@
     <Compile Include="Entities\Implementation\File\Queries\File_GetQuery.cs" />
     <Compile Include="Entities\Implementation\PropertyOffer\Commands\PropertyOffer_CreateCommand.cs" />
     <Compile Include="Entities\Implementation\PropertyOffer\Dtos\PropertyOfferCreateContext.cs" />
-    <Compile Include="Entities\Implementation\PropertyOffer\Dtos\PropertyOfferCreateNearMetroStationContext.cs" />
     <Compile Include="Entities\Implementation\PropertyOffer\Dtos\PropertyOfferCreatePhotoContext.cs" />
     <Compile Include="Entities\Implementation\PropertyOffer\ExternalPropertyOfferData.cs" />
     <Compile Include="Entities\Implementation\PropertyOffer\ExternalPropertyOfferImage.cs" />

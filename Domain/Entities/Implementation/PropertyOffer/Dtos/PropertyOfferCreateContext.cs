@@ -89,7 +89,7 @@ namespace Domain.Entities.Implementation.PropertyOffer.Dtos
         /// <summary>
         /// Идентификаторы ближайших станций метро
         /// </summary>
-        public IEnumerable<PropertyOfferCreateNearMetroStationContext> NearMetroStations { get; set; }
+        public IEnumerable<long> NearMetroBranchStationIds { get; set; }
 
         /// <summary>
         /// Фотографии недвижимости
