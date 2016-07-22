@@ -12,7 +12,7 @@
         /// <summary>
         /// Идентификатор района
         /// </summary>
-        public long? DistrictId { get; set; }
+        public long DistrictId { get; set; }
 
         /// <summary>
         /// Количество комнат
@@ -33,9 +33,5 @@
         /// Стоимость "До"
         /// </summary>
         public decimal MaxCost { get; set; }
-
-        public long PropertyOfferId { get; set; }
-
-        public PropertyOffer PropertyOffer { get; set; }
     }
 }

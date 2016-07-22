@@ -13,17 +13,17 @@
         /// <summary>
         /// Идентификатор района
         /// </summary>
-        public long? DistrictId { get; set; }
+        public long DistrictId { get; set; }
 
         /// <summary>
         /// Количество комнат
         /// </summary>
-        public int RoomCount { get; set; }
+        public int? RoomCount { get; set; }
 
         /// <summary>
         /// Площадь недвижимости
         /// </summary>
-        public double AreaSize { get; set; }
+        public double? AreaSize { get; set; }
 
         /// <summary>
         /// Стоимость "От"

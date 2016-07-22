@@ -10,7 +10,7 @@
         /// <summary>
         /// Идентификатор района
         /// </summary>
-        public long? DistrictId { get; set; }
+        public long DistrictId { get; set; }
 
         /// <summary>
         /// Количество комнат

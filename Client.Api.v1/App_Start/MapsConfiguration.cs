@@ -5,6 +5,7 @@ using System.Security.Cryptography.X509Certificates;
 using Client.Api.v1.Models.Models.City;
 using Domain.Entities.Implementation.City;
 using Client.Api.v1.Models.Models.User;
+using Domain.Entities.Implementation.PropertyOffer;
 using Domain.Entities.User.Implementation;
 
 using Domain.Entities.Implementation.PropertyOffer.Dtos;
