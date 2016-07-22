@@ -63,14 +63,15 @@
     <Compile Include="Models\Home\DataModel.cs" />
     <Compile Include="Models\Home\ResponseExamples\DataModelResponseExample.cs" />
     <Compile Include="Models\Home\ResponseExamples\StationModelResponseExample.cs" />
-    <Compile Include="Models\Home\StationModel.cs" />
     <Compile Include="Models\PropertyOffer\PropertyOfferCreateNearMetroStationRequestModel.cs" />
     <Compile Include="Models\PropertyOffer\PropertyOfferCreateRequestModel.cs" />
     <Compile Include="Models\PropertyOffer\PropertyOfferCreatePhotoRequestModel.cs" />
     <Compile Include="Constants\RegexConstants.cs" />
     <Compile Include="Extensions\ContainerExtensions.cs" />
     <Compile Include="Models\Common\ResponseExamples\BadRequestResponseExampleProvider.cs" />
+    <Compile Include="Models\PropertyOffer\PropertyOfferDataModel.cs" />
     <Compile Include="Models\PropertyOffer\PropertyOfferExchangeDetailsModel.cs" />
+    <Compile Include="Models\PropertyOffer\ResponseExamples\OffersModelResponseExample.cs" />
     <Compile Include="Models\PropertyOffer\Validators\PropertyOfferCreateRequestModelValidator.cs" />
     <Compile Include="Models\User\AuthResultModel.cs" />
     <Compile Include="Models\User\Mail\UserConfirmationMailModel.cs" />

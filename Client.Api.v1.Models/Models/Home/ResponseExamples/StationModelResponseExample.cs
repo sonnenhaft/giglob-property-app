@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using Client.Api.v1.Models.Models.City;
 using SwaggerResponseExampleModule.Providers.Interfaces;
 
@@ -8,23 +9,20 @@ namespace Client.Api.v1.Models.Models.Home.ResponseExamples
     {
         public object GetResponseExample()
         {
-            return new StationModel
+            return new List<NearMetroStationModel>
             {
-                Stations = new List<NearMetroStationModel>
+                new NearMetroStationModel
                 {
-                    new NearMetroStationModel
-                    {
-                        Id = 1,
-                        Name = "Город 1",
-                        HexColor = "ffd803"
+                    Id = 1,
+                    Name = "Город 1",
+                    HexColor = "ffd803"
 
-                    },
-                     new NearMetroStationModel
-                    {
-                        Id = 2,
-                        Name = "Город 2",
-                        HexColor = "b61d8e"
-                    }
+                },
+                new NearMetroStationModel
+                {
+                    Id = 2,
+                    Name = "Город 2",
+                    HexColor = "b61d8e"
                 }
             };
         }

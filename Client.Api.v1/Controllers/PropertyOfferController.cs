@@ -2,11 +2,12 @@
 using Client.Api.v1.Facades;
 using Client.Api.v1.Models.Models.Common.ResponseExamples;
 using Client.Api.v1.Models.Models.PropertyOffer;
+using Client.Api.v1.Models.Models.PropertyOffer.ResponseExamples;
 using SwaggerResponseExampleModule;
 
 namespace Client.Api.v1.Controllers
 {
-    public class PropertyOfferController: ApiController
+    public class PropertyOfferController : ApiController
     {
         private readonly PropertyOfferFacade _propertyOfferFacade;
 
@@ -22,6 +23,16 @@ namespace Client.Api.v1.Controllers
             _propertyOfferFacade.Create(reqModel);
 
             return Ok();
+        }
+
+
+        [HttpGet]
+        [SwaggerResponseExampleProvider(typeof(OffersModelResponseExample))]
+        public IHttpActionResult Offers(long id)
+        {
+            var offers = _propertyOfferFacade.GetOffers(id);
+
+            return Ok(offers);
         }
     }
 }
