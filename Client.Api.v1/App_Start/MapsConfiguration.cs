@@ -39,6 +39,12 @@ namespace Client.Api.v1
                 .Member(model => model.HexColor, station => station.MetroBranchStation.MetroBranch != null ? station.MetroBranchStation.MetroBranch.HexColor : null);
 
             Mapper.Register<PropertyOffer, PropertyOfferModel>()
+                .Member(model => model.CityId, offer => offer.LocalPropertyOfferData != null ? offer.LocalPropertyOfferData.CityId : (long?) null)
+                .Member(model => model.CityName, offer => offer.LocalPropertyOfferData != null ? offer.LocalPropertyOfferData.City.Name : (string) null)
+                .Member(model => model.DistrictId, offer => offer.LocalPropertyOfferData != null ? offer.LocalPropertyOfferData.DistrictId : (long?)null)
+                .Member(model => model.DistrictName, offer => offer.LocalPropertyOfferData != null && offer.LocalPropertyOfferData.District != null 
+                ? offer.LocalPropertyOfferData.District.Name 
+                : (string) null)
                 .Member(model => model.Lat, offer => offer.Location.Latitude)
                 .Member(model => model.Lon, offer => offer.Location.Longitude)
                 .Member(model => model.OwnerUploadedDocuments, offer => offer.LocalPropertyOfferData != null && offer.LocalPropertyOfferData.Documents.Any())
