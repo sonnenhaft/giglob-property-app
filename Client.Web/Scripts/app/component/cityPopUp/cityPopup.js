@@ -2,9 +2,10 @@ angular.module('component.cityPopup',[]).controller('cityPopupCtrl',function($sc
     localStorageService.set('city','Moscow');
 
     $scope.changeCity = function(){
-        $http.get('https://api.giglob.local/v1/home/getdata').then(function(res){
+        //TODO обернуть в  resource
+        $http.get('https://giglobapi.igstest.ru/v1/home/getdata').then(function(res){
             $scope.cities = res.data.cities;
-            $scope.autocomplite = true;
+            $scope.autocomplete = true;
         });
 
     };

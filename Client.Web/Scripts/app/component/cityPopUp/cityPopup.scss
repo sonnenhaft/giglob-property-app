@@ -2,7 +2,7 @@
   width:500px;
   height:330px;
   background-color: rgba(8, 199, 123, 0.9);
-  positoin:relative;
+  position:relative;
   padding-left:100px;
   outline:none !important;
   .bg-image {
@@ -14,7 +14,7 @@
     bottom: 0;
     z-index: -1;
   }
-  .no-autocomplite{
+  .no-autocomplete{
     margin-top:105px;
     .modal-header{
       font-size:34px;
@@ -32,7 +32,7 @@
       }
     }
   }
-  .autocomplite{
+  .autocomplete{
     padding-right:100px;
     .white-text{
       font-size:14px;
