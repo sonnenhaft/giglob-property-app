@@ -25,14 +25,11 @@ namespace Client.Api.v1.Controllers
             return Ok();
         }
 
-
         [HttpGet]
         [SwaggerResponseExampleProvider(typeof(OffersModelResponseExample))]
-        public IHttpActionResult Offers(long id)
+        public IHttpActionResult Offers([FromUri(Name = "")] PropertyOfferGetOffersRequestModel request)
         {
-            var offers = _propertyOfferFacade.GetOffers(id);
-
-            return Ok(offers);
+            return Ok(_propertyOfferFacade.GetOffers(request));
         }
     }
 }

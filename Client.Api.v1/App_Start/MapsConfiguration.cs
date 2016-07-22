@@ -1,4 +1,5 @@
-﻿using Client.Api.v1.Models.Models.City;
+﻿using System.Linq;
+using Client.Api.v1.Models.Models.City;
 using Client.Api.v1.Models.Models.City;
 using Client.Api.v1.Models.Models.PropertyOffer;
 using System.Security.Cryptography.X509Certificates;
@@ -29,7 +30,10 @@ namespace Client.Api.v1
             Mapper.Register<PropertyOfferCreatePhotoRequestModel, PropertyOfferCreatePhotoContext>();
             Mapper.Register<PropertyOfferCreateNearMetroStationRequestModel, PropertyOfferCreateNearMetroStationContext>();
 
-            Mapper.Register<PropertyOffer, PropertyOfferDataModel>();
+            Mapper.Register<PropertyOffer, PropertyOfferDataModel>()
+                .Member(x=>x.Lat, y=>y.Location.Latitude)
+                .Member(x=>x.Lon, y=>y.Location.Longitude)
+                .Member(x=>x.Photos, y=>y.LocalPropertyOfferData.Photoes.Select(q=>q.FileId.ToString()));
         }
     }
 }

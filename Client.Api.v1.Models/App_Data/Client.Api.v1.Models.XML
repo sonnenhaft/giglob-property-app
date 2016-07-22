@@ -225,6 +225,36 @@
             Стоимость "До"
             </summary>
         </member>
+        <member name="P:Client.Api.v1.Models.Models.PropertyOffer.PropertyOfferGetOffersRequestModel.Id">
+            <summary>
+            Ид города
+            </summary>
+        </member>
+        <member name="P:Client.Api.v1.Models.Models.PropertyOffer.PropertyOfferGetOffersRequestModel.Page">
+            <summary>
+            Номер страницы
+            </summary>
+        </member>
+        <member name="P:Client.Api.v1.Models.Models.PropertyOffer.PropertyOfferGetOffersRequestModel.MinCost">
+            <summary>
+            Стоимость От
+            </summary>
+        </member>
+        <member name="P:Client.Api.v1.Models.Models.PropertyOffer.PropertyOfferGetOffersRequestModel.MaxCost">
+            <summary>
+            Стоимость До
+            </summary>
+        </member>
+        <member name="P:Client.Api.v1.Models.Models.PropertyOffer.PropertyOfferGetOffersRequestModel.RoomCount">
+            <summary>
+            Кол-во комнат
+            </summary>
+        </member>
+        <member name="P:Client.Api.v1.Models.Models.PropertyOffer.PropertyOfferGetOffersRequestModel.MetroIds">
+            <summary>
+            Ид метро
+            </summary>
+        </member>
         <member name="T:Client.Api.v1.Models.Models.User.AuthResultModel">
             <summary>
             Модель результата авторизации

@@ -1,6 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Data.Entity;
-using System.Diagnostics.Contracts;
 using System.Linq;
 using CQRS;
 using Domain.Repositories;
@@ -14,6 +12,26 @@ namespace Domain.Entities.Implementation.PropertyOffer.Queries
         public int Take { get { return 300; } }
 
         public int Page { get; set; }
+
+        /// <summary>
+        /// Стоимость От
+        /// </summary>
+        public decimal? MinCost { get; set; }
+
+        /// <summary>
+        /// Стоимость До
+        /// </summary>
+        public decimal? MaxCost { get; set; }
+
+        /// <summary>
+        /// Кол-во комнат
+        /// </summary>
+        public int? RoomCount { get; set; }
+
+        /// <summary>
+        /// Ид метро
+        /// </summary>
+        public long?[] MetroIds { get; set; }
     }
 
     public class Offer_GetAllQueryHandler : IQueryHandler<Offer_GetAllQuery, IEnumerable<PropertyOffer>>
@@ -25,10 +43,33 @@ namespace Domain.Entities.Implementation.PropertyOffer.Queries
             _offerRepository = offerRepository;
         }
 
-        public IEnumerable<PropertyOffer> Handle(Offer_GetAllQuery query)
+        public IEnumerable<PropertyOffer> Handle(Offer_GetAllQuery reqQuery)
         {
-            var offers = _offerRepository.GetAll().Where(x => x.LocalPropertyOfferData.CityId == query.CityId).OrderBy(x=>x.CreationDate)
-                .Skip(query.Take * query.Page).Take(query.Take).ToList();
+            var query = _offerRepository.GetAll().Where(x => x.LocalPropertyOfferData.CityId == reqQuery.CityId);
+
+            if (reqQuery.MaxCost.HasValue)
+            {
+                query = query.Where(x => x.Cost <= reqQuery.MaxCost.Value);
+            }
+
+            if (reqQuery.MinCost.HasValue)
+            {
+                query = query.Where(x => x.Cost >= reqQuery.MinCost.Value);
+            }
+
+            if (reqQuery.RoomCount.HasValue)
+            {
+                query = query.Where(x => x.RoomCount == reqQuery.RoomCount.Value);
+            }
+
+            if (reqQuery.MetroIds != null)
+            {
+                query = query.Where(x => x.LocalPropertyOfferData.NearMetroStations.Any(y=> reqQuery.MetroIds.Contains(y.MetroStationId)));
+            }
+
+            List<PropertyOffer> offers = query.OrderBy(x => x.CreationDate)
+                .Skip(reqQuery.Take * (reqQuery.Page - 1))
+                .Take(reqQuery.Take).ToList();
 
             return offers;
         }

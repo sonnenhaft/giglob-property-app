@@ -26,9 +26,9 @@ namespace Client.Api.v1.Facades
             _propertyOfferCreateCommandHandler.Handle(new PropertyOffer_CreateCommand(reqModel.Map<PropertyOfferCreateRequestModel, PropertyOfferCreateContext>()));
         }
 
-        public IEnumerable<PropertyOfferDataModel> GetOffers(long id)
+        public IEnumerable<PropertyOfferDataModel> GetOffers(PropertyOfferGetOffersRequestModel req)
         {
-            IEnumerable<PropertyOffer> items = _propertyOfferGetAllCommandHandler.Handle(new Offer_GetAllQuery { CityId = id, Page = 0});
+            IEnumerable<PropertyOffer> items = _propertyOfferGetAllCommandHandler.Handle(new Offer_GetAllQuery { CityId = req.Id, Page = req.Page, MaxCost = req.MaxCost, MinCost = req.MinCost, MetroIds = req.MetroIds, RoomCount = req.RoomCount });
 
             return items.Map<IEnumerable<PropertyOffer>, IEnumerable<PropertyOfferDataModel>>();
         }
