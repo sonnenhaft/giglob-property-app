@@ -1,7 +1,9 @@
 angular.module('giglob-app',[
-    "component.gheader",
+    'yaMap',
     'mm.foundation',
-    'component.router'
+    "component.gheader",
+    'component.router',
+    'component.carousel'
 ]).directive('giglob', function() {
     return {
         templateUrl: '/app/giglob.html',

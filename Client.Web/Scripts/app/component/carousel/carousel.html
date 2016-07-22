@@ -1,0 +1,24 @@
+<div class="carousel">
+  <div class="carousel-wrapper">
+    <span class="carousel-img-count">
+      {{currentIndex + 1}} / {{images.length}}
+    </span>
+
+    <div ng-hide="disableArrows">
+      <a class="carousel-arrow arrow-left" ng-click="setNextImage(-1)"></a>
+      <a class="carousel-arrow arrow-right" ng-click="setNextImage(1)"></a>
+    </div>
+
+    <span class="carousel-image" ng-repeat="img in images track by $index" ng-class="{active: img.active}">
+      <img ng-src="{{img.src}}">
+    </span>
+
+    <div class="carousel-thumbnail-wrapper" ng-hide="disableThumbnails">
+      <div class="carousel-thumbnail-container" ng-style="carouselStyle">
+        <a class="carousel-thumbnail" ng-repeat="img in images track by $index" ng-class="{active: img.active, last: $last}" ng-click="setActiveImage($index)">
+          <img class="carousel-thumbnail-img" ng-src="{{img.src}}">
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
