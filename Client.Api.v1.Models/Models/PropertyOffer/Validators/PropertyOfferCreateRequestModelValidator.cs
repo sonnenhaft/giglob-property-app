@@ -100,25 +100,14 @@ namespace Client.Api.v1.Models.Models.PropertyOffer.Validators
 
             //-----------------------------------------------------------------------
 
-            When(x => x.OfferType == OfferType.Exchange, () =>
+            When(x => x.OfferType == OfferType.Exchange && x.ExchangeDetails == null, () =>
+            {
+                RuleFor(model => model.ExchangeDetails).NotNull()
+                  .WithMessage("Требуется заполнить форму \"Куда хочу переехать\"");
+            });
+
+            When(x => x.OfferType == OfferType.Exchange && x.ExchangeDetails != null, () =>
               {
-                  RuleFor(model => model.ExchangeDetails)
-                    .Must(exchange => exchange != null)
-                    .WithMessage("Требуется заполнить форму \"Куда хочу переехать\"");
-
-                  //RuleFor(model => model.ExchangeDetails.AreaSize)
-                  //  .NotEqual(0)
-                  //  .WithMessage("Введите площадь")
-                  //  .Must(areaSize => areaSize > 0 && areaSize < 10000)
-                  //  .WithMessage("Некорректная площадь");
-
-                  //RuleFor(model => model.ExchangeDetails.RoomCount)
-                  //  .NotEqual(0)
-                  //  .WithMessage("Введите количество комнат")
-                  //  .Must(roomCount => roomCount > 0 && roomCount < 100)
-                  //  .WithMessage("Некорректное количество комнат");
-
-
                   RuleFor(model => model.ExchangeDetails.MinCost)
                     .Must(cost => cost > 0 && cost < 1000000000000)
                     .WithMessage("Некорректная стоимость");
