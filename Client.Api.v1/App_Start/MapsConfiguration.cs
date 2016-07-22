@@ -27,7 +27,9 @@ namespace Client.Api.v1
             Mapper.Register<User, UserModel>();
             Mapper.Register<PropertyOfferCreateRequestModel, PropertyOfferCreateContext>();
             Mapper.Register<PropertyOfferCreatePhotoRequestModel, PropertyOfferCreatePhotoContext>();
-            Mapper.Register<PropertyOfferCreateNearMetroStationRequestModel, PropertyOfferCreateNearMetroStationContext>();
+            Mapper.Register<PropertyNearMetroStation, NearMetroStationModel>()
+                .Member(model => model.Name, station => station.MetroBranchStation.MetroStation.Name)
+                .Member(model => model.HexColor, station => station.MetroBranchStation.MetroBranch != null ? station.MetroBranchStation.MetroBranch.HexColor : null);
         }
     }
 }

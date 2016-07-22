@@ -64,7 +64,6 @@
     <Compile Include="Models\Home\ResponseExamples\DataModelResponseExample.cs" />
     <Compile Include="Models\Home\ResponseExamples\StationModelResponseExample.cs" />
     <Compile Include="Models\Home\StationModel.cs" />
-    <Compile Include="Models\PropertyOffer\PropertyOfferCreateNearMetroStationRequestModel.cs" />
     <Compile Include="Models\PropertyOffer\PropertyOfferCreateRequestModel.cs" />
     <Compile Include="Models\PropertyOffer\PropertyOfferCreatePhotoRequestModel.cs" />
     <Compile Include="Constants\RegexConstants.cs" />

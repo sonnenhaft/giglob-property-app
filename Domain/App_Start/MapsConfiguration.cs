@@ -29,7 +29,7 @@ namespace Domain
                   .Member(offer => offer.LocalPropertyOfferData.CityId, context => context.CityId)
                   .Member(offer => offer.LocalPropertyOfferData.DistrictId, context => context.DistrictId)
                   .Member(offer => offer.LocalPropertyOfferData.BuildingCategory, context => context.BuildingCategory)
-                  .Member(offer => offer.LocalPropertyOfferData.NearMetroStations, context => context.NearMetroStations)
+                  .Member(offer => offer.LocalPropertyOfferData.NearMetroStations, context => context.NearMetroBranchStationIds.Select(id => new PropertyNearMetroStation {MetroBranchStationId = id}))
                   .Member(offer => offer.LocalPropertyOfferData.Photoes, context => context.Photoes)
                   .Member(offer => offer.LocalPropertyOfferData.Documents, context => context.Documents != null 
                   ? context.Documents.Select(guid => new PropertyDocument
@@ -41,8 +41,6 @@ namespace Domain
 
             Mapper.Register<PropertyOfferCreatePhotoContext, PropertyPhoto>()
                 .Member(photo => photo.FileId, context => context.Id);
-
-            Mapper.Register<PropertyOfferCreateNearMetroStationContext, PropertyNearMetroStation>();
 
             Mapper.Register<PropertyOfferExchangeContext, PropertyExchange>();
         }
