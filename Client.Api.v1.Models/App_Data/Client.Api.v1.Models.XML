@@ -180,6 +180,16 @@
             Является ли фотография обложкой
             </summary>
         </member>
+        <member name="P:Client.Api.v1.Models.Models.PropertyOffer.PropertyOfferDataModel.Lat">
+            <summary>
+            Широта
+            </summary>
+        </member>
+        <member name="P:Client.Api.v1.Models.Models.PropertyOffer.PropertyOfferDataModel.Lon">
+            <summary>
+            Долгота
+            </summary>
+        </member>
         <member name="T:Client.Api.v1.Models.Models.PropertyOffer.PropertyOfferExchangeDetailsModel">
             <summary>
             Модель с информацией о переезде

@@ -28,6 +28,8 @@ namespace Client.Api.v1
             Mapper.Register<PropertyOfferCreateRequestModel, PropertyOfferCreateContext>();
             Mapper.Register<PropertyOfferCreatePhotoRequestModel, PropertyOfferCreatePhotoContext>();
             Mapper.Register<PropertyOfferCreateNearMetroStationRequestModel, PropertyOfferCreateNearMetroStationContext>();
+
+            Mapper.Register<PropertyOffer, PropertyOfferDataModel>();
         }
     }
 }

@@ -24,6 +24,16 @@ namespace Client.Api.v1.Models.Models.PropertyOffer
 
         public int RoomCount { get; set; }
 
-        public List<string> Photoes { get; set; }
+        public List<string> Photos { get; set; }
+
+        /// <summary>
+        /// Широта
+        /// </summary>
+        public double Lat { get; set; }
+
+        /// <summary>
+        /// Долгота
+        /// </summary>
+        public double Lon { get; set; }
     }
 }

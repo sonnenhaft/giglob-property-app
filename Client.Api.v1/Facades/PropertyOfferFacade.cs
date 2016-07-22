@@ -26,11 +26,11 @@ namespace Client.Api.v1.Facades
             _propertyOfferCreateCommandHandler.Handle(new PropertyOffer_CreateCommand(reqModel.Map<PropertyOfferCreateRequestModel, PropertyOfferCreateContext>()));
         }
 
-        public IEnumerable<PropertyOffer> GetOffers(long id)
+        public IEnumerable<PropertyOfferDataModel> GetOffers(long id)
         {
-            var items = _propertyOfferGetAllCommandHandler.Handle(new Offer_GetAllQuery { CityId = id, Page = 1});
+            IEnumerable<PropertyOffer> items = _propertyOfferGetAllCommandHandler.Handle(new Offer_GetAllQuery { CityId = id, Page = 0});
 
-            return items;
+            return items.Map<IEnumerable<PropertyOffer>, IEnumerable<PropertyOfferDataModel>>();
         }
     }
 }
