@@ -1,11 +1,13 @@
 angular.module('component.city-popup', ['mm.foundation.modal', 'LocalStorageModule']).directive('cityPopup', function($modal, localStorageService){
     return {
         restrict: 'E',
-        scope: {},
+        scope: {
+            ignoreLocalStorageValue: '=?'
+        },
         link: function($scope) {
             localStorageService.set('city', 'Moscow');
 
-            if(!localStorageService.get('city')) {
+            if(!localStorageService.get('city') || $scope.ignoreLocalStorageValue) {
                 var modalInstance = $modal.open({
                     templateUrl: '/app/component/city-popup/city-popup.html',
                     controller: 'cityPopupCtrl',
