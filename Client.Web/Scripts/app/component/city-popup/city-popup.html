@@ -1,9 +1,9 @@
 <div class="bg-image">
     <img src="app/theme/img/ng-image.png">
 </div>
-<div class="no-autocomplete" ng-if="!autocomplite">
+<div ng-if="!autocomplete" class="no-autocomplete">
     <h1 class="modal-header">Ваш город Москва?</h1>
-    <div>
+    <div class="popup-button-wrapper clearfix">
         <button type="button" class="button round alert" ng-click="ok()">Да, все верно</button>
         <div class="choose" ng-click="changeCity()">Нет, другой</div>
     </div>
