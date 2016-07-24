@@ -129,5 +129,6 @@ angular.module('component.config.router', ['ui.router']).config(function($stateP
     'demo',
     'demo-example',
     'giglob-app',
-    'component.config.router'
+    'component.config.router',
+    'component.config.filters'
 ]);
