@@ -2,8 +2,9 @@ angular.module('giglob-app',[
     'yaMap',
     'LocalStorageModule',
     'mm.foundation',
+    'component.config.router',
+    'component.config.filters',
     "component.gheader",
-    'component.router',
     'component.city-popup',
     'component.carousel'
 ]).directive('giglob', function() {
