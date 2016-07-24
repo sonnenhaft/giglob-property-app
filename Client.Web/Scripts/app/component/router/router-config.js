@@ -5,7 +5,11 @@ angular.module('component.router', ['ui.router']).config(function($stateProvider
         .state('demo', {
             url: "/demo",
             templateUrl: "app/component/router/demo-page.html",
-            controller: function ($scope) {
+            controller: function ($scope, $state) {
+                $scope.routes = $state.get().filter(function(route) {
+                    return !!route.name && EXCLUDED_DEMO_ROUTERS.indexOf(route.name) === -1;
+                });
+
                 $scope.modules = angular.modules.filter(function(moduleName) {
                     return !(EXCLUDED_DEMO_ROUTERS.indexOf(moduleName) + 1);
                 });
@@ -71,6 +75,7 @@ angular.module('component.router', ['ui.router']).config(function($stateProvider
 
 }).constant('EXCLUDED_DEMO_ROUTERS', [
     'demo',
+    'demo-example',
     'giglob-app',
     'component.router'
 ]);
