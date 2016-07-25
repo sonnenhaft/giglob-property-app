@@ -3,14 +3,14 @@ $line: 40px;
   height: 80px;
   background-color: white;
   position:absolute;
-  top:0;
-  left:0;
-  right:0;
-  padding:20px 30px;
-  .logo-green{
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 20px 30px;
+  .logo-green {
     height: 100%;
-    margin-right:20px;
-    vertical-align:top;
+    margin-right: 20px;
+    vertical-align: top;
   }
   .user-logo {
     position: absolute;
@@ -22,17 +22,17 @@ $line: 40px;
   }
   .grey{
     color: #aeaeae;
-    margin-right:95px;
+    margin-right: 95px;
   }
+<<<<<<< HEAD
   .black{
     color:#000;
     cursor:pointer;
-  }
-  .text{
-    display:inline-block;
+  .text {
+    display: inline-block;
     font-size: 14px;
-    vertical-align:top;
-    line-height:$line;
+    vertical-align: top;
+    line-height: $line;
   }
   nav {
     display: inline-block;
@@ -44,6 +44,7 @@ $line: 40px;
       line-height: 78px;
       color: #373737;
       font-size: 14px;
+      font-weight: bold;
       text-transform: uppercase;
       margin-right: 50px;
       cursor: pointer;
@@ -53,8 +54,8 @@ $line: 40px;
     }
   }
   .button{
-    vertical-align:middle;
-    margin-bottom:35px;
+    vertical-align: middle;
+    margin-bottom: 35px;
     margin-right: 45px;
   }
 }

@@ -1,6 +1,7 @@
 @import 'mixins.scss';
 @import 'icon-font/style.css';
 
+
 @include font-face("Lato", "../../Fonts/Lato/Lato-Thin", 100, $exts: ttf);
 @include font-face("Lato", "../../Fonts/Lato/Lato-Light", 200, $exts: ttf);
 @include font-face("Lato", "../../Fonts/Lato/Lato-Regular", normal, $exts: ttf);
