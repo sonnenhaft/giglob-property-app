@@ -5,7 +5,7 @@ angular.module('component.city-popup', ['mm.foundation.modal', 'LocalStorageModu
             ignoreLocalStorageValue: '=?'
         },
         link: function($scope) {
-            localStorageService.set('city', 'Moscow');
+
 
             if(!localStorageService.get('city') || $scope.ignoreLocalStorageValue) {
                 var modalInstance = $modal.open({
@@ -26,6 +26,7 @@ angular.module('component.city-popup', ['mm.foundation.modal', 'LocalStorageModu
 }).controller('cityPopupCtrl', function($scope, $http, $modalInstance, localStorageService) {
     $scope.changeCity = function() {
         //TODO вынести в отдельный API сервис
+        localStorageService.set('city', 'Moscow');
         $http.get('https://giglobapi.igstest.ru/v1/home/getdata').then(function(res){
             $scope.cities = res.data.cities;
             $scope.autocomplete = true;
