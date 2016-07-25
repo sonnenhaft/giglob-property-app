@@ -1,4 +1,4 @@
-angular.module('component.login',['passToText'])
+﻿angular.module('component.login',['passToText'])
     .controller('loginCtrl',function($scope,$modalInstance,$http,register,login,$rootScope,localStorageService){
 
         $scope.reg = {};
