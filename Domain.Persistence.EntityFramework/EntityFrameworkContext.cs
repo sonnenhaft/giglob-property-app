@@ -3,6 +3,7 @@ using Domain.Entities.User.Implementation;
 using Domain.Persistence.EntityFramework.Conventions;
 using Domain.Entities.Implementation;
 using Domain.Entities.Implementation.City;
+using Domain.Persistence.EntityFramework.Migrations;
 
 namespace Domain.Persistence.EntityFramework
 {
@@ -17,6 +18,8 @@ namespace Domain.Persistence.EntityFramework
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<EntityFrameworkContext, Configuration>());
 
             modelBuilder.Conventions.Add(new DateTime2Convention());
 

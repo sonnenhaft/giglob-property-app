@@ -1,16 +1,18 @@
-angular.module('giglob-app',[
+﻿angular.module('giglob-app',[
     'yaMap',
+    'LocalStorageModule',
     'mm.foundation',
+    'component.config.router',
+    'component.config.filters',
     "component.gheader",
-    'component.router',
+    'component.city-popup',
     'component.carousel',
     'component.login',
     'passToText'
 ]).directive('giglob', function() {
     return {
         templateUrl: '/app/giglob.html',
-        link: function($scope) {
-            
-        }
+        controller: function($scope) {},
+        link: function($scope) {}
     };
 });

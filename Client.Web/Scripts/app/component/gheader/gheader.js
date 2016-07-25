@@ -1,9 +1,9 @@
-angular.module('component.gheader', []).directive('gheader', function() {
+﻿angular.module('component.gheader', []).directive('gheader', function() {
     return {
         restrict: 'E',
         templateUrl: 'app/component/gheader/gheader.html',
         scope: true,
-        link: function($scope) {
+        link: function($scope,$modal) {
         },
         controller: function($scope,$modal){
             $scope.login = function(){

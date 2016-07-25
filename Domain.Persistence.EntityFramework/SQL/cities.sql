@@ -1,10 +1,6 @@
-IF EXISTS(SELECT NULL FROM [dbo].[Cities])
+IF NOT EXISTS(SELECT NULL FROM [dbo].[Cities])
 BEGIN
-  SELECT 'This record already exists!'
-END
-ELSE
-BEGIN
-INSERT INTO [dbo].[Cities]
+ INSERT INTO [dbo].[Cities]
             ([Name])
      VALUES
 		('Москва'),
@@ -83,6 +79,9 @@ INSERT INTO [dbo].[Cities]
 		('Яхрома');
 		
 END
+
+
+
 		
 		
 		
