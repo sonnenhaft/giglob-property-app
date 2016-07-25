@@ -1,0 +1,6 @@
+<div class="multiselect-dropdown">
+    <input type="text" class="dropdown-filter" ng-model="dropdownFilter" ng-click="showList = !showList"/>
+    <ul class="dropdown-list" ng-show="showList">
+        <li class="list-item" ng-repeat="item in items" ng-click="selectItem(item)">{{item}}</li>
+    </ul>
+</div>

@@ -6,6 +6,8 @@ angular.module('giglob-app',[
     'component.config.filters',
     "component.gheader",
     'component.city-popup',
+    'component.router',
+    'component.flat-filter',
     'component.carousel'
 ]).directive('giglob', function() {
     return {

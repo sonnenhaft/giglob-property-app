@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
 using CQRS;
 using Domain.Repositories;
 
@@ -17,7 +19,7 @@ namespace Domain.Entities.Implementation.City.Queries
 
         public IEnumerable<City> Handle(City_GetAllQuery query)
         {
-            var cities = _cityRepository.GetAll();
+            var cities = _cityRepository.GetAll().Include(x => x.Districts).ToList();
 
             return cities;
         }
