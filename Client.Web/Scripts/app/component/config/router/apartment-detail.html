@@ -4,7 +4,7 @@
             <div class="apartment-summary" style="height: 477px;background: #fff;border-radius: 8px;padding: 22px 29px;">
                 <h6 style="color: #b3c4cf;font-size: 12px;font-weight: bold;">{{testData.summary.roomsCount}}-КОМНАТНАЯ КВАРТИРА</h6>
                 <h4 style="margin-top: 15px;">{{testData.summary.address}}</h4>
-                <span style="font-weight: 500;">{{testData.summary.price}} ₽</span>
+                <span style="font-weight: 500;">{{testData.summary.price | currencyFilter : '₽' : ' '}}</span>
                 <span style="font-weight: 500;padding-left: 20px;">{{testData.summary.station}}</span>
             </div>
         </div>
