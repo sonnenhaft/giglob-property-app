@@ -113,8 +113,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-    <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Web.config" />
+    <Content Include="Views\**\*.*" />
+    <Content Include="Scripts\dist\**\*.*" />
+    <Content Include="Content\Images\**\*.*" />
+    <Content Include="Content\Styles\**\*.*" />
     <Content Include=".bowerrc" />
     <Content Include="bower.json" />
     <None Include="Properties\PublishProfiles\TestPackage.pubxml" />
