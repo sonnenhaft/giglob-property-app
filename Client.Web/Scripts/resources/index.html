@@ -8,6 +8,19 @@
     <script src="/lib/vendor/angular/angular.js"></script>
     <script src="/lib/vendor/angular-ui-router/angular-ui-router.min.js"></script>
     <script src="/lib/vendor/angular-foundation/angular-foundation.min.js"></script>
+    <script src="/lib/vendor/angular-yandex-maps/ya-map-2.2.js"></script>
+
+    <script>
+        (function(orig) {
+            angular.modules = [];
+            angular.module = function() {
+                if (arguments.length > 1) {
+                    angular.modules.push(arguments[0]);
+                }
+                return orig.apply(null, arguments);
+            }
+        })(angular.module);
+    </script>
     <!-- endinject -->
 
     <!-- inject:js -->

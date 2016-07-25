@@ -28,12 +28,15 @@ namespace Client.Api.v1
             Mapper.Register<User, UserModel>();
             Mapper.Register<PropertyOfferCreateRequestModel, PropertyOfferCreateContext>();
             Mapper.Register<PropertyOfferCreatePhotoRequestModel, PropertyOfferCreatePhotoContext>();
-            Mapper.Register<PropertyOfferCreateNearMetroStationRequestModel, PropertyOfferCreateNearMetroStationContext>();
 
             Mapper.Register<PropertyOffer, PropertyOfferDataModel>()
                 .Member(x=>x.Lat, y=>y.Location.Latitude)
                 .Member(x=>x.Lon, y=>y.Location.Longitude)
                 .Member(x=>x.Photos, y=>y.LocalPropertyOfferData.Photoes.Select(q=>q.FileId.ToString()));
+
+            Mapper.Register<PropertyNearMetroStation, NearMetroStationModel>()
+                .Member(model => model.Name, station => station.MetroBranchStation.MetroStation.Name)
+                .Member(model => model.HexColor, station => station.MetroBranchStation.MetroBranch != null ? station.MetroBranchStation.MetroBranch.HexColor : null);
         }
     }
 }

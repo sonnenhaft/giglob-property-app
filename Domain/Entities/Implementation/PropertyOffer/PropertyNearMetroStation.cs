@@ -8,12 +8,8 @@ namespace Domain.Entities.Implementation.PropertyOffer
 
         public long PropertyOfferId { get; set; }
 
-        public long MetroStationId { get; set; }
+        public long MetroBranchStationId { get; set; }
 
-        public long? MetroBranchId { get; set; }
-
-        public virtual MetroStation MetroStation { get; set; }
-
-        public virtual MetroBranch MetroBranch { get; set; }
+        public virtual MetroBranchStation MetroBranchStation { get; set; }
     }
 }

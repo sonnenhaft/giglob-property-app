@@ -74,7 +74,7 @@ namespace Domain.Entities.Implementation.PropertyOffer.Queries
 
             if (reqQuery.MetroIds != null && reqQuery.MetroIds.Any())
             {
-                query = query.Where(x => x.LocalPropertyOfferData.NearMetroStations.Any(y=> reqQuery.MetroIds.Contains(y.MetroStationId)));
+                query = query.Where(x => x.LocalPropertyOfferData.NearMetroStations.Any(y=> reqQuery.MetroIds.Contains(y.MetroBranchStationId)));
             }
 
             List<PropertyOffer> offers = query.OrderBy(x => x.CreationDate)

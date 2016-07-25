@@ -50,6 +50,21 @@
             Название
             </summary>
         </member>
+        <member name="P:Client.Api.v1.Models.Models.City.NearMetroStationModel.Id">
+            <summary>
+            Идентификатор, если есть
+            </summary>
+        </member>
+        <member name="P:Client.Api.v1.Models.Models.City.NearMetroStationModel.Name">
+            <summary>
+            Название
+            </summary>
+        </member>
+        <member name="P:Client.Api.v1.Models.Models.City.NearMetroStationModel.HexColor">
+            <summary>
+            Цвет в шестнадцатиричном формате
+            </summary>
+        </member>
         <member name="T:Client.Api.v1.Models.Models.Home.DataModel">
             <summary>
             Модель данных для выгрузки
@@ -58,16 +73,6 @@
         <member name="P:Client.Api.v1.Models.Models.Home.DataModel.Cities">
             <summary>
             Города
-            </summary>
-        </member>
-        <member name="P:Client.Api.v1.Models.Models.PropertyOffer.PropertyOfferCreateNearMetroStationRequestModel.MetroStationId">
-            <summary>
-            Идентификатор станции метро
-            </summary>
-        </member>
-        <member name="P:Client.Api.v1.Models.Models.PropertyOffer.PropertyOfferCreateNearMetroStationRequestModel.MetroBranchId">
-            <summary>
-            Идентификатор ветки метро
             </summary>
         </member>
         <member name="P:Client.Api.v1.Models.Models.PropertyOffer.PropertyOfferCreateRequestModel.CityId">
@@ -258,6 +263,116 @@
         <member name="P:Client.Api.v1.Models.Models.PropertyOffer.PropertyOfferGetAllOffersRequestModel.MetroIds">
             <summary>
             Ид метро
+            </summary>
+        </member>
+        <member name="P:Client.Api.v1.Models.Models.PropertyOffer.PropertyOfferModel.CityId">
+            <summary>
+            Идентификатор города, если есть
+            </summary>
+        </member>
+        <member name="P:Client.Api.v1.Models.Models.PropertyOffer.PropertyOfferModel.CityName">
+            <summary>
+            Название города
+            </summary>
+        </member>
+        <member name="P:Client.Api.v1.Models.Models.PropertyOffer.PropertyOfferModel.Id">
+            <summary>
+            Идентификатор
+            </summary>
+        </member>
+        <member name="P:Client.Api.v1.Models.Models.PropertyOffer.PropertyOfferModel.DistrictId">
+            <summary>
+            Идентификатор района, если есть
+            </summary>
+        </member>
+        <member name="P:Client.Api.v1.Models.Models.PropertyOffer.PropertyOfferModel.DistrictName">
+            <summary>
+            Название района
+            </summary>
+        </member>
+        <member name="P:Client.Api.v1.Models.Models.PropertyOffer.PropertyOfferModel.Cost">
+            <summary>
+            Стоимость
+            </summary>
+        </member>
+        <member name="P:Client.Api.v1.Models.Models.PropertyOffer.PropertyOfferModel.Comment">
+            <summary>
+            Комментарий
+            </summary>
+        </member>
+        <member name="P:Client.Api.v1.Models.Models.PropertyOffer.PropertyOfferModel.CreationDate">
+            <summary>
+            Дата публикации
+            </summary>
+        </member>
+        <member name="P:Client.Api.v1.Models.Models.PropertyOffer.PropertyOfferModel.OfferType">
+            <summary>
+            Тип предложения. Sale = 1, Exchange = 2
+            </summary>
+        </member>
+        <member name="P:Client.Api.v1.Models.Models.PropertyOffer.PropertyOfferModel.Lat">
+            <summary>
+            Широта
+            </summary>
+        </member>
+        <member name="P:Client.Api.v1.Models.Models.PropertyOffer.PropertyOfferModel.Lon">
+            <summary>
+            Долгота
+            </summary>
+        </member>
+        <member name="P:Client.Api.v1.Models.Models.PropertyOffer.PropertyOfferModel.StreetName">
+            <summary>
+            Название улицы
+            </summary>
+        </member>
+        <member name="P:Client.Api.v1.Models.Models.PropertyOffer.PropertyOfferModel.HouseNumber">
+            <summary>
+            Номер дома
+            </summary>
+        </member>
+        <member name="P:Client.Api.v1.Models.Models.PropertyOffer.PropertyOfferModel.Housing">
+            <summary>
+            Корпус дома
+            </summary>
+        </member>
+        <member name="P:Client.Api.v1.Models.Models.PropertyOffer.PropertyOfferModel.ApartmentNumber">
+            <summary>
+            Номер квартиры
+            </summary>
+        </member>
+        <member name="P:Client.Api.v1.Models.Models.PropertyOffer.PropertyOfferModel.Level">
+            <summary>
+            Этаж
+            </summary>
+        </member>
+        <member name="P:Client.Api.v1.Models.Models.PropertyOffer.PropertyOfferModel.AreaSize">
+            <summary>
+            Площадь недвижимости
+            </summary>
+        </member>
+        <member name="P:Client.Api.v1.Models.Models.PropertyOffer.PropertyOfferModel.RoomCount">
+            <summary>
+            Количество комнат
+            </summary>
+        </member>
+        <member name="P:Client.Api.v1.Models.Models.PropertyOffer.PropertyOfferModel.OwnerUploadedDocuments">
+            <summary>
+            Владелец загрузил документы на объект недвижимости
+            </summary>
+        </member>
+        <member name="P:Client.Api.v1.Models.Models.PropertyOffer.PropertyOfferModel.Type">
+            <summary>
+            Тип недвижимости. NewBuilding = 1, Resale = 2
+            </summary>
+        </member>
+        <member name="P:Client.Api.v1.Models.Models.PropertyOffer.PropertyOfferModel.NearMetroStationModel">
+            <summary>
+            Ближайшая станция метро
+            </summary>
+        </member>
+        <member name="P:Client.Api.v1.Models.Models.PropertyOffer.PropertyOfferModel.PhotoUrls">
+            <summary>
+            Ссылки на фотографии объекта недвижимости
             </summary>
         </member>
         <member name="T:Client.Api.v1.Models.Models.User.AuthResultModel">
