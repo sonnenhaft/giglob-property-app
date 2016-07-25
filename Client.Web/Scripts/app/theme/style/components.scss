@@ -1,22 +1,17 @@
-* {
-  box-sizing: border-box;
-}
-html, body {
-  min-height: 100%;
-}
-html, body, .button {
+html, body, .button, h1, h2, h3, h4 {
   font-family: 'Lato', Helvetica, sans-serif !important;
 }
 
 .app-wrapper {
-  max-width: 1440px;
+  width: 1440px;
   margin: 0 auto;
   position: relative;
   background-color: #fff;
   min-height:100%;
+  padding-top: 80px;
 }
 .main-content{
-  padding: 120px 40px 40px 40px;
-  min-height: 100%;
-  background-color: #d3dde2;
+  padding: 40px 40px 40px 40px;
+  background-color: #ecf1f4;
+  position: relative;
 }
