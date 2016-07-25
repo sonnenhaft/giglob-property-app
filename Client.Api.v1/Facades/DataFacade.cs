@@ -28,6 +28,7 @@ namespace Client.Api.v1.Facades
                 Cities = query.Map<IEnumerable<City>, IEnumerable<CityModel>>()
             };
 
+
             return model;
         }
 

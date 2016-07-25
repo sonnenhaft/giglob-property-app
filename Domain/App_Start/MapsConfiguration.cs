@@ -37,14 +37,14 @@ namespace Domain
                       FileId = guid
                   })
                   : null)
-                  .Member(offer => offer.PropertyExchange, context=>context.ExchangeDetails);
+                  .Member(offer => offer.PropertyExchangeDetails, context=>context.ExchangeDetails);
 
             Mapper.Register<PropertyOfferCreatePhotoContext, PropertyPhoto>()
                 .Member(photo => photo.FileId, context => context.Id);
 
             Mapper.Register<PropertyOfferCreateNearMetroStationContext, PropertyNearMetroStation>();
 
-            Mapper.Register<PropertyOfferExchangeContext, PropertyExchange>();
+            Mapper.Register<PropertyOfferExchangeContext, PropertyExchangeDetails>();
         }
     }
 }

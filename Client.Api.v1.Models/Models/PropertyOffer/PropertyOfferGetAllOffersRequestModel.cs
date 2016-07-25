@@ -1,16 +1,24 @@
-﻿namespace Client.Api.v1.Models.Models.PropertyOffer
+﻿using System;
+using System.Collections.Generic;
+
+namespace Client.Api.v1.Models.Models.PropertyOffer
 {
-    public class PropertyOfferGetOffersRequestModel
+    public class PropertyOfferGetAllOffersRequestModel
     {
         /// <summary>
         /// Ид города
         /// </summary>
-        public long Id { get; set; }
+        public long CityId { get; set; }
 
         /// <summary>
         /// Номер страницы
         /// </summary>
         public int Page { get; set; }
+
+        /// <summary>
+        /// Кол-во записей для получения
+        /// </summary>
+        public int Take { get; set; }
 
         /// <summary>
         /// Стоимость От
@@ -30,6 +38,6 @@
         /// <summary>
         /// Ид метро
         /// </summary>
-        public long?[] MetroIds { get; set; }
+        public IEnumerable<long> MetroIds { get; set; }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace Domain.Entities.Implementation.PropertyOffer
 {
-    public class PropertyExchange
+    public class PropertyExchangeDetails
     {
         public long Id { get; set; }
 
@@ -12,7 +12,7 @@
         /// <summary>
         /// Идентификатор района
         /// </summary>
-        public long DistrictId { get; set; }
+        public long? DistrictId { get; set; }
 
         /// <summary>
         /// Количество комнат

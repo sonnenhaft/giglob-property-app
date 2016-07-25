@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using CQRS;
 using Domain.Repositories;
@@ -7,10 +8,19 @@ namespace Domain.Entities.Implementation.PropertyOffer.Queries
 {
     public class Offer_GetAllQuery : IQuery
     {
+        /// <summary>
+        /// Ид города
+        /// </summary>
         public long CityId { get; set; }
 
-        public int Take { get { return 300; } }
+        /// <summary>
+        /// Кол-во записей для получения
+        /// </summary>
+        public int Take { get; set; }
 
+        /// <summary>
+        /// Номер страницы 
+        /// </summary>
         public int Page { get; set; }
 
         /// <summary>
@@ -31,7 +41,7 @@ namespace Domain.Entities.Implementation.PropertyOffer.Queries
         /// <summary>
         /// Ид метро
         /// </summary>
-        public long?[] MetroIds { get; set; }
+        public IEnumerable<long> MetroIds { get; set; }
     }
 
     public class Offer_GetAllQueryHandler : IQueryHandler<Offer_GetAllQuery, IEnumerable<PropertyOffer>>
@@ -62,7 +72,7 @@ namespace Domain.Entities.Implementation.PropertyOffer.Queries
                 query = query.Where(x => x.RoomCount == reqQuery.RoomCount.Value);
             }
 
-            if (reqQuery.MetroIds != null)
+            if (reqQuery.MetroIds != null && reqQuery.MetroIds.Any())
             {
                 query = query.Where(x => x.LocalPropertyOfferData.NearMetroStations.Any(y=> reqQuery.MetroIds.Contains(y.MetroStationId)));
             }

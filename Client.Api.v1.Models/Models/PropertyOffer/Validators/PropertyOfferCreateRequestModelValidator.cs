@@ -96,10 +96,6 @@ namespace Client.Api.v1.Models.Models.PropertyOffer.Validators
                 model.Documents
                 ));
 
-            #region PropertyOfferExchangeDetails        
-
-            //-----------------------------------------------------------------------
-
             When(x => x.OfferType == OfferType.Exchange && x.ExchangeDetails == null, () =>
             {
                 RuleFor(model => model.ExchangeDetails).NotNull()
@@ -128,10 +124,6 @@ namespace Client.Api.v1.Models.Models.PropertyOffer.Validators
                      model.CityId,
                      model.DistrictId));
               });
-
-            //-----------------------------------------------------------------------
-
-            #endregion PropertyOfferExchangeDetails
         }
 
         public ValidationFailure ValidateCityIdDistrictIdAndMetroStations(
