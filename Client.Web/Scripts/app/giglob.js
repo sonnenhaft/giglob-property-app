@@ -1,4 +1,4 @@
-angular.module('giglob-app', [
+﻿angular.module('giglob-app', [
     'yaMap',
     'api.resource',
     'LocalStorageModule',
@@ -14,7 +14,8 @@ angular.module('giglob-app', [
     'component.login',
     'component.flat-filter',
     'component.multiselect-dropdown-g',
-    'component.tab-section'
+    'component.tab-section',
+    'passToText'
 ]).directive('giglob', function(localStorageService) {
     return {
         templateUrl: 'app/giglob.html',

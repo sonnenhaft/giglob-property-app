@@ -94,6 +94,7 @@
                     <label>Пароль</label>
                     <div class="form-group" ng-class="{'has-error' : RegForm.password.$invalid && RegForm.password.$touched}">
                         <input ng-model="reg.password"
+                        <input ng-model="password"
                                type="password"
                                pass-to-text="{{showpassword}}"
                                placeholder="Придумайте пароль"
@@ -125,7 +126,6 @@
                         из письма, которое мы только что отправили
                         на указанную вами электронную почту
                     </div>
-                </div>
             </div>
         </div>
     </div>
