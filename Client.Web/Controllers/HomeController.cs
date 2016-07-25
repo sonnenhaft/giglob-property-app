@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Configuration;
+using System.Web.Mvc;
 
 namespace Client.Web.Controllers
 {
@@ -6,7 +7,9 @@ namespace Client.Web.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            var url = ConfigurationManager.AppSettings["ApiUrl"];
+
+            return View(model: url);
         }
     }
 }
