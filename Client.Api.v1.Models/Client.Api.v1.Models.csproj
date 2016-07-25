@@ -32,6 +32,14 @@
     <DocumentationFile>App_Data\Client.Api.v1.Models.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FluentValidation, Version=6.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentValidation.6.2.1.0\lib\Net45\FluentValidation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SimpleInjector, Version=3.2.0.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <HintPath>..\packages\SimpleInjector.3.2.0\lib\net45\SimpleInjector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -42,10 +50,41 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\City\AutocompleteStationsModel.cs" />
     <Compile Include="Models\City\CityModel.cs" />
     <Compile Include="Models\City\DistrictModel.cs" />
+    <Compile Include="Models\City\MetroBranchModel.cs" />
+    <Compile Include="Models\City\NearMetroStationModel.cs" />
+    <Compile Include="Models\Common\IdentifyModel.cs" />
+    <Compile Include="Models\Common\ResponseExamples\SuccessResponseExample.cs" />
+    <Compile Include="Models\File\UploadingFile.cs" />
+    <Compile Include="Models\File\FileUploadResultModel.cs" />
+    <Compile Include="Models\File\ResponseExamples\FileUploadResponseExample.cs" />
     <Compile Include="Models\Home\DataModel.cs" />
     <Compile Include="Models\Home\ResponseExamples\DataModelResponseExample.cs" />
+    <Compile Include="Models\Home\ResponseExamples\StationModelResponseExample.cs" />
+    <Compile Include="Models\PropertyOffer\Examples\PropertyOfferGetResponseExample.cs" />
+    <Compile Include="Models\PropertyOffer\PropertyOfferCreateRequestModel.cs" />
+    <Compile Include="Models\PropertyOffer\PropertyOfferCreatePhotoRequestModel.cs" />
+    <Compile Include="Constants\RegexConstants.cs" />
+    <Compile Include="Extensions\ContainerExtensions.cs" />
+    <Compile Include="Models\Common\ResponseExamples\BadRequestResponseExampleProvider.cs" />
+    <Compile Include="Models\PropertyOffer\PropertyOfferDataModel.cs" />
+    <Compile Include="Models\PropertyOffer\PropertyOfferExchangeDetailsModel.cs" />
+    <Compile Include="Models\PropertyOffer\PropertyOfferGetAllOffersRequestModel.cs" />
+    <Compile Include="Models\PropertyOffer\ResponseExamples\OffersModelResponseExample.cs" />
+    <Compile Include="Models\PropertyOffer\PropertyOfferModel.cs" />
+    <Compile Include="Models\PropertyOffer\Validators\PropertyOfferCreateRequestModelValidator.cs" />
+    <Compile Include="Models\User\AuthResultModel.cs" />
+    <Compile Include="Models\User\Mail\UserConfirmationMailModel.cs" />
+    <Compile Include="Models\User\ResponseExamples\AuthResultModelResponseExample.cs" />
+    <Compile Include="Models\User\UserConfiirmEmailRequestModel.cs" />
+    <Compile Include="Models\User\UserModel.cs" />
+    <Compile Include="Models\User\UserRegisterRequestModel.cs" />
+    <Compile Include="Models\User\UserSignInRequestModel.cs" />
+    <Compile Include="Models\User\Validators\UserConfirmEmailRequestModelValidator.cs" />
+    <Compile Include="Models\User\Validators\UserSignInRequestModelValidator.cs" />
+    <Compile Include="Models\User\Validators\UserRegisterRequestModelValidator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -54,6 +93,14 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CQRS\CQRS.csproj">
+      <Project>{B412E005-BF9B-49BB-8DDE-6939A2456382}</Project>
+      <Name>CQRS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Domain\Domain.csproj">
+      <Project>{13607ee9-8b76-4fe3-bcf2-0c09eef929bb}</Project>
+      <Name>Domain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SwaggerResponseExampleModule\SwaggerResponseExampleModule.csproj">
       <Project>{9084f7b6-ae3a-4ef4-9414-bf1228916974}</Project>
       <Name>SwaggerResponseExampleModule</Name>
@@ -61,7 +108,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -1,5 +1,6 @@
 ﻿using System.Data.Entity;
-using Domain.Entities.Implementation.City;
+using System.Linq;
+using Domain.Entities;
 using Domain.Persistence.EntityFramework.Repositories.Implementation;
 using Domain.Persistence.EntityFramework.UnitOfWork.Implementation;
 using Domain.Repositories;
@@ -17,6 +18,11 @@ namespace Domain.Persistence.EntityFramework.Extensions
 
             container.Register(typeof(IRepository<,>), typeof(EntityFrameworkRepository<,>));
             container.Register(typeof(ICityRepository), typeof(CityRepository));
+            container.Register(typeof(IPropertyOfferRepository), typeof(PropertyOfferRepository));
+            container.Register(typeof(IFileRepository), typeof(FileRepository));
+            container.Register<IUserRepository, UserRepository>(Lifestyle.Transient);
+
+            container.RegisterDecorator(typeof(IRepository<,>), typeof(DeletableEntityFrameworkRepository<,>), Lifestyle.Transient, context => context.ServiceType.GetGenericArguments().First().GetInterfaces().Contains(typeof(IDeletableEntity)));
         }
     }
 }
