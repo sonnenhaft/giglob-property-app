@@ -1,7 +1,7 @@
 <div class="row">
     <div class="medium-4 columns">
         <div class="bg-image"></div>
-        <div class="login-info">
+        <div class="login-info" ng-if="activePage === 'login'">
             <h2>Вход в личный профиль</h2>
             <div class="white-text">Личный аккаунт на сервисе Giglob позволяет вам:</div>
             <ul>
@@ -9,23 +9,105 @@
                 <li>Участвовать в сделках как покупатель и как продавец</li>
                 <li>Не беспокоиться о достоверности информации о недвижимости и пользователях</li>
             </ul>
-            <div class="registration-link">Нет аккаунта? <a>Зарегистрируйтесь</a></div>
+            <div class="registration-link">Нет аккаунта? <a ng-click="SetActivePage('registration');">Зарегистрируйтесь</a></div>
+        </div>
+        <div class="registration-info" ng-if="activePage === 'registration'">
+            <h2>Регистрация профиля</h2>
+            <div class="white-text">Личный аккаунт на сервисе Giglob позволяет вам:</div>
+            <ul>
+                <li>Создавать объявления о продаже или обмене недвижимости</li>
+                <li>Участвовать в сделках как покупатель и как продавец</li>
+                <li>Не беспокоиться о достоверности информации о недвижимости и пользователях</li>
+            </ul>
+            <div class="registration-link">Уже есть аккаунт? <a ng-click="SetActivePage('login')">Войдите</a></div>
         </div>
     </div>
     <div class="medium-8 columns">
         <div class="forms">
-            <div class="forms-header">Войти на сайт</div>
-            <form>
-                <div class="form-group">
+            <div ng-if="activePage === 'login'">
+                <div class="forms-header">Войти на сайт</div>
+                <form name="loginForm" novalidate >
                     <label>Электронная почта</label>
-                    <input type="text" placeholder="Ваша почта" name="email" class="form-control"/>
-                </div>
-                <div class="form-group">
+                    <div class="form-group" ng-class="{'has-error' : loginForm.email.$invalid && loginForm.email.$touched}">
+                        <input ng-model='email'
+                               type="text"
+                               ng-pattern="EMAIL_REGEX"
+                               placeholder="Ваша почта"
+                               name="email"
+                               class="form-control"
+                               required/>
+                        <div class="help-block"
+                             ng-show="loginForm.email.$invalid && loginForm.email.$touched">
+                            Проверьте правильность ввода
+                        </div>
+                    </div>
                     <label>Пароль</label>
-                    <input type="password" placeholder="Ваш пароль" name="password" class="form-control"/>
-                </div>
-            </form>
-            <button type="submit" class="button btn-success">Вход</button>
+                    <div class="form-group" ng-class="{'has-error' : loginForm.password.$invalid && loginForm.password.$touched}">
+                        <input ng-model="password"
+                               type="password"
+                               pass-to-text="{{showpassword}}"
+                               placeholder="Ваш пароль"
+                               name="password"
+                               minlength="6"
+                               class="form-control"
+                               required/>
+                        <i class="icon"
+                           ng-click="showpassword = !showpassword"
+                           ng-class="{'icon-eye': !showpassword,'icon-eye-close': showpassword}"></i>
+                        <div class="help-block"
+                             ng-show="loginForm.password.$error.required && loginForm.password.$touched">
+                            Проверьте правильность ввода
+                        </div>
+                        <div class="help-block"
+                             ng-show="loginForm.password.$error.minlength && loginForm.password.$touched">
+                            Пароль должен быть больше 6 символов
+                        </div>
+                    </div>
+                </form>
+                <button type="submit" class="button btn-success">Вход</button>
+            </div>
+            <div ng-if="activePage==='registration'">
+                <div class="forms-header"> Регистрация через почту</div>
+                <form name="RegForm" novalidate>
+                    <label>Электронная почта</label>
+                    <div class="form-group" ng-class="{'has-error' : RegForm.email.$invalid && RegForm.email.$touched}">
+                        <input ng-model='email'
+                               type="text"
+                               ng-pattern="EMAIL_REGEX"
+                               placeholder="Ваша почта"
+                               name="email"
+                               class="form-control"
+                               required/>
+                        <div class="help-block"
+                             ng-show="RegForm.email.$invalid && RegForm.email.$touched">
+                            Проверьте правильность ввода
+                        </div>
+                    </div>
+                    <label>Пароль</label>
+                    <div class="form-group" ng-class="{'has-error' : RegForm.password.$invalid && RegForm.password.$touched}">
+                        <input ng-model="password"
+                               type="password"
+                               pass-to-text="{{showpassword}}"
+                               placeholder="Придумайте пароль"
+                               name="password"
+                               minlength="6"
+                               class="form-control"
+                               required/>
+                        <i class="icon"
+                           ng-click="showpassword = !showpassword"
+                           ng-class="{'icon-eye': !showpassword,'icon-eye-close': showpassword}"></i>
+                        <div class="help-block"
+                             ng-show="loginForm.password.$error.required && loginForm.password.$touched">
+                            Проверьте правильность ввода
+                        </div>
+                        <div class="help-block"
+                             ng-show="loginForm.password.$error.minlength && loginForm.password.$touched">
+                            Пароль должен быть больше 6 символов
+                        </div>
+                    </div>
+                </form>
+                <button type="submit" class="button btn-success">Зарегистрироваться</button>
+            </div>
         </div>
     </div>
 </div>

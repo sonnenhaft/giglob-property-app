@@ -1,8 +1,9 @@
-angular.module('passToText',[]).directive('passToText', [function () {
+angular.module('passToText',[]).directive('passToText', function () {
     return {
         restrict: 'A',
         link: function (scope, element, attrs, ngModelCtrl) {
-            attrs.$observe('passwToText', function (val) {
+            attrs.$observe('passToText', function (val) {
+                console.log(val);
                 if (val == 'true') {
                     element.attr('type', 'text');
                 }
@@ -12,4 +13,4 @@ angular.module('passToText',[]).directive('passToText', [function () {
             });
         }
     }
-}]);
+});

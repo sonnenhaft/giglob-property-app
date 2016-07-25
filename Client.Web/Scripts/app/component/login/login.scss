@@ -1,0 +1,87 @@
+.entry-point{
+  width: 910px;
+  padding: 0;
+  outline: none !important;
+  background-color: #ecf1f4;
+  .columns{
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .medium-4{
+    .bg-image{
+     position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      background: url('/app/theme/img/login-background.png') no-repeat center center;
+      background-size: cover;
+      z-index: -1;
+    }
+  }
+  h2{
+    font-family: 'Lato';
+    color: #fff;
+    font-weight: 200;
+    font-size: 34px;
+    margin-bottom: 40px;
+  }
+  .white-text{
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 15px;
+  }
+  ul{
+    list-style-position: outside;
+    margin-left: 0;
+    margin-bottom: 90px;
+    li{
+      font-size: 14px;
+      font-weight: 200;
+      margin-bottom: 15px;
+    }
+  }
+  .registration-link{
+    font-size: 14px;
+    font-weight: 200;
+    a{
+      color: #fff;
+      text-decoration: underline;
+    }
+  }
+  .login-info{
+    opacity:0.9;
+    color: #fff;
+    background-color: #09c77b;
+    padding: 40px 35px 30px 35px;
+  }
+  .registration-info{
+    @extend .login-info;
+    background-color: #09c77b;
+    background-color: rgba(74, 124, 168, 0.9);
+  }
+
+  .forms{
+    height: 100%;
+    padding: 90px 40px 0 40px;
+    position:relative;
+    .forms-header{
+      color:#000;
+      font-size:18px;
+      font-weight:bold;
+      margin-bottom:25px;
+    }
+    form{
+      height: 340px;
+      label{
+        font-size: 15px;
+        color: #818e96;
+        font-weight:500;
+        margin-bottom: 10px;
+      }
+      .form-group{
+        margin-bottom:30px;
+      }
+    }
+  }
+}
