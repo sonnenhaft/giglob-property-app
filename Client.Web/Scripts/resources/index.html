@@ -13,6 +13,7 @@
 
     <script>
         (function(orig) {
+            angular.module('templates', []);
             angular.modules = [];
             angular.module = function() {
                 if (arguments.length > 1) {

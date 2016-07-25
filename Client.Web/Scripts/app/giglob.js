@@ -2,6 +2,7 @@ angular.module('giglob-app',[
     'yaMap',
     'LocalStorageModule',
     'mm.foundation',
+    'templates',
     'component.config.router',
     'component.config.filters',
     "component.gheader",
@@ -9,7 +10,7 @@ angular.module('giglob-app',[
     'component.carousel'
 ]).directive('giglob', function() {
     return {
-        templateUrl: '/app/giglob.html',
+        templateUrl: 'app/giglob.html',
         controller: function($scope) {},
         link: function($scope) {}
     };
