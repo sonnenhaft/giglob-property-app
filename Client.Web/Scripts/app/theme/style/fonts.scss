@@ -1,9 +1,9 @@
 @import 'mixins.scss';
 
-@include font-face("Lato", "../../Fonts/Lato/Lato-Thin", 100, $exts: ttf);
-@include font-face("Lato", "../../Fonts/Lato/Lato-Light", 200, $exts: ttf);
-@include font-face("Lato", "../../Fonts/Lato/Lato-Regular", normal, $exts: ttf);
-@include font-face("Lato", "../../Fonts/Lato/Lato-Medium", 500, $exts: ttf);
-@include font-face("Lato", "../../Fonts/Lato/Lato-Semibold", 600, $exts: ttf);
-@include font-face("Lato", "../../Fonts/Lato/Lato-Heavy", 700, $exts: ttf);
-@include font-face("Lato", "../../Fonts/Lato/Lato-Bold", bold, $exts: ttf);
+@include font-face("Lato", "../../../Content/Images/Fonts/Lato/Lato-Thin", 100, $exts: ttf);
+@include font-face("Lato", "../../../Content/Images/Fonts/Lato/Lato-Light", 200, $exts: ttf);
+@include font-face("Lato", "../../../Content/Images/Fonts/Lato/Lato-Regular", normal, $exts: ttf);
+@include font-face("Lato", "../../../Content/Images/Fonts/Lato/Lato-Medium", 500, $exts: ttf);
+@include font-face("Lato", "../../../Content/Images/Fonts/Lato/Lato-Semibold", 600, $exts: ttf);
+@include font-face("Lato", "../../../Content/Images/Fonts/Lato/Lato-Heavy", 700, $exts: ttf);
+@include font-face("Lato", "../../../Content/Images/Fonts/Lato/Lato-Bold", bold, $exts: ttf);

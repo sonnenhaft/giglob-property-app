@@ -1,0 +1,26 @@
+<div class="bg-image">
+    <img src="../Content/Images/ng-image.png">
+</div>
+<div ng-if="!autocomplete" class="no-autocomplete">
+    <h1 class="modal-header">Ваш город Москва?</h1>
+    <div class="popup-button-wrapper clearfix">
+        <button type="button" class="button round alert" ng-click="ok()">Да, все верно</button>
+        <div class="choose" ng-click="changeCity()">Нет, другой</div>
+    </div>
+</div>
+<div ng-if="autocomplete" class="autocomplete">
+    <h2 class="modal-header" ng-hide="city || city.$touched">Укажите ваш город</h2>
+    <form name="myForm" novalidate>
+    <input ng-model="city"
+           required
+           type="text"
+           name="city"
+           class="form-control"
+           placeholder="Начните ввод"
+           typeahead="city as city.name for city in (cities.list = chooseCity($viewValue)) | filter:{name : $viewValue} | limitTo:3"
+           typeahead-on-select="selected(city.name)">
+    </form>
+    <div class='white-text' ng-show="myForm.city.$error.required">В настоящий момент сервис работает только в Москве и области</div>
+    <div class="white-text" ng-show="!cities.list.length && !myForm.city.$error.required" >Такого города нет в Московской области</div>
+</div>
+

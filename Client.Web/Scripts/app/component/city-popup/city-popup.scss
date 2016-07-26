@@ -1,0 +1,120 @@
+.choose-city {
+  width: 500px;
+  height: 330px;
+  top: 50% !important;
+  margin-top: -165px;
+  background-color: rgba(8, 199, 123, 0.9);
+  border: 0;
+  outline: none !important;
+  .bg-image {
+    opacity: 0.1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .no-autocomplete {
+    display: table;
+    margin: 60px auto 0 auto;
+    .popup-button-wrapper {
+      padding: 0 20px;
+      button {
+        float: left;
+      }
+    }
+    .modal-header {
+      font-size: 34px;
+      line-height: 36px;
+      color: #fff;
+      margin-bottom: 55px;
+    }
+    .choose {
+      display: inline-block;
+      float: right;
+      padding-top: 6px;
+      color: #fff;
+      cursor: pointer;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  .autocomplete {
+    padding-right: 100px;
+    .white-text {
+      font-size: 14px;
+      color: #fff;
+    }
+    .modal-header {
+      margin-top: 85px;
+      font-size: 14px;
+      text-transform: uppercase;
+      color: #fff;
+      margin-bottom: 50px;
+    }
+    .form-control {
+      line-height: 36px;
+      font-size: 25px;
+      background-color: transparent;
+      border: none;
+      outline: none !important;
+      box-shadow: none;
+      border-bottom: solid 1px rgba(255, 255, 255, 0.54);
+      color: #ffffff;
+      padding-left: 0;
+    }
+    ::-webkit-input-placeholder {
+      color: #ffffff;
+      opacity: 0.65;
+    }
+    :-moz-placeholder { /* Firefox 18- */
+      color: #ffffff;
+      opacity: 0.65;
+    }
+    ::-moz-placeholder {  /* Firefox 19+ */
+      color: #ffffff;
+      opacity: 0.65;
+    }
+    :-ms-input-placeholder {
+      color: #ffffff;
+      opacity: 0.65;
+    }
+    .f-dropdown {
+      background: transparent;
+      border: none;
+      top: 67px !important;
+      li{
+        font-size: 25px;
+        margin-top: 20px;
+        a{
+          color: #fff;
+          outline: none !important;
+          padding-left: 0;
+          strong{
+            font-weight: normal;
+          }
+        }
+        &:hover {
+          background: transparent;
+        }
+        &.active {
+          opacity: 1 !important;
+        }
+      }
+      &:before, &:after{
+        display: none;
+      }
+      &:hover {
+        li {
+          opacity: 0.65;
+        }
+      }
+    }
+  }
+}
