@@ -34,14 +34,11 @@ angular.module('component.city-popup', ['mm.foundation.modal', 'LocalStorageModu
     };
 
     $scope.chooseCity = function(name) {
-        var arr = [];
-        $scope.cities.find(function(el) {
-            if(el.name.indexOf(name) !== -1){
-                arr.push(el);
-            }
+        var regex = new RegExp('^' + name, 'i');
+
+        return $scope.cities.filter(function(city) {
+            return regex.test(city.name);
         });
-        console.log(arr);
-        return arr;
     };
 
     $scope.ok = function() {

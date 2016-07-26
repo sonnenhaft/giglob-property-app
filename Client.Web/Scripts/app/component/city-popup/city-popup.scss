@@ -33,7 +33,7 @@
       }
     }
   }
-  .autocomplete{
+  .autocomplete {
     padding-right:100px;
     .white-text{
       font-size:14px;
@@ -45,6 +45,9 @@
       text-transform: uppercase;
       color:#fff;
       margin-bottom:50px;
+    }
+    .city-form {
+      position: relative;
     }
     .form-control{
       line-height:36px;
@@ -73,10 +76,11 @@
       color: #ffffff;
       opacity:0.65;
     }
-    .f-dropdown{
+    .f-dropdown {
       background: transparent;
-      border:none;
-      top:67px !important;
+      border: none;
+      top: 55px !important;
+      max-width: none;
       li{
         font-size:25px;
         margin-top:20px;
