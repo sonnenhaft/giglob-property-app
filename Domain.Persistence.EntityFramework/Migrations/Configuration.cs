@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Text;
 using Domain.Entities.Implementation.City;
 
 namespace Domain.Persistence.EntityFramework.Migrations
@@ -42,13 +43,24 @@ namespace Domain.Persistence.EntityFramework.Migrations
 
             if (binDirectory != null)
             {
-                context.Database.ExecuteSqlCommand(File.ReadAllText(binDirectory + @"\SQL\cities.sql"));
-            	context.Database.ExecuteSqlCommand(File.ReadAllText(binDirectory + @"\SQL\districts.sql"));
-            	context.Database.ExecuteSqlCommand(File.ReadAllText(binDirectory + @"\SQL\metrobranches.sql"));
+                
+                context.Database.ExecuteSqlCommand(ReadFile(binDirectory + @"\SQL\cities.sql"));
+            	context.Database.ExecuteSqlCommand(ReadFile(binDirectory + @"\SQL\districts.sql"));
+            	context.Database.ExecuteSqlCommand(ReadFile(binDirectory + @"\SQL\metrobranches.sql"));
             }
 
             base.Seed(context);
         }
 
+        private string ReadFile(string filename)
+        {
+            using (var fstream = File.Open(filename, FileMode.Open))
+            {
+                var bytes = new byte[fstream.Length];
+                fstream.Read(bytes, 0, bytes.Length);
+
+                return Encoding.UTF8.GetString(bytes);
+            }
+        }
     }
 }
