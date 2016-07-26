@@ -37,25 +37,25 @@ angular.module('component.config.router', ['ui.router']).config(function($stateP
                     },
                     coords: [37.715175, 55.833436],
                     images: [{
-                        src: 'app/component/carousel/example/images/1.jpeg'
+                        src: '../content/images/flat/1.jpeg'
                     }, {
-                        src: 'app/component/carousel/example/images/2.jpeg'
+                        src: '../content/images/flat/2.jpeg'
                     }, {
-                        src: 'app/component/carousel/example/images/3.jpeg'
+                        src: '../content/images/flat/3.jpeg'
                     }, {
-                        src: 'app/component/carousel/example/images/4.jpeg'
+                        src: '../content/images/flat/4.jpeg'
                     }, {
-                        src: 'app/component/carousel/example/images/5.jpeg'
+                        src: '../content/images/flat/1.jpeg'
                     }, {
-                        src: 'app/component/carousel/example/images/5.jpeg'
+                        src: '../content/images/flat/2.jpeg'
                     }, {
-                        src: 'app/component/carousel/example/images/5.jpeg'
+                        src: '../content/images/flat/3.jpeg'
                     }, {
-                        src: 'app/component/carousel/example/images/5.jpeg'
+                        src: '../content/images/flat/4.jpeg'
                     }, {
-                        src: 'app/component/carousel/example/images/5.jpeg'
+                        src: '../content/images/flat/5.jpeg'
                     }, {
-                        src: 'app/component/carousel/example/images/5.jpeg'
+                        src: '../content/images/flat/5.jpeg'
                     }]
                 }
             }
@@ -89,25 +89,25 @@ angular.module('component.config.router', ['ui.router']).config(function($stateP
                         }
                     },
                     images: [{
-                        src: 'app/component/carousel/example/images/1.jpeg'
+                        src: '../content/images/flat/1.jpeg'
                     }, {
-                        src: 'app/component/carousel/example/images/2.jpeg'
+                        src: '../content/images/flat/2.jpeg'
                     }, {
-                        src: 'app/component/carousel/example/images/3.jpeg'
+                        src: '../content/images/flat/3.jpeg'
                     }, {
-                        src: 'app/component/carousel/example/images/4.jpeg'
+                        src: '../content/images/flat/4.jpeg'
                     }, {
-                        src: 'app/component/carousel/example/images/5.jpeg'
+                        src: '../content/images/flat/5.jpeg'
                     }, {
-                        src: 'app/component/carousel/example/images/5.jpeg'
+                        src: '../content/images/flat/1.jpeg'
                     }, {
-                        src: 'app/component/carousel/example/images/5.jpeg'
+                        src: '../content/images/flat/2.jpeg'
                     }, {
-                        src: 'app/component/carousel/example/images/5.jpeg'
+                        src: '../content/images/flat/3.jpeg'
                     }, {
-                        src: 'app/component/carousel/example/images/5.jpeg'
+                        src: '../content/images/flat/4.jpeg'
                     }, {
-                        src: 'app/component/carousel/example/images/5.jpeg'
+                        src: '../content/images/flat/5.jpeg'
                     }]
                 }
             }

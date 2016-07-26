@@ -6,7 +6,7 @@ var src = {
     css: 'app/**/*.css',
     buildCss: ['lib/**/*.css', 'app/**/*.css'],
     html: ['app/**/*.html', '!app/**/example/*.html'],
-    img: ['Content/**/*.svg', 'Content/**/*.png']
+    img: ['Content/Images/**/*.svg', 'Content/Images/**/*.png', 'Content/Images/**/*.jpeg', 'Content/Images/**/*.jpg']
 };
 
 //LINT: RUN BEFORE PUSH
@@ -175,7 +175,7 @@ gulp.task('move:img', function() {
     var rename = require('gulp-rename');
 
     return gulp.src(src.img)
-        .pipe(rename({dirname: ''}))
+        //.pipe(rename({dirname: ''}))
         .pipe(gulp.dest('../Content/Images/'));
 });
 
