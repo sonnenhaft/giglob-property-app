@@ -1,6 +1,15 @@
 <div class="multiselect-dropdown">
-    <input type="text" class="dropdown-filter" ng-model="dropdownFilter" ng-click="showList = !showList"/>
+    <input type="text" class="dropdown-filter" ng-model="dropdownFilter" ng-click="showList = !showList" placeholder="{{selectedItems.length ? (selectedItems.length + ' станции') : 'Любое'}}"/>
     <ul class="dropdown-list" ng-show="showList">
-        <li class="list-item" ng-repeat="item in items" ng-click="selectItem(item)">{{item}}</li>
+        <li class="list-item" ng-repeat="item in items track by $index" ng-click="selectItem(item)">
+            <span class="mid-dot" ng-style="{color: item.color}">&middot</span>
+            {{item.name}}
+        </li>
+    </ul>
+    <ul class="dropdown-selected-list">
+        <li class="list-item" ng-repeat="item in selectedItems track by $index" ng-click="selectItem(item)">
+            <span class="mid-dot" ng-style="{color: item.color}">&middot</span>
+            {{item.name}}
+        </li>
     </ul>
 </div>
