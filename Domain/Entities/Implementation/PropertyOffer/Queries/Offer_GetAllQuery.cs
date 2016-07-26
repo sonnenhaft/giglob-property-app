@@ -19,9 +19,9 @@ namespace Domain.Entities.Implementation.PropertyOffer.Queries
         public int Take { get; set; }
 
         /// <summary>
-        /// Номер страницы 
+        /// Кол-во эл-в для пропуска
         /// </summary>
-        public int Page { get; set; }
+        public int Skip { get; set; }
 
         /// <summary>
         /// Стоимость От
@@ -78,7 +78,7 @@ namespace Domain.Entities.Implementation.PropertyOffer.Queries
             }
 
             List<PropertyOffer> offers = query.OrderBy(x => x.CreationDate)
-                .Skip(reqQuery.Take * (reqQuery.Page - 1))
+                .Skip(reqQuery.Skip)
                 .Take(reqQuery.Take).ToList();
 
             return offers;
