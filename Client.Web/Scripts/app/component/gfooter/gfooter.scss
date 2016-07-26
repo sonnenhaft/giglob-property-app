@@ -1,0 +1,30 @@
+$line: 40px;
+.gfooter {
+  background: #464646;
+  height: 150px;
+  padding: 45px 40px;
+  cursor: default;
+  .logo-section-wrapper {
+    float: left;
+    margin-top: 15px;
+    .logo-white-wrapper {
+      margin-right: 20px;
+      .logo-white {
+        width: 70px;
+      }
+    }
+  }
+
+  .logo-text {
+    font-size: 14px;
+    font-weight: 400;
+    color: #aeaeae;
+    user-select: none;
+  }
+  .is-logo-wrapper {
+    float: right;
+    .is-logo {
+      width: 90px;
+    }
+  }
+}

@@ -3,7 +3,7 @@ angular.module('component.gheader', []).directive('gheader', function() {
         restrict: 'E',
         templateUrl: 'app/component/gheader/gheader.html',
         scope: true,
-        link: function($scope) {
+        link: function($scope,$modal) {
             $scope.header = 'Hello ';
         }
     };

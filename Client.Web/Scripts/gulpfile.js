@@ -4,8 +4,9 @@ var src = {
     js: 'app/**/*.js',
     scss: 'app/**/*.scss',
     css: 'app/**/*.css',
-    html: 'app/**!(example)/*.html',
-    img: 'app/**/*.svg'
+    buildCss: ['lib/**/*.css', 'app/**/*.css'],
+    html: ['app/**/*.html', '!app/**/example/*.html'],
+    img: ['Content/Images/**/*.svg', 'Content/Images/**/*.png', 'Content/Images/**/*.jpeg', 'Content/Images/**/*.jpg', 'Content/Images/**/*.ttf']
 };
 
 //LINT: RUN BEFORE PUSH
@@ -71,10 +72,17 @@ gulp.task('_serve', function () {
 
 gulp.task('_serve:build', function () {
     var inject = require('gulp-inject');
+    var rename = require('gulp-rename');
 
     return gulp.src('resources/index.html')
-        .pipe(inject(gulp.src(['dist/app.js', 'dist/app.css'], {read: false}), {addPrefix: 'Scripts', name: 'build', addRootSlash: false }))
-        .pipe(gulp.dest('../'));
+        .pipe(inject(gulp.src('dist/app.js', {read: false}), {addPrefix: '../Scripts', name: 'build', addRootSlash: false }))
+        .pipe(inject(gulp.src( '../Content/styles/app.css', {read: false}), {name: 'build', addRootSlash: false}))
+        .pipe(inject(gulp.src( '../Content/styles/app.css', {read: false}), {name: 'model', //inject @model string
+            transform: function() {
+                return '@model string';
+            }}))
+        .pipe(rename({extname: '.cshtml'}))
+        .pipe(gulp.dest('../Views/'));
 });
 
 
@@ -122,9 +130,9 @@ gulp.task('concat', function() {
 });
 gulp.task('concat:css', function () {
     var concatCss = require('gulp-concat-css');
-    return gulp.src(src.css)
+    return gulp.src(src.buildCss)
         .pipe(concatCss('app.css'))
-        .pipe(gulp.dest('./dist'));
+        .pipe(gulp.dest('../Content/styles'));
 });
 gulp.task('process:templates', function() {
     var ngHtml2Js = require("gulp-ng-html2js");
@@ -142,9 +150,9 @@ gulp.task('process:templates', function() {
 gulp.task('minify:css', function() {
     var cleanCSS = require('gulp-clean-css');
 
-    return gulp.src('dist/app.css')
+    return gulp.src('../Content/styles/app.css')
         .pipe(cleanCSS())
-        .pipe(gulp.dest('dist'));
+        .pipe(gulp.dest('../Content/styles'));
 });
 
 gulp.task('uglify', function() {
@@ -173,18 +181,27 @@ gulp.task('move:img', function() {
     var rename = require('gulp-rename');
 
     return gulp.src(src.img)
-        .pipe(rename({dirname: ''}))
-        .pipe(gulp.dest('dist/theme/img'));
-});
-
-gulp.task('move:index', function() {
-    return gulp.src('resources/index.html')
-        .pipe(gulp.dest('../'));
+        //.pipe(rename({dirname: ''}))
+        .pipe(gulp.dest('../Content/Images/'));
 });
 
 gulp.task('move:package', function() {
     return gulp.src('package.json')
         .pipe(gulp.dest('dist'));
+});
+
+gulp.task('clean:css', function () {
+    var clean = require('gulp-clean');
+
+    return gulp.src('../Content/styles', {read: false})
+        .pipe(clean({force: true}));
+});
+
+gulp.task('clean:index', function () {
+    var clean = require('gulp-clean');
+
+    return gulp.src('../Views/index.html', {read: false})
+        .pipe(clean({force: true}));
 });
 
 gulp.task('clean:dist', function () {
@@ -202,5 +219,5 @@ gulp.task('clean:templates', function () {
 gulp.task('build', function () {
     var runSequence = require('run-sequence');
 
-    return runSequence('clean:dist', 'process:templates', 'sass:compile', 'concat:css', 'minify:css', 'concat', 'annotate', 'uglify', 'move:img', 'move:index', 'move:package', '_serve:build', 'clean:templates');
+    return runSequence('clean:dist', 'clean:css', 'clean:index', 'process:templates', 'sass:compile', 'concat:css', 'minify:css', 'concat', 'annotate', 'uglify', 'move:img', 'move:package', '_serve:build', 'clean:templates');
 });

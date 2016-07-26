@@ -1,0 +1,15 @@
+<div>
+    <h3>Components</h3>
+    <ul style="list-style: none">
+        <li ng-repeat="moduleName in ::modules">
+            <a ui-sref="demo-example({name: moduleName})">{{::moduleName}}</a>
+        </li>
+    </ul>
+
+    <h3>Routes</h3>
+    <ul style="list-style: none">
+        <li ng-repeat="route in ::routes">
+            <a ui-sref="{{::route.name}}">{{::route.name}}</a>
+        </li>
+    </ul>
+</div>
