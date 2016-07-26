@@ -30,8 +30,21 @@ namespace Domain.Persistence.EntityFramework.Migrations
                                    .Replace("/", @"\");
             }
 
-            var binDirectory = System.IO.Path.GetDirectoryName(codeBase);
-            context.Database.ExecuteSqlCommand(File.ReadAllText(binDirectory + @"\SQL\cities.sql"));
+            string binDirectory = null;
+
+            try
+            {
+                binDirectory = Path.GetDirectoryName(codeBase);
+            }
+            catch (Exception)
+            {
+                binDirectory = codeBase.Substring(0, codeBase.LastIndexOf(@"\"));
+            }
+
+            if (binDirectory != null)
+            {
+                context.Database.ExecuteSqlCommand(File.ReadAllText(binDirectory + @"\SQL\cities.sql"));
+            }
 
             base.Seed(context);
         }
