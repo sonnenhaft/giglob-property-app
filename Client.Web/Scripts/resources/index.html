@@ -1,3 +1,5 @@
+@model string
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -6,6 +8,7 @@
 
     <!-- build:js -->
     <script src="/lib/vendor/angular/angular.js"></script>
+    <script src="/lib/vendor/angular-locale/angular-locale-ru-ru.js"></script>
     <script src="/lib/vendor/angular-ui-router/angular-ui-router.min.js"></script>
     <script src="/lib/vendor/angular-foundation/angular-foundation.min.js"></script>
     <script src="/lib/vendor/angular-local-storage/angular-local-storage.min.js"></script>
@@ -13,6 +16,7 @@
 
     <script>
         (function(orig) {
+            angular.module('templates', []);
             angular.modules = [];
             angular.module = function() {
                 if (arguments.length > 1) {
@@ -37,7 +41,7 @@
 
 <body ng-app="giglob-app">
 
-    <div giglob style="height:100%;"></div>
+    <div  id="apiUrl" data-url="@Model" giglob style="height:100%;"></div>
 
 </body>
 

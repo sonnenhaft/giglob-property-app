@@ -26,7 +26,7 @@ angular.module('component.config.router', ['ui.router']).config(function($stateP
                         description: 'Сдается 1-комн. квартира на длительный срок в 5-7 минутах ходьбы от ст. м. Полежаевская. Квартира после капитального ремонта. Мебель IKEA, холодильник, стиралка, посудомойка, микроволновка, пылесос. Кровать с большим отделением для хранения вещей. Wi-Fi 80 Mbs. Спокойные соседи. Чистый двор и подъезд (ЖСК). Два лифта. Расположение действительно уникальное. До ТЦ Авиапарк 5 минут на бесплатном автобусе. В 3-5 минутах ходьбы детская и взрослая поликлиники.',
                         roomsCount: 2,
                         address: 'Москва, ул. Юных Ленинцев, д. 228, корп. 14, кв. 88, стр. 14',
-                        price: 10350000,
+                        price: 1035000,
                         station: 'Кузьминки, район Богородское',
                         floor: 7,
                         area: 54,
@@ -37,25 +37,25 @@ angular.module('component.config.router', ['ui.router']).config(function($stateP
                     },
                     coords: [37.715175, 55.833436],
                     images: [{
-                        src: 'app/component/carousel/example/images/1.jpeg'
+                        src: '../content/images/flat/1.jpeg'
                     }, {
-                        src: 'app/component/carousel/example/images/2.jpeg'
+                        src: '../content/images/flat/2.jpeg'
                     }, {
-                        src: 'app/component/carousel/example/images/3.jpeg'
+                        src: '../content/images/flat/3.jpeg'
                     }, {
-                        src: 'app/component/carousel/example/images/4.jpeg'
+                        src: '../content/images/flat/4.jpeg'
                     }, {
-                        src: 'app/component/carousel/example/images/5.jpeg'
+                        src: '../content/images/flat/1.jpeg'
                     }, {
-                        src: 'app/component/carousel/example/images/5.jpeg'
+                        src: '../content/images/flat/2.jpeg'
                     }, {
-                        src: 'app/component/carousel/example/images/5.jpeg'
+                        src: '../content/images/flat/3.jpeg'
                     }, {
-                        src: 'app/component/carousel/example/images/5.jpeg'
+                        src: '../content/images/flat/4.jpeg'
                     }, {
-                        src: 'app/component/carousel/example/images/5.jpeg'
+                        src: '../content/images/flat/5.jpeg'
                     }, {
-                        src: 'app/component/carousel/example/images/5.jpeg'
+                        src: '../content/images/flat/5.jpeg'
                     }]
                 }
             }
@@ -68,7 +68,7 @@ angular.module('component.config.router', ['ui.router']).config(function($stateP
                         description: 'Сдается 1-комн. квартира на длительный срок в 5-7 минутах ходьбы от ст. м. Полежаевская. Квартира после капитального ремонта. Мебель IKEA, холодильник, стиралка, посудомойка, микроволновка, пылесос. Кровать с большим отделением для хранения вещей. Wi-Fi 80 Mbs. Спокойные соседи. Чистый двор и подъезд (ЖСК). Два лифта. Расположение действительно уникальное. До ТЦ Авиапарк 5 минут на бесплатном автобусе. В 3-5 минутах ходьбы детская и взрослая поликлиники.',
                         roomsCount: 2,
                         address: 'Москва, ул. Юных Ленинцев, д. 228, корп. 14, кв. 88, стр. 14',
-                        price: 103500000,
+                        price: 10350000,
                         station: 'Кузьминки, район Богородское',
                         floor: 7,
                         area: 54,
@@ -83,31 +83,31 @@ angular.module('component.config.router', ['ui.router']).config(function($stateP
                             coordinates: [37.715175, 55.833436]
                         },
                         properties: {
-                            iconContent: 'Заголовок метки',
-                            hintContent: 'Ховер хинт',
-                            balloonContent: 'Разметка для всплывающей подсказки'
+                            iconContent: '', // Заголовок метки
+                            hintContent: '', //Ховер хинт
+                            balloonContent: ''//Разметка для всплывающей подсказки
                         }
                     },
                     images: [{
-                        src: 'app/component/carousel/example/images/1.jpeg'
+                        src: '../content/images/flat/1.jpeg'
                     }, {
-                        src: 'app/component/carousel/example/images/2.jpeg'
+                        src: '../content/images/flat/2.jpeg'
                     }, {
-                        src: 'app/component/carousel/example/images/3.jpeg'
+                        src: '../content/images/flat/3.jpeg'
                     }, {
-                        src: 'app/component/carousel/example/images/4.jpeg'
+                        src: '../content/images/flat/4.jpeg'
                     }, {
-                        src: 'app/component/carousel/example/images/5.jpeg'
+                        src: '../content/images/flat/5.jpeg'
                     }, {
-                        src: 'app/component/carousel/example/images/5.jpeg'
+                        src: '../content/images/flat/1.jpeg'
                     }, {
-                        src: 'app/component/carousel/example/images/5.jpeg'
+                        src: '../content/images/flat/2.jpeg'
                     }, {
-                        src: 'app/component/carousel/example/images/5.jpeg'
+                        src: '../content/images/flat/3.jpeg'
                     }, {
-                        src: 'app/component/carousel/example/images/5.jpeg'
+                        src: '../content/images/flat/4.jpeg'
                     }, {
-                        src: 'app/component/carousel/example/images/5.jpeg'
+                        src: '../content/images/flat/5.jpeg'
                     }]
                 }
             }
@@ -123,6 +123,10 @@ angular.module('component.config.router', ['ui.router']).config(function($stateP
         .state('home', {
             url: "/",
             templateUrl: 'app/component/config/router/main-page.html'
+        })
+        .state('add', {
+            url: "/add",
+            templateUrl: 'app/component/config/router/add.html'
         });
 
 }).constant('EXCLUDED_DEMO_ROUTERS', [

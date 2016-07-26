@@ -2,15 +2,14 @@ $line: 40px;
 .gheader {
   height: 80px;
   background-color: white;
-  position:absolute;
-  top: 0;
-  left: 0;
-  right: 0;
   padding: 20px 30px;
   .logo-green {
     height: 100%;
     margin-right: 20px;
     vertical-align: top;
+    &:hover {
+      cursor: pointer;
+    }
   }
   .user-logo {
     position: absolute;
@@ -19,13 +18,16 @@ $line: 40px;
     bottom: 0;
     background: #edfaf7;
     width: 80px;
+    height: 80px;
+    padding: 27px;
   }
-  .grey{
+  .grey {
     color: #aeaeae;
     margin-right: 95px;
   }
   .black {
     color: #000;
+    font-weight: 700;
   }
   .text {
     display: inline-block;
@@ -36,23 +38,24 @@ $line: 40px;
   nav {
     display: inline-block;
     vertical-align: top;
-    margin-top: -18px;
+    margin-top: 8px;
     margin-right: 250px;
+    height: 100%;
     .menu-item {
       display: inline-block;
-      line-height: 78px;
       color: #373737;
       font-size: 14px;
       font-weight: bold;
       text-transform: uppercase;
       margin-right: 50px;
+      padding-bottom: 26px;
       cursor: pointer;
       &.active {
         border-bottom: 2px solid #09c77b
       }
     }
   }
-  .button{
+  .button {
     vertical-align: middle;
     margin-bottom: 35px;
     margin-right: 45px;
