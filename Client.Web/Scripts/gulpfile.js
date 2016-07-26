@@ -76,7 +76,11 @@ gulp.task('_serve:build', function () {
 
     return gulp.src('resources/index.html')
         .pipe(inject(gulp.src('dist/app.js', {read: false}), {addPrefix: '../Scripts', name: 'build', addRootSlash: false }))
-        .pipe(inject(gulp.src( '../Content/styles/app.css', {read: false}), {name: 'build', addRootSlash: false }))
+        .pipe(inject(gulp.src( '../Content/styles/app.css', {read: false}), {name: 'build', addRootSlash: false}))
+        .pipe(inject(gulp.src( '../Content/styles/app.css', {read: false}), {name: 'model', //inject @model string
+            transform: function() {
+                return '@model string';
+            }}))
         .pipe(rename({extname: '.cshtml'}))
         .pipe(gulp.dest('../Views/'));
 });
