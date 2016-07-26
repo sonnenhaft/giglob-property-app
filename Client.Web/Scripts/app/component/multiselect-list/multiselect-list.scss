@@ -2,7 +2,7 @@
   display: inline-block;
   margin: 0;
   padding: 0;
-  border-radius: 3px;
+  border-radius: 5px;
   border: 1px solid #e1e1e1;
   list-style: none;
   .list-item {
@@ -18,18 +18,14 @@
     color: #00b06d;
     border-right: 1px solid #e1e1e1;
     -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
     user-select: none;
     &:first-child {
-      border-top-left-radius: 3px;
-      border-bottom-left-radius: 3px;
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
     }
     &:last-child {
-      border-top-right-radius: 3px;
-      border-bottom-right-radius: 3px;
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
       border-right: none;
     }
     &.selected {

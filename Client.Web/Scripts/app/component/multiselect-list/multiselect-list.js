@@ -3,7 +3,7 @@ angular.module('component.multiselect-list', []).directive('multiselectList', fu
         replace: true,
         templateUrl: 'app/component/multiselect-list/multiselect-list.html',
         scope: {
-            items: '=',
+            items: '=?',
             selectedItems: '='
         },
         link: function ($scope) {
