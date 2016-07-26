@@ -1,4 +1,4 @@
-angular.module('giglob-app',[
+﻿angular.module('giglob-app',[
     'yaMap',
     'LocalStorageModule',
     'mm.foundation',
@@ -6,6 +6,7 @@ angular.module('giglob-app',[
     'component.config.router',
     'component.config.filters',
     "component.gheader",
+    "component.gfooter",
     'component.city-popup',
     'component.carousel'
 ]).directive('giglob', function() {
