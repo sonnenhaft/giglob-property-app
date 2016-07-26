@@ -76,7 +76,7 @@ gulp.task('_serve:build', function () {
 
     return gulp.src('resources/index.html')
         .pipe(inject(gulp.src('dist/app.js', {read: false}), {addPrefix: '../Scripts', name: 'build', addRootSlash: false }))
-        .pipe(inject(gulp.src( '../Views/styles/app.css', {read: false}), {name: 'build', addRootSlash: false }))
+        .pipe(inject(gulp.src( '../Content/styles/app.css', {read: false}), {name: 'build', addRootSlash: false }))
         .pipe(rename({extname: '.cshtml'}))
         .pipe(gulp.dest('../Views/'));
 });
@@ -128,7 +128,7 @@ gulp.task('concat:css', function () {
     var concatCss = require('gulp-concat-css');
     return gulp.src(src.buildCss)
         .pipe(concatCss('app.css'))
-        .pipe(gulp.dest('../Views/styles'));
+        .pipe(gulp.dest('../Content/styles'));
 });
 gulp.task('process:templates', function() {
     var ngHtml2Js = require("gulp-ng-html2js");
@@ -146,9 +146,9 @@ gulp.task('process:templates', function() {
 gulp.task('minify:css', function() {
     var cleanCSS = require('gulp-clean-css');
 
-    return gulp.src('../Views/styles/app.css')
+    return gulp.src('../Content/styles/app.css')
         .pipe(cleanCSS())
-        .pipe(gulp.dest('../Views/styles'));
+        .pipe(gulp.dest('../Content/styles'));
 });
 
 gulp.task('uglify', function() {
@@ -189,7 +189,7 @@ gulp.task('move:package', function() {
 gulp.task('clean:css', function () {
     var clean = require('gulp-clean');
 
-    return gulp.src('../Views/styles', {read: false})
+    return gulp.src('../Content/styles', {read: false})
         .pipe(clean({force: true}));
 });
 
