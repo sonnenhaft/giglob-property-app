@@ -13,6 +13,7 @@ using SwaggerResponseExampleModule;
 
 namespace Client.Api.v1.Controllers
 {
+    [Authorize]
     public class PropertyOfferController: ApiController
     {
         private readonly PropertyOfferFacade _propertyOfferFacade;
@@ -23,7 +24,6 @@ namespace Client.Api.v1.Controllers
         }
 
         [HttpPost]
-        [Authorize]
         [SwaggerResponseExampleProvider(typeof(SuccessResponseExample))]
         public IHttpActionResult Create(PropertyOfferCreateRequestModel reqModel)
         {
