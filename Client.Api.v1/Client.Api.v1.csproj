@@ -98,6 +98,7 @@
   <ItemGroup>
     <Compile Include="App_Start\MapsConfiguration.cs" />
     <Compile Include="App_Start\ParameterBindingConfiguration.cs" />
+    <Compile Include="Controllers\CityController.cs" />
     <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PropertyOfferController.cs" />
