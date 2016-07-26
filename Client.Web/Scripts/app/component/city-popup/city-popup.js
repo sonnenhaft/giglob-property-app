@@ -9,7 +9,7 @@ angular.module('component.city-popup', ['mm.foundation.modal', 'LocalStorageModu
 
             if(!localStorageService.get('city')) {
                 var modalInstance = $modal.open({
-                    templateUrl: '/app/component/city-popup/city-popup.html',
+                    templateUrl: 'app/component/city-popup/city-popup.html',
                     controller: 'cityPopupCtrl',
                     windowClass: 'choose-city',
                     backdrop: 'static',
