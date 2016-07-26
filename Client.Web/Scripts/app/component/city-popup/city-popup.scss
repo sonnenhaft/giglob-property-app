@@ -1,4 +1,4 @@
-.choose-city{
+﻿.choose-city{
   width:500px;
   height:330px;
   background-color: rgba(8, 199, 123, 1);
@@ -33,7 +33,7 @@
       }
     }
   }
-  .autocomplete {
+  .autocomplete{
     padding-right:100px;
     .white-text{
       font-size:14px;
@@ -76,11 +76,10 @@
       color: #ffffff;
       opacity:0.65;
     }
-    .f-dropdown {
+    .f-dropdown{
       background: transparent;
-      border: none;
-      top: 55px !important;
-      max-width: none;
+      border:none;
+      top:67px !important;
       li{
         font-size:25px;
         margin-top:20px;
