@@ -72,10 +72,12 @@ gulp.task('_serve', function () {
 
 gulp.task('_serve:build', function () {
     var inject = require('gulp-inject');
+    var rename = require('gulp-rename');
 
     return gulp.src('resources/index.html')
         .pipe(inject(gulp.src('dist/app.js', {read: false}), {addPrefix: '../Scripts', name: 'build', addRootSlash: false }))
         .pipe(inject(gulp.src( '../Views/styles/app.css', {read: false}), {name: 'build', addRootSlash: false }))
+        .pipe(rename({extname: '.cshtml'}))
         .pipe(gulp.dest('../Views/'));
 });
 
