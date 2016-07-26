@@ -15,6 +15,8 @@ angular.module('component.flat-filter', [
 }).directive('onClickOutside', function($document) {
     return function($scope, $element, $attrs) {
         function cb($e) {
+            $e.stopPropagation();
+
             if(!$element[0].contains($e.target)) {
                 $scope.$eval($attrs.onClickOutside);
                 $scope.$applyAsync();
