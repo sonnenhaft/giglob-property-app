@@ -9,7 +9,7 @@ namespace Client.Web.Controllers
         {
             var url = ConfigurationManager.AppSettings["ApiUrl"];
 
-            return View(model: url);
+            return View("~/Views/index.cshtml", url);
         }
     }
 }
