@@ -10,3 +10,8 @@ Client.Web/Scripts/node_modules
 Client.Web/Scripts/app/**/*.css
 Client.Web/Scripts/index.html
 Client.Web/Scripts/dist
+Client.Api/storage/
+Client.Web/Views/Index.cshtml
+Client.Api/mailSettings.config
+Client.Web/Content/Images/
+Client.Web/Views/styles/app.css
