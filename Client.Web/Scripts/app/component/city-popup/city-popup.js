@@ -1,4 +1,5 @@
-angular.module('component.city-popup', ['mm.foundation.modal', 'LocalStorageModule']).directive('cityPopup', function($modal, localStorageService){
+angular.module('component.city-popup', ['mm.foundation.modal', 'LocalStorageModule'])
+    .directive('cityPopup', function($modal, localStorageService){
     return {
         restrict: 'E',
         scope: {
@@ -6,8 +7,7 @@ angular.module('component.city-popup', ['mm.foundation.modal', 'LocalStorageModu
         },
         link: function($scope) {
 
-
-            if(!localStorageService.get('city') || $scope.ignoreLocalStorageValue) {
+            if(!localStorageService.get('city')) {
                 var modalInstance = $modal.open({
                     templateUrl: '/app/component/city-popup/city-popup.html',
                     controller: 'cityPopupCtrl',
@@ -26,8 +26,7 @@ angular.module('component.city-popup', ['mm.foundation.modal', 'LocalStorageModu
 }).controller('cityPopupCtrl', function($scope, $http, $modalInstance, localStorageService) {
     $scope.changeCity = function() {
         //TODO вынести в отдельный API сервис
-        localStorageService.set('city', 'Moscow');
-        $http.get('https://giglobapi.igstest.ru/v1/home/getdata').then(function(res){
+        $http.get('http://giglobapi.igstest.ru/v1/home/getdata').then(function(res){
             $scope.cities = res.data.cities;
             $scope.autocomplete = true;
         });
@@ -46,11 +45,12 @@ angular.module('component.city-popup', ['mm.foundation.modal', 'LocalStorageModu
     };
 
     $scope.ok = function() {
+        localStorageService.set('city','Moscow');
         $modalInstance.close();
     };
 
     $scope.selected = function(name) {
         localStorageService.set('city', name);
-        $scope.ok();
+        $modalInstance.close();
     };
 });
