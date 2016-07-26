@@ -1,4 +1,4 @@
-﻿﻿angular.module('giglob-app',[
+﻿﻿angular.module('giglob-app', [
     'yaMap',
     'LocalStorageModule',
     'mm.foundation',
@@ -8,11 +8,11 @@
     "component.gheader",
     "component.gfooter",
     'component.city-popup',
-    'component.carousel'
+    'component.carousel',
+    'component.flat-filter'
 ]).directive('giglob', function() {
     return {
         templateUrl: 'app/giglob.html',
-        controller: function($scope) {},
         link: function($scope) {}
     };
 });
