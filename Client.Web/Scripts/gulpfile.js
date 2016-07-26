@@ -6,7 +6,7 @@ var src = {
     css: 'app/**/*.css',
     buildCss: ['lib/**/*.css', 'app/**/*.css'],
     html: ['app/**/*.html', '!app/**/example/*.html'],
-    img: ['Content/Images/**/*.svg', 'Content/Images/**/*.png', 'Content/Images/**/*.jpeg', 'Content/Images/**/*.jpg']
+    img: ['Content/Images/**/*.svg', 'Content/Images/**/*.png', 'Content/Images/**/*.jpeg', 'Content/Images/**/*.jpg', 'Content/Images/**/*.ttf']
 };
 
 //LINT: RUN BEFORE PUSH
