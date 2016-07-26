@@ -1,5 +1,6 @@
 ﻿angular.module('giglob-app',[
     'yaMap',
+    'api.resource',
     'LocalStorageModule',
     'mm.foundation',
     'component.config.router',
@@ -7,8 +8,7 @@
     "component.gheader",
     'component.city-popup',
     'component.carousel',
-    'component.login',
-    'passToText'
+    'component.login'
 ]).directive('giglob', function() {
     return {
         templateUrl: '/app/giglob.html',

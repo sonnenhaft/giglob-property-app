@@ -64,14 +64,14 @@
                         </div>
                     </div>
                 </form>
-                <button type="submit" class="button btn-success">Вход</button>
+                <button ng-disabled="loginForm.$invalid" ng-click="signin()" type="submit" class="button btn-success">Вход</button>
             </div>
             <div ng-if="activePage==='registration'">
                 <div class="forms-header"> Регистрация через почту</div>
-                <form name="RegForm" novalidate>
+                <form name="RegForm" ng-submit="register()" novalidate>
                     <label>Электронная почта</label>
                     <div class="form-group" ng-class="{'has-error' : RegForm.email.$invalid && RegForm.email.$touched}">
-                        <input ng-model='email'
+                        <input ng-model='reg.email'
                                type="text"
                                ng-pattern="EMAIL_REGEX"
                                placeholder="Ваша почта"
@@ -85,7 +85,7 @@
                     </div>
                     <label>Пароль</label>
                     <div class="form-group" ng-class="{'has-error' : RegForm.password.$invalid && RegForm.password.$touched}">
-                        <input ng-model="password"
+                        <input ng-model="reg.password"
                                type="password"
                                pass-to-text="{{showpassword}}"
                                placeholder="Придумайте пароль"
@@ -106,7 +106,7 @@
                         </div>
                     </div>
                 </form>
-                <button type="submit" class="button btn-success">Зарегистрироваться</button>
+                <button type="submit" ng-disabled="RegForm.$invalid" ng-click="register()" class="button btn-success">Зарегистрироваться</button>
             </div>
         </div>
     </div>
