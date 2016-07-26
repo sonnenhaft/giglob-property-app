@@ -2,6 +2,7 @@
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using Domain.Entities.Implementation.City;
 
 namespace Domain.Persistence.EntityFramework.Migrations
@@ -25,11 +26,13 @@ namespace Domain.Persistence.EntityFramework.Migrations
                                  .GetName()
                                  .CodeBase;
 
-            if (codeBase.StartsWith("file:///"))
+            if (Regex.IsMatch(codeBase, @"^file:[/]{2,3}"))
             {
-                codeBase = codeBase.Replace("file:///", "")
+                codeBase = Regex.Replace(codeBase, @"^file:[/]{2,3}", "")
                                    .Replace("/", @"\");
             }
+
+            if (!Regex.IsMatch(codeBase, @"^[a-zA-Z]:/"))            {                codeBase = "//" + codeBase;            }
 
             string binDirectory = null;
 
@@ -44,7 +47,7 @@ namespace Domain.Persistence.EntityFramework.Migrations
 
             if (binDirectory != null)
             {
-                
+
                 context.Database.ExecuteSqlCommand(ReadFile(binDirectory + @"\SQL\cities.sql"));
             }
 
