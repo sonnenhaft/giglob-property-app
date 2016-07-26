@@ -1,4 +1,4 @@
-var gulp = require('gulp');
+﻿var gulp = require('gulp');
 
 var src = {
     js: 'app/**/*.js',
