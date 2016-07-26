@@ -99,14 +99,14 @@ gulp.task('sass:watch', function () {
 });
 
 gulp.task('sass:reload', function() {
-    var sass = require('gulp-sass');
-    var browserSync = require('browser-sync');
-    var reload = browserSync.reload;
-
-    return gulp.src(src.scss)
-        .pipe(sass())
-        .pipe(gulp.dest('app'))
-        .pipe(reload({stream: true}));
+    //var sass = require('gulp-sass');
+    //var browserSync = require('browser-sync');
+    //var reload = browserSync.reload;
+    //
+    //return gulp.src(src.scss)
+    //    .pipe(sass())
+    //    .pipe(gulp.dest('app'))
+    //    .pipe(reload({stream: true}));
 });
 
 gulp.task('bump', function(){

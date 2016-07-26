@@ -156,8 +156,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Readme\Elmah.txt" />
-    <Content Include="packages.config" />
     <Content Include="mailSettings.config" />
+    <Content Include="packages.config" />
     <Content Include="Views\User\Mail\UserConfirmationMail.cshtml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -286,7 +286,7 @@
   <Target Name="BeforeBuild">
     <TransformXml Source="Web.config" Transform="Web.$(Configuration).config" Destination="Web.config" />
   </Target>
-<!--
+  <!--
   <Target Name="AfterBuild">
   </Target>
   -->
