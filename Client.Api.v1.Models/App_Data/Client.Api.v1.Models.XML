@@ -265,6 +265,51 @@
             Ид метро
             </summary>
         </member>
+        <member name="T:Client.Api.v1.Models.Models.PropertyOffer.ViewPort">
+            <summary>
+            Видимая область на карте
+            </summary>
+        </member>
+        <member name="P:Client.Api.v1.Models.Models.PropertyOffer.ViewPort.LeftTopLat">
+            <summary>
+            Верхная левая точка широты
+            </summary>
+        </member>
+        <member name="P:Client.Api.v1.Models.Models.PropertyOffer.ViewPort.LeftTopLon">
+            <summary>
+            Верхная левая точка долготы
+            </summary>
+        </member>
+        <member name="P:Client.Api.v1.Models.Models.PropertyOffer.ViewPort.LeftBottomLat">
+            <summary>
+            Нижняя левая точка широты
+            </summary>
+        </member>
+        <member name="P:Client.Api.v1.Models.Models.PropertyOffer.ViewPort.LeftBottomLon">
+            <summary>
+            Нижняя левая точка долготы
+            </summary>
+        </member>
+        <member name="P:Client.Api.v1.Models.Models.PropertyOffer.ViewPort.RightTopLat">
+            <summary>
+            Верхная правая точка широты
+            </summary>
+        </member>
+        <member name="P:Client.Api.v1.Models.Models.PropertyOffer.ViewPort.RightTopLon">
+            <summary>
+            Верхная правая точка долготы
+            </summary>
+        </member>
+        <member name="P:Client.Api.v1.Models.Models.PropertyOffer.ViewPort.RightBottomLat">
+            <summary>
+            Нижняя правая точка широты
+            </summary>
+        </member>
+        <member name="P:Client.Api.v1.Models.Models.PropertyOffer.ViewPort.RightBottomLon">
+            <summary>
+            Нижняя правая точка долготы
+            </summary>
+        </member>
         <member name="P:Client.Api.v1.Models.Models.PropertyOffer.PropertyOfferModel.CityId">
             <summary>
             Идентификатор города, если есть

@@ -10,6 +10,7 @@ using Domain.Entities.Implementation.PropertyOffer;
 using Domain.Entities.User.Implementation;
 
 using Domain.Entities.Implementation.PropertyOffer.Dtos;
+using Domain.Entities.Implementation.PropertyOffer.Queries;
 using ExpressMapper;
 
 namespace Client.Api.v1
@@ -37,6 +38,9 @@ namespace Client.Api.v1
             Mapper.Register<PropertyNearMetroStation, NearMetroStationModel>()
                 .Member(model => model.Name, station => station.MetroBranchStation.MetroStation.Name)
                 .Member(model => model.HexColor, station => station.MetroBranchStation.MetroBranch != null ? station.MetroBranchStation.MetroBranch.HexColor : null);
+
+            Mapper.Register<PropertyOfferGetAllOffersRequestModel, Offer_GetAllQuery>();
+            Mapper.Register<ViewPort, ViewPortDto>();
         }
     }
 }

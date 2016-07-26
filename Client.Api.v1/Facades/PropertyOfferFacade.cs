@@ -28,7 +28,9 @@ namespace Client.Api.v1.Facades
 
         public IEnumerable<PropertyOfferDataModel> GetAll(PropertyOfferGetAllOffersRequestModel req)
         {
-            IEnumerable<PropertyOffer> items = _propertyOfferGetAllCommandHandler.Handle(new Offer_GetAllQuery { CityId = req.CityId, Page = req.Page, MaxCost = req.MaxCost, MinCost = req.MinCost, MetroIds = req.MetroIds, RoomCount = req.RoomCount, Take = req.Take });
+            Offer_GetAllQuery query = req.Map<PropertyOfferGetAllOffersRequestModel,Offer_GetAllQuery>();
+
+            IEnumerable<PropertyOffer> items = _propertyOfferGetAllCommandHandler.Handle(query);
 
             return items.Map<IEnumerable<PropertyOffer>, IEnumerable<PropertyOfferDataModel>>();
         }
