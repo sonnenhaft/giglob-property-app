@@ -1,5 +1,5 @@
 <div class="bg-image">
-    <img src="app/theme/img/ng-image.png">
+    <img src="../Content/Images/ng-image.png">
 </div>
 <div ng-if="!autocomplete" class="no-autocomplete">
     <h1 class="modal-header">Ваш город Москва?</h1>
@@ -10,7 +10,7 @@
 </div>
 <div ng-if="autocomplete" class="autocomplete">
     <h2 class="modal-header" ng-hide="city || city.$touched">Укажите ваш город</h2>
-    <form name="myForm" novalidate>
+    <form name="cityForm" novalidate class="city-form">
     <input ng-model="city"
            required
            type="text"
@@ -20,7 +20,7 @@
            typeahead="city as city.name for city in (cities.list = chooseCity($viewValue)) | filter:{name : $viewValue} | limitTo:3"
            typeahead-on-select="selected(city.name)">
     </form>
-    <div class='white-text' ng-show="myForm.city.$error.required">В настоящий момент сервис работает только в Москве и области</div>
-    <div class="white-text" ng-show="!cities.list.length && !myForm.city.$error.required" >Такого города нет в Московской области</div>
+    <div class='white-text' ng-show="cityForm.city.$error.required">В настоящий момент сервис работает только в Москве и области</div>
+    <div class="white-text" ng-show="!cities.list.length && !cityForm.city.$error.required" >Такого города нет в Московской области</div>
 </div>
 

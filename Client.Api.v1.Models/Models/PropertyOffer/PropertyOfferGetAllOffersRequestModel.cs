@@ -12,9 +12,9 @@ namespace Client.Api.v1.Models.Models.PropertyOffer
         public long CityId { get; set; }
 
         /// <summary>
-        /// Номер страницы
+        /// Кол-во эл-в для пропуска
         /// </summary>
-        public int Page { get; set; }
+        public int Skip { get; set; }
 
         /// <summary>
         /// Кол-во записей для получения

@@ -25,6 +25,26 @@ $line: 40px;
       height: 60px;
       background: rgba(0, 0, 0, 0.5);
       z-index: 100;
+      text-align: center;
+      vertical-align: middle;
+      line-height: 62px;
+
+      &:before {
+        content: '';
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        border: 2px solid #fff;
+        border: {
+          top: none;
+          right: none;
+        }
+
+        -webkit-transform: rotate(45deg);
+        transform: rotate(45deg);
+
+      }
+
       &.arrow-left {
         left: 0;
         border-radius: 0 35px 35px 0;
@@ -32,6 +52,11 @@ $line: 40px;
       &.arrow-right {
         right: 0;
         border-radius: 35px 0 0 35px;
+      }
+
+      &.arrow-right:before {
+        -webkit-transform: rotate(-135deg);
+        transform: rotate(-135deg);
       }
     }
 
