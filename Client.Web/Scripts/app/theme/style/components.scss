@@ -14,3 +14,81 @@ html, body, .button, h1, h2, h3, h4 {
   background-color: #ecf1f4;
   position: relative;
 }
+
+.flat-card {
+  width: 323px;
+  height: 328px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  position: relative;
+  overflow: hidden;
+
+  .card_image {
+    width: 100%;
+    height: 207px;
+    margin-bottom: 20px;
+    overflow: hidden;
+
+    img {}
+  }
+
+  .card_description {
+
+    .card-title {
+      font-size: 16px;
+      line-height: 1.1;
+      color: #181818;
+      margin-bottom: 5px;
+      padding: 0 19px;
+    }
+
+    .card-info {
+      font-size: 13px;
+      font-weight: 600;
+      color: #999;
+      padding: 0 19px;
+
+    }
+
+    .card-price {
+      font-size: 14px;
+      color: #181818;
+      position: absolute;
+      bottom: 15px;
+      left: 19px;
+    }
+  }
+
+  .card_control_more {
+    display: block;
+    z-index: 100;
+    cursor: pointer;
+    width: 100px;
+    height: 30px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background-color: #ff6f37;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    margin-left: -50px;
+    color: #fff;
+    font-size: 14px;
+    text-align: center;
+    line-height: 28px;
+    vertical-align: middle;
+    display: none;
+  }
+
+  &:hover,
+  &.active {
+    cursor: pointer;
+
+    .card_control_more {
+      display: block;
+    }//ff6f37
+    .card-title {
+      color: #ff6f37;
+    }
+  }
+}// .flat-card
