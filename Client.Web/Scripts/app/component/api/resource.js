@@ -14,8 +14,8 @@
                 'save' : {method:'POST'}
             });
     })
-	.factory('confirm',function($resource){
-        return $resource('http://giglobapi.igstest.ru/v1/user/confirmemail',
+    .factory('confirm',function($resource){
+        return $resource('http://api.giglob.local/v1/user/confirmemail',
             null,
             {
                 'save' : {method:'POST'}
