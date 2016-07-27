@@ -32,7 +32,10 @@ namespace Domain.Persistence.EntityFramework.Migrations
                                    .Replace("/", @"\");
             }
 
-            if (!Regex.IsMatch(codeBase, @"^[a-zA-Z]:\\"))            {                codeBase = "//" + codeBase;            }
+            if (!Regex.IsMatch(codeBase, @"^[a-zA-Z]:\\"))
+            {
+                codeBase = "//" + codeBase;
+            }
 
             string binDirectory = null;
 
