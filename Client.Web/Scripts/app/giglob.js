@@ -6,7 +6,6 @@
     'templates',
     'component.config.router',
     'component.config.filters',
-    'component.config.data-access',
     "component.gheader",
     "component.gfooter",
     'component.city-popup',

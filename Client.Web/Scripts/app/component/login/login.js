@@ -17,6 +17,7 @@
             },function(err){
                 console.log(err);
                 $scope.regErr = err;
+
             })
         };
         $scope.signin = function(){
