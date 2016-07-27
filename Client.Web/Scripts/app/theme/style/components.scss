@@ -16,6 +16,8 @@ html, body, .button, h1, h2, h3, h4 {
 }
 
 .flat-card {
+  display: block;
+  text-decoration: none;
   width: 323px;
   height: 328px;
   border-radius: 10px;
@@ -35,6 +37,8 @@ html, body, .button, h1, h2, h3, h4 {
   .card_description {
 
     .card-title {
+      display: block;
+      text-decoration: none;
       font-size: 16px;
       line-height: 1.1;
       color: #181818;
@@ -78,6 +82,13 @@ html, body, .button, h1, h2, h3, h4 {
     line-height: 28px;
     vertical-align: middle;
     display: none;
+
+    &:hover {
+      background-color: #d74e19;
+    }
+    &:active {
+      box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.22);
+    }
   }
 
   &:hover,
@@ -92,3 +103,38 @@ html, body, .button, h1, h2, h3, h4 {
     }
   }
 }// .flat-card
+
+// double input
+input:not([type]), input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], input[type="color"], textarea {
+  box-shadow: none;
+}
+.double_input {
+  width: 255px;
+  overflow: hidden;
+
+  input{
+    color: #000;
+    font-size: 12px;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin: 0;
+    width: 127px;
+    height: 32px;
+    float: left;
+    &::-webkit-input-placeholder {color:#ddd; font-size: 12px;}
+    &::-moz-placeholder          {color:#ddd; font-size: 12px;}
+    &:-ms-input-placeholder      {color:#ddd; font-size: 12px;}
+  }
+
+  .first{
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .second{
+    margin-left: -1px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+}
+// /double input
