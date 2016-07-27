@@ -174,7 +174,7 @@ gulp.task('move:img', function() {
 
     return gulp.src(src.img)
         .pipe(rename({dirname: ''}))
-        .pipe(gulp.dest('dist/theme/img'));
+        .pipe(gulp.dest('dist/theme/images'));
 });
 
 gulp.task('move:index', function() {
