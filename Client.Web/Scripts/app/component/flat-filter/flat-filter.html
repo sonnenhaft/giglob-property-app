@@ -9,11 +9,11 @@
     </div>
     <div class="input-container price">
         <h6 class="input-label">Стоимость, &#8381;</h6>
-        <div class="double_input">
-            <input class="first" type="text" placeholder="От">
-            <input class="second" type="text" placeholder="До">
+        <div class="double-input">
+            <input class="first" type="text" placeholder="От" ng-model="price.min">
+            <input class="second" type="text" placeholder="До" ng-model="price.max">
         </div>
     </div>
 
-    <div class="filter-start">Найти варианты</div>
+    <div class="filter-start" ng-click="applyFilter()">Найти варианты</div>
 </div>

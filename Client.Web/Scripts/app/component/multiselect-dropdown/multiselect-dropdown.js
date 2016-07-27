@@ -29,6 +29,8 @@ angular.module('component.multiselect-dropdown', []).directive('multiselectDropd
                 }
             ];
 
+            $scope.filteredItems = $scope.items;
+
             $scope.selectItem = function (item, $e) {
                 $e.stopPropagation();
 
@@ -40,6 +42,14 @@ angular.module('component.multiselect-dropdown', []).directive('multiselectDropd
             $scope.removeItem = function (index) {
                 $scope.selectedItems.splice(index, 1);
             };
+
+            $scope.findStation = function() {
+                var regex = new RegExp('^' + $scope.dropdownFilter, 'i');
+
+                $scope.filteredItems =  $scope.items.filter(function(item) {
+                    return regex.test(item.name);
+                })
+            }
         }
     };
 });
