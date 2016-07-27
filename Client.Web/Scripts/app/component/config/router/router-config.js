@@ -1,4 +1,4 @@
-angular.module('component.config.router', ['ui.router']).config(function($stateProvider, $urlRouterProvider, EXCLUDED_DEMO_ROUTERS) {
+angular.module('component.config.router', ['ui.router', 'component.data-access']).config(function($stateProvider, $urlRouterProvider, EXCLUDED_DEMO_ROUTERS) {
     $urlRouterProvider.otherwise("/");
 
     $stateProvider
@@ -113,16 +113,15 @@ angular.module('component.config.router', ['ui.router']).config(function($stateP
             }
         })
         .state('search', {
-            url: '/search',
-            templateUrl: 'app/component/config/router/search-page.html'
+            url: '/',
+            templateUrl: 'app/component/config/router/search-page.html',
+            controller: function($scope, $stateParams, flatListFactory) {
+                $scope.flats = flatListFactory.getAllFlats();
+            }
         })
         .state('my-ads', {
             url: "/my-ads",
             templateUrl: 'app/component/config/router/my-ads-page.html'
-        })
-        .state('home', {
-            url: "/",
-            templateUrl: 'app/component/config/router/main-page.html'
         })
         .state('add', {
             url: "/add",

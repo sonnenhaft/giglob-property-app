@@ -7,117 +7,19 @@
                 <span class="count">219</span> предложений
             </div>
             <div class="offers_list clearfix">
-                <a class="flat-card"  ui-sref="apartment-detail/:id">
+                <a class="flat-card"  ui-sref="apartment-detail/:id" ng-repeat="flat in flats track by flat.id">
                     <div class="card_image">
-                        <img src="../content/images/flat/1.jpeg" alt="">
+                        <img ng-src="{{flat.images[0].src}}" alt="">
                     </div>
                     <div class="card_description">
-                        <div class="card-title"  ui-sref="apartment-detail/:id">Однушка на ул. Юных Ленинцев</div>
-                        <div class="card-info"><span class="metro-label" style="background: #ba46d2;"></span> м. Кузьминки,
-                            94 м<sup>2</sup>, 16 этаж
+                        <div class="card-title"  ui-sref="apartment-detail/:id">{{flat.description.title}}</div>
+                        <div class="card-info"><span class="metro-label" ng-style="background: flat.description.stationLineColor"></span> {{flat.description.station}},
+                            {{flat.description.area}} м<sup>2</sup>, {{flat.description.floor}} этаж
                         </div>
-                        <div class="card-price">10 350 000 &#8381;</div>
+                        <div class="card-price">{{flat.description.price | currency}} &#8381;</div>
                     </div>
                     <span class="card_control_more" ui-sref="apartment-detail/:id">Подробнее</span>
-                </a><!-- /.flat-card -->
-
-                <a class="flat-card"  ui-sref="apartment-detail/:id">
-                    <div class="card_image">
-                        <img src="../content/images/flat/1.jpeg" alt="">
-                    </div>
-                    <div class="card_description">
-                        <div class="card-title"  ui-sref="apartment-detail/:id">Однушка на ул. Юных Ленинцев</div>
-                        <div class="card-info"><span class="metro-label" style="background: #ba46d2;"></span> м. Кузьминки,
-                            94 м<sup>2</sup>, 16 этаж
-                        </div>
-                        <div class="card-price">10 350 000 &#8381;</div>
-                    </div>
-                    <span class="card_control_more" ui-sref="apartment-detail/:id">Подробнее</span>
-                </a><!-- /.flat-card -->
-
-                <a class="flat-card"  ui-sref="apartment-detail/:id">
-                    <div class="card_image">
-                        <img src="../content/images/flat/1.jpeg" alt="">
-                    </div>
-                    <div class="card_description">
-                        <div class="card-title"  ui-sref="apartment-detail/:id">Однушка на ул. Юных Ленинцев</div>
-                        <div class="card-info"><span class="metro-label" style="background: #ba46d2;"></span> м. Кузьминки,
-                            94 м<sup>2</sup>, 16 этаж
-                        </div>
-                        <div class="card-price">10 350 000 &#8381;</div>
-                    </div>
-                    <span class="card_control_more" ui-sref="apartment-detail/:id">Подробнее</span>
-                </a><!-- /.flat-card -->
-
-                <a class="flat-card"  ui-sref="apartment-detail/:id">
-                    <div class="card_image">
-                        <img src="../content/images/flat/1.jpeg" alt="">
-                    </div>
-                    <div class="card_description">
-                        <div class="card-title"  ui-sref="apartment-detail/:id">Однушка на ул. Юных Ленинцев</div>
-                        <div class="card-info"><span class="metro-label" style="background: #ba46d2;"></span> м. Кузьминки,
-                            94 м<sup>2</sup>, 16 этаж
-                        </div>
-                        <div class="card-price">10 350 000 &#8381;</div>
-                    </div>
-                    <span class="card_control_more" ui-sref="apartment-detail/:id">Подробнее</span>
-                </a><!-- /.flat-card -->
-
-                <a class="flat-card"  ui-sref="apartment-detail/:id">
-                    <div class="card_image">
-                        <img src="../content/images/flat/1.jpeg" alt="">
-                    </div>
-                    <div class="card_description">
-                        <div class="card-title"  ui-sref="apartment-detail/:id">Однушка на ул. Юных Ленинцев</div>
-                        <div class="card-info"><span class="metro-label" style="background: #ba46d2;"></span> м. Кузьминки,
-                            94 м<sup>2</sup>, 16 этаж
-                        </div>
-                        <div class="card-price">10 350 000 &#8381;</div>
-                    </div>
-                    <span class="card_control_more" ui-sref="apartment-detail/:id">Подробнее</span>
-                </a><!-- /.flat-card -->
-
-                <a class="flat-card"  ui-sref="apartment-detail/:id">
-                    <div class="card_image">
-                        <img src="../content/images/flat/1.jpeg" alt="">
-                    </div>
-                    <div class="card_description">
-                        <div class="card-title"  ui-sref="apartment-detail/:id">Однушка на ул. Юных Ленинцев</div>
-                        <div class="card-info"><span class="metro-label" style="background: #ba46d2;"></span> м. Кузьминки,
-                            94 м<sup>2</sup>, 16 этаж
-                        </div>
-                        <div class="card-price">10 350 000 &#8381;</div>
-                    </div>
-                    <span class="card_control_more" ui-sref="apartment-detail/:id">Подробнее</span>
-                </a><!-- /.flat-card -->
-
-                <a class="flat-card"  ui-sref="apartment-detail/:id">
-                    <div class="card_image">
-                        <img src="../content/images/flat/1.jpeg" alt="">
-                    </div>
-                    <div class="card_description">
-                        <div class="card-title"  ui-sref="apartment-detail/:id">Однушка на ул. Юных Ленинцев</div>
-                        <div class="card-info"><span class="metro-label" style="background: #ba46d2;"></span> м. Кузьминки,
-                            94 м<sup>2</sup>, 16 этаж
-                        </div>
-                        <div class="card-price">10 350 000 &#8381;</div>
-                    </div>
-                    <span class="card_control_more" ui-sref="apartment-detail/:id">Подробнее</span>
-                </a><!-- /.flat-card -->
-
-                <a class="flat-card"  ui-sref="apartment-detail/:id">
-                    <div class="card_image">
-                        <img src="../content/images/flat/1.jpeg" alt="">
-                    </div>
-                    <div class="card_description">
-                        <div class="card-title"  ui-sref="apartment-detail/:id">Однушка на ул. Юных Ленинцев</div>
-                        <div class="card-info"><span class="metro-label" style="background: #ba46d2;"></span> м. Кузьминки,
-                            94 м<sup>2</sup>, 16 этаж
-                        </div>
-                        <div class="card-price">10 350 000 &#8381;</div>
-                    </div>
-                    <span class="card_control_more" ui-sref="apartment-detail/:id">Подробнее</span>
-                </a><!-- /.flat-card -->
+                </a>
             </div>
         </div>
     </div>
