@@ -32,6 +32,8 @@ namespace Domain.Persistence.EntityFramework.Migrations
 
             var binDirectory = System.IO.Path.GetDirectoryName(codeBase);
             context.Database.ExecuteSqlCommand(File.ReadAllText(binDirectory + @"\SQL\cities.sql"));
+            context.Database.ExecuteSqlCommand(File.ReadAllText(binDirectory + @"\SQL\districts.sql"));
+            context.Database.ExecuteSqlCommand(File.ReadAllText(binDirectory + @"\SQL\metrobranches.sql"));
 
             base.Seed(context);
         }
