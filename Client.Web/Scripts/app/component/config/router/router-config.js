@@ -1,5 +1,7 @@
-angular.module('component.config.router', ['ui.router']).config(function($stateProvider, $urlRouterProvider, EXCLUDED_DEMO_ROUTERS) {
+angular.module('component.config.router', ['ui.router','api.httpRequestInterceptor']).config(function($stateProvider, $urlRouterProvider, EXCLUDED_DEMO_ROUTERS,$httpProvider) {
     $urlRouterProvider.otherwise("/");
+
+    $httpProvider.interceptors.push('httpRequestInterceptor');
 
     $stateProvider
         .state('demo', {

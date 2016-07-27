@@ -16,6 +16,7 @@ namespace Client.Api
             configuration.Filters.Add(modelStateValidatorActionFilter);
             configuration.Services.Clear(typeof(ModelValidatorProvider));
             FluentValidationModelValidatorProvider.Configure(configuration, provider => provider.ValidatorFactory = validatorFactory);
+
         }
     }
 }

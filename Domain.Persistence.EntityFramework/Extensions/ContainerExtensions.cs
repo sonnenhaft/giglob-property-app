@@ -17,6 +17,7 @@ namespace Domain.Persistence.EntityFramework.Extensions
 
             container.Register(typeof(IRepository<,>), typeof(EntityFrameworkRepository<,>));
             container.Register(typeof(ICityRepository), typeof(CityRepository));
+            container.Register<IUserRepository, UserRepository>(Lifestyle.Transient);
         }
     }
 }

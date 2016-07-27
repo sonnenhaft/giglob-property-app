@@ -1,4 +1,4 @@
-packages/
+﻿packages/
 bin/
 obj/
 .vs/
@@ -15,3 +15,4 @@ Client.Web/Views/Index.cshtml
 Client.Api/mailSettings.config
 Client.Web/Content/Images/
 Client.Web/Views/styles/app.css
+
