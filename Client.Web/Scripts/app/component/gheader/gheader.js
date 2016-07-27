@@ -5,7 +5,8 @@
         scope: true,
         link: function($scope,$modal) {
         },
-        controller: function($scope,$modal){
+        controller: function($scope,$modal,localStorageService,$rootScope){
+
             $scope.login = function(){
                 var modalInstance = $modal.open({
                     templateUrl:'app/component/login/login.html',
@@ -13,6 +14,11 @@
                     controller:'loginCtrl'
                 })
             };
+
+            $scope.logout = function(){
+                localStorageService.remove('access-token');
+                $rootScope.accessToken = undefined;
+            }
         }
     };
 });

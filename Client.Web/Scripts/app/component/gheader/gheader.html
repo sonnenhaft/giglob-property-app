@@ -6,6 +6,7 @@
     <a ui-sref="my-ads" ui-sref-active="active" class="menu-item">Мои объекты</a>
   </nav>
   <button type="button" class="button round alert">Продать квартиру</button>
-  <div class="black text" ng-click="login()">Войти в профиль</div>
+  <div class="black text" ng-show="!accessToken" ng-click="login()">Войти в профиль</div>
+  <div class="black text" ng-show="accessToken" ng-click="logout()">Выйти из профиля</div>
   <div class="user-logo"></div>
 </header>

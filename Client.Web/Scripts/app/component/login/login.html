@@ -28,8 +28,8 @@
                 <div class="forms-header">Войти на сайт</div>
                 <form name="loginForm" novalidate >
                     <label>Электронная почта</label>
-                    <div class="form-group" ng-class="{'has-error' : loginForm.email.$invalid && loginForm.email.$touched}">
-                        <input ng-model='email'
+                    <div class="form-group" ng-class="{'has-error' : (loginForm.email.$invalid && loginForm.email.$touched) || error}">
+                        <input ng-model='login.email'
                                type="text"
                                ng-pattern="EMAIL_REGEX"
                                placeholder="Ваша почта"
@@ -40,10 +40,14 @@
                              ng-show="loginForm.email.$invalid && loginForm.email.$touched">
                             Проверьте правильность ввода
                         </div>
+                        <div class="help-block"
+                             ng-show="error">
+                            Почта или пароль указаны неверно
+                        </div>
                     </div>
                     <label>Пароль</label>
                     <div class="form-group" ng-class="{'has-error' : loginForm.password.$invalid && loginForm.password.$touched}">
-                        <input ng-model="password"
+                        <input ng-model="login.password"
                                type="password"
                                pass-to-text="{{showpassword}}"
                                placeholder="Ваш пароль"
@@ -66,7 +70,7 @@
                 </form>
                 <button ng-disabled="loginForm.$invalid" ng-click="signin()" type="submit" class="button btn-success">Вход</button>
             </div>
-            <div ng-if="activePage==='registration'">
+            <div ng-if="activePage==='registration' && notRegistered">
                 <div class="forms-header"> Регистрация через почту</div>
                 <form name="RegForm" ng-submit="register()" novalidate>
                     <label>Электронная почта</label>
@@ -107,6 +111,17 @@
                     </div>
                 </form>
                 <button type="submit" ng-disabled="RegForm.$invalid" ng-click="register()" class="button btn-success">Зарегистрироваться</button>
+            </div>
+            <div ng-if="activePage==='registration' && !notRegistered">
+                <div class="registration-success">
+                    <div class="ic-thanx"></div>
+                    <div class="forms-header">Спасибо!</div>
+                    <div class="grey-text">
+                        Для завершения регистрации перейдите по ссылке
+                        из письма, которое мы только что отправили
+                        на указанную вами электронную почту
+                    </div>
+                </div>
             </div>
         </div>
     </div>
