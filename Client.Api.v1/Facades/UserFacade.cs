@@ -46,7 +46,7 @@ namespace Client.Api.v1.Facades
             _fluentMailer.CreateMessage()
                          .WithView("~/Views/User/Mail/UserConfirmationMail.cshtml", new UserConfirmationMailModel
                          {
-                             Url = ConfigurationManager.AppSettings["WebUrl"] + "/user/confirmemail/" + user.EmailConfirmationToken
+                             Url = ConfigurationManager.AppSettings["WebUrl"] + "/#/user/confirmemail/" + user.EmailConfirmationToken
                          })
                          .WithReceiver(user.Email)
                          .Send();
