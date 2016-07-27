@@ -31,7 +31,7 @@ namespace Domain.Persistence.EntityFramework.Migrations
                 codeBase = Regex.Replace(codeBase, @"^file:[/]{2,3}", "")
                                    .Replace("/", @"\");
             }
-            if (!Regex.IsMatch(codeBase, @"^[a-zA-Z]:/"))
+            if (!Regex.IsMatch(codeBase, @"^[a-zA-Z]:\\"))
             {
                 codeBase = "//" + codeBase;
             }
