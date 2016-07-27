@@ -54,14 +54,6 @@
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.SqlServer.Types, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.SqlServer.Types.11.0.2\lib\net20\Microsoft.SqlServer.Types.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="RazorEngine, Version=3.0.0.0, Culture=neutral, PublicKeyToken=9ee697374c7e744a, processorArchitecture=MSIL">
-      <HintPath>..\packages\RazorEngine.3.0.0\lib\net40\RazorEngine.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="SimpleInjector, Version=3.2.0.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
       <HintPath>..\packages\SimpleInjector.3.2.0\lib\net45\SimpleInjector.dll</HintPath>
       <Private>True</Private>
@@ -69,10 +61,6 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Web.Razor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\RazorEngine.3.0.0\lib\net40\System.Web.Razor.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -133,7 +121,6 @@
     <Compile Include="Repositories\IFileRepository.cs" />
     <Compile Include="Repositories\IPropertyOfferRepository.cs" />
     <Compile Include="Repositories\IRepository.cs" />
-    <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="Storages\IFileStorage.cs" />
     <Compile Include="Tools\IVirtualPathUtility.cs" />
     <Compile Include="Repositories\IUserRepository.cs" />
@@ -150,25 +137,6 @@
       <Project>{b412e005-bf9b-49bb-8dde-6939a2456382}</Project>
       <Name>CQRS</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="..\packages\Microsoft.SqlServer.Types.11.0.2\nativeBinaries\x64\msvcr100.dll">
-      <Link>SqlServerTypes\x64\msvcr100.dll</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\packages\Microsoft.SqlServer.Types.11.0.2\nativeBinaries\x64\SqlServerSpatial110.dll">
-      <Link>SqlServerTypes\x64\SqlServerSpatial110.dll</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\packages\Microsoft.SqlServer.Types.11.0.2\nativeBinaries\x86\msvcr100.dll">
-      <Link>SqlServerTypes\x86\msvcr100.dll</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\packages\Microsoft.SqlServer.Types.11.0.2\nativeBinaries\x86\SqlServerSpatial110.dll">
-      <Link>SqlServerTypes\x86\SqlServerSpatial110.dll</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SqlServerTypes\readme.htm" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

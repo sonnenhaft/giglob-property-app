@@ -5,6 +5,7 @@ using Domain.Entities.Implementation.City;
 using Domain.Entities.Implementation.File;
 using Domain.Entities.Implementation.PropertyOffer;
 using Domain.Persistence.EntityFramework.Migrations;
+using Domain.Entities.User.Implementation;
 
 namespace Domain.Persistence.EntityFramework
 {

@@ -55,6 +55,7 @@ namespace Domain.Entities.Implementation.PropertyOffer.Queries
     public class Offer_GetAllQueryHandler : IQueryHandler<Offer_GetAllQuery, IEnumerable<PropertyOffer>>
     {
         private readonly IPropertyOfferRepository _offerRepository;
+        private static readonly int CoordinateSystemId = 4326;
 
         public Offer_GetAllQueryHandler(IPropertyOfferRepository offerRepository)
         {
@@ -87,18 +88,23 @@ namespace Domain.Entities.Implementation.PropertyOffer.Queries
 
             if (reqQuery.ViewPort != null)
             {
-                var str = string.Format(CultureInfo.InvariantCulture.NumberFormat, "POLYGON(({0} {1}, {2} {3}, {4} {5}, {6} {7}, {8} {9}))",
-                 reqQuery.ViewPort.LeftTopLon, reqQuery.ViewPort.LeftTopLat,
-                 reqQuery.ViewPort.LeftBottomLon, reqQuery.ViewPort.LeftBottomLat,
-                 reqQuery.ViewPort.RightBottomLon, reqQuery.ViewPort.RightBottomLat,
-                 reqQuery.ViewPort.RightTopLon, reqQuery.ViewPort.RightTopLat,
-                 reqQuery.ViewPort.LeftTopLon, reqQuery.ViewPort.LeftTopLat);
+                var polygonStringDefinition = string.Format(CultureInfo.InvariantCulture.NumberFormat, "POLYGON(({0} {1}, {2} {3}, {4} {5}, {6} {7}, {8} {9}))",
+                 reqQuery.ViewPort.LeftTopLon, 
+                 reqQuery.ViewPort.LeftTopLat,
+                 reqQuery.ViewPort.LeftBottomLon,
+                 reqQuery.ViewPort.LeftBottomLat,
+                 reqQuery.ViewPort.RightBottomLon,
+                 reqQuery.ViewPort.RightBottomLat,
+                 reqQuery.ViewPort.RightTopLon,
+                 reqQuery.ViewPort.RightTopLat,
+                 reqQuery.ViewPort.LeftTopLon,
+                 reqQuery.ViewPort.LeftTopLat);
 
-                DbGeography polygon = DbGeography.PolygonFromText(str, 4326);
+                DbGeography polygon = DbGeography.PolygonFromText(polygonStringDefinition, CoordinateSystemId);
                 query = query.Where(x => x.Location.Intersects(polygon));
             }
 
-            List<PropertyOffer> offers = query.OrderBy(x => x.CreationDate)
+            List<PropertyOffer> offers = query.OrderByDescending(x => x.CreationDate)
                 .Skip(reqQuery.Skip)
                 .Take(reqQuery.Take).ToList();
 
