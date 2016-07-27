@@ -12,4 +12,21 @@ angular.module('component.flat-filter', [
             $scope.roomCount = [{name: '1', value: '1'}, {name: '2', value: '2'}, {name: '3', value: '3'}, {name: '4+', value: '4+'}];
         }
     };
+}).directive('onClickOutside', function($document) {
+    return function($scope, $element, $attrs) {
+        function cb($e) {
+            $e.stopPropagation();
+
+            if(!$element[0].contains($e.target)) {
+                $scope.$eval($attrs.onClickOutside);
+                $scope.$applyAsync();
+            }
+        }
+
+        $document[0].addEventListener('click', cb);
+
+        $scope.$on('$destroy', function() {
+            $document[0].removeEventListener('click', cb);
+        })
+    }
 });

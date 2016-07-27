@@ -7,7 +7,8 @@ angular.module('component.multiselect-list', []).directive('multiselectList', fu
             selectedItems: '='
         },
         link: function ($scope) {
-            $scope.selectItem = function (item) {
+            $scope.selectItem = function (item, $e) {
+                $e.stopPropagation();
                 var index = $scope.selectedItems.indexOf(item);
                 if(index === -1) {
                     item.selected = true;

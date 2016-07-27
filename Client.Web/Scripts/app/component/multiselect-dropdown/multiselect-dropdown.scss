@@ -35,10 +35,22 @@
     padding: 5px 0;
     .list-item {
       padding: 2px 5px;
+      cursor: pointer;
       .mid-dot {
         font-size: 30px;
         line-height: 1px;
         vertical-align: middle;
+      }
+      .list-item-remove {
+        visibility: hidden;
+        color: #ccc;
+        float: right;
+      }
+      &:hover {
+        .list-item-remove {
+          visibility: visible;
+          color: #ccc;
+        }
       }
     }
   }

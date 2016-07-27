@@ -22,9 +22,9 @@ angular.module('component.carousel', []).directive('carousel', function() {
 
             function setImageOnKeydown(e) {
                 if(e.which === LEFT_ARROW_CODE) {
-                    $scope.setNextImage(-1);
+                    $scope.setNextImage(-1, e);
                 } else if(e.which === RIGHT_ARROW_CODE) {
-                    $scope.setNextImage(1);
+                    $scope.setNextImage(1, e);
                 }
                 $scope.$digest();
             }
@@ -38,7 +38,9 @@ angular.module('component.carousel', []).directive('carousel', function() {
                 thumbnailWrapper.scrollLeft = ($scope.currentIndex - 2) * DEFAULT_THUMBNAIL_WIDTH;
             };
 
-            $scope.setNextImage = function(index) {
+            $scope.setNextImage = function(index, $e) {
+                $e.stopPropagation();
+
                 var currIndex = $scope.currentIndex + index;
                 if(currIndex < 0) {
                     currIndex = $scope.images.length - 1;

@@ -29,10 +29,16 @@ angular.module('component.multiselect-dropdown', []).directive('multiselectDropd
                 }
             ];
 
-            $scope.selectItem = function (item) {
+            $scope.selectItem = function (item, $e) {
+                $e.stopPropagation();
+
                 !$scope.selectedItems.some(function(selectedItem) {
                     return item.id === selectedItem.id
                 }) && $scope.selectedItems.push(item);
+            };
+
+            $scope.removeItem = function (index) {
+                $scope.selectedItems.splice(index, 1);
             };
         }
     };
