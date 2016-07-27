@@ -13,5 +13,12 @@ angular.module("api.resource",["ngResource"])
             {
                 'save' : {method:'POST'}
             });
+    })
+    .factory('confirm',function($resource){
+        return $resource('http://api.giglob.local/v1/user/confirmemail',
+            null,
+            {
+                'save' : {method:'POST'}
+            });
     });
 

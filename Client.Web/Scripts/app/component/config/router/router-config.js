@@ -1,4 +1,5 @@
-angular.module('component.config.router', ['ui.router','api.httpRequestInterceptor']).config(function($stateProvider, $urlRouterProvider, EXCLUDED_DEMO_ROUTERS,$httpProvider) {
+angular.module('component.config.router', ['ui.router','api.httpRequestInterceptor','api.resource'])
+    .config(function($stateProvider, $urlRouterProvider, EXCLUDED_DEMO_ROUTERS,$httpProvider) {
     $urlRouterProvider.otherwise("/");
 
     $httpProvider.interceptors.push('httpRequestInterceptor');
@@ -129,7 +130,19 @@ angular.module('component.config.router', ['ui.router','api.httpRequestIntercept
         .state('add', {
             url: "/add",
             templateUrl: 'app/component/config/router/add.html'
-        });
+        })
+        .state('confirm',{
+            url:'/user/confirmemail/:token',
+            resolve:{
+                confirmEmail : function($state,$stateParams,confirm){
+                    confirm.save({'token' : $stateParams.token}).$promise.then(function(){
+                        $state.go('home');
+                    },function(err){
+                        console.log(err);
+                    })
+                }
+            }
+        })
 
 }).constant('EXCLUDED_DEMO_ROUTERS', [
     'demo',

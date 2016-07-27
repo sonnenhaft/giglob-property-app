@@ -74,7 +74,7 @@
                 <div class="forms-header"> Регистрация через почту</div>
                 <form name="RegForm" ng-submit="register()" novalidate>
                     <label>Электронная почта</label>
-                    <div class="form-group" ng-class="{'has-error' : RegForm.email.$invalid && RegForm.email.$touched}">
+                    <div class="form-group" ng-class="{'has-error' : (RegForm.email.$invalid && RegForm.email.$touched) || regErr}">
                         <input ng-model='reg.email'
                                type="text"
                                ng-pattern="EMAIL_REGEX"
@@ -85,6 +85,10 @@
                         <div class="help-block"
                              ng-show="RegForm.email.$invalid && RegForm.email.$touched">
                             Проверьте правильность ввода
+                        </div>
+                        <div class="help-block"
+                             ng-show="regErr">
+                            Почта уже зарегистрирована
                         </div>
                     </div>
                     <label>Пароль</label>

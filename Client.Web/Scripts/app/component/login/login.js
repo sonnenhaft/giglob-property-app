@@ -14,7 +14,7 @@ angular.module('component.login',['passToText'])
             $scope.register = register.save($scope.reg).$promise.then(function(res){
                 $scope.notRegistered = false;
             },function(err){
-
+                $scope.regErr = err.modelState;
             })
         };
         $scope.signin = function(){
