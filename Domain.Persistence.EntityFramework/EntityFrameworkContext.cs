@@ -15,8 +15,6 @@ namespace Domain.Persistence.EntityFramework
             
         public DbSet<City> Cities { get; set; }
 
-        public DbSet<User> Users { get; set; }
-
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
