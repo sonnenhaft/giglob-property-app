@@ -1,4 +1,4 @@
-packages/
+﻿packages/
 bin/
 obj/
 .vs/
@@ -12,3 +12,6 @@ Client.Web/Scripts/index.html
 Client.Web/Scripts/dist
 Client.Api/storage/
 Client.Web/Views/Index.cshtml
+Client.Api/mailSettings.config
+Client.Web/Content/Images/
+Client.Web/Views/styles/app.css

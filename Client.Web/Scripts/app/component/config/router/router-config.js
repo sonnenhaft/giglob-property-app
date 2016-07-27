@@ -39,25 +39,25 @@ angular.module('component.config.router', ['ui.router','api.httpRequestIntercept
                     },
                     coords: [37.715175, 55.833436],
                     images: [{
-                        src: 'app/component/carousel/example/images/1.jpeg'
+                        src: '../content/images/flat/1.jpeg'
                     }, {
-                        src: 'app/component/carousel/example/images/2.jpeg'
+                        src: '../content/images/flat/2.jpeg'
                     }, {
-                        src: 'app/component/carousel/example/images/3.jpeg'
+                        src: '../content/images/flat/3.jpeg'
                     }, {
-                        src: 'app/component/carousel/example/images/4.jpeg'
+                        src: '../content/images/flat/4.jpeg'
                     }, {
-                        src: 'app/component/carousel/example/images/5.jpeg'
+                        src: '../content/images/flat/1.jpeg'
                     }, {
-                        src: 'app/component/carousel/example/images/5.jpeg'
+                        src: '../content/images/flat/2.jpeg'
                     }, {
-                        src: 'app/component/carousel/example/images/5.jpeg'
+                        src: '../content/images/flat/3.jpeg'
                     }, {
-                        src: 'app/component/carousel/example/images/5.jpeg'
+                        src: '../content/images/flat/4.jpeg'
                     }, {
-                        src: 'app/component/carousel/example/images/5.jpeg'
+                        src: '../content/images/flat/5.jpeg'
                     }, {
-                        src: 'app/component/carousel/example/images/5.jpeg'
+                        src: '../content/images/flat/5.jpeg'
                     }]
                 }
             }
@@ -85,31 +85,31 @@ angular.module('component.config.router', ['ui.router','api.httpRequestIntercept
                             coordinates: [37.715175, 55.833436]
                         },
                         properties: {
-                            iconContent: 'Заголовок метки',
-                            hintContent: 'Ховер хинт',
-                            balloonContent: 'Разметка для всплывающей подсказки'
+                            iconContent: '', // Заголовок метки
+                            hintContent: '', //Ховер хинт
+                            balloonContent: ''//Разметка для всплывающей подсказки
                         }
                     },
                     images: [{
-                        src: 'app/component/carousel/example/images/1.jpeg'
+                        src: '../content/images/flat/1.jpeg'
                     }, {
-                        src: 'app/component/carousel/example/images/2.jpeg'
+                        src: '../content/images/flat/2.jpeg'
                     }, {
-                        src: 'app/component/carousel/example/images/3.jpeg'
+                        src: '../content/images/flat/3.jpeg'
                     }, {
-                        src: 'app/component/carousel/example/images/4.jpeg'
+                        src: '../content/images/flat/4.jpeg'
                     }, {
-                        src: 'app/component/carousel/example/images/5.jpeg'
+                        src: '../content/images/flat/5.jpeg'
                     }, {
-                        src: 'app/component/carousel/example/images/5.jpeg'
+                        src: '../content/images/flat/1.jpeg'
                     }, {
-                        src: 'app/component/carousel/example/images/5.jpeg'
+                        src: '../content/images/flat/2.jpeg'
                     }, {
-                        src: 'app/component/carousel/example/images/5.jpeg'
+                        src: '../content/images/flat/3.jpeg'
                     }, {
-                        src: 'app/component/carousel/example/images/5.jpeg'
+                        src: '../content/images/flat/4.jpeg'
                     }, {
-                        src: 'app/component/carousel/example/images/5.jpeg'
+                        src: '../content/images/flat/5.jpeg'
                     }]
                 }
             }
@@ -125,6 +125,10 @@ angular.module('component.config.router', ['ui.router','api.httpRequestIntercept
         .state('home', {
             url: "/",
             templateUrl: 'app/component/config/router/main-page.html'
+        })
+        .state('add', {
+            url: "/add",
+            templateUrl: 'app/component/config/router/add.html'
         });
 
 }).constant('EXCLUDED_DEMO_ROUTERS', [
