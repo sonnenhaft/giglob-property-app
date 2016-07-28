@@ -238,7 +238,7 @@ angular.module('component.config.data-access', []).factory('flatListFactory', fu
             coords: {
                 geometry: {
                     type: 'Point',
-                    coordinates: [37.755175, 55.853436]
+                    coordinates: [36.1, 55]
                 },
                 properties: {
                     iconContent: '', // Заголовок метки
@@ -274,7 +274,7 @@ angular.module('component.config.data-access', []).factory('flatListFactory', fu
             coords: {
                 geometry: {
                     type: 'Point',
-                    coordinates: [37.765175, 55.633436]
+                    coordinates: [37.55, 55.75]
                 },
                 properties: {
                     iconContent: '', // Заголовок метки

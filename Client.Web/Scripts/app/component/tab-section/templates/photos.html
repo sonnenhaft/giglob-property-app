@@ -10,15 +10,16 @@
     </div>
 </div>
 
-<div class="download-list photo-list" style="padding: 20px 0;">
-    <div ng-repeat="file in uploadedFiles" style="border-radius: 5px;display: inline-block;vertical-align: top;">
-        <img style="width: 143px; height: 143px;" ngf-src="file[0]">
+<div class="download-list photo-list">
+    <div class="download-list-image-wrapper" ng-repeat="file in uploadedFiles">
+        <img ngf-src="file[0]">
     </div>
-    <div style="width: 143px; height: 143px; border-radius: 5px; border: solid 1px #d4dee4;cursor: pointer; background: url('../../content/images/plus-icon.svg') no-repeat 50% 50%;display: inline-block;"
+    <div class="download-list-uploader"
          ngf-drop="uploadFiles($files)"
          ngf-select="uploadFiles($files)"
          ngf-pattern="'.jpg,.png'"
          ngf-max-total-size="5MB">
+        <div class="download-list-uploader-text">Добавить</div>
     </div>
 </div>
 
