@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+﻿﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -41,10 +41,6 @@
     <OutputPath>bin\Stage\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
     <Reference Include="ExpressMapper, Version=1.8.1.0, Culture=neutral, PublicKeyToken=ac363faa09311ba0, processorArchitecture=MSIL">
       <HintPath>..\packages\Expressmapper.1.8.1\lib\net451\ExpressMapper.dll</HintPath>
       <Private>True</Private>
@@ -78,6 +74,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
@@ -101,21 +98,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\MapsConfiguration.cs" />
-    <Compile Include="App_Start\ParameterBindingConfiguration.cs" />
-    <Compile Include="Controllers\FileController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\PropertyOfferController.cs" />
-    <Compile Include="Facades\CityFacade.cs" />
-    <Compile Include="Facades\DataFacade.cs" />
-    <Compile Include="Facades\FileFacade.cs" />
-    <Compile Include="Facades\PropertyOfferFacade.cs" />
-    <Compile Include="HttpParameterBinding\MultipartFilesParameterBinding.cs" />
-    <Compile Include="MultipartMemoryStreamProviders\ExtendedMultipartMemoryStreamProvider.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Extensions\ContainerExtensions.cs" />
     <Compile Include="Facades\UserFacade.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Results\FileResult.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
