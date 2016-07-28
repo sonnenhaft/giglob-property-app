@@ -12,11 +12,7 @@
     'component.carousel',
     'component.login',
     'component.flat-filter',
-    'component.add.location',
-    'component.add.details',
-    'component.add.photos',
-    'component.add.docs',
-    'component.add.change'
+    'component.tab-section'
 ]).directive('giglob', function(localStorageService) {
     return {
         templateUrl: 'app/giglob.html',

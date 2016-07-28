@@ -1,5 +1,5 @@
 angular.module('component.config.router', ['ui.router','api.httpRequestInterceptor','api.resource' 'component.config.data-access'])
-    .config(function($stateProvider, $urlRouterProvider, EXCLUDED_DEMO_ROUTERS,$httpProvider) {
+    .config(function($stateProvider, $urlRouterProvider, EXCLUDED_DEMO_ROUTERS, $httpProvider) {
     $urlRouterProvider.otherwise("/");
 
     $stateProvider
@@ -94,16 +94,16 @@ angular.module('component.config.router', ['ui.router','api.httpRequestIntercept
             url: "/my-ads",
             templateUrl: 'app/component/config/router/my-ads-page.html'
         })
-        .state('add', {
-            url: "/add",
-            templateUrl: 'app/component/config/router/add.html'
-        })
+        .state('add-ads', {
+            url: "/add-ads",
+            templateUrl: 'app/component/config/router/add-ads.html'
+        });
         .state('confirm',{
             url:'/user/confirmemail/:token',
             resolve:{
-                confirmEmail : function($state,$stateParams,confirm){
+                confirmEmail : function($state, $stateParams, confirm){
                     confirm.save({'token' : $stateParams.token}).$promise.then(function(){
-                        $state.go('home');
+                        $state.go('search');
                     },function(err){
                         console.log(err);
                     })

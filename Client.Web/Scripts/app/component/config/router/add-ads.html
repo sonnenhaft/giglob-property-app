@@ -1,0 +1,29 @@
+<div class="clearfix add-page">
+    <div class="left-column clearfix">
+        <header>
+            <h1>Добавление объекта</h1>
+        </header>
+
+        <tabset class="type-switcher">
+            <tab heading="Продажа">
+                <tabset class="add_tabs" vertical="true" type="navType" open-on-load="false">
+                    <!--TODO: Use tabsMapping and ng-repeat-->
+                    <tab-section tab-title="'Локация'" tab-description="'Адрес, район, метро'" tab-type="'location'"></tab-section>
+                    <tab-section tab-title="'Детали'" tab-description="'Площадь, этаж, комнаты, тип, стоимость'" tab-type="'details'"></tab-section>
+                    <tab-section tab-title="'Фотографии'" tab-description="'Настоящие фотографии объекта'" tab-type="'photos'"></tab-section>
+                    <tab-section tab-title="'Документы'" tab-description="'Свидетельство о собственности, <br>кадастровый номер'" tab-type="'docs'"></tab-section>
+                </tabset>
+            </tab>
+            <tab heading="Обмен">
+                <tabset class="add_tabs" vertical="true" type="navType" open-on-load="false">
+                    <!--TODO: Use tabsMapping and ng-repeat-->
+                    <tab-section tab-title="'Локация'" tab-description="'Адрес, район, метро'" tab-type="'location'"></tab-section>
+                    <tab-section tab-title="'Детали'" tab-description="'Площадь, этаж, комнаты, тип, стоимость'" tab-type="'details'"></tab-section>
+                    <tab-section tab-title="'Фотографии'" tab-description="'Настоящие фотографии объекта'" tab-type="'photos'"></tab-section>
+                    <tab-section tab-title="'Документы'" tab-description="'Свидетельство о собственности, <br>кадастровый номер'" tab-type="'docs'"></tab-section>
+                    <tab-section tab-title="'Куда хочу переехать'" tab-description="'Адрес, площадь, комнаты, стоимость'" tab-type="'change'"></tab-section>
+                </tabset>
+            </tab>
+        </tabset>
+    </div>
+</div>

@@ -5,9 +5,9 @@
     <a ui-sref="search" ui-sref-active="active" class="menu-item">Поиск квартир</a>
     <a ui-sref="my-ads" ui-sref-active="active" class="menu-item">Мои объекты</a>
   </nav>
-  <button  ui-sref="add" type="button" class="button round alert">Продать квартиру</button>
+    <button  ui-sref="add-ads" type="button" class="button round alert">Продать квартиру</button>
   <div class="black text" ng-show="!accessToken" ng-click="login()">Войти в профиль</div>
-  <div class="black text" ng-show="accessToken" ng-click="logout()">Выйти из профиля</div>
+  <div class="black text" ng-hide="accessToken" ng-click="logout()">Выйти из профиля</div>
   <div class="user-logo">
     <img src="../content/images/user-logo.svg">
   </div>
