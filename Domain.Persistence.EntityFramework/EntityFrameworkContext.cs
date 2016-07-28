@@ -166,7 +166,7 @@ namespace Domain.Persistence.EntityFramework
                 .HasKey(x => x.Id);
 
             modelBuilder.Entity<PropertyOffer>()
-               .HasOptional(x => x.PropertyExchange);
+               .HasOptional(x => x.PropertyExchangeDetails);
         }
     }
 }
