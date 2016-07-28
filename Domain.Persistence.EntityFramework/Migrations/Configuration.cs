@@ -29,7 +29,6 @@ namespace Domain.Persistence.EntityFramework.Migrations
                 codeBase = codeBase.Replace("file:///", "")
                                    .Replace("/", @"\");
             }
-
             var binDirectory = System.IO.Path.GetDirectoryName(codeBase);
             context.Database.ExecuteSqlCommand(File.ReadAllText(binDirectory + @"\SQL\cities.sql"));
             context.Database.ExecuteSqlCommand(File.ReadAllText(binDirectory + @"\SQL\districts.sql"));

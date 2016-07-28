@@ -155,6 +155,10 @@
   <ItemGroup>
     <Content Include="App_Readme\Elmah.txt" />
     <Content Include="packages.config" />
+    <Content Include="mailSettings.config" />
+    <Content Include="Views\User\Mail\UserConfirmationMail.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="Properties\PublishProfiles\TestPackage.pubxml" />
     <Content Include="mailSettings.config" />
     <Content Include="Views\User\Mail\UserConfirmationMail.cshtml">
@@ -174,7 +178,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Swagger\Scripts\swagger.bearer.js" />
+    <EmbeddedResource Include="Swagger\Scripts\swagger.bearer.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
