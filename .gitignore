@@ -1,4 +1,4 @@
-﻿packages/
+/packages/
 bin/
 obj/
 .vs/
