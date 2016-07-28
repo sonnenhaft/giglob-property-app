@@ -98,8 +98,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\MapsConfiguration.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Extensions\ContainerExtensions.cs" />
+    <Compile Include="Facades\DataFacade.cs" />
     <Compile Include="Facades\UserFacade.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
