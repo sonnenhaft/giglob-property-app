@@ -10,17 +10,17 @@ angular.module('component.multiselect-dropdown', []).directive('multiselectDropd
                 {
                     id: 1,
                     name: 'Улица Подбельского',
-                    color: '#ff0000'
+                    color: '#008000'
                 },
                 {
                     id: 2,
                     name: 'Черкизовская',
-                    color: '#ff0000'
+                    color: '#008000'
                 },
                 {
                     id: 3,
                     name: 'Преображенская площадь',
-                    color: '#ff0000'
+                    color: '#008000'
                 },
                 {
                     id: 4,
@@ -30,22 +30,22 @@ angular.module('component.multiselect-dropdown', []).directive('multiselectDropd
                 {
                     id: 5,
                     name: 'Красносельская',
-                    color: '#ff0000'
+                    color: '#ff6a14'
                 },
                 {
                     id: 6,
                     name: 'Красные ворота',
-                    color: '#ff0000'
+                    color: '#33adff'
                 },
                 {
                     id: 7,
                     name: 'Чистые пруды',
-                    color: '#ff0000'
+                    color: '#7d5329'
                 },
                 {
                     id: 8,
                     name: 'Лубянка',
-                    color: '#ff0000'
+                    color: '#ff6a14'
                 },
                 {
                     id: 9,
@@ -55,17 +55,12 @@ angular.module('component.multiselect-dropdown', []).directive('multiselectDropd
                 {
                     id: 10,
                     name: 'Библиотека имени Ленина',
-                    color: '#ff0000'
+                    color: '#33adff'
                 },
                 {
                     id: 11,
-                    name: 'Преображенская площадь',
-                    color: '#ff0000'
-                },
-                {
-                    id: 12,
                     name: 'Кропоткинская',
-                    color: '#ff0000'
+                    color: '#7d5329'
                 }
             ];
             $scope.filteredItems = $scope.items;
