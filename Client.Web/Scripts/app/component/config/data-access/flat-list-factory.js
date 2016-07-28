@@ -1,4 +1,4 @@
-angular.module('component.data-access', []).factory('flatListFactory', function() {
+angular.module('component.config.data-access', []).factory('flatListFactory', function() {
     var mockedFlatData = [
         {
             id: '1',
@@ -24,7 +24,17 @@ angular.module('component.data-access', []).factory('flatListFactory', function(
                 hasDocs: true,
                 publishDate: 1469007765797
             },
-            coords: [37.915175, 55.133436],
+            coords: {
+                geometry: {
+                    type: 'Point',
+                    coordinates: [37.755175, 55.853436]
+                },
+                properties: {
+                    iconContent: '', // Заголовок метки
+                    hintContent: '', //Ховер хинт
+                    balloonContent: ''//Разметка для всплывающей подсказки
+                }
+            },
             images: [{
                 src: '../content/images/flat/1/1.jpeg'
             }, {
@@ -58,7 +68,17 @@ angular.module('component.data-access', []).factory('flatListFactory', function(
                 hasDocs: true,
                 publishDate: 1469107765796
             },
-            coords: [37.911775, 55.138006],
+            coords: {
+                geometry: {
+                    type: 'Point',
+                    coordinates: [37.715175, 55.813436]
+                },
+                properties: {
+                    iconContent: '', // Заголовок метки
+                    hintContent: '', //Ховер хинт
+                    balloonContent: ''//Разметка для всплывающей подсказки
+                }
+            },
             images: [{
                 src: '../content/images/flat/2/1.jpeg'
             }, {
@@ -92,7 +112,17 @@ angular.module('component.data-access', []).factory('flatListFactory', function(
                 hasDocs: true,
                 publishDate: 1469207765795
             },
-            coords: [37.910375, 55.139936],
+            coords: {
+                geometry: {
+                    type: 'Point',
+                    coordinates: [37.725175, 55.823436]
+                },
+                properties: {
+                    iconContent: '', // Заголовок метки
+                    hintContent: '', //Ховер хинт
+                    balloonContent: ''//Разметка для всплывающей подсказки
+                }
+            },
             images: [{
                 src: '../content/images/flat/3/1.jpg'
             }, {
@@ -125,7 +155,17 @@ angular.module('component.data-access', []).factory('flatListFactory', function(
                 hasDocs: true,
                 publishDate: 1469007765794
             },
-            coords: [37.911179, 55.132430],
+            coords: {
+                geometry: {
+                    type: 'Point',
+                    coordinates: [37.735175, 55.833436]
+                },
+                properties: {
+                    iconContent: '', // Заголовок метки
+                    hintContent: '', //Ховер хинт
+                    balloonContent: ''//Разметка для всплывающей подсказки
+                }
+            },
             images: [{
                 src: '../content/images/flat/4/1.jpg'
             }, {
@@ -159,7 +199,17 @@ angular.module('component.data-access', []).factory('flatListFactory', function(
                 hasDocs: true,
                 publishDate: 1469007765793
             },
-            coords: [37.915900, 55.132931],
+            coords: {
+                geometry: {
+                    type: 'Point',
+                    coordinates: [37.745175, 55.843436]
+                },
+                properties: {
+                    iconContent: '', // Заголовок метки
+                    hintContent: '', //Ховер хинт
+                    balloonContent: ''//Разметка для всплывающей подсказки
+                }
+            },
             images: [{
                 src: '../content/images/flat/5/1.jpg'
             }, {
@@ -185,7 +235,17 @@ angular.module('component.data-access', []).factory('flatListFactory', function(
                 hasDocs: true,
                 publishDate: 1469007765792
             },
-            coords: [37.915245, 55.133100],
+            coords: {
+                geometry: {
+                    type: 'Point',
+                    coordinates: [37.755175, 55.853436]
+                },
+                properties: {
+                    iconContent: '', // Заголовок метки
+                    hintContent: '', //Ховер хинт
+                    balloonContent: ''//Разметка для всплывающей подсказки
+                }
+            },
             images: [{
                 src: '../content/images/flat/6/1.jpg'
             }, {
@@ -211,7 +271,17 @@ angular.module('component.data-access', []).factory('flatListFactory', function(
                 hasDocs: true,
                 publishDate: 1469007765791
             },
-            coords: [37.915185, 55.133496],
+            coords: {
+                geometry: {
+                    type: 'Point',
+                    coordinates: [37.765175, 55.633436]
+                },
+                properties: {
+                    iconContent: '', // Заголовок метки
+                    hintContent: '', //Ховер хинт
+                    balloonContent: ''//Разметка для всплывающей подсказки
+                }
+            },
             images: [{
                 src: '../content/images/flat/7/1.jpg'
             }, {
@@ -237,7 +307,17 @@ angular.module('component.data-access', []).factory('flatListFactory', function(
                 hasDocs: true,
                 publishDate: 1469007765780
             },
-            coords: [37.915145, 55.133416],
+            coords: {
+                geometry: {
+                    type: 'Point',
+                    coordinates: [37.775175, 55.733436]
+                },
+                properties: {
+                    iconContent: '', // Заголовок метки
+                    hintContent: '', //Ховер хинт
+                    balloonContent: ''//Разметка для всплывающей подсказки
+                }
+            },
             images: [{
                 src: '../content/images/flat/8/1.jpg'
             }]
@@ -261,7 +341,17 @@ angular.module('component.data-access', []).factory('flatListFactory', function(
                 hasDocs: true,
                 publishDate: 1469007765779
             },
-            coords: [37.915175, 55.133426],
+            coords: {
+                geometry: {
+                    type: 'Point',
+                    coordinates: [37.785175, 55.683436]
+                },
+                properties: {
+                    iconContent: '', // Заголовок метки
+                    hintContent: '', //Ховер хинт
+                    balloonContent: ''//Разметка для всплывающей подсказки
+                }
+            },
             images: [{
                 src: '../content/images/flat/9/1.jpg'
             }]
@@ -289,7 +379,17 @@ angular.module('component.data-access', []).factory('flatListFactory', function(
                 hasDocs: true,
                 publishDate: 1469007765777
             },
-            coords: [37.915165, 55.133436],
+            coords: {
+                geometry: {
+                    type: 'Point',
+                    coordinates: [37.795175, 55.693436]
+                },
+                properties: {
+                    iconContent: '', // Заголовок метки
+                    hintContent: '', //Ховер хинт
+                    balloonContent: ''//Разметка для всплывающей подсказки
+                }
+            },
             images: [{
                 src: '../content/images/flat/10/1.jpg'
             }]

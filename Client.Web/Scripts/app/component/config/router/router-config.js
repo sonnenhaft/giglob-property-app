@@ -1,4 +1,4 @@
-angular.module('component.config.router', ['ui.router', 'component.data-access']).config(function($stateProvider, $urlRouterProvider, EXCLUDED_DEMO_ROUTERS) {
+angular.module('component.config.router', ['ui.router', 'component.config.data-access']).config(function($stateProvider, $urlRouterProvider, EXCLUDED_DEMO_ROUTERS) {
     $urlRouterProvider.otherwise("/");
 
     $stateProvider
