@@ -64,7 +64,7 @@ angular.module('component.config.router', ['ui.router', 'component.data-access']
             templateUrl: 'app/component/config/router/apartment-detail.html',
             controller: function($scope, $filter, $state, $stateParams, flatListFactory) {
                 var flats = flatListFactory.getAllFlats();
-                $scope.flat = $filter('filter')(flats, {id: $state.id}, true)[0];
+                $scope.flat = $filter('filter')(flats, {id: $state.params.id}, true)[0];
             }
         })
         .state('search', {
