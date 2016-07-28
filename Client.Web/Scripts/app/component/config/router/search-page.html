@@ -4,7 +4,7 @@
 
         <div class="offers">
             <div class="title">
-                <span class="count">219</span> предложений
+                <span class="count">{{filteredFlats.length}}</span> предложений
             </div>
             <div class="offers_list clearfix">
                 <a class="flat-card"  ui-sref="apartment-detail({id: flat.id})" ng-repeat="flat in filteredFlats track by flat.id">
