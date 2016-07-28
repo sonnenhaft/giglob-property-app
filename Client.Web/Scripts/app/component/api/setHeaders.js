@@ -2,7 +2,7 @@ angular.module('api.httpRequestInterceptor',[]).factory('httpRequestInterceptor'
     return {
         request: function (config) {
 
-            config.headers.Authorization = 'Bearer 11111';
+            config.headers.Authorization = 'Bearer';
 
             return config;
         }
