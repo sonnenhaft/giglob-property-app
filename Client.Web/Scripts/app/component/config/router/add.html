@@ -2,38 +2,25 @@
     <div class="left-column clearfix">
         <header>
             <h1>Добавление объекта</h1>
-
-            <ul class="type-switcher">
-                <li class="active">Продажа</li>
-                <li>Обмен</li>
-            </ul>
         </header>
 
-        <tabset class="add_tabs" vertical="true" type="navType" open-on-load="false">
-            <add-location></add-location>
-            <tab>
-                <tab-heading>
-                    <div class="tab_title">Детали</div>
-                    <div class="tab_description">Площадь, этаж, комнаты, тип, стоимость</div>
-                    <button class="button action tab_control">Заполнить</button>
-                </tab-heading>
-                Vertical content 2
+        <tabset class="type-switcher">
+            <tab heading="Продажа">
+                <tabset class="add_tabs" vertical="true" type="navType" open-on-load="false">
+                    <add-location></add-location>
+                    <add-details></add-details>
+                    <add-photos></add-photos>
+                    <add-docs></add-docs>
+                </tabset>
             </tab>
-            <tab>
-                <tab-heading>
-                    <div class="tab_title">Фотографии</div>
-                    <div class="tab_description">Настоящие фотографии объекта</div>
-                    <button class="button action tab_control">Заполнить</button>
-                </tab-heading>
-                Vertical content 3
-            </tab>
-            <tab>
-                <tab-heading>
-                    <div class="tab_title">Документы</div>
-                    <div class="tab_description">Свидетельство о собственности, <br>кадастровый номер</div>
-                    <button class="button action tab_control">Заполнить</button>
-                </tab-heading>
-                Vertical content 4
+            <tab heading="Обмен">
+                <tabset class="add_tabs" vertical="true" type="navType" open-on-load="false">
+                    <add-location></add-location>
+                    <add-details></add-details>
+                    <add-photos></add-photos>
+                    <add-docs></add-docs>
+                    <add-change></add-change>
+                </tabset>
             </tab>
         </tabset>
     </div>

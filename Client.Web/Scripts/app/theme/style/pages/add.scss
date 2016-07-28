@@ -34,52 +34,74 @@ $tab-active-bg: #f8fafb;
   }
 
   .type-switcher {
-    display: block;
-    width: 100%;
-    height: 30px;
-    border-radius: $switcher-border-radius;
-    border: solid 2px #6289a1;
-    margin: 0 0 40px;
-    line-height: 26px;
+    padding: 0 33px;
 
-    li {
+    &>dl.tabs {
       display: block;
-      list-style: none;
-      width: 50%;
-      float: left;
-      background: #6289a1;
-      border: none;
-      font-size: 12px;
-      color: #fff;
-      text-transform: uppercase;
-      text-align: center;
-      vertical-align: middle;
-      cursor: pointer;
-      @extend .noselect;
+      width: 100%;
+      height: 30px;
+      border-radius: $switcher-border-radius;
+      border: solid 2px #6289a1;
+      margin: 0 0 40px;
+      line-height: 26px;
 
-      &.active {
+      dd {
+        display: block;
+        list-style: none;
+        width: 50%;
+        float: left;
+        padding: 0;
+        background: $bgc;
+        border: none;
+        font-size: 12px;
+        color: #6289a1;
+        text-transform: uppercase;
+        text-align: center;
+        vertical-align: middle;
+        cursor: pointer;
+        @extend .noselect;
         opacity: 0.7;
         font-weight: bold;
         letter-spacing: 0.5px;
-        text-align: center;
-        color: #6289a1;
-        background: $bgc;
-      }
+
+        a {
+          color: #6289a1;
+          padding: 0;
+          background: $bgc;
+          font-size: 12px;
+        }
+
+        &.active {
+          color: #fff;
+          opacity: 1;
+          font-weight: normal;
+          letter-spacing: 0.5px;
+          color: #6289a1;
+          background: #6289a1;
+
+          a {
+            color: #6289a1;
+            background: #6289a1;
+            color: #fff;
+          }
+        }
 
 
-      &:first-child.active {
-        border-top-left-radius: $switcher-border-radius;
-        border-bottom-left-radius: $switcher-border-radius;
-      }
-      &:last-child.active {
-        border-top-right-radius: $switcher-border-radius;
-        border-bottom-right-radius: $switcher-border-radius;
+        &:first-child {
+          border-top-left-radius: $switcher-border-radius;
+          border-bottom-left-radius: $switcher-border-radius;
+        }
+        &:last-child {
+          border-top-right-radius: $switcher-border-radius;
+          border-bottom-right-radius: $switcher-border-radius;
+        }
       }
     }
   }
 
   .add_tabs {
-    width: 100%;
+    width: 473px;
+    margin-left: -33px;
 
     .tabs {
       width: 100%;
