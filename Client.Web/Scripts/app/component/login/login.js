@@ -10,8 +10,9 @@ angular.module('component.login',['passToText'])
             $scope.activePage = page;
         };
         $scope.register = function(){
+            $scope.regErr = undefined;
             console.log($scope.reg);
-            $scope.register = register.save($scope.reg).$promise.then(function(res){
+            register.save($scope.reg).$promise.then(function(res){
                 $scope.notRegistered = false;
             },function(err){
                 console.log(err);
@@ -19,7 +20,6 @@ angular.module('component.login',['passToText'])
             })
         };
         $scope.signin = function(){
-            console.log('321');
             $scope.error = undefined;
             console.log($scope.login);
             login.save($scope.login).$promise.then(function(res){
