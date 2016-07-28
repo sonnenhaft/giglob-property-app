@@ -23,7 +23,7 @@ angular.module('component.flat-filter', [
                     $scope.selectedRoomCount,
                     $scope.selectedStations,
                     $scope.price);
-            }
+            };
             $scope.applyFilter();
         }
     };

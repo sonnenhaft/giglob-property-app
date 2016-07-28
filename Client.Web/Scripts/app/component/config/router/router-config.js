@@ -35,7 +35,7 @@ angular.module('component.config.router', ['ui.router', 'component.config.data-a
                         hasDocs: true,
                         publishDate: 1469007765797
                     },
-                    coords: [37.715175, 55.833436],
+                    coords: [38.715175, 55.833436],
                     images: [{
                         src: '../content/images/flat/1.jpeg'
                     }, {
@@ -73,6 +73,20 @@ angular.module('component.config.router', ['ui.router', 'component.config.data-a
             controller: function($scope, $stateParams, flatListFactory) {
                 $scope.flats = flatListFactory.getAllFlats();
                 $scope.filteredFlats = [];
+
+                $scope.markerOnMouseEnter = function(id,  $e){
+                    $scope.filteredFlats.find(function(flat) {
+                        return flat.id === id;
+                    }).highlighted = true;
+                    $e.get('target').options.set('iconImageHref', '../content/images/map-icon-hover.svg');
+                };
+
+                $scope.markerOnMouseLeave = function(id, $e){
+                    $scope.filteredFlats.find(function(flat) {
+                        return flat.id === id;
+                    }).highlighted = false;
+                    $e.get('target').options.set('iconImageHref', '../content/images/map-icon-small.svg');
+                }
             }
         })
         .state('my-ads', {
