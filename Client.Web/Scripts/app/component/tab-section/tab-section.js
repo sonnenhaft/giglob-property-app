@@ -1,4 +1,4 @@
-angular.module('component.tab-section', ['ngSanitize']).directive('tabSection', function() {
+angular.module('component.tab-section', ['ngSanitize', 'ngFileUpload']).directive('tabSection', function() {
     return {
         restrict: 'E',
         scope: {
@@ -9,7 +9,14 @@ angular.module('component.tab-section', ['ngSanitize']).directive('tabSection', 
         },
         templateUrl: 'app/component/tab-section/tab-section.html',
         link: function($scope) {
+            $scope.uploadedFiles = [];
 
+            $scope.uploadFiles = function (files) {
+                if (files && files.length) {
+                    $scope.uploadedFiles.push(files);
+                    console.log($scope.uploadedFiles);
+                }
+            }
         }
     };
 });

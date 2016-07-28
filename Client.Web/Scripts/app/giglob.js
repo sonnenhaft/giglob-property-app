@@ -1,4 +1,4 @@
-﻿angular.module('giglob-app', [
+angular.module('giglob-app', [
     'yaMap',
     'api.resource',
     'LocalStorageModule',

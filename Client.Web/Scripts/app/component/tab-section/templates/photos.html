@@ -6,30 +6,19 @@
         </div>
     </div>
     <div class="download-info">
-        Вы можете загрузить люьое количество файлов. Формат файлов: jps и png размером до 5 мегабайт каждый.
+        Вы можете загрузить люьое количество файлов. Формат файлов: jpg и png размером до 5 мегабайт каждый.
     </div>
 </div>
 
-<div class="download-list photo-list">
-    <div class="download-list">
-        <img src>
-        <div class="label photo-label">Обложка</div>
-        <div class="download-item-delete"></div>
+<div class="download-list photo-list" style="padding: 20px 0;">
+    <div ng-repeat="file in uploadedFiles" style="border-radius: 5px;display: inline-block;vertical-align: top;">
+        <img style="width: 143px; height: 143px;" ngf-src="file[0]">
     </div>
-    <div class="download-list">
-        <img src>
-        <div class="label photo-label">Обложка</div>
-        <div class="download-item-delete"></div>
-    </div>
-    <div class="download-list">
-        <img src>
-        <div class="label photo-label">Обложка</div>
-        <div class="download-item-delete"></div>
-    </div>
-    <div class="photo-list-item">
-        <img src>
-        <div class="icon-add"></div>
-        <div class="add-description">Добавить</div>
+    <div style="width: 143px; height: 143px; border-radius: 5px; border: solid 1px #d4dee4;cursor: pointer; background: url('../../content/images/plus-icon.svg') no-repeat 50% 50%;display: inline-block;"
+         ngf-drop="uploadFiles($files)"
+         ngf-select="uploadFiles($files)"
+         ngf-pattern="'.jpg,.png'"
+         ngf-max-total-size="5MB">
     </div>
 </div>
 
