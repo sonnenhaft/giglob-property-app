@@ -8,7 +8,6 @@ obj/
 
 Client.Web/Scripts/node_modules
 Client.Web/Scripts/app/**/*.css
-!Client.Web/Scripts/app/theme/style/icon-font/style.css
 Client.Web/Scripts/index.html
 Client.Web/Scripts/dist
 Client.Api/storage/
