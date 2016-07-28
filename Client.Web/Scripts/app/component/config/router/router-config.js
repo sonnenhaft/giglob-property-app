@@ -1,4 +1,4 @@
-angular.module('component.config.router', ['ui.router','api.httpRequestInterceptor','api.resource' 'component.config.data-access'])
+angular.module('component.config.router', ['ui.router', 'api.httpRequestInterceptor', 'api.resource', 'component.config.data-access'])
     .config(function($stateProvider, $urlRouterProvider, EXCLUDED_DEMO_ROUTERS, $httpProvider) {
     $urlRouterProvider.otherwise("/");
 
@@ -97,10 +97,10 @@ angular.module('component.config.router', ['ui.router','api.httpRequestIntercept
         .state('add-ads', {
             url: "/add-ads",
             templateUrl: 'app/component/config/router/add-ads.html'
-        });
-        .state('confirm',{
+        })
+        .state('confirm', {
             url:'/user/confirmemail/:token',
-            resolve:{
+            resolve: {
                 confirmEmail : function($state, $stateParams, confirm){
                     confirm.save({'token' : $stateParams.token}).$promise.then(function(){
                         $state.go('search');
