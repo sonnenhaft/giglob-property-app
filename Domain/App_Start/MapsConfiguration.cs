@@ -42,7 +42,7 @@ namespace Domain
             Mapper.Register<PropertyOfferCreatePhotoContext, PropertyPhoto>()
                 .Member(photo => photo.FileId, context => context.Id);
 
-            Mapper.Register<PropertyOfferExchangeContext, PropertyExchange>();
+            Mapper.Register<PropertyOfferExchangeContext, PropertyExchangeDetails>();
         }
     }
 }
