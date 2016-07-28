@@ -59,7 +59,7 @@ namespace Domain.Persistence.EntityFramework.Migrations
 
         private string ReadFile(string filename)
         {
-            using (var fstream = File.Open(filename, FileMode.Open))
+            using (var fstream = File.Open(filename, FileMode.Open, FileAccess.Read, FileShare.None))
             {
                 var bytes = new byte[fstream.Length];
                 fstream.Read(bytes, 0, bytes.Length);
