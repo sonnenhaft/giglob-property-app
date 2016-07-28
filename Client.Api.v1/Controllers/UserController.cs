@@ -34,6 +34,7 @@ namespace Client.Api.v1.Controllers
         }
 
         [HttpPost]
+        [SwaggerResponseExampleProvider(typeof(SuccessResponseExample))]
         public IHttpActionResult ConfirmEmail(UserConfiirmEmailRequestModel reqModel)
         {
             _userFacade.ConfirmEmail(reqModel.Token);
