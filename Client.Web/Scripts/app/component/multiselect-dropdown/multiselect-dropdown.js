@@ -9,26 +9,65 @@ angular.module('component.multiselect-dropdown', []).directive('multiselectDropd
             $scope.items = [
                 {
                     id: 1,
-                    name: 'Спортивная',
-                    color: '#3F82E3'
+                    name: 'Улица Подбельского',
+                    color: '#ff0000'
                 },
                 {
                     id: 2,
-                    name: 'Московская',
-                    color: '#FFBD1C'
+                    name: 'Черкизовская',
+                    color: '#ff0000'
                 },
                 {
                     id: 3,
-                    name: 'Уручье',
-                    color: '#E33F3F'
+                    name: 'Преображенская площадь',
+                    color: '#ff0000'
                 },
                 {
                     id: 4,
-                    name: 'Ленинская',
-                    color: '#000'
+                    name: 'Сокольники',
+                    color: '#ff0000'
+                },
+                {
+                    id: 5,
+                    name: 'Красносельская',
+                    color: '#ff0000'
+                },
+                {
+                    id: 6,
+                    name: 'Красные ворота',
+                    color: '#ff0000'
+                },
+                {
+                    id: 7,
+                    name: 'Чистые пруды',
+                    color: '#ff0000'
+                },
+                {
+                    id: 8,
+                    name: 'Лубянка',
+                    color: '#ff0000'
+                },
+                {
+                    id: 9,
+                    name: 'Охотный ряд',
+                    color: '#ff0000'
+                },
+                {
+                    id: 10,
+                    name: 'Библиотека имени Ленина',
+                    color: '#ff0000'
+                },
+                {
+                    id: 11,
+                    name: 'Преображенская площадь',
+                    color: '#ff0000'
+                },
+                {
+                    id: 12,
+                    name: 'Кропоткинская',
+                    color: '#ff0000'
                 }
             ];
-
             $scope.filteredItems = $scope.items;
 
             $scope.selectItem = function (item, $e) {

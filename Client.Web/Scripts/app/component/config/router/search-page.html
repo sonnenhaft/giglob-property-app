@@ -1,22 +1,22 @@
 <div class="search-page clearfix">
     <div class="left-column column">
-        <flat-filter class="flat_filter"></flat-filter>
+        <flat-filter class="flat_filter" all-flats="flats" filtered-flats="filteredFlats"></flat-filter>
 
         <div class="offers">
             <div class="title">
                 <span class="count">219</span> предложений
             </div>
             <div class="offers_list clearfix">
-                <a class="flat-card"  ui-sref="apartment-detail/:id" ng-repeat="flat in flats track by flat.id">
+                <a class="flat-card"  ui-sref="apartment-detail({id: flat.id})" ng-repeat="flat in filteredFlats track by flat.id">
                     <div class="card_image">
                         <img ng-src="{{flat.images[0].src}}" alt="">
                     </div>
                     <div class="card_description">
-                        <div class="card-title"  ui-sref="apartment-detail/:id">{{flat.description.title}}</div>
-                        <div class="card-info"><span class="metro-label" ng-style="background: flat.description.stationLineColor"></span> {{flat.description.station}},
-                            {{flat.description.area}} м<sup>2</sup>, {{flat.description.floor}} этаж
+                        <div class="card-title"  ui-sref="apartment-detail/:id">{{flat.summary.title}}</div>
+                        <div class="card-info"><span class="metro-label" ng-style="{background: flat.summary.stationLineColor}"></span> {{flat.summary.station}},
+                            {{flat.summary.area}} м<sup>2</sup>, {{flat.summary.floor}} этаж
                         </div>
-                        <div class="card-price">{{flat.description.price | currency}} &#8381;</div>
+                        <div class="card-price">{{flat.summary.price | currency : '₽' : ' '}}</div>
                     </div>
                     <span class="card_control_more" ui-sref="apartment-detail/:id">Подробнее</span>
                 </a>
