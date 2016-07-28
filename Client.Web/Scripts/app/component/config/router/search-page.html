@@ -28,7 +28,7 @@
             <ya-map ya-zoom="10" ya-center="[37.62,55.747]" ya-after-init="afterMapInit($target)" ya-controls>
                 <ya-geo-object ng-repeat="flat in flats track by flat.id" ya-source="flat.coords"
                                ya-show-all="true"
-                               ya-options="{iconLayout: 'default#image', iconImageHref: '../content/images/map-icon-small.svg', iconImageSize:[30, 30], iconImageOffset: [0, 0]}"
+                               ya-options="{iconLayout: 'default#image', iconImageHref: '../content/images/map-icon-small.svg', iconImageSize:[45, 45], iconImageOffset: [0, 0]}"
                                ya-event-mouseenter="markerOnMouseEnter(flat.id, $event)"
                                ya-event-mouseleave="markerOnMouseLeave(flat.id, $event)"
                 >ae</ya-geo-object>
