@@ -1,6 +1,8 @@
-﻿﻿using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
 using Domain.Entities.Implementation.City;
 
 namespace Domain.Persistence.EntityFramework.Migrations
@@ -24,17 +26,47 @@ namespace Domain.Persistence.EntityFramework.Migrations
                                  .GetName()
                                  .CodeBase;
 
-            if (codeBase.StartsWith("file:///"))
+            if (Regex.IsMatch(codeBase, @"^file:[/]{2,3}"))
             {
-                codeBase = codeBase.Replace("file:///", "")
+                codeBase = Regex.Replace(codeBase, @"^file:[/]{2,3}", "")
                                    .Replace("/", @"\");
             }
-            var binDirectory = System.IO.Path.GetDirectoryName(codeBase);
-            context.Database.ExecuteSqlCommand(File.ReadAllText(binDirectory + @"\SQL\cities.sql"));
-            context.Database.ExecuteSqlCommand(File.ReadAllText(binDirectory + @"\SQL\districts.sql"));
-            context.Database.ExecuteSqlCommand(File.ReadAllText(binDirectory + @"\SQL\metrobranches.sql"));
+
+            if (!Regex.IsMatch(codeBase, @"^[a-zA-Z]:\\"))
+            {
+                codeBase = "//" + codeBase;
+            }
+
+            string binDirectory = null;
+
+            try
+            {
+                binDirectory = Path.GetDirectoryName(codeBase);
+            }
+            catch (Exception)
+            {
+                binDirectory = codeBase.Substring(0, codeBase.LastIndexOf(@"\"));
+            }
+
+            if (binDirectory != null)
+            {
+                context.Database.ExecuteSqlCommand(ReadFile(binDirectory + @"\SQL\cities.sql"));
+            	context.Database.ExecuteSqlCommand(ReadFile(binDirectory + @"\SQL\districts.sql"));
+            	context.Database.ExecuteSqlCommand(ReadFile(binDirectory + @"\SQL\metrobranches.sql"));
+            }
 
             base.Seed(context);
+        }
+
+        private string ReadFile(string filename)
+        {
+            using (var fstream = File.Open(filename, FileMode.Open, FileAccess.Read, FileShare.None))
+            {
+                var bytes = new byte[fstream.Length];
+                fstream.Read(bytes, 0, bytes.Length);
+
+                return Encoding.UTF8.GetString(bytes);
+            }
         }
     }
 }

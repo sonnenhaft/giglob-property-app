@@ -1,9 +1,11 @@
 ﻿using System.Linq;
 using Client.Api.v1.Models.Models.City;
+using Client.Api.v1.Models.Models.User;
 using Client.Api.v1.Models.Models.City;
 using Client.Api.v1.Models.Models.PropertyOffer;
 using System.Security.Cryptography.X509Certificates;
 using Client.Api.v1.Models.Models.City;
+using Client.Api.v1.Models.Models.User;
 using Domain.Entities.Implementation.City;
 using Client.Api.v1.Models.Models.User;
 using Domain.Entities.Implementation.PropertyOffer;
@@ -41,6 +43,7 @@ namespace Client.Api.v1
 
             Mapper.Register<PropertyOfferGetAllOffersRequestModel, Offer_GetAllQuery>();
             Mapper.Register<ViewPort, ViewPortDto>();
+            Mapper.Register<City, CityModel>();
         }
     }
 }
