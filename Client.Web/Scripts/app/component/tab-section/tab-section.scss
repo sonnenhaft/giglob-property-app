@@ -84,6 +84,9 @@
       border-radius: 5px;
       border: solid 1px #d4dee4;
       cursor: pointer;
+      &.dragover {
+        background-color: #ecf1f4;
+      }
       .download-list-uploader-text {
         font-size: 14px;
         font-weight: 900;
