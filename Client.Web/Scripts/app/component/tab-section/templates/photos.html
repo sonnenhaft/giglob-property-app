@@ -17,6 +17,7 @@
             <div class="label file-label-cover" ng-class="{active: file.isCover}">Обложка</div>
             <div class="file-label-remove" ng-click="removeFile($index);"></div>
         </div><div class="download-list-uploader"
+             ngf-accept="'image/png,image/jpeg'"
              ngf-drop="uploadFiles($files)"
              ngf-select="uploadFiles($files)"
              ngf-validate="{size: {max: '5MB'}, pattern: '.jpg,.png', totalSize: {max: '50MB'}}"

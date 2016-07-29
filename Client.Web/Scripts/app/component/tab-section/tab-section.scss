@@ -9,6 +9,7 @@
       width: 143px;
       height: 143px;
       border-radius: 3px;
+      overflow: hidden;
       &:nth-child(odd) {
         margin-right: 10px;
       }
@@ -21,7 +22,6 @@
       }
       img {
         width: 100%;
-        height: 100%;
         border-radius: 5px;
       }
       .file-label-cover {
