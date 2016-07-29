@@ -1,4 +1,5 @@
 ﻿using System.Web;
+using System.Web.Hosting;
 using Domain.Tools;
 
 namespace Client.Api.Tools.Implementation
@@ -16,8 +17,7 @@ namespace Client.Api.Tools.Implementation
 
             if (virtualPath.StartsWith("~"))
             {
-                virtualPath = virtualPath.Replace("~", "{0}");
-                fullPath = string.Format(virtualPath, HttpRuntime.AppDomainAppPath);
+                fullPath = HostingEnvironment.MapPath(virtualPath);
                 fullPath = FormatPath(fullPath);
             }
 
