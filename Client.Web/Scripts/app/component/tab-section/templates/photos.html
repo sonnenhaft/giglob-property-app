@@ -10,17 +10,23 @@
     </div>
 </div>
 
-<div class="download-list photo-list">
-    <div class="download-list-image-wrapper" ng-repeat="file in uploadedFiles">
-        <img ngf-src="file[0]">
+<form name="photoForm" >
+    <div class="download-list photo-list">
+        <div class="download-list-image-wrapper" ng-repeat="file in uploadedFiles" ng-click="setCover($index)">
+            <img ngf-src="file">
+            <div class="label photo-label-cover" ng-class="{active: file.isCover}">Обложка</div>
+        </div>
+        <div class="download-list-uploader"
+             ngf-drop="uploadFiles($files)"
+             ngf-select="uploadFiles($files)"
+             ngf-validate="{size: {max: '5MB'}, pattern: '.jpg,.png', totalSize: {max: '50MB'}}"
+             multiple="true">
+            <div class="download-list-uploader-text">Добавить</div>
+        </div>
+        <div></div>
     </div>
-    <div class="download-list-uploader"
-         ngf-drop="uploadFiles($files)"
-         ngf-select="uploadFiles($files)"
-         ngf-pattern="'.jpg,.png'"
-         ngf-max-total-size="5MB">
-        <div class="download-list-uploader-text">Добавить</div>
-    </div>
-</div>
+    <div ng-show="photoForm.file.$error.maxSize">asdasdasdasdasd</div>
+</form>
+
 
 <button class="button action action_next green large next">Сохранить и перейти дальше</button>

@@ -13,9 +13,21 @@ angular.module('component.tab-section', ['ngSanitize', 'ngFileUpload']).directiv
 
             $scope.uploadFiles = function (files) {
                 if (files && files.length) {
-                    $scope.uploadedFiles.push(files);
-                    console.log($scope.uploadedFiles);
+                    files.forEach(function(file) {
+                        $scope.uploadedFiles.push(file);
+                    });
+                    $scope.setCover(0);
                 }
+            };
+
+            $scope.setCover = function (index) {
+                $scope.uploadedFiles.some(function(file) {
+                    if(file.isCover) {
+                        file.isCover = false;
+                        return true;
+                    }
+                });
+                $scope.uploadedFiles[index].isCover = true;
             }
         }
     };
