@@ -16,19 +16,25 @@ angular.module('component.tab-section', ['ngSanitize', 'ngFileUpload']).directiv
                     files.forEach(function(file) {
                         $scope.uploadedFiles.push(file);
                     });
-                    $scope.setCover(0);
+                    !$scope.lastCoverIndex && $scope.setCover();
                 }
             };
 
-            $scope.setCover = function (index) {
-                $scope.uploadedFiles.some(function(file) {
-                    if(file.isCover) {
-                        file.isCover = false;
-                        return true;
-                    }
-                });
-                $scope.uploadedFiles[index].isCover = true;
-            }
+            $scope.setCover = function (index, skip) {
+                !skip && ($scope.uploadedFiles[$scope.lastCoverIndex || 0].isCover = false);
+
+                $scope.lastCoverIndex = index || 0;
+                $scope.uploadedFiles[$scope.lastCoverIndex].isCover = true;
+            };
+
+            $scope.removeFile = function (index) {
+                $scope.uploadedFiles.splice(index, 1);
+
+                if($scope.lastCoverIndex === index) {
+                    index = $scope.uploadedFiles.length <= index ? index - 1 : index;
+                    $scope.setCover(index, true);
+                }
+            };
         }
     };
 });

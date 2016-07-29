@@ -15,6 +15,7 @@
         <div class="download-list-image-wrapper" ng-repeat="file in uploadedFiles" ng-click="setCover($index)">
             <img ngf-src="file">
             <div class="label photo-label-cover" ng-class="{active: file.isCover}">Обложка</div>
+            <div class="photo-label-remove" ng-click="removeFile($index);"></div>
         </div>
         <div class="download-list-uploader"
              ngf-drop="uploadFiles($files)"
@@ -25,7 +26,6 @@
         </div>
         <div></div>
     </div>
-    <div ng-show="photoForm.file.$error.maxSize">asdasdasdasdasd</div>
 </form>
 
 
