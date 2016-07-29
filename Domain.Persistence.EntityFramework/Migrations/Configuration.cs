@@ -49,10 +49,9 @@ namespace Domain.Persistence.EntityFramework.Migrations
 
             if (binDirectory != null)
             {
-
                 context.Database.ExecuteSqlCommand(ReadFile(binDirectory + @"\SQL\cities.sql"));
-            	context.Database.ExecuteSqlCommand(ReadFile(binDirectory + @"\SQL\districts.sql"));
-            	context.Database.ExecuteSqlCommand(ReadFile(binDirectory + @"\SQL\metrobranches.sql"));
+                context.Database.ExecuteSqlCommand(ReadFile(binDirectory + @"\SQL\districts.sql"));
+                context.Database.ExecuteSqlCommand(ReadFile(binDirectory + @"\SQL\metrobranches.sql"));
             }
 
             base.Seed(context);
