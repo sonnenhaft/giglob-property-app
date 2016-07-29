@@ -16,17 +16,22 @@
     </div>
 </div>
 
-<div class="download-list doc-list">
-    <div class="download-list-item">
-        <img scr>
-        <div class="label photo-label">Обложка</div>
-        <div class="download-item-delete"></div>
-    </div>
-
-    <div class="download-list-item">
-        <img scr>
-        <div class="icon-add"></div>
-        <div class="add-description">Добавить</div>
+<div class="download-list file-list">
+    <div class="download-list file-list">
+        <div class="download-list-file-wrapper doc" ng-repeat="file in uploadedFiles" ng-click="setCover($index)">
+            <div class="file-label-name">{{file.formattedName}}</div>
+            <div class="label file-label-format {{file.format.toLowerCase()}}">{{file.format}}</div>
+            <div class="file-label-remove" ng-click="removeFile($index, true);"></div>
+        </div><div class="download-list-uploader"
+             ngf-drop="uploadFiles($files, true)"
+             ngf-select="uploadFiles($files, true)"
+             ngf-keep="'distinct'"
+             ngf-validate="{size: {max: '5MB'}, pattern: '.doc,.pdf,.docx,.pages'}"
+             ngf-max-files="20"
+             multiple="true">
+            <div class="download-list-uploader-text">Добавить</div>
+        </div>
+        <div></div>
     </div>
 </div>
 

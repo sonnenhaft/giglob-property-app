@@ -11,9 +11,13 @@ angular.module('component.tab-section', ['ngSanitize', 'ngFileUpload']).directiv
         link: function($scope) {
             $scope.uploadedFiles = [];
 
-            $scope.uploadFiles = function (files) {
+            $scope.uploadFiles = function (files, getMeta) {
                 if (files && files.length) {
                     files.forEach(function(file) {
+                        if(getMeta) {
+                            file.formattedName = file.name.split('.')[0];
+                            file.format = file.type.indexOf('pdf') + 1 ? 'PDF' : 'DOC';
+                        }
                         $scope.uploadedFiles.push(file);
                     });
                     !$scope.lastCoverIndex && $scope.setCover();
@@ -27,7 +31,7 @@ angular.module('component.tab-section', ['ngSanitize', 'ngFileUpload']).directiv
                 $scope.uploadedFiles[$scope.lastCoverIndex].isCover = true;
             };
 
-            $scope.removeFile = function (index) {
+            $scope.removeFile = function (index, skipCover) {
                 $scope.uploadedFiles.splice(index, 1);
 
                 if($scope.lastCoverIndex === index) {

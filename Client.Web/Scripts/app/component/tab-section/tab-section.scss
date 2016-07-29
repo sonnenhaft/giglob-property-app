@@ -1,25 +1,30 @@
 .tabs-content {
   .download-list {
     padding: 20px 0;
-    .download-list-image-wrapper {
+    .download-list-file-wrapper {
       position: relative;
       display: inline-block;
       vertical-align: top;
-      margin-bottom: 5px;
+      margin-bottom: 10px;
       width: 143px;
       height: 143px;
+      border-radius: 3px;
       &:nth-child(odd) {
-        margin-right: 5px;
+        margin-right: 10px;
       }
       &:hover {
         cursor: pointer;
+      }
+      &.doc {
+        border: solid 1px #d4dee4;
+        padding: 15px;
       }
       img {
         width: 100%;
         height: 100%;
         border-radius: 5px;
       }
-      .photo-label-cover {
+      .file-label-cover {
         display: none;
         width: 80px;
         height: 20px;
@@ -34,7 +39,30 @@
           display: block;
         }
       }
-      .photo-label-remove {
+      .file-label-name {
+        padding-top: 25px;
+        word-wrap: break-word;
+        font-weight: 500;
+        text-align: center;
+        color: #6d8493;
+        line-height: 20px;
+      }
+      .file-label-format {
+        border-radius: 3px;
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        font-size: 10px;
+        font-weight: 900;
+        letter-spacing: 0.5px;
+        &.pdf {
+          background: #f19898;
+        }
+        &.doc {
+          background: #98d0f1;
+        }
+      }
+      .file-label-remove {
         position: absolute;
         top: 7px;
         right: 7px;

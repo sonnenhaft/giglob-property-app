@@ -10,14 +10,13 @@
     </div>
 </div>
 
-<form name="photoForm" >
-    <div class="download-list photo-list">
-        <div class="download-list-image-wrapper" ng-repeat="file in uploadedFiles" ng-click="setCover($index)">
+<form name="photoForm">
+    <div class="download-list file-list">
+        <div class="download-list-file-wrapper" ng-repeat="file in uploadedFiles" ng-click="setCover($index)">
             <img ngf-src="file">
-            <div class="label photo-label-cover" ng-class="{active: file.isCover}">Обложка</div>
-            <div class="photo-label-remove" ng-click="removeFile($index);"></div>
-        </div>
-        <div class="download-list-uploader"
+            <div class="label file-label-cover" ng-class="{active: file.isCover}">Обложка</div>
+            <div class="file-label-remove" ng-click="removeFile($index);"></div>
+        </div><div class="download-list-uploader"
              ngf-drop="uploadFiles($files)"
              ngf-select="uploadFiles($files)"
              ngf-validate="{size: {max: '5MB'}, pattern: '.jpg,.png', totalSize: {max: '50MB'}}"
