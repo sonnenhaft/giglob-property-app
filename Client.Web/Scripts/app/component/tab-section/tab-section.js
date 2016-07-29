@@ -10,7 +10,58 @@ angular.module('component.tab-section', ['ngSanitize', 'ngFileUpload']).directiv
         templateUrl: 'app/component/tab-section/tab-section.html',
         link: function($scope) {
             $scope.uploadedFiles = [];
-
+            $scope.data = {
+                cities: [
+                    {
+                        id: 1,
+                        name: 'Москва'
+                    },
+                    {
+                        id: 2,
+                        name: 'Санкт-Петербург'
+                    }
+                ],
+                districts: [
+                    {
+                        id: 1,
+                        name: 'Академический'
+                    },
+                    {
+                        id: 2,
+                        name: 'Алексеевский'
+                    }
+                ],
+                stations: [
+                    {
+                        id: 1,
+                        name: 'Библиотек4а им. Ленина'
+                    },
+                    {
+                        id: 2,
+                        name: 'Кузминки'
+                    }
+                ],
+                buildCategories : [
+                    {
+                        id: 1,
+                        name: 'Многоквартирный дом'
+                    },
+                    {
+                        id: 2,
+                        name: 'Частный дом'
+                    }
+                ],
+                realEstateTypes: [
+                    {
+                        id: 1,
+                        name: 'Новостройка'
+                    },
+                    {
+                        id: 2,
+                        name: 'Вторичка'
+                    }
+                ]
+            };
             $scope.uploadFiles = function (files, getMeta) {
                 if (files && files.length) {
                     files.forEach(function(file) {

@@ -1,12 +1,11 @@
-<div class="form">
+<form novalidate class="form">
     <label class="form-label">
         <div class="label-title">Город</div>
         <div class="label-item">
             <div class="select-wrapper">
-                <select>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                </select>
+                <select name="city"
+                        ng-options="option.name for option in data.cities track by option.id"
+                        ng-model="$parent.model.city"></select>
             </div>
         </div>
 
@@ -15,7 +14,7 @@
     <label class="form-label">
         <div class="label-title">Улица</div>
         <div class="label-item">
-            <input type="text" value="Юных Ленинцев">
+            <input type="text" ng-model="$parent.model.street" required>
         </div>
     </label>
 
@@ -23,19 +22,19 @@
         <label class="form-label">
             <div class="label-title">Дом</div>
             <div class="label-item">
-                <input type="text" value="238">
+                <input type="text" ng-model="build" required>
             </div>
         </label>
         <label class="form-label">
             <div class="label-title">Корпус</div>
             <div class="label-item">
-                <input type="text" value="">
+                <input type="text" ng-model="housing">
             </div>
         </label>
         <label class="form-label">
             <div class="label-title">Квартира</div>
             <div class="label-item">
-                <input type="text" value="">
+                <input type="text" ng-model="flat" required>
             </div>
         </label>
     </div>
@@ -45,10 +44,9 @@
         <div class="label-title">Район</div>
         <div class="label-item">
             <div class="select-wrapper">
-                <select>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                </select>
+                <select name="district"
+                        ng-options="option.name for option in data.districts track by option.id"
+                        ng-model="$parent.model.district"></select>
             </div>
         </div>
 
@@ -58,14 +56,13 @@
         <div class="label-title">Метро</div>
         <div class="label-item">
             <div class="select-wrapper">
-                <select name="" id="">
-                    <option value="1">Кузиминки</option>
-                    <option value="2">Текстильщики</option>
-                </select>
+                <select name="station"
+                        ng-options="option.name for option in data.stations track by option.id"
+                        ng-model="$parent.model.station"></select>
             </div>
         </div>
 
     </label>
 
     <button class="button action action_next green large next">Сохранить и перейти дальше</button>
-</div>
+</form>

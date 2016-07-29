@@ -3,55 +3,53 @@
     <label class="form-label">
         <div class="label-title">Этаж</div>
         <div class="label-item">
-            <input type="text" placeholder="Номер этажа">
+            <input type="text" ng-model="$parent.model.floor" placeholder="Номер этажа">
         </div>
     </label>
 
     <label class="form-label">
         <div class="label-title">Площадь, м<sup>2</sup></div>
         <div class="label-item">
-            <input type="text" placeholder="Общая площадь помещения">
+            <input type="text" ng-model="$parent.model.square" placeholder="Общая площадь помещения">
         </div>
     </label>
 
     <label class="form-label">
         <div class="label-title">Комнаты</div>
         <div class="label-item">
-            <input type="text" placeholder="Количество комнат">
+            <input type="text" ng-model="$parent.model.roomsCount" placeholder="Количество комнат">
         </div>
     </label>
 
     <label class="form-label">
         <div class="label-title">Тип недвижимости</div>
         <div class="label-item">
-            <select>
-                <option value="1">Новостройка</option>
-                <option value="2">2</option>
-            </select>
+            <select name="realEstateType"
+                    ng-options="option.name for option in data.realEstateTypes track by option.id"
+                    ng-model="$parent.model.realEstateType"></select>
         </div>
     </label>
 
     <label class="form-label">
         <div class="label-title">Категория строения</div>
         <div class="label-item">
-            <select>
-                <option value="1">Многоквартирный дом</option>
-                <option value="2">2</option>
-            </select>
+            <select name="buildCategory"
+                    ng-options="option.name for option in data.buildCategories track by option.id"
+                    ng-model="$parent.model.buildCategory"></select>
         </div>
     </label>
 
     <label class="form-label">
         <div class="label-title">Стоимость в рублях</div>
         <div class="label-item">
-            <input type="text" placeholder="Стоимость объекта">
+            <input type="text" ng-model="$parent.model.price" placeholder="Стоимость объекта">
         </div>
     </label>
 
     <label class="form-label">
         <div class="label-title">Коментарий</div>
         <div class="label-item">
-            <textarea placeholder="Описание в свободной форме"></textarea>
+            <textarea placeholder="Описание в свободной форме" ng-model="$parent.model.comment"></textarea>
         </div>
     </label>
 

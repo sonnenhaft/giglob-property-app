@@ -2,10 +2,9 @@
     <label class="form-label">
         <div class="label-title">Город</div>
         <div class="label-item">
-            <select>
-                <option value="1">1</option>
-                <option value="2">2</option>
-            </select>
+            <select name="city"
+                    ng-options="option.name for option in data.cities track by option.id"
+                    ng-model="$parent.model.city"></select>
         </div>
 
     </label>
@@ -13,10 +12,9 @@
     <label class="form-label">
         <div class="label-title">Район</div>
         <div class="label-item">
-            <select>
-                <option value="1">1</option>
-                <option value="2">2</option>
-            </select>
+            <select name="district"
+                    ng-options="option.name for option in data.districts track by option.id"
+                    ng-model="$parent.model.district"></select>
         </div>
 
     </label>
@@ -24,29 +22,22 @@
     <label class="form-label">
         <div class="label-title">Площадь, м<sup>2</sup></div>
         <div class="label-item">
-            <input type="text" placeholder="Общая площадь помещения">
+            <input type="text" ng-model="$parent.model.square" placeholder="Общая площадь помещения">
         </div>
     </label>
 
     <label class="form-label">
         <div class="label-title">Комнаты</div>
         <div class="label-item">
-            <input type="text" placeholder="Количество комнат">
-        </div>
-    </label>
-
-    <label class="form-label">
-        <div class="label-title">Площадь, м<sup>2</sup></div>
-        <div class="label-item">
-            <input type="text" placeholder="Общая площадь помещения">
+            <input type="text" ng-model="$parent.model.roomsCount" placeholder="Количество комнат">
         </div>
     </label>
 
     <label class="form-label">
         <div class="label-title">Стоимость, &#8381;</div>
         <div class="double-input">
-            <input type="text" placeholder="От">
-            <input type="text" placeholder="До">
+            <input type="text" ng-model="$parent.model.minPrice" placeholder="От">
+            <input type="text" ng-model="$parent.model.maxPrice" placeholder="До">
         </div>
     </label>
 

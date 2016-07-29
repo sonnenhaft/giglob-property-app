@@ -96,7 +96,21 @@ angular.module('component.config.router', ['ui.router', 'api.httpRequestIntercep
         })
         .state('add-ads', {
             url: "/add-ads",
-            templateUrl: 'app/component/config/router/add-ads.html'
+            templateUrl: 'app/component/config/router/add-ads.html',
+            controller: function ($scope) {
+                $scope.model = {
+                    sale: {
+                        location: {
+                            city: {
+                                id: 1,
+                                name: 'Москва'
+                            }
+                        }
+                    },
+                    swap: {}
+
+                };
+            }
         })
         .state('confirm', {
             url:'/user/confirmemail/:token',
