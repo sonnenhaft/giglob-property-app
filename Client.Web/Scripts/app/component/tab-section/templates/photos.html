@@ -12,7 +12,7 @@
 
 <form name="photoForm">
     <div class="download-list file-list">
-        <div class="download-list-file-wrapper" ng-repeat="file in uploadedFiles" ng-click="setCover($index)">
+        <div class="download-list-file-wrapper" ng-repeat="file in uploadedFiles track by $index" ng-click="setCover($index)">
             <img ngf-src="file">
             <div class="label file-label-cover" ng-class="{active: file.isCover}">Обложка</div>
             <div class="file-label-remove" ng-click="removeFile($index);"></div>
