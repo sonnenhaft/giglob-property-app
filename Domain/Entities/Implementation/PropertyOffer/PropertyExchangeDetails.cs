@@ -1,6 +1,6 @@
 ﻿namespace Domain.Entities.Implementation.PropertyOffer
 {
-    public class PropertyExchange
+    public class PropertyExchangeDetails
     {
         public long Id { get; set; }
 

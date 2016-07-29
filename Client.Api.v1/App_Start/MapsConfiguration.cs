@@ -16,6 +16,10 @@ using Domain.Entities.Implementation.PropertyOffer;
 using Domain.Entities.User.Implementation;
 
 using Domain.Entities.Implementation.PropertyOffer.Dtos;
+using Client.Api.v1.Models.Models.City;
+using Client.Api.v1.Models.Models.User;
+using Domain.Entities.Implementation.City;
+using Domain.Entities.User.Implementation;
 using ExpressMapper;
 
 namespace Client.Api.v1
