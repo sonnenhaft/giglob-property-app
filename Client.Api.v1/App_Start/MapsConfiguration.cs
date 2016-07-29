@@ -1,4 +1,3 @@
-﻿<<<<<<< HEAD
 ﻿using System.Linq;
 using System.Net.Http;
 using Client.Api.v1.Models.Models.City;
@@ -17,12 +16,10 @@ using Domain.Entities.Implementation.PropertyOffer;
 using Domain.Entities.User.Implementation;
 
 using Domain.Entities.Implementation.PropertyOffer.Dtos;
-=======
 using Client.Api.v1.Models.Models.City;
 using Client.Api.v1.Models.Models.User;
 using Domain.Entities.Implementation.City;
 using Domain.Entities.User.Implementation;
->>>>>>> f30339bb8a6a28fa93fe3c9d5c5829816faaf6c2
 using ExpressMapper;
 
 namespace Client.Api.v1
