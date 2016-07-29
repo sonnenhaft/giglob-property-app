@@ -17,6 +17,9 @@ namespace Client.Api.Tools.Implementation
             if (virtualPath.StartsWith("~"))
             {
                 virtualPath = virtualPath.Replace("~", "{0}");
+                var appPath = HttpRuntime.AppDomainAppPath;
+
+                if(appPath.ToLower().StartsWith("c:\\Mac"))
                 fullPath = string.Format(virtualPath, HttpRuntime.AppDomainAppPath);
                 fullPath = FormatPath(fullPath);
             }
@@ -27,7 +30,6 @@ namespace Client.Api.Tools.Implementation
         private string FormatPath(string path)
         {
             path = path.Replace("/", @"\");
-            path = path.Replace(@"\\", @"\");
 
             return path;
         }
