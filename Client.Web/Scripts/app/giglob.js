@@ -15,7 +15,7 @@
     'component.multiselect-dropdown-g',
     'component.tab-section',
     'passToText'
-]).directive('giglob', function(localStorageService) {
+]).directive('giglob', function (localStorageService) {
     return {
         templateUrl: 'app/giglob.html',
         link: function() {},

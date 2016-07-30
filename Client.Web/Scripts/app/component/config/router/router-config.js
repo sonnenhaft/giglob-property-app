@@ -1,7 +1,8 @@
 ﻿angular.module('component.config.router', ['ui.router','api.httpRequestInterceptor','api.resource'])
-    .config(function($stateProvider, $urlRouterProvider, EXCLUDED_DEMO_ROUTERS,$httpProvider) {
+    .config(function($stateProvider, $urlRouterProvider, EXCLUDED_DEMO_ROUTERS,$locationProvider) {
     $urlRouterProvider.otherwise("/");
 
+    $locationProvider.html5Mode({enabled : true,requireBase: false});
 
     $stateProvider
         .state('demo', {
