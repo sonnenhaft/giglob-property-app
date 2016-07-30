@@ -55,7 +55,7 @@ namespace Client.Api.Authentication.Services
             AuthenticationTicket ticket = new AuthenticationTicket(identity, new AuthenticationProperties());
             var currentUtc = new SystemClock().UtcNow;
             ticket.Properties.IssuedUtc = currentUtc;
-            ticket.Properties.ExpiresUtc = currentUtc.Add(TimeSpan.FromMinutes(30));
+            ticket.Properties.ExpiresUtc = currentUtc.Add(TimeSpan.FromDays(30));
             var accessToken = AuthConfiguration.OAuthBearerOptions.AccessTokenFormat.Protect(ticket);
 
             return accessToken;
