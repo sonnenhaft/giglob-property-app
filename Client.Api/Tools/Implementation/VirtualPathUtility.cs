@@ -27,7 +27,6 @@ namespace Client.Api.Tools.Implementation
         private string FormatPath(string path)
         {
             path = path.Replace("/", @"\");
-            path = path.Replace(@"\\", @"\");
 
             return path;
         }
