@@ -17,7 +17,7 @@ namespace Client.Api.Authentication
             {
                 TokenEndpointPath = new PathString("/token"),
                 AuthenticationType = DefaultAuthenticationTypes.ExternalBearer,
-                AllowInsecureHttp = false,
+                AllowInsecureHttp = true,
                 AccessTokenExpireTimeSpan = TimeSpan.FromDays(15),
                 AuthorizeEndpointPath = new PathString("/api/user/externalsignin")
             };
