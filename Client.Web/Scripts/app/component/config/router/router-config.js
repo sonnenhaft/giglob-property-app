@@ -72,27 +72,33 @@ angular.module('component.config.router', ['ui.router', 'api.httpRequestIntercep
             url: '/',
             templateUrl: 'app/component/config/router/search-page.html',
             controller: function($scope, $stateParams, flatListFactory) {
-                $scope.flats = flatListFactory.getAllFlats();
+                var markersMapping = {};
                 $scope.filteredFlats = [];
+                $scope.flats = flatListFactory.getAllFlats();
 
-                $scope.markerOnMouseEnter = function(id,  $e){
-                    $scope.filteredFlats.find(function(flat) {
-                        return flat.id === id;
-                    }).highlighted = true;
-                    $e.get('target').options.set('iconImageHref', '../content/images/map-icon-hover.svg');
+                $scope.addMarkerToMapping = function(id, $target) {
+                    markersMapping[id] = $target;
                 };
 
-                $scope.markerOnMouseLeave = function(id, $e){
+                $scope.setHighlighting = function(id, value, $e) {
+                    var marker = $e ? $e.get('target') : markersMapping[id];
+                    var image = value ? 'map-icon-hover' : 'map-icon-small';
+
                     $scope.filteredFlats.find(function(flat) {
                         return flat.id === id;
-                    }).highlighted = false;
-                    $e.get('target').options.set('iconImageHref', '../content/images/map-icon-small.svg');
-                }
+                    }).highlighted = value;
+                    marker.options.set('iconImageHref', '../content/images/' + image + '.svg');
+                };
             }
         })
         .state('my-ads', {
             url: "/my-ads",
-            templateUrl: 'app/component/config/router/my-ads-page.html'
+            templateUrl: 'app/component/config/router/my-ads-page.html',
+            controller: function($scope) {
+                $scope.tabModel = {
+                    location: {}
+                }
+            }
         })
         .state('add-ads', {
             url: "/add-ads",
