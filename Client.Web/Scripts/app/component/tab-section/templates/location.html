@@ -1,23 +1,21 @@
-<form novalidate class="form">
+<form novalidate class="form" name="locationForm">
     <label class="form-label">
         <div class="label-title">Город</div>
         <div class="label-item">
             <div class="select-wrapper">
                 <select name="city"
                         ng-options="option.name for option in data.cities track by option.id"
-                        ng-model="$parent.model.city"></select>
+                        ng-model="$parent.model.city"
+                        required></select>
             </div>
         </div>
-
     </label>
-
     <label class="form-label">
         <div class="label-title">Улица</div>
         <div class="label-item">
             <input type="text" ng-model="$parent.model.street" required>
         </div>
     </label>
-
     <div class="triple-input">
         <label class="form-label">
             <div class="label-title">Дом</div>
@@ -34,35 +32,34 @@
         <label class="form-label">
             <div class="label-title">Квартира</div>
             <div class="label-item">
-                <input type="text" ng-model="flat" required>
+                <input type="text" ng-model="flat">
             </div>
         </label>
     </div>
-
-
     <label class="form-label">
         <div class="label-title">Район</div>
         <div class="label-item">
             <div class="select-wrapper">
                 <select name="district"
                         ng-options="option.name for option in data.districts track by option.id"
-                        ng-model="$parent.model.district"></select>
+                        ng-model="$parent.model.district"
+                        required></select>
             </div>
         </div>
 
     </label>
-
     <label class="form-label">
         <div class="label-title">Метро</div>
         <div class="label-item">
             <div class="select-wrapper">
                 <select name="station"
                         ng-options="option.name for option in data.stations track by option.id"
-                        ng-model="$parent.model.station"></select>
+                        ng-model="$parent.model.station"
+                        required></select>
             </div>
         </div>
 
     </label>
 
-    <button class="button action action_next green large next">Сохранить и перейти дальше</button>
+    <button class="button action action_next green large next" ng-disabled="!locationForm.$valid">Сохранить и перейти дальше</button>
 </form>

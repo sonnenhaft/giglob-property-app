@@ -1,10 +1,11 @@
-<div class="form">
+<form class="form" novalidate name="changeForm">
     <label class="form-label">
         <div class="label-title">Город</div>
         <div class="label-item">
             <select name="city"
                     ng-options="option.name for option in data.cities track by option.id"
-                    ng-model="$parent.model.city"></select>
+                    ng-model="$parent.model.city"
+                    required></select>
         </div>
 
     </label>
@@ -14,7 +15,8 @@
         <div class="label-item">
             <select name="district"
                     ng-options="option.name for option in data.districts track by option.id"
-                    ng-model="$parent.model.district"></select>
+                    ng-model="$parent.model.district"
+                    required></select>
         </div>
 
     </label>
@@ -22,22 +24,22 @@
     <label class="form-label">
         <div class="label-title">Площадь, м<sup>2</sup></div>
         <div class="label-item">
-            <input type="text" ng-model="$parent.model.square" placeholder="Общая площадь помещения">
+            <input type="text" ng-model="$parent.model.square" placeholder="Общая площадь помещения" required>
         </div>
     </label>
 
     <label class="form-label">
         <div class="label-title">Комнаты</div>
         <div class="label-item">
-            <input type="text" ng-model="$parent.model.roomsCount" placeholder="Количество комнат">
+            <input type="text" ng-model="$parent.model.roomsCount" placeholder="Количество комнат" required>
         </div>
     </label>
 
     <label class="form-label">
         <div class="label-title">Стоимость, &#8381;</div>
         <div class="double-input">
-            <input type="text" ng-model="$parent.model.minPrice" placeholder="От">
-            <input type="text" ng-model="$parent.model.maxPrice" placeholder="До">
+            <input type="text" ng-model="$parent.model.minPrice" placeholder="От" required>
+            <input type="text" ng-model="$parent.model.maxPrice" placeholder="До" required>
         </div>
     </label>
 
@@ -45,5 +47,5 @@
         <input type="checkbox"> После публикации перейти к добавлению объекта
     </label>
 
-    <button class="button action action_next orange large finish">Сохранить и опубликовать</button>
-</div>
+    <button class="button action action_next orange large finish" ng-disabled="!changeForm.$valid">Сохранить и опубликовать</button>
+</form>
