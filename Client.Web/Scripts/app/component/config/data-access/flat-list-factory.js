@@ -27,7 +27,7 @@ angular.module('component.config.data-access', []).factory('flatListFactory', fu
             coords: {
                 geometry: {
                     type: 'Point',
-                    coordinates: [37.755175, 55.853436]
+                    coordinates: [37.45, 55.85]
                 },
                 properties: {
                     iconContent: '', // Заголовок метки
@@ -158,7 +158,7 @@ angular.module('component.config.data-access', []).factory('flatListFactory', fu
             coords: {
                 geometry: {
                     type: 'Point',
-                    coordinates: [37.735175, 55.833436]
+                    coordinates: [37.38, 55.75]
                 },
                 properties: {
                     iconContent: '', // Заголовок метки
@@ -202,7 +202,7 @@ angular.module('component.config.data-access', []).factory('flatListFactory', fu
             coords: {
                 geometry: {
                     type: 'Point',
-                    coordinates: [37.745175, 55.843436]
+                    coordinates: [37.53, 55.65]
                 },
                 properties: {
                     iconContent: '', // Заголовок метки
@@ -238,7 +238,7 @@ angular.module('component.config.data-access', []).factory('flatListFactory', fu
             coords: {
                 geometry: {
                     type: 'Point',
-                    coordinates: [36.1, 55]
+                    coordinates: [37.55, 55.9]
                 },
                 properties: {
                     iconContent: '', // Заголовок метки
@@ -344,7 +344,7 @@ angular.module('component.config.data-access', []).factory('flatListFactory', fu
             coords: {
                 geometry: {
                     type: 'Point',
-                    coordinates: [37.785175, 55.683436]
+                    coordinates: [37.6, 55.6]
                 },
                 properties: {
                     iconContent: '', // Заголовок метки
