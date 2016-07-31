@@ -5,10 +5,11 @@ angular.module('component.tab-section', ['ngSanitize', 'ngFileUpload']).directiv
             model: '=?',
             tabTitle: '=',
             tabDescription: '=?',
-            tabType: '='
+            tabType: '=',
+            tabCollectionType: '@'
         },
         templateUrl: 'app/component/tab-section/tab-section.html',
-        link: function($scope) {
+        link: function($scope, $element) {
             $scope.uploadedFiles = [];
             $scope.data = {
                 cities: [

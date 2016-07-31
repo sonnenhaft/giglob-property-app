@@ -55,5 +55,5 @@
         </div>
     </label>
 
-    <button class="button action action_next green large next" ng-disabled="!detailsForm.$valid">Сохранить и перейти дальше</button>
+    <button class="button action action_next green large next" ng-disabled="!detailsForm.$valid"  ng-click="$parent.$parent.saveAndGoTo('photos', tabCollectionType)">Сохранить и перейти дальше</button>
 </form>
