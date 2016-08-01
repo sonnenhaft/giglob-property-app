@@ -1,4 +1,4 @@
-﻿﻿using System.Data.Entity;
+﻿using System.Data.Entity;
 using Domain.Persistence.EntityFramework.Conventions;
 using Domain.Entities.Implementation;
 using Domain.Entities.Implementation.City;

@@ -1,4 +1,4 @@
-﻿﻿using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
 using Domain.Entities;
 using Domain.Persistence.EntityFramework.Repositories.Implementation;
