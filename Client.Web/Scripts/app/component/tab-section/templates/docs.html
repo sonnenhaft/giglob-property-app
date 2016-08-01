@@ -1,0 +1,34 @@
+<div class="download-list file-list">
+    <div class="download-list file-list">
+        <div class="download-list-file-wrapper doc" ng-repeat="file in uploadedFiles track by $index" ng-click="setCover($index)">
+            <div class="file-label-name">{{file.formattedName}}</div>
+            <div class="label file-label-format {{file.format.toLowerCase()}}">{{file.format}}</div>
+            <div class="file-label-remove" ng-click="removeFile($index, true);"></div>
+        </div><div class="download-list-uploader"
+           ng-class="{added: isAdded}"
+             ngf-drop="uploadFiles($files, true)"
+             ngf-select="uploadFiles($files, true)"
+             ngf-validate="{size: {max: '5MB'}, pattern: '.doc,.pdf,.docx,.pages,.txt'}"
+             ngf-max-files="20"
+             multiple="true">
+            <div class="download-list-uploader-text">
+                <div class="download-description">
+                    <strong>Перетащите</strong> на это поле документы, или <span class="add-control">выберите</span> их вручную
+                </div>
+                <span class="add-text">Добавить</span>
+            </div>
+        </div>
+        <div></div>
+
+        <div class="label-warn info">
+            Вам необходимо загрузить <strong>свидетельство о собственности
+            и кадастровый номер</strong>. Документы нужны для модерации и будут просмотрены только модератором
+        </div>
+
+        <div class="download-info">
+            Вы можете загрузить любое количество файлов. Формат файлов: doc, docx, pages и pdf размером до 5 мегабайт каждый.
+        </div>
+    </div>
+</div>
+
+<button class="button action action_next green large next" ng-click="$parent.$parent.saveAndGoTo('change', tabCollectionType)">Сохранить и перейти дальше</button>

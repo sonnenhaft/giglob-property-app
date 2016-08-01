@@ -1,4 +1,4 @@
-﻿angular.module('giglob-app', [
+angular.module('giglob-app', [
     'yaMap',
     'api.resource',
     'LocalStorageModule',
@@ -10,15 +10,16 @@
     "component.gfooter",
     'component.city-popup',
     'component.carousel',
-    'component.login'
-]).directive('giglob', function (localStorageService) {
+    'component.login',
+    'component.flat-filter',
+    'component.tab-section'
+]).directive('giglob', function(localStorageService) {
     return {
         templateUrl: 'app/giglob.html',
-        link: function ($scope) {
-        },
-        controller: function ($scope, $rootScope) {
-            if (localStorageService.get('access-token')) {
-                $rootScope.accessToken = localStorageService.get('access-token');
+        controller: function($scope) {},
+        link: function($scope,$rootScope) {
+            if(localStorageService.get('access-token')){
+                $rootScope.accessToken =  localStorageService.get('access-token');
             }
         }
     };

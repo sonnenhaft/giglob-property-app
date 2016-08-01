@@ -1,8 +1,6 @@
-angular.module('component.config.router', ['ui.router','api.httpRequestInterceptor','api.resource'])
-    .config(function($stateProvider, $urlRouterProvider, EXCLUDED_DEMO_ROUTERS,$locationProvider) {
+﻿angular.module('component.config.router', ['ui.router','api.httpRequestInterceptor','api.resource', 'component.config.data-access'])
+    .config(function($stateProvider, $urlRouterProvider, EXCLUDED_DEMO_ROUTERS, $httpProvider, $locationProvider) {
     $urlRouterProvider.otherwise("/");
-
-
 
     $stateProvider
         .state('demo', {
@@ -38,7 +36,7 @@ angular.module('component.config.router', ['ui.router','api.httpRequestIntercept
                         hasDocs: true,
                         publishDate: 1469007765797
                     },
-                    coords: [37.715175, 55.833436],
+                    coords: [38.715175, 55.833436],
                     images: [{
                         src: '../content/images/flat/1.jpeg'
                     }, {
@@ -88,28 +86,83 @@ angular.module('component.config.router', ['ui.router','api.httpRequestIntercept
             }
 
         })
+        
+        // @TODO delete if unneeded
+        /*.state('apartment-detail', {
+            url: "/apartment-detail/:id",
+            templateUrl: 'app/component/config/router/apartment-detail.html',
+            controller: function($scope, $filter, $state, $stateParams, flatListFactory) {
+                var flats = flatListFactory.getAllFlats();
+                $scope.flat = $filter('filter')(flats, {id: $state.params.id}, true)[0];
+            }
+        })*/
         .state('search', {
-            url: '/search',
-            templateUrl: 'app/component/config/router/search-page.html'
+            url: '/',
+            templateUrl: 'app/component/config/router/search-page.html',
+            controller: function($scope, $stateParams, flatListFactory) {
+                var markersMapping = {};
+                $scope.filteredFlats = [];
+                $scope.flats = flatListFactory.getAllFlats();
+
+                $scope.addMarkerToMapping = function(id, $target) {
+                    markersMapping[id] = $target;
+                };
+
+                $scope.setHighlighting = function(id, value, $e) {
+                    var marker = $e ? $e.get('target') : markersMapping[id];
+                    var image = value ? 'map-icon-hover' : 'map-icon-small';
+
+                    $scope.filteredFlats.find(function(flat) {
+                        return flat.id === id;
+                    }).highlighted = value;
+                    marker.options.set('iconImageHref', '../content/images/' + image + '.svg');
+                };
+            }
         })
         .state('my-ads', {
             url: "/my-ads",
-            templateUrl: 'app/component/config/router/my-ads-page.html'
+            templateUrl: 'app/component/config/router/my-ads-page.html',
+            controller: function($scope) {
+                $scope.tabModel = {
+                    location: {}
+                }
+            }
         })
-        .state('home', {
-            url: "/",
-            templateUrl: 'app/component/config/router/main-page.html'
+        .state('add-ads', {
+            url: "/add-ads",
+            templateUrl: 'app/component/config/router/add-ads.html',
+            controller: function ($scope, $element, $timeout) {
+                $scope.model = {
+                    sale: {
+                        location: {
+                            city: {
+                                id: 1,
+                                name: 'Москва'
+                            }
+                        }
+                    },
+                    swap: {}
+
+                };
+
+                $scope.saveAndGoTo = function (tabName, tabCollectionType) {
+                    if(tabCollectionType === 'sale' && tabName === 'change') {
+                        return;
+                    }
+                    var index = tabCollectionType === 'change' && tabName !== 'change' ? 1 : 0;
+                    var nexTabLink = $element[0].querySelectorAll('tab-section[tab-type="\'' + tabName + '\'"] a')[index];
+                    $timeout(function () {
+                        angular.element(nexTabLink).triggerHandler('click');
+                    });
+                };
+            }
         })
-        .state('add', {
-            url: "/add",
-            templateUrl: 'app/component/config/router/add.html'
-        })
-        .state('confirm',{
+        .state('confirm', {
             url:'/user/confirmemail/:token',
-            resolve:{
-                confirmEmail : function($state,$stateParams,confirm){
+            resolve: {
+                confirmEmail : function($state, $stateParams, confirm){
                     confirm.save({'token' : $stateParams.token}).$promise.then(function(){
-                        $state.go('home');
+                        $state.go('search');
                     },function(err){
                         console.log(err);
                     })

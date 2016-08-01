@@ -1,0 +1,15 @@
+<tab class="tab-section">
+    <tab-heading>
+        <div class="tab_title">{{::tabTitle}}</div>
+        <div class="tab_description" ng-bind-html="::tabDescription"></div>
+        <button class="button action tab_control">Заполнить</button>
+    </tab-heading>
+
+    <div class="tab_content">
+        <div class="tab_close">&#10005;</div>
+
+        <h2 class="title">{{::tabTitle}}</h2>
+        <div ng-include="'app/component/tab-section/templates/' + tabType + '.html'"></div>
+    </div>
+
+</tab>
