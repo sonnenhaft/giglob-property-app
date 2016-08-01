@@ -43,7 +43,6 @@ namespace Client.Api.v1
 
             Mapper.Register<PropertyOfferGetAllOffersRequestModel, Offer_GetAllQuery>();
             Mapper.Register<ViewPort, ViewPortDto>();
-            Mapper.Register<City, CityModel>();
         }
     }
 }
