@@ -1,4 +1,4 @@
-angular.module('component.tab-section', ['ngSanitize', 'ngFileUpload']).directive('tabSection', function() {
+angular.module('component.tab-section', ['ngSanitize', 'ngFileUpload', 'cityDistrictFactory']).directive('tabSection', function() {
     return {
         restrict: 'E',
         scope: {
@@ -9,8 +9,12 @@ angular.module('component.tab-section', ['ngSanitize', 'ngFileUpload']).directiv
             tabCollectionType: '@'
         },
         templateUrl: 'app/component/tab-section/tab-section.html',
-        link: function($scope, $element) {
+        link: function($scope, $element, $resource) {
             $scope.uploadedFiles = [];
+            var apiUrl = document.getElementById('apiUrl').dataset.url;
+
+            console.log(apiUrl);
+            console.log(cityDistrictFactory.query());
             $scope.data = {
                 cities: [
                     {

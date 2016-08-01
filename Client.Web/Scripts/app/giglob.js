@@ -12,7 +12,8 @@ angular.module('giglob-app', [
     'component.carousel',
     'component.login',
     'component.flat-filter',
-    'component.tab-section'
+    'component.tab-section',
+    'component.config.data-access'
 ]).directive('giglob', function(localStorageService) {
     return {
         templateUrl: 'app/giglob.html',
