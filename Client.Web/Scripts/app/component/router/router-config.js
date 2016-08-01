@@ -66,16 +66,6 @@ angular.module('component.router', ['ui.router'])
         .state('my-ads', {
             url: "/my-ads",
             templateUrl: 'app/component/router/my-ads-page.html',
-            resolve : {
-                getInfo : function($stateParams,getProperty){
-                    console.log($stateParams.id);
-                    getProperty.query({id:$stateParams.id}).$promise.then(function(res){
-                        console.log(res)
-                    },function(err){
-                        console.log(err)
-                    })
-                }
-            }
         }).state('apartment-detail/', {
             url: "/apartment-detail/:id",
             templateUrl: 'app/component/router/apartment-detail.html',
