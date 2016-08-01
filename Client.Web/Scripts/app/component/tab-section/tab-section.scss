@@ -1,4 +1,18 @@
 .tabs-content {
+
+  .add-page .add_tabs .tabs dd.disabled a .tab_control {
+    background-color: rgba(255, 255, 255, 0.5);
+    border: solid 1px #d4dee4;
+    color: #6d8493;
+  }
+
+  .form {
+    input, select {
+      &.ng-invalid.ng-dirty {
+        border-color: red;
+      }
+    }
+  }
   .download-list {
     padding: 20px 0;
     .file-list {

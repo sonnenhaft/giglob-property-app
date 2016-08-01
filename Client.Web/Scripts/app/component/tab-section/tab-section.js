@@ -1,41 +1,19 @@
-angular.module('component.tab-section', ['ngSanitize', 'ngFileUpload', 'cityDistrictFactory']).directive('tabSection', function() {
+angular.module('component.tab-section', ['ngSanitize', 'ngFileUpload']).directive('tabSection', function(addFlatTabs, cityDistrictFactory ) {
     return {
         restrict: 'E',
         scope: {
             model: '=?',
-            tabTitle: '=',
-            tabDescription: '=?',
-            tabType: '=',
+            currentTab: '=',
             tabCollectionType: '@'
         },
         templateUrl: 'app/component/tab-section/tab-section.html',
-        link: function($scope, $element, $resource) {
+        link: function($scope, $element) {
+            $scope.addFlatTabs = addFlatTabs;
             $scope.uploadedFiles = [];
-            var apiUrl = document.getElementById('apiUrl').dataset.url;
 
-            console.log(apiUrl);
-            console.log(cityDistrictFactory.query());
             $scope.data = {
-                cities: [
-                    {
-                        id: 1,
-                        name: 'Москва'
-                    },
-                    {
-                        id: 2,
-                        name: 'Санкт-Петербург'
-                    }
-                ],
-                districts: [
-                    {
-                        id: 1,
-                        name: 'Академический'
-                    },
-                    {
-                        id: 2,
-                        name: 'Алексеевский'
-                    }
-                ],
+                cities: [],
+                districts: [],
                 stations: [
                     {
                         id: 1,
@@ -67,6 +45,34 @@ angular.module('component.tab-section', ['ngSanitize', 'ngFileUpload', 'cityDist
                     }
                 ]
             };
+
+            $scope.selectCity = function () {
+
+                var dist = $scope.cityDistricts[$scope.model.city.id].districts;
+
+                var distList = []
+                for(var item in dist){
+                    distList.push({
+                        id: item,
+                        name: dist[item]
+                    });
+
+                }
+                $scope.data.districts= distList;
+            }
+
+            cityDistrictFactory.get().$promise.then(function(data){
+                $scope.cityDistricts = data;
+                for(var item in data){
+                    $scope.data.cities.push({
+                        id: item,
+                        name: data[item].name
+                    });
+                }
+
+                $scope.selectCity();
+            });
+
             $scope.uploadFiles = function (files, getMeta) {
                 if (files && files.length) {
                     files.forEach(function(file) {
@@ -99,6 +105,13 @@ angular.module('component.tab-section', ['ngSanitize', 'ngFileUpload', 'cityDist
                     index = $scope.uploadedFiles.length <= index ? index - 1 : index;
                     $scope.setCover(index, true);
                 }
+            };
+            $scope.saveAndGoTo = function (currentTab, tabCollectionType) {
+                var currentTabIndex = addFlatTabs[tabCollectionType].indexOf(currentTab);
+                var nexTabIndex = currentTabIndex + 1;
+                addFlatTabs[tabCollectionType][currentTabIndex].filled = true;
+                addFlatTabs[tabCollectionType][nexTabIndex].disabled = '';
+                addFlatTabs[tabCollectionType][nexTabIndex].active = true;
             };
         }
     };

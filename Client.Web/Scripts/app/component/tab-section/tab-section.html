@@ -1,15 +1,15 @@
-<tab class="tab-section">
+<tab class="tab-section {{currentTab.disabled}}" active="currentTab.active" disabled="currentTab.disabled" >
     <tab-heading>
-        <div class="tab_title">{{::tabTitle}}</div>
-        <div class="tab_description" ng-bind-html="::tabDescription"></div>
-        <button class="button action tab_control">Заполнить</button>
+        <div class="tab_title">{{::currentTab.tabTitle}}</div>
+        <div class="tab_description" ng-bind-html="::currentTab.tabDescription"></div>
+        <button class="button action tab_control">{{currentTab.filled ? 'Изменить' : 'Заполнить'}}</button>
     </tab-heading>
 
     <div class="tab_content">
-        <div class="tab_close">&#10005;</div>
+        <div class="tab_close" ng-click="currentTab.active = false;">&#10005;</div>
 
-        <h2 class="title">{{::tabTitle}}</h2>
-        <div ng-include="'app/component/tab-section/templates/' + tabType + '.html'"></div>
+        <h2 class="title">{{::currentTab.tabTitle}}</h2>
+        <div ng-include="'app/component/tab-section/templates/' + currentTab.tabType + '.html'"></div>
     </div>
 
 </tab>

@@ -4,6 +4,7 @@
         <div class="label-item">
             <div class="select-wrapper">
                 <select name="city"
+                        ng-change="$parent.selectCity()"
                         ng-options="option.name for option in data.cities track by option.id"
                         ng-model="$parent.model.city"
                         required></select>
@@ -53,14 +54,10 @@
         <div class="label-title">Метро</div>
         <div class="label-item">
             <multiselect-dropdown-g class="add-station"
-                                    selected-items="selectedStations"
-                                    name="station"
-                                    ng-options="option.name for option in data.stations track by option.id"
-                                    ng-model="$parent.model.station"
-                                    required></multiselect-dropdown-g>
+                                    selected-items="selectedStations"></multiselect-dropdown-g>
         </div>
 
     </label>
 
-    <button class="button action action_next green large next" ng-disabled="!locationForm.$valid" ng-click="$parent.$parent.saveAndGoTo('details', tabCollectionType)">Сохранить и перейти дальше</button>
+    <button class="button action action_next green large next" ng-disabled="!locationForm.$valid" ng-click="saveAndGoTo(currentTab, tabCollectionType)">Сохранить и перейти дальше</button>
 </form>
