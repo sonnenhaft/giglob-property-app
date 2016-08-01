@@ -105,6 +105,14 @@ angular.module('component.config.router', ['ui.router', 'api.httpRequestIntercep
             templateUrl: 'app/component/config/router/add-ads.html',
             controller: function ($scope, $element, $timeout, addFlatTabs, giglobApi) {
                 $scope.tabs = addFlatTabs;
+                $scope.roomCountNames = [
+                    'Однокомнатная',
+                    'Двухкомнатная',
+                    'Трехкомнатная',
+                    'Четырхкомнатная',
+                    'Пятикомнатная',
+                    'Шестикомнатная'
+                ]
                 var defaultModel = {
                     sale: {
                         location: {

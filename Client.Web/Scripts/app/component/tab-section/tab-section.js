@@ -10,7 +10,6 @@ angular.module('component.tab-section', ['ngSanitize', 'ngFileUpload']).directiv
         link: function($scope, $element) {
             $scope.addFlatTabs = addFlatTabs;
             $scope.uploadedFiles = [];
-
             $scope.data = {
                 cities: [],
                 districts: [],
