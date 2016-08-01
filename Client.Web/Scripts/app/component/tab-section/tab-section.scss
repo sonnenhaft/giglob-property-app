@@ -1,6 +1,9 @@
 .tabs-content {
   .download-list {
     padding: 20px 0;
+    .file-list {
+      width: 305px;
+    }
     .download-list-file-wrapper {
       position: relative;
       display: inline-block;
