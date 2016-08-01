@@ -63,10 +63,34 @@ angular.module('component.config.router', ['ui.router', 'api.httpRequestIntercep
         }).state('apartment-detail', {
             url: "/apartment-detail/:id",
             templateUrl: 'app/component/config/router/apartment-detail.html',
-            controller: function($scope, $filter, $state, $stateParams, flatListFactory) {
-                var flats = flatListFactory.getAllFlats();
-                $scope.flat = $filter('filter')(flats, {id: $state.params.id}, true)[0];
+
+            //controller: function($scope, $filter, $state, $stateParams, flatListFactory) {
+            //    var flats = flatListFactory.getAllFlats();
+            //    $scope.flat = $filter('filter')(flats, {id: $state.params.id}, true)[0];
+            //},
+
+            resolve: {
+                getInfo : function($state,$stateParams,getProperty){
+                    return getProperty.query({id:$stateParams.id}).$promise.then(function(res){
+                        return res
+                    },function(err){
+                        $state.go('home');
+                    })
+                }
+            },
+            controller: function($scope, $stateParams,getInfo) {
+                $scope.testData = getInfo;
+                $scope.testData.photos = function(){
+                    var obj = [];
+                    for(var i=0;i<$scope.testData.photoUrls.length;i++){
+                        obj.push({'src':$scope.testData.photoUrls[i]})
+                    }
+                    return obj;
+                }();
+                $scope.testData.coords = {geometry:{type:'Point',coordinates:[$scope.testData.lon,$scope.testData.lat]}};
+                console.log($scope.testData);
             }
+
         })
         .state('search', {
             url: '/',

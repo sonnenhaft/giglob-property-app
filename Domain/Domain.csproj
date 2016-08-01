@@ -53,6 +53,7 @@
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="SimpleInjector, Version=3.2.0.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
       <HintPath>..\packages\SimpleInjector.3.2.0\lib\net45\SimpleInjector.dll</HintPath>
@@ -84,8 +85,8 @@
     <Compile Include="Entities\Implementation\City\City.cs" />
     <Compile Include="Entities\Implementation\City\District.cs" />
     <Compile Include="Entities\Implementation\City\MetroBranch.cs" />
-    <Compile Include="Entities\Implementation\City\MetroStation.cs" />
     <Compile Include="Entities\Implementation\City\MetroBranchStation.cs" />
+    <Compile Include="Entities\Implementation\City\MetroStation.cs" />
     <Compile Include="Entities\Implementation\City\Queries\City_GetAllDistrictsQuery.cs" />
     <Compile Include="Entities\Implementation\City\Queries\City_GetAllMetroBranchStationsQuery.cs" />
     <Compile Include="Entities\Implementation\City\Queries\City_GetAllQuery.cs" />
@@ -95,24 +96,26 @@
     <Compile Include="Entities\Implementation\PropertyOffer\Commands\PropertyOffer_CreateCommand.cs" />
     <Compile Include="Entities\Implementation\PropertyOffer\Dtos\PropertyOfferCreateContext.cs" />
     <Compile Include="Entities\Implementation\PropertyOffer\Dtos\PropertyOfferCreatePhotoContext.cs" />
-    <Compile Include="Entities\Implementation\PropertyOffer\ExternalPropertyOfferData.cs" />
-    <Compile Include="Entities\Implementation\PropertyOffer\ExternalPropertyOfferImage.cs" />
-    <Compile Include="Entities\Implementation\PropertyOffer\LocalPropertyOfferData.cs" />
     <Compile Include="Entities\Implementation\PropertyOffer\Enums\BuildingCategory.cs" />
     <Compile Include="Entities\Implementation\PropertyOffer\Enums\OfferType.cs" />
     <Compile Include="Entities\Implementation\PropertyOffer\Enums\PropertyType.cs" />
+    <Compile Include="Entities\Implementation\PropertyOffer\ExternalPropertyOfferData.cs" />
+    <Compile Include="Entities\Implementation\PropertyOffer\ExternalPropertyOfferImage.cs" />
+    <Compile Include="Entities\Implementation\PropertyOffer\LocalPropertyOfferData.cs" />
     <Compile Include="Entities\Implementation\PropertyOffer\PropertyDocument.cs" />
     <Compile Include="Entities\Implementation\PropertyOffer\PropertyNearMetroStation.cs" />
     <Compile Include="Entities\Implementation\PropertyOffer\PropertyOffer.cs" />
     <Compile Include="Entities\Implementation\PropertyOffer\PropertyPhoto.cs" />
+    <Compile Include="Entities\Implementation\PropertyOffer\Queries\PropertyOffer_GetQuery.cs" />
     <Compile Include="Entities\Implementation\User\Commands\User_ConfirmEmailCommand.cs" />
     <Compile Include="Entities\Implementation\User\Commands\User_CreateCommand.cs" />
     <Compile Include="Entities\Implementation\User\Commands\User_GenerateEmailConfirmationTokenCommand.cs" />
+    <Compile Include="Entities\Implementation\User\Queries\User_CheckUserIsExistsByEmailConfirmationTokenQuery.cs" />
     <Compile Include="Entities\Implementation\User\Queries\User_CheckUserIsExistsByEmailQuery.cs" />
     <Compile Include="Entities\Implementation\User\Queries\User_CheckUserIsExistsByUsernameAndPasswordQuery.cs" />
-    <Compile Include="Entities\Implementation\User\Queries\User_CheckUserIsExistsByEmailConfirmationTokenQuery.cs" />
     <Compile Include="Entities\Implementation\User\Queries\User_GetQuery.cs" />
     <Compile Include="Entities\Implementation\User\Services\IUserAuthorizationService.cs" />
+    <Compile Include="Exceptions\NotFoundException.cs" />
     <Compile Include="Extensions\ContainerExtensions.cs" />
     <Compile Include="Extensions\EnumExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -121,15 +124,14 @@
     <Compile Include="Repositories\IFileRepository.cs" />
     <Compile Include="Repositories\IPropertyOfferRepository.cs" />
     <Compile Include="Repositories\IRepository.cs" />
+    <Compile Include="Repositories\IUserRepository.cs" />
     <Compile Include="Storages\IFileStorage.cs" />
     <Compile Include="Tools\IVirtualPathUtility.cs" />
-    <Compile Include="Repositories\IUserRepository.cs" />
     <Compile Include="UnitOfWork\CQRS\Decorators\CommandHandlerUnitOfWorkDecorator.cs" />
     <Compile Include="UnitOfWork\IUnitOfWork.cs" />
     <Compile Include="UnitOfWork\IUnitOfWorkFactory.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
