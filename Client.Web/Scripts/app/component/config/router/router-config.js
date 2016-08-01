@@ -105,7 +105,7 @@ angular.module('component.config.router', ['ui.router', 'api.httpRequestIntercep
             templateUrl: 'app/component/config/router/add-ads.html',
             controller: function ($scope, $element, $timeout, addFlatTabs, giglobApi) {
                 $scope.tabs = addFlatTabs;
-                $scope.model = {
+                var defaultModel = {
                     sale: {
                         location: {
                             city: {
@@ -117,6 +117,7 @@ angular.module('component.config.router', ['ui.router', 'api.httpRequestIntercep
                     swap: {}
 
                 };
+                $scope.model = angular.copy(defaultModel);
 
                 $scope.$on('addFormSubmitted', function(event, type) {
                     var offerTypeName = type === 0 ? 'sale' : 'swap';
@@ -151,7 +152,10 @@ angular.module('component.config.router', ['ui.router', 'api.httpRequestIntercep
                         }
                     };
 
-                    giglobApi.save({type:'propertyoffer',action: 'create'}, $scope.model.postData);
+                    giglobApi.save({type:'propertyoffer',action: 'create'}, $scope.model.postData, function () {
+                        $scope.model = {};
+                        $scope.model = angular.copy(defaultModel);
+                    });
 
                 })
             }
