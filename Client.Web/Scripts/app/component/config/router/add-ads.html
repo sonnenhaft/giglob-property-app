@@ -5,13 +5,13 @@
         </header>
 
         <tabset class="type-switcher">
-            <tab heading="Продажа" ng-click="$parent.tabCollectionType = 'sale'">
+            <tab heading="Продажа" ng-click="$parent.$parent.tabCollectionType = 'sale'">
                 <tabset class="add_tabs" vertical="true" type="navType" open-on-load="false">
                     <!--TODO: Use tabsMapping and ng-repeat-->
                     <tab-section ng-repeat="tab in tabs.sale track by tab.tabType" disabled="tab.disabled" current-tab="tab" model="model.sale[tab.tabType]" tab-collection-type="sale"></tab-section>
                 </tabset>
             </tab>
-            <tab heading="Обмен" ng-click="$parent.tabCollectionType = 'swap'">
+            <tab heading="Обмен" ng-click="$parent.$parent.tabCollectionType = 'swap'">
                 <tabset class="add_tabs" vertical="true" type="navType" open-on-load="false">
                     <!--TODO: Use tabsMapping and ng-repeat-->
                     <tab-section ng-repeat="tab in tabs.swap track by tab.tabType" current-tab="tab" model="model.swap[tab.tabType]" tab-collection-type="swap"></tab-section>
