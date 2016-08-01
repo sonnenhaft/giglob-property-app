@@ -3,21 +3,21 @@
     <label class="form-label">
         <div class="label-title">Этаж</div>
         <div class="label-item">
-            <input type="text" ng-model="$parent.model.floor" placeholder="Номер этажа" required>
+            <input type="text" ng-model="$parent.model.floor" ng-pattern="'\\d*'" ng-maxlength="3" placeholder="Номер этажа" required>
         </div>
     </label>
 
     <label class="form-label">
         <div class="label-title">Площадь, м<sup>2</sup></div>
         <div class="label-item">
-            <input type="text" ng-model="$parent.model.square" placeholder="Общая площадь помещения" required>
+            <input type="text" ng-model="$parent.model.square" ng-pattern="'\\d*'" ng-maxlength="4"  placeholder="Общая площадь помещения" required>
         </div>
     </label>
 
     <label class="form-label">
         <div class="label-title">Комнаты</div>
         <div class="label-item">
-            <input type="text" ng-model="$parent.model.roomsCount" placeholder="Количество комнат" required>
+            <input type="text" ng-model="$parent.model.roomsCount" ng-pattern="'\\d*'" ng-maxlength="2"  placeholder="Количество комнат" required>
         </div>
     </label>
 
@@ -48,7 +48,7 @@
     <label class="form-label">
         <div class="label-title">Стоимость в рублях</div>
         <div class="label-item">
-            <input type="text" ng-model="$parent.model.price" placeholder="Стоимость объекта" required>
+            <input type="text" ng-model="$parent.model.price" ng-pattern="'\\d*'" ng-maxlength="12"  placeholder="Стоимость объекта" required>
         </div>
     </label>
 

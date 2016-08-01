@@ -24,22 +24,22 @@
     <label class="form-label">
         <div class="label-title">Площадь, м<sup>2</sup></div>
         <div class="label-item">
-            <input type="text" ng-model="$parent.model.square" placeholder="Общая площадь помещения" required>
+            <input type="text" ng-model="$parent.model.square" ng-pattern="'\\d*'" ng-maxlength="4" placeholder="Общая площадь помещения" required>
         </div>
     </label>
 
     <label class="form-label">
         <div class="label-title">Комнаты</div>
         <div class="label-item">
-            <input type="text" ng-model="$parent.model.roomsCount" placeholder="Количество комнат" required>
+            <input type="text" ng-model="$parent.model.roomsCount" ng-pattern="'\\d*'" ng-maxlength="2" placeholder="Количество комнат" required>
         </div>
     </label>
 
     <label class="form-label">
         <div class="label-title">Стоимость, &#8381;</div>
         <div class="double-input">
-            <input type="text" ng-model="$parent.model.minPrice" placeholder="От" required>
-            <input type="text" ng-model="$parent.model.maxPrice" placeholder="До" required>
+            <input type="text" ng-model="$parent.model.minPrice" ng-pattern="'\\d*'" ng-maxlength="12" placeholder="От" required>
+            <input type="text" ng-model="$parent.model.maxPrice" ng-pattern="'\\d*'" ng-maxlength="12" placeholder="До" required>
         </div>
     </label>
 

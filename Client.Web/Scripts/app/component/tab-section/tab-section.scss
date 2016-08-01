@@ -1,4 +1,11 @@
 .tabs-content {
+  .form {
+    input, select {
+      &.ng-invalid.ng-dirty {
+        border-color: red;
+      }
+    }
+  }
   .download-list {
     padding: 20px 0;
     .file-list {
