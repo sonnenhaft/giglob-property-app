@@ -1,4 +1,4 @@
-angular.module('component.tab-section', ['ngSanitize', 'ngFileUpload']).directive('tabSection', function(addFlatTabs) {
+angular.module('component.tab-section', ['ngSanitize', 'ngFileUpload', 'cityDistrictFactory']).directive('tabSection', function(addFlatTabs) {
     return {
         restrict: 'E',
         scope: {

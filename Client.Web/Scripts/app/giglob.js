@@ -6,13 +6,14 @@ angular.module('giglob-app', [
     'templates',
     'component.config.router',
     'component.config.filters',
-    'components.config.data-access',
     "component.gheader",
     "component.gfooter",
     'component.city-popup',
     'component.carousel',
     'component.login',
     'component.flat-filter',
+    'component.tab-section',
+    'component.config.data-access',
     'component.multiselect-dropdown-g',
     'component.tab-section'
 ]).directive('giglob', function(localStorageService) {
