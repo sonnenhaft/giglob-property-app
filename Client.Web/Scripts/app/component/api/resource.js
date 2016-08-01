@@ -22,7 +22,7 @@
             });
     })
     .factory('getProperty', function ($resource, $rootScope) {
-        return $resource('http://api.giglob.local/v1/propertyoffer/get/:id',
+        return $resource('http://giglobapi.igstest.ru/v1/propertyoffer/get/:id',
             null,
             {
                 'save': {method: 'POST'},
