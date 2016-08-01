@@ -158,6 +158,13 @@ $tab-active-bg: #f8fafb;
           }
 
         }
+        &.disabled {
+          a {
+            .tab_control {
+              display: none;
+            }
+          }
+        }
 
         &.active {
           border: {

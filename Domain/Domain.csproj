@@ -85,6 +85,7 @@
     <Compile Include="Entities\Implementation\File\Queries\File_HasFilesWithGivenIdsAndExtensionsQuery.cs" />
     <Compile Include="Entities\Implementation\PropertyOffer\Dtos\PropertyOfferExchangeContext.cs" />
     <Compile Include="Entities\Implementation\PropertyOffer\PropertyExchangeDetails.cs" />
+    <Compile Include="Entities\Implementation\PropertyOffer\Queries\PropertyOffer_GetUserOffersQuery.cs" />
     <Compile Include="Entities\Implementation\User\User.cs" />
     <Compile Include="Entities\IDeletableEntity.cs" />
     <Compile Include="Entities\Implementation\City\City.cs" />
