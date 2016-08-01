@@ -46,7 +46,6 @@ namespace Client.Api.v1
 
             Mapper.Register<PropertyOfferGetAllOffersRequestModel, Offer_GetAllQuery>();
             Mapper.Register<ViewPort, ViewPortDto>();
-            Mapper.Register<City, CityModel>();
             Mapper.Register<PropertyOffer, PropertyOfferModel>()
                 .Member(model => model.CityId, offer => offer.LocalPropertyOfferData != null ? offer.LocalPropertyOfferData.CityId : (long?) null)
                 .Member(model => model.CityName, offer => offer.LocalPropertyOfferData != null ? offer.LocalPropertyOfferData.City.Name : (string) null)

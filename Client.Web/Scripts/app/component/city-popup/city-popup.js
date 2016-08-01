@@ -31,7 +31,7 @@ angular.module('component.city-popup', ['mm.foundation.modal', 'LocalStorageModu
                     };
 
                     $scope.ok = function () {
-                        localStorageService.set('city', 'Moscow');
+                        localStorageService.set('city', {id:1,name:'Moscow'});
                         $modalInstance.close();
                     };
 

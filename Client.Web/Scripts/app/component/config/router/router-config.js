@@ -95,7 +95,8 @@ angular.module('component.config.router', ['ui.router', 'api.httpRequestIntercep
         .state('search', {
             url: '/',
             templateUrl: 'app/component/config/router/search-page.html',
-            controller: function($scope, $stateParams, flatListFactory) {
+            controller: function($scope, $stateParams, flatListFactory,localStorageService) {
+                console.log(localStorageService.get('city').id);
                 var markersMapping = {};
                 $scope.filteredFlats = [];
                 $scope.flats = flatListFactory.getAllFlats();
