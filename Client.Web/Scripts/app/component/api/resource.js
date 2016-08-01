@@ -1,4 +1,7 @@
 angular.module("api.resource", ["ngResource"])
+    .factory('giglobApi', function ($resource) {
+        return  $resource('http://giglobapi.igstest.ru/v1/:type/:action', {});
+    })
     .factory("register", function ($resource) {
 
         return $resource('http://giglobapi.igstest.ru/v1/user/register',

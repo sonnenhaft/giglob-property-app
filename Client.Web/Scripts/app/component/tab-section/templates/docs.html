@@ -31,4 +31,5 @@
     </div>
 </div>
 
-<button class="button action action_next green large next" ng-click="saveAndGoTo(currentTab, tabCollectionType)">Сохранить и перейти дальше</button>
+<button ng-if="!tabCollectionType === 'sale'" class="button action action_next green large next" ng-click="saveAndGoTo(currentTab, tabCollectionType)">Сохранить и перейти дальше</button>
+<button ng-if="tabCollectionType === 'sale'" class="button action action_next orange large finish" ng-disabled="!uploadedFiles.length" ng-click="sendData()">Сохранить и опубликовать</button>
