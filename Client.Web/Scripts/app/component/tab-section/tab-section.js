@@ -98,6 +98,7 @@ angular.module('component.tab-section', ['ngSanitize', 'ngFileUpload']).directiv
             $scope.saveAndGoTo = function (currentTab, tabCollectionType) {
                 var currentTabIndex = addFlatTabs[tabCollectionType].indexOf(currentTab);
                 var nexTabIndex = currentTabIndex + 1;
+                addFlatTabs[tabCollectionType][currentTabIndex].filled = true;
                 addFlatTabs[tabCollectionType][nexTabIndex].disabled = '';
                 addFlatTabs[tabCollectionType][nexTabIndex].active = true;
             };
