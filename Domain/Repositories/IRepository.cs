@@ -15,5 +15,7 @@ namespace Domain.Repositories
         void Remove(TEntity entity);
 
         void SaveChanges();
+
+        bool IsExists(TId id);
     }
 }

@@ -1,0 +1,35 @@
+﻿using Client.Api.v1.Models.Models.Common;
+using Client.Api.v1.Models.Models.PropertyOffer;
+using CQRS;
+using Domain.Entities.Implementation.PropertyOffer;
+using Domain.Entities.Implementation.PropertyOffer.Commands;
+using Domain.Entities.Implementation.PropertyOffer.Dtos;
+using Domain.Entities.Implementation.PropertyOffer.Queries;
+using ExpressMapper.Extensions;
+
+namespace Client.Api.v1.Facades
+{
+    public class PropertyOfferFacade
+    {
+        private readonly ICommandHandler<PropertyOffer_CreateCommand> _propertyOfferCreateCommandHandler;
+
+        private readonly IQueryHandler<PropertyOffer_GetQuery, PropertyOffer> _propertyOfferGetQueryHandler; 
+
+        public PropertyOfferFacade(ICommandHandler<PropertyOffer_CreateCommand> propertyOfferCreateCommandHandler, IQueryHandler<PropertyOffer_GetQuery, PropertyOffer> propertyOfferGetQueryHandler)
+        {
+            _propertyOfferCreateCommandHandler = propertyOfferCreateCommandHandler;
+            _propertyOfferGetQueryHandler = propertyOfferGetQueryHandler;
+        }
+
+        public void Create(PropertyOfferCreateRequestModel reqModel)
+        {
+            _propertyOfferCreateCommandHandler.Handle(new PropertyOffer_CreateCommand(reqModel.Map<PropertyOfferCreateRequestModel, PropertyOfferCreateContext>()));
+        }
+
+        public PropertyOfferModel Get(PropertyOfferGetRequestModel reqModel)
+        {
+            return _propertyOfferGetQueryHandler.Handle(new PropertyOffer_GetQuery(reqModel.Id))
+                                                .Map<PropertyOffer, PropertyOfferModel>();
+        }
+    }
+}

@@ -11,6 +11,7 @@ namespace Domain.Extensions
         {
             container.Register(typeof(IQueryHandler<,>), new [] { typeof(ContainerExtensions).Assembly });
             container.Register(typeof(ICommandHandler<>), new [] { typeof(ContainerExtensions).Assembly });
+
             container.RegisterDecorator(typeof(ICommandHandler<>), typeof(CommandHandlerUnitOfWorkDecorator<>), Lifestyle.Transient);
         }
     }

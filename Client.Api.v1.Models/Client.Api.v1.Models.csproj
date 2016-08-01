@@ -61,7 +61,24 @@
   <ItemGroup>
     <Compile Include="Constants\RegexConstants.cs" />
     <Compile Include="Extensions\ContainerExtensions.cs" />
+    <Compile Include="Models\City\AutocompleteStationsModel.cs" />
+    <Compile Include="Models\City\MetroBranchModel.cs" />
+    <Compile Include="Models\City\NearMetroStationModel.cs" />
+    <Compile Include="Models\Common\IdentifyModel.cs" />
     <Compile Include="Models\Common\ResponseExamples\BadRequestResponseExampleProvider.cs" />
+    <Compile Include="Models\Common\ResponseExamples\SuccessResponseExample.cs" />
+    <Compile Include="Models\File\FileUploadResultModel.cs" />
+    <Compile Include="Models\File\ResponseExamples\FileUploadResponseExample.cs" />
+    <Compile Include="Models\File\UploadingFile.cs" />
+    <Compile Include="Models\Home\ResponseExamples\StationModelResponseExample.cs" />
+    <Compile Include="Models\Home\StationModel.cs" />
+    <Compile Include="Models\PropertyOffer\Examples\PropertyOfferGetResponseExample.cs" />
+    <Compile Include="Models\PropertyOffer\PropertyOfferCreatePhotoRequestModel.cs" />
+    <Compile Include="Models\PropertyOffer\PropertyOfferCreateRequestModel.cs" />
+    <Compile Include="Models\PropertyOffer\PropertyOfferExchangeDetailsModel.cs" />
+    <Compile Include="Models\PropertyOffer\PropertyOfferGetRequestModel.cs" />
+    <Compile Include="Models\PropertyOffer\PropertyOfferModel.cs" />
+    <Compile Include="Models\PropertyOffer\Validators\PropertyOfferCreateRequestModelValidator.cs" />
     <Compile Include="Models\User\AuthResultModel.cs" />
     <Compile Include="Models\User\Mail\UserConfirmationMailModel.cs" />
     <Compile Include="Models\User\ResponseExamples\AuthResultModelResponseExample.cs" />

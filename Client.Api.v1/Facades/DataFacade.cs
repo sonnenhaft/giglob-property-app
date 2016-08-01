@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Client.Api.v1.Models.Models.City;
 using Client.Api.v1.Models.Models.Home;
@@ -20,7 +21,7 @@ namespace Client.Api.v1.Facades
 
         public DataModel GetData()
         {
-            var query = _cityGetAllQueryHandler.Handle(new City_GetAllQuery());
+            var query = _cityGetAllQueryHandler.Handle(new City_GetAllQuery()).ToList();
 
             var model = new DataModel
             {
@@ -29,5 +30,7 @@ namespace Client.Api.v1.Facades
 
             return model;
         }
+
+
     }
 }
