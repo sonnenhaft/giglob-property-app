@@ -59,9 +59,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\City\AutocompleteStationsModel.cs" />
+    <Compile Include="Models\City\CityModel.cs" />
+    <Compile Include="Models\City\DistrictModel.cs" />
+    <Compile Include="Models\City\MetroBranchModel.cs" />
+    <Compile Include="Models\City\NearMetroStationModel.cs" />
+    <Compile Include="Models\Common\IdentifyModel.cs" />
+    <Compile Include="Models\Common\ResponseExamples\SuccessResponseExample.cs" />
+    <Compile Include="Models\File\UploadingFile.cs" />
+    <Compile Include="Models\File\FileUploadResultModel.cs" />
+    <Compile Include="Models\File\ResponseExamples\FileUploadResponseExample.cs" />
+    <Compile Include="Models\Home\DataModel.cs" />
+    <Compile Include="Models\Home\ResponseExamples\DataModelResponseExample.cs" />
+    <Compile Include="Models\Home\ResponseExamples\StationModelResponseExample.cs" />
+    <Compile Include="Models\PropertyOffer\Examples\PropertyOfferGetResponseExample.cs" />
+    <Compile Include="Models\PropertyOffer\PropertyOfferCreateRequestModel.cs" />
+    <Compile Include="Models\PropertyOffer\PropertyOfferCreatePhotoRequestModel.cs" />
     <Compile Include="Constants\RegexConstants.cs" />
     <Compile Include="Extensions\ContainerExtensions.cs" />
     <Compile Include="Models\Common\ResponseExamples\BadRequestResponseExampleProvider.cs" />
+    <Compile Include="Models\PropertyOffer\PropertyOfferDataModel.cs" />
+    <Compile Include="Models\PropertyOffer\PropertyOfferExchangeDetailsModel.cs" />
+    <Compile Include="Models\PropertyOffer\PropertyOfferGetAllOffersRequestModel.cs" />
+    <Compile Include="Models\PropertyOffer\ResponseExamples\OffersModelResponseExample.cs" />
+    <Compile Include="Models\PropertyOffer\PropertyOfferModel.cs" />
+    <Compile Include="Models\PropertyOffer\Validators\PropertyOfferCreateRequestModelValidator.cs" />
     <Compile Include="Models\User\AuthResultModel.cs" />
     <Compile Include="Models\User\Mail\UserConfirmationMailModel.cs" />
     <Compile Include="Models\User\ResponseExamples\AuthResultModelResponseExample.cs" />
@@ -72,10 +94,6 @@
     <Compile Include="Models\User\Validators\UserConfirmEmailRequestModelValidator.cs" />
     <Compile Include="Models\User\Validators\UserSignInRequestModelValidator.cs" />
     <Compile Include="Models\User\Validators\UserRegisterRequestModelValidator.cs" />
-    <Compile Include="Models\City\CityModel.cs" />
-    <Compile Include="Models\City\DistrictModel.cs" />
-    <Compile Include="Models\Home\DataModel.cs" />
-    <Compile Include="Models\Home\ResponseExamples\DataModelResponseExample.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -23,6 +23,7 @@ namespace Client.Api.v1.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         [SwaggerResponseExampleProvider(typeof(SuccessResponseExample))]
         public IHttpActionResult Create(PropertyOfferCreateRequestModel reqModel)
         {

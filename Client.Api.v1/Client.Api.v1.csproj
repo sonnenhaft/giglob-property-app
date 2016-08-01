@@ -41,6 +41,10 @@
     <OutputPath>bin\Stage\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="ExpressMapper, Version=1.8.1.0, Culture=neutral, PublicKeyToken=ac363faa09311ba0, processorArchitecture=MSIL">
       <HintPath>..\packages\Expressmapper.1.8.1\lib\net451\ExpressMapper.dll</HintPath>
       <Private>True</Private>
@@ -98,10 +102,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\MapsConfiguration.cs" />
+    <Compile Include="App_Start\ParameterBindingConfiguration.cs" />
+    <Compile Include="Controllers\CityController.cs" />
+    <Compile Include="Controllers\FileController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PropertyOfferController.cs" />
+    <Compile Include="Facades\CityFacade.cs" />
+    <Compile Include="Facades\DataFacade.cs" />
+    <Compile Include="Facades\FileFacade.cs" />
+    <Compile Include="Facades\PropertyOfferFacade.cs" />
+    <Compile Include="HttpParameterBinding\MultipartFilesParameterBinding.cs" />
+    <Compile Include="MultipartMemoryStreamProviders\ExtendedMultipartMemoryStreamProvider.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Extensions\ContainerExtensions.cs" />
     <Compile Include="Facades\UserFacade.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Results\FileResult.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

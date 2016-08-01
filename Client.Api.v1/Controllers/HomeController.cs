@@ -14,15 +14,13 @@ using SwaggerResponseExampleModule;
 
 namespace Client.Api.v1.Controllers
 {
-    public class HomeController: ApiController
+    public class HomeController : ApiController
     {
         private readonly DataFacade _dataFacade;
-        private readonly CityFacade _cityFacade;
 
-        public HomeController(DataFacade dataFacade, CityFacade cityFacade)
+        public HomeController(DataFacade dataFacade)
         {
             _dataFacade = dataFacade;
-            _cityFacade = cityFacade;
         }
 
         [HttpGet]
@@ -30,13 +28,6 @@ namespace Client.Api.v1.Controllers
         public IHttpActionResult GetData()
         {
             return Ok(_dataFacade.GetData());
-        }
-
-        [HttpGet]
-        [SwaggerResponseExampleProvider(typeof(StationModelResponseExample))]
-        public IHttpActionResult MetroStations([FromUri(Name = "")]  AutocompleteStationsModel<long> reqModel)
-        {
-            return Ok(_cityFacade.GetAllMetroStations(reqModel.Id, reqModel.StationName));
         }
     }
 }
