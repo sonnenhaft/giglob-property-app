@@ -66,11 +66,11 @@
             url: "/apartment-detail/:id",
             templateUrl: 'app/component/config/router/apartment-detail.html',
             resolve: {
-                getInfo : function($stateParams,getProperty){
+                getInfo : function($state,$stateParams,getProperty){
                     return getProperty.query({id:$stateParams.id}).$promise.then(function(res){
                         return res
                     },function(err){
-                        return err
+                        $state.go('home');
                     })
                 }
             },
