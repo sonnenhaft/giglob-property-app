@@ -47,8 +47,8 @@ namespace Client.Api.v1
                 .Member(model => model.CityId, offer => offer.LocalPropertyOfferData != null ? offer.LocalPropertyOfferData.CityId : (long?) null)
                 .Member(model => model.CityName, offer => offer.LocalPropertyOfferData != null ? offer.LocalPropertyOfferData.City.Name : (string) null)
                 .Member(model => model.DistrictId, offer => offer.LocalPropertyOfferData != null ? offer.LocalPropertyOfferData.DistrictId : (long?)null)
-                .Member(model => model.DistrictName, offer => offer.LocalPropertyOfferData != null && offer.LocalPropertyOfferData.District != null 
-                ? offer.LocalPropertyOfferData.District.Name 
+                .Member(model => model.DistrictName, offer => offer.LocalPropertyOfferData != null && offer.LocalPropertyOfferData.District != null
+                ? offer.LocalPropertyOfferData.District.Name
                 : (string) null)
                 .Member(model => model.Lat, offer => offer.Location.Latitude)
                 .Member(model => model.Lon, offer => offer.Location.Longitude)
@@ -66,7 +66,7 @@ namespace Client.Api.v1
                                               { "MS_HttpContext", new HttpContextWrapper(HttpContext.Current) }
                                           }
                                       };
- 
+
                         var photoes = offer.LocalPropertyOfferData?.Photoes.Select(photo => new UrlHelper(request).Link("Default", new { controller = "File", action = "Get", id = photo.FileId }).ToLower());
 
                         return photoes;
