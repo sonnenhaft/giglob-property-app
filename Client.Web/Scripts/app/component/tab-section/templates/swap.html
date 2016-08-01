@@ -3,6 +3,7 @@
         <div class="label-title">Город</div>
         <div class="label-item">
             <select name="city"
+                    ng-change="$parent.selectCity()"
                     ng-options="option.name for option in data.cities track by option.id"
                     ng-model="$parent.model.city"
                     required></select>
