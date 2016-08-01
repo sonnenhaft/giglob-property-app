@@ -320,6 +320,11 @@
             Тип недвижимости. NewBuilding = 1, Resale = 2
             </summary>
         </member>
+        <member name="P:Client.Api.v1.Models.Models.PropertyOffer.PropertyOfferModel.BuildingCategory">
+            <summary>
+            Категория здания. Flat = 1, House = 2
+            </summary>
+        </member>
         <member name="P:Client.Api.v1.Models.Models.PropertyOffer.PropertyOfferModel.NearMetroStationModel">
             <summary>
             Ближайшая станция метро
