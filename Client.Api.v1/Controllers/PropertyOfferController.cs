@@ -37,5 +37,12 @@ namespace Client.Api.v1.Controllers
         {
             return Ok(new PropertyOfferGetResponseExample().GetResponseExample());
         }
+
+        [HttpGet]
+        [Authorize]
+        public IHttpActionResult MyOffers()
+        {
+            return Ok(_propertyOfferFacade.GetCurrentUserOffers());
+        }
     }
 }
