@@ -32,7 +32,8 @@
         <label class="form-label">
             <div class="label-title">Квартира</div>
             <div class="label-item">
-                <input type="text" ng-model="flat">
+                <input type="text" ng-model="flat" class="error">
+                <span class="error-message">Ошибка</span>
             </div>
         </label>
     </div>
@@ -51,12 +52,12 @@
     <label class="form-label">
         <div class="label-title">Метро</div>
         <div class="label-item">
-            <div class="select-wrapper">
-                <select name="station"
-                        ng-options="option.name for option in data.stations track by option.id"
-                        ng-model="$parent.model.station"
-                        required></select>
-            </div>
+            <multiselect-dropdown-g class="add-station"
+                                    selected-items="selectedStations"
+                                    name="station"
+                                    ng-options="option.name for option in data.stations track by option.id"
+                                    ng-model="$parent.model.station"
+                                    required></multiselect-dropdown-g>
         </div>
 
     </label>

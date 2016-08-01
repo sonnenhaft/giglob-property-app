@@ -68,7 +68,7 @@ angular.module('component.tab-section', ['ngSanitize', 'ngFileUpload']).directiv
                     files.forEach(function(file) {
                         if(getMeta) {
                             file.formattedName = file.name.split('.')[0];
-                            file.format = file.type.indexOf('pdf') + 1 ? 'PDF' : 'DOC';
+                            file.format = file.name.split('.').pop().toUpperCase();
                         }
                         $scope.uploadedFiles.push(file);
                     });
@@ -77,10 +77,15 @@ angular.module('component.tab-section', ['ngSanitize', 'ngFileUpload']).directiv
             };
 
             $scope.setCover = function (index, skip) {
-                !skip && ($scope.uploadedFiles[$scope.lastCoverIndex || 0].isCover = false);
+                if ($scope.uploadedFiles.length){
+                    !skip && ($scope.uploadedFiles[$scope.lastCoverIndex || 0].isCover = false);
+                    $scope.lastCoverIndex = index || 0;
+                    $scope.uploadedFiles[$scope.lastCoverIndex].isCover = true;
+                    $scope.isAdded = true;
+                }else{
+                    $scope.isAdded = false;
+                }
 
-                $scope.lastCoverIndex = index || 0;
-                $scope.uploadedFiles[$scope.lastCoverIndex].isCover = true;
             };
 
             $scope.removeFile = function (index, skipCover) {

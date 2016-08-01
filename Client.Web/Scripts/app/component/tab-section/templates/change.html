@@ -43,9 +43,9 @@
         </div>
     </label>
 
-    <label class="form-label checkbox">
-        <input type="checkbox"> После публикации перейти к добавлению объекта
-    </label>
+    <div class="form-label checkbox-container">
+        <input type="checkbox" class="checkbox" id="confirm"><label for="confirm">После публикации перейти к добавлению объекта</label>
+    </div>
 
     <button class="button action action_next orange large finish" ng-disabled="!changeForm.$valid">Сохранить и опубликовать</button>
 </form>

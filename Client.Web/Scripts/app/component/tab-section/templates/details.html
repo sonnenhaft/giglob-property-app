@@ -24,20 +24,24 @@
     <label class="form-label">
         <div class="label-title">Тип недвижимости</div>
         <div class="label-item">
+            <div class="select-wrapper">
             <select name="realEstateType"
                     ng-options="option.name for option in data.realEstateTypes track by option.id"
                     ng-model="$parent.model.realEstateType"
                     required></select>
+            </div>
         </div>
     </label>
 
     <label class="form-label">
         <div class="label-title">Категория строения</div>
         <div class="label-item">
-            <select name="buildCategory"
-                    ng-options="option.name for option in data.buildCategories track by option.id"
-                    ng-model="$parent.model.buildCategory"
-                    required></select>
+            <div class="select-wrapper">
+                <select name="buildCategory"
+                        ng-options="option.name for option in data.buildCategories track by option.id"
+                        ng-model="$parent.model.buildCategory"
+                        required></select>
+            </div>
         </div>
     </label>
 

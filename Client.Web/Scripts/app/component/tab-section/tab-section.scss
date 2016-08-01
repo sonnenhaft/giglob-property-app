@@ -21,12 +21,13 @@
         padding: 15px;
       }
       img {
-        width: 100%;
-        border-radius: 5px;
+        height: 100%;
+        width: auto;
+        min-width: 100%;
+        max-width: inherit;
       }
       .file-label-cover {
-        display: none;
-        width: 80px;
+        visibility: hidden;
         height: 20px;
         border-radius: 3px;
         position: absolute;
@@ -35,10 +36,23 @@
         font-size: 11px;
         font-weight: 900;
         letter-spacing: 0.5px;
+        background-color: #0991c7;
+
         &.active {
-          display: block;
+          visibility: visible;
         }
       }
+
+      &:hover {
+        .file-label-cover {
+          background-color: rgba(8, 145, 199, 0.23);
+
+          &:hover {
+            background-color: rgba(8, 145, 199, 0.64);
+          }
+        }
+      }
+
       .file-label-name {
         padding-top: 25px;
         word-wrap: break-word;
@@ -64,22 +78,58 @@
       }
       .file-label-remove {
         position: absolute;
+        width: 20px;
+        height: 20px;
+        border-radius: 3px;
         top: 7px;
         right: 7px;
-        opacity: 0.7;
-        width: 14px;
-        height: 14px;
-        background: url('../../../content/images/delete-doc.svg') no-repeat;
+        opacity: 0.2;
+        background: #000 url('../../../content/images/delete-doc.svg') no-repeat center center;
         transition: opacity 0.3s ease;
         &:hover {
-          opacity: 1;
+          opacity: 0.35;
         }
       }
     }
     .download-list-uploader {
+      position: relative;
+
+      &.added {
+        width: 143px;
+        height: 143px;
+
+        & ~ .download-info {
+          display: none;
+        }
+
+        .download-description {
+          display: none;
+        }
+
+        .add-text {
+          display: block;
+        }
+      }
+
+      .download-description {
+        font-weight: normal;
+        position: absolute;
+        bottom: 88px;
+        padding: 0 15px;
+      }
+
+      .add-control {
+        font-weight: bold;
+        text-decoration: underline;
+      }
+
+      .add-text {
+        display: none;
+      }
+
       display: inline-block;
-      width: 143px;
-      height: 143px;
+      width: 296px;
+      height: 300px;
       background: url('../../../content/images/plus-icon.svg') no-repeat 50% 40%;
       border-radius: 5px;
       border: solid 1px #d4dee4;
@@ -95,5 +145,31 @@
         padding-top: 102px;
       }
     }
+  }
+
+  .label-warn {
+    border-radius: 5px;
+    padding: 15px;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.31;
+    color: #536a7a;
+    margin: 10px 0;
+    background: #f6ece1;
+
+    .title {
+      font-weight: 600;
+      color: #ff0000;
+      margin-bottom: 10px;
+    }
+
+    &.info {
+      padding-left: 60px;
+      background: #f6ece1 url('../../../content/images/i-icon.svg') no-repeat 10px 15px;
+    }
+  }
+
+  .checkbox-container {
+    margin: 30px 0;
   }
 }
