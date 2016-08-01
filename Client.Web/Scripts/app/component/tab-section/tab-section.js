@@ -1,15 +1,14 @@
-angular.module('component.tab-section', ['ngSanitize', 'ngFileUpload']).directive('tabSection', function() {
+angular.module('component.tab-section', ['ngSanitize', 'ngFileUpload']).directive('tabSection', function(addFlatTabs) {
     return {
         restrict: 'E',
         scope: {
             model: '=?',
-            tabTitle: '=',
-            tabDescription: '=?',
-            tabType: '=',
+            currentTab: '=',
             tabCollectionType: '@'
         },
         templateUrl: 'app/component/tab-section/tab-section.html',
         link: function($scope, $element) {
+            $scope.addFlatTabs = addFlatTabs;
             $scope.uploadedFiles = [];
             $scope.data = {
                 cities: [
@@ -95,6 +94,12 @@ angular.module('component.tab-section', ['ngSanitize', 'ngFileUpload']).directiv
                     index = $scope.uploadedFiles.length <= index ? index - 1 : index;
                     $scope.setCover(index, true);
                 }
+            };
+            $scope.saveAndGoTo = function (currentTab, tabCollectionType) {
+                var currentTabIndex = addFlatTabs[tabCollectionType].indexOf(currentTab);
+                var nexTabIndex = currentTabIndex + 1;
+                addFlatTabs[tabCollectionType][nexTabIndex].disabled = '';
+                addFlatTabs[tabCollectionType][nexTabIndex].active = true;
             };
         }
     };

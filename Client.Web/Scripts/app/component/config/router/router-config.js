@@ -103,7 +103,8 @@ angular.module('component.config.router', ['ui.router', 'api.httpRequestIntercep
         .state('add-ads', {
             url: "/add-ads",
             templateUrl: 'app/component/config/router/add-ads.html',
-            controller: function ($scope, $element, $timeout) {
+            controller: function ($scope, $element, $timeout, addFlatTabs) {
+                $scope.tabs = addFlatTabs;
                 $scope.model = {
                     sale: {
                         location: {
@@ -115,17 +116,6 @@ angular.module('component.config.router', ['ui.router', 'api.httpRequestIntercep
                     },
                     swap: {}
 
-                };
-
-                $scope.saveAndGoTo = function (tabName, tabCollectionType) {
-                    if(tabCollectionType === 'sale' && tabName === 'change') {
-                        return;
-                    }
-                    var index = tabCollectionType === 'change' && tabName !== 'change' ? 1 : 0;
-                    var nexTabLink = $element[0].querySelectorAll('tab-section[tab-type="\'' + tabName + '\'"] a')[index];
-                    $timeout(function () {
-                        angular.element(nexTabLink).triggerHandler('click');
-                    });
                 };
             }
         })
