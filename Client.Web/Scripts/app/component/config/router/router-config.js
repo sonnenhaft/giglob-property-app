@@ -117,6 +117,43 @@ angular.module('component.config.router', ['ui.router', 'api.httpRequestIntercep
                     swap: {}
 
                 };
+
+                $scope.$on('addFormSubmitted', function(type) {
+                    console.log($scope.model);
+
+                    $scope.model.postData = {
+                        cityId: $scope.model.location.city.id,
+                        districtId: $scope.model.location.district.id,
+                        streetName: $scope.model.location.street,
+                        houseNumber: 12,
+                        housing: '',
+                        apartmentNumber: '',
+                        lat: 0,
+                        lon: 0,
+                        level: 0,
+                        areaSize: 0,
+                        roomCount: 0,
+                        type: 1,
+                        buildingCategory: 1,
+                        cost: 0,
+                        comment: '',
+                        offerType: type,
+                        nearMetroBranchStationIds: [
+                            0
+                        ],
+                        photoes: [],
+                        documents: [],
+                        exchangeDetails: {
+                            "cityId": 0,
+                            "districtId": 0,
+                            "roomCount": 0,
+                            "areaSize": 0,
+                            "minCost": 0,
+                            "maxCost": 0
+                        }
+                    };
+
+                })
             }
         })
         .state('confirm', {

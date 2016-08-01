@@ -28,4 +28,4 @@
 </form>
 
 
-<button class="button action action_next green large next" ng-click="saveAndGoTo(currentTab, tabCollectionType)">Сохранить и перейти дальше</button>
+<button class="button action action_next green large next" ng-click="saveAndGoTo(currentTab, tabCollectionType)" ng-disabled="!uploadedFiles.length">Сохранить и перейти дальше</button>

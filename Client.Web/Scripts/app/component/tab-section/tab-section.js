@@ -1,4 +1,4 @@
-angular.module('component.tab-section', ['ngSanitize', 'ngFileUpload']).directive('tabSection', function(addFlatTabs, cityDistrictFactory ) {
+angular.module('component.tab-section', ['ngSanitize', 'ngFileUpload']).directive('tabSection', function(addFlatTabs, cityDistrictFactory, $rootScope) {
     return {
         restrict: 'E',
         scope: {
@@ -113,6 +113,10 @@ angular.module('component.tab-section', ['ngSanitize', 'ngFileUpload']).directiv
                 addFlatTabs[tabCollectionType][nexTabIndex].disabled = '';
                 addFlatTabs[tabCollectionType][nexTabIndex].active = true;
             };
+
+            $scope.sendData = function() {
+                $rootScope.$broadcast('addFormSubmitted', 1);
+            }
         }
     };
 });
