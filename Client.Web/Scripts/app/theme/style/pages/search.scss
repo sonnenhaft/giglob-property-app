@@ -1,0 +1,53 @@
+.search-page {
+  position: relative;
+
+  .left-column {
+    position: relative;
+    width: 673px;
+    top: 0;
+    left: -7px;
+    padding: 0;
+
+  }
+
+  .flat_filter {
+    margin-bottom: 20px;
+  }
+
+  .right-column {
+    position: relative;
+    right: -40px;
+    width: 687px;
+    height: 100%;
+    padding: 0;
+  }
+
+  .search-map {
+    width: 687px;
+    height: 500px;
+  }
+  
+  .offers {
+    .title {
+      font-size: 18px;
+      font-weight: 900;
+      color: #000;
+      margin-bottom: 20px;
+
+      .count {
+        font-size: 18px;
+        color: #00b06d;
+      }
+
+    }
+    .offers_list {
+      position: relative;
+      margin-left: -27px;
+
+      .flat-card {
+        float: left;
+        margin: 0 0 30px 27px;
+      }
+    }
+  }
+}

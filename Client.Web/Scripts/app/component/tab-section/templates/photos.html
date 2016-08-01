@@ -1,0 +1,31 @@
+<form name="photoForm">
+    <div class="download-list file-list">
+        <div class="download-list-file-wrapper" ng-repeat="file in uploadedFiles track by $index" ng-click="setCover($index)">
+            <img ngf-src="file">
+            <div class="label file-label-cover" ng-class="{active: file.isCover}">Обложка</div>
+            <div title="Удалить" class="file-label-remove" ng-click="removeFile($index);"></div>
+        </div>
+
+        <div class="download-list-uploader"
+             ng-class="{added: isAdded}"
+             ngf-accept="'image/png,image/jpeg'"
+             ngf-drop="uploadFiles($files)"
+             ngf-select="uploadFiles($files)"
+             ngf-validate="{size: {max: '5MB'}, pattern: '.jpeg,.jpg,.png', totalSize: {max: '50MB'}}"
+             multiple="true">
+            <div class="download-list-uploader-text">
+                <div class="download-description">
+                    <strong>Перетащите</strong> на это поле фотографии объекта, или <span class="add-control">выберите</span> их вручную
+                </div>
+                <span class="add-text">Добавить</span>
+            </div>
+        </div>
+        <div></div>
+        <div class="download-info">
+            Вы можете загрузить любое количество файлов. Формат файлов: jpg и png размером до 5 мегабайт каждый.
+        </div>
+    </div>
+</form>
+
+
+<button class="button action action_next green large next"  ng-click="$parent.$parent.saveAndGoTo('docs', tabCollectionType)">Сохранить и перейти дальше</button>

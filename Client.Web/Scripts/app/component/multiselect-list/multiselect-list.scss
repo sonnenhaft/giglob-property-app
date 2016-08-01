@@ -1,0 +1,36 @@
+.multiselect-list {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  border-radius: 5px;
+  border: 1px solid #e1e1e1;
+  list-style: none;
+  .list-item {
+    float: left;
+    padding: 9px 0;
+    width: 30px;
+    cursor: pointer;
+    font-family: Lato;
+    font-size: 12px;
+    line-height: 12px;
+    font-weight: 900;
+    text-align: center;
+    color: #00b06d;
+    border-right: 1px solid #e1e1e1;
+    -webkit-touch-callout: none;
+    user-select: none;
+    &:first-child {
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
+    }
+    &:last-child {
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+      border-right: none;
+    }
+    &.selected {
+      color: #ffffff;
+      background-color: #09c77b;
+    }
+  }
+}

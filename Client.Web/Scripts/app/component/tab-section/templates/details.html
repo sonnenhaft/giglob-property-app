@@ -1,0 +1,63 @@
+<form class="form" novalidate name="detailsForm">
+
+    <label class="form-label">
+        <div class="label-title">Этаж</div>
+        <div class="label-item">
+            <input type="text" ng-model="$parent.model.floor" placeholder="Номер этажа" required>
+        </div>
+    </label>
+
+    <label class="form-label">
+        <div class="label-title">Площадь, м<sup>2</sup></div>
+        <div class="label-item">
+            <input type="text" ng-model="$parent.model.square" placeholder="Общая площадь помещения" required>
+        </div>
+    </label>
+
+    <label class="form-label">
+        <div class="label-title">Комнаты</div>
+        <div class="label-item">
+            <input type="text" ng-model="$parent.model.roomsCount" placeholder="Количество комнат" required>
+        </div>
+    </label>
+
+    <label class="form-label">
+        <div class="label-title">Тип недвижимости</div>
+        <div class="label-item">
+            <div class="select-wrapper">
+            <select name="realEstateType"
+                    ng-options="option.name for option in data.realEstateTypes track by option.id"
+                    ng-model="$parent.model.realEstateType"
+                    required></select>
+            </div>
+        </div>
+    </label>
+
+    <label class="form-label">
+        <div class="label-title">Категория строения</div>
+        <div class="label-item">
+            <div class="select-wrapper">
+                <select name="buildCategory"
+                        ng-options="option.name for option in data.buildCategories track by option.id"
+                        ng-model="$parent.model.buildCategory"
+                        required></select>
+            </div>
+        </div>
+    </label>
+
+    <label class="form-label">
+        <div class="label-title">Стоимость в рублях</div>
+        <div class="label-item">
+            <input type="text" ng-model="$parent.model.price" placeholder="Стоимость объекта" required>
+        </div>
+    </label>
+
+    <label class="form-label">
+        <div class="label-title">Коментарий</div>
+        <div class="label-item">
+            <textarea placeholder="Описание в свободной форме" ng-model="$parent.model.comment" required></textarea>
+        </div>
+    </label>
+
+    <button class="button action action_next green large next" ng-disabled="!detailsForm.$valid"  ng-click="$parent.$parent.saveAndGoTo('photos', tabCollectionType)">Сохранить и перейти дальше</button>
+</form>

@@ -1,0 +1,44 @@
+<div class="clearfix add-page">
+    <div class="left-column clearfix">
+        <header>
+            <h1>Добавление объекта</h1>
+        </header>
+
+        <tabset class="type-switcher">
+            <tab heading="Продажа">
+                <tabset class="add_tabs" vertical="true" type="navType" open-on-load="false">
+                    <!--TODO: Use tabsMapping and ng-repeat-->
+                    <tab-section tab-title="'Локация'" tab-description="'Адрес, район, метро'" tab-type="'location'" model="model.sale.location" tab-collection-type="sale"></tab-section>
+                    <tab-section tab-title="'Детали'" tab-description="'Площадь, этаж, комнаты, тип, стоимость'" tab-type="'details'" model="model.sale.details" tab-collection-type="sale"></tab-section>
+                    <tab-section tab-title="'Фотографии'" tab-description="'Настоящие фотографии объекта'" tab-type="'photos'" model="model.sale.photos" tab-collection-type="sale"></tab-section>
+                    <tab-section tab-title="'Документы'" tab-description="'Свидетельство о собственности, <br>кадастровый номер'" tab-type="'docs'" model="model.sale.docs" tab-collection-type="sale"></tab-section>
+                </tabset>
+            </tab>
+            <tab heading="Обмен">
+                <tabset class="add_tabs" vertical="true" type="navType" open-on-load="false">
+                    <!--TODO: Use tabsMapping and ng-repeat-->
+                    <tab-section tab-title="'Локация'" tab-description="'Адрес, район, метро'" tab-type="'location'" model="model.swap.location" tab-collection-type="change"></tab-section>
+                    <tab-section tab-title="'Детали'" tab-description="'Площадь, этаж, комнаты, тип, стоимость'" tab-type="'details'" model="model.swap.details"  tab-collection-type="change"></tab-section>
+                    <tab-section tab-title="'Фотографии'" tab-description="'Настоящие фотографии объекта'" tab-type="'photos'" model="model.swap.photos"  tab-collection-type="change"></tab-section>
+                    <tab-section tab-title="'Документы'" tab-description="'Свидетельство о собственности, <br>кадастровый номер'" tab-type="'docs'" model="model.swap.docs"  tab-collection-type="change"></tab-section>
+                    <tab-section tab-title="'Куда хочу переехать'" tab-description="'Адрес, площадь, комнаты, стоимость'" tab-type="'change'" model="model.swap.change"  tab-collection-type="change"></tab-section>
+                </tabset>
+            </tab>
+        </tabset>
+    </div>
+    <div>
+        <a class="flat-card add_flat">
+            <div class="preview-label">Предпросмотр</div>
+            <div class="card_image">
+                <img src="../../content/images/flat/1.jpeg" alt="">
+            </div>
+            <div class="card_description">
+                <div class="card-title"  ui-sref="apartment-detail/:id">Однокомнатная квартира</div>
+                <div class="card-info"><span class="metro-label" style="background-color: red"></span> станция Метро,
+                    33 м<sup>2</sup>, 5 этаж
+                </div>
+                <div class="card-price">1 000 000 &#8381;</div>
+            </div>
+        </a>
+    </div>
+</div>

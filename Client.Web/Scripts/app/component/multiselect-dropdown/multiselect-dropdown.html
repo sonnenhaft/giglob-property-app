@@ -1,0 +1,18 @@
+<div class="multiselect-dropdown" on-click-outside="showList = false;">
+    <input type="text" class="dropdown-filter" ng-model="dropdownFilter" ng-change="showList = true; findStation()" placeholder="{{selectedItems.length ? (selectedItems.length + ' станции') : 'Любое'}}"/>
+    <ul class="dropdown-list" ng-show="showList && filteredItems.length">
+        <li class="list-item" ng-repeat="item in filteredItems track by $index" ng-click="selectItem(item, $event)">
+            <span class="mid-dot" ng-style="{color: item.color}">&middot</span>
+            {{item.name}}
+        </li>
+    </ul>
+    <ul class="dropdown-selected-list" ng-show="selectedItems.length">
+        <li class="list-item" ng-repeat="item in selectedItems track by $index" ng-click="removeItem($index)">
+            <span class="mid-dot" ng-style="{color: item.color}">&middot</span>
+            {{item.name}}
+            <span class="list-item-remove">x</span>
+        </li>
+    </ul>
+
+    <div class="add_icon" ng-click="showList = !showList">+</div>
+</div>
