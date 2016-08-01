@@ -114,7 +114,14 @@ angular.module('component.config.router', ['ui.router', 'api.httpRequestIntercep
                             }
                         }
                     },
-                    swap: {}
+                    swap: {
+                        location: {
+                            city: {
+                                id: 1,
+                                name: 'Москва'
+                            }
+                        }
+                    }
 
                 };
                 $scope.model = angular.copy(defaultModel);
