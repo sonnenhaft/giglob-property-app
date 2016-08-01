@@ -19,6 +19,7 @@ using Domain.Entities.Implementation.PropertyOffer.Dtos;
 using Client.Api.v1.Models.Models.City;
 using Client.Api.v1.Models.Models.User;
 using Domain.Entities.Implementation.City;
+using Domain.Entities.Implementation.PropertyOffer.Enums;
 using Domain.Entities.User.Implementation;
 using ExpressMapper;
 
@@ -52,6 +53,7 @@ namespace Client.Api.v1
                 .Member(model => model.Lat, offer => offer.Location.Latitude)
                 .Member(model => model.Lon, offer => offer.Location.Longitude)
                 .Member(model => model.OwnerUploadedDocuments, offer => offer.LocalPropertyOfferData != null && offer.LocalPropertyOfferData.Documents.Any())
+                .Member(model => model.BuildingCategory, offer => offer.IsLocal ? offer.LocalPropertyOfferData.BuildingCategory : (BuildingCategory?) null)
                 .Function(model => model.PhotoUrls,
                     offer =>
                     {
