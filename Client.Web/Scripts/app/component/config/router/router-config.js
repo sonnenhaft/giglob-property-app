@@ -129,10 +129,11 @@ angular.module('component.config.router', ['ui.router','api.httpRequestIntercept
                     for (var i = 0; i < flat.photos.length; i++) {
                         obj.push({'src': server + flat.photos[i]})
                     }
-                    return flat.images = obj;
+                    flat.images = obj;
+                    flat.coords = {geometry:{type:'Point',coordinates:[flat.lon,flat.lat]}};
                 });
                 var markersMapping = {};
-                $scope.filteredFlats = [];
+                $scope.filteredFlats = $scope.flats;
 
                 $scope.addMarkerToMapping = function(id, $target) {
                     markersMapping[id] = $target;

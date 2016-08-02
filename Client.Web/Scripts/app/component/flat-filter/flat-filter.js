@@ -18,8 +18,11 @@ angular.module('component.flat-filter', [
             };
             $scope.roomCount = [{name: '1', value: '1'}, {name: '2', value: '2'}, {name: '3', value: '3'}, {name: '4+', value: '4+'}];
             $scope.applyFilter = function() {
-                $scope.filteredFlats = $scope.allFlats;
-                console.log('123');
+                $scope.filteredFlats = $filter('flatFilter')(
+                    $scope.allFlats,
+                    $scope.selectedRoomCount,
+                    $scope.selectedStations,
+                    $scope.price);
             };
             $scope.applyFilter();
         }

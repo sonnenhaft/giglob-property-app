@@ -13,7 +13,7 @@
                     </div>
                     <div class="card_description">
                         <div class="card-title"  ui-sref="apartment-detail/:id">{{flat.roomCount}}-комнатная на ул. {{flat.streetName}}</div>
-                        <div class="card-info"><span class="metro-label" ng-style="{background: flat.summary.stationLineColor}"></span> {{flat.summary.station}},
+                        <div class="card-info"><span class="metro-label" ng-style="{background: red}"></span> {{flat.streetName}},
                             {{flat.areaSize}} м<sup>2</sup>, {{flat.level}} этаж
                         </div>
                         <div class="card-price">{{flat.cost | currency : '₽' : ' '}}</div>
@@ -24,22 +24,22 @@
         </div>
     </div>
     <div class="right-column column">
-        <!--<div class="search-map" style="width: 100%;height: 800px;">-->
-            <!--<ya-map ya-zoom="10" ya-center="[37.62,55.747]" ya-controls>-->
-                <!--<ya-geo-object ng-repeat="flat in flats track by flat.id" ya-source="flat.coords"-->
-                               <!--ya-show-all="true"-->
-                               <!--ya-options="{-->
-                               <!--iconLayout: 'default#image',-->
-                               <!--iconImageHref: '../content/images/map-icon-small.svg',-->
-                               <!--iconImageSize: [45, 45],-->
-                               <!--iconImageOffset: [0, 0]-->
-                               <!--}"-->
-                               <!--ya-event-mouseenter="setHighlighting(flat.id, true, $event)"-->
-                               <!--ya-event-mouseleave="setHighlighting(flat.id, false, $event)"-->
-                               <!--ya-after-init="addMarkerToMapping(flat.id, $target)">-->
-                <!--</ya-geo-object>-->
-            <!--</ya-map>-->
-        <!--</div>-->
+        <div class="search-map" style="width: 100%;height: 800px;">
+            <ya-map ya-zoom="10" ya-center="[37.62,55.747]" ya-controls>
+                <ya-geo-object ng-repeat="flat in flats track by flat.id" ya-source="flat.coords"
+                               ya-show-all="true"
+                               ya-options="{
+                               iconLayout: 'default#image',
+                               iconImageHref: '../content/images/map-icon-small.svg',
+                               iconImageSize: [45, 45],
+                               iconImageOffset: [0, 0]
+                               }"
+                               ya-event-mouseenter="setHighlighting(flat.id, true, $event)"
+                               ya-event-mouseleave="setHighlighting(flat.id, false, $event)"
+                               ya-after-init="addMarkerToMapping(flat.id, $target)">
+                </ya-geo-object>
+            </ya-map>
+        </div>
 
     </div>
 </div>
