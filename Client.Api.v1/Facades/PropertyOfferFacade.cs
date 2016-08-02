@@ -1,10 +1,9 @@
-﻿using Client.Api.v1.Models.Models.Common;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics.Contracts;
+using Client.Api.v1.Models.Models.Common;
 using Client.Api.v1.Models.Models.PropertyOffer;
 using CQRS;
 using Domain.Authentication;
-using Domain.Entities.Implementation.PropertyOffer;
 using Domain.Entities.Implementation.PropertyOffer;
 using Domain.Entities.Implementation.PropertyOffer.Commands;
 using Domain.Entities.Implementation.PropertyOffer.Dtos;
@@ -19,12 +18,14 @@ namespace Client.Api.v1.Facades
 
         private readonly ICommandHandler<PropertyOffer_CreateCommand> _propertyOfferCreateCommandHandler;
         private readonly IQueryHandler<PropertyOffer_GetUserOffersQuery, IEnumerable<PropertyOffer>> _propertyOfferGetUserOffersQueryHandler;
+        private readonly IQueryHandler<PropertyOffer_GetQuery, PropertyOffer> _propertyOfferGetQueryHandler;
 
-        public PropertyOfferFacade(ICurrentUserService currentUserService, ICommandHandler<PropertyOffer_CreateCommand> propertyOfferCreateCommandHandler, IQueryHandler<PropertyOffer_GetUserOffersQuery, IEnumerable<PropertyOffer>> propertyOfferGetUserOffersQueryHandler)
+        public PropertyOfferFacade(ICurrentUserService currentUserService, ICommandHandler<PropertyOffer_CreateCommand> propertyOfferCreateCommandHandler, IQueryHandler<PropertyOffer_GetUserOffersQuery, IEnumerable<PropertyOffer>> propertyOfferGetUserOffersQueryHandler, IQueryHandler<PropertyOffer_GetQuery, PropertyOffer> propertyOfferGetQueryHandler)
         {
             _propertyOfferCreateCommandHandler = propertyOfferCreateCommandHandler;
             _currentUserService = currentUserService;
             _propertyOfferGetUserOffersQueryHandler = propertyOfferGetUserOffersQueryHandler;
+            _propertyOfferGetQueryHandler = propertyOfferGetQueryHandler;
         }
 
         public void Create(PropertyOfferCreateRequestModel reqModel)
@@ -39,6 +40,12 @@ namespace Client.Api.v1.Facades
             var offers = _propertyOfferGetUserOffersQueryHandler.Handle(new PropertyOffer_GetUserOffersQuery(_currentUserService.GetId()));
 
             return offers.Map<IEnumerable<PropertyOffer>, IEnumerable<PropertyOfferModel>>();
+        }
+
+        public PropertyOfferModel Get(PropertyOfferGetRequestModel reqModel)
+        {
+            return _propertyOfferGetQueryHandler.Handle(new PropertyOffer_GetQuery(reqModel.Id))
+                                                .Map<PropertyOffer, PropertyOfferModel>();
         }
     }
 }

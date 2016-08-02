@@ -15,21 +15,6 @@
             Название станций
             </summary>
         </member>
-        <member name="P:Client.Api.v1.Models.Models.City.NearMetroStationModel.Id">
-            <summary>
-            Идентификатор, если есть
-            </summary>
-        </member>
-        <member name="P:Client.Api.v1.Models.Models.City.NearMetroStationModel.Name">
-            <summary>
-            Название
-            </summary>
-        </member>
-        <member name="P:Client.Api.v1.Models.Models.City.NearMetroStationModel.HexColor">
-            <summary>
-            Цвет в шестнадцатиричном формате
-            </summary>
-        </member>
         <member name="T:Client.Api.v1.Models.Models.City.CityModel">
             <summary>
             Модель города
@@ -65,6 +50,21 @@
             Название
             </summary>
         </member>
+        <member name="P:Client.Api.v1.Models.Models.City.NearMetroStationModel.Id">
+            <summary>
+            Идентификатор, если есть
+            </summary>
+        </member>
+        <member name="P:Client.Api.v1.Models.Models.City.NearMetroStationModel.Name">
+            <summary>
+            Название
+            </summary>
+        </member>
+        <member name="P:Client.Api.v1.Models.Models.City.NearMetroStationModel.HexColor">
+            <summary>
+            Цвет в шестнадцатиричном формате
+            </summary>
+        </member>
         <member name="T:Client.Api.v1.Models.Models.Home.DataModel">
             <summary>
             Модель данных для выгрузки
@@ -73,16 +73,6 @@
         <member name="P:Client.Api.v1.Models.Models.Home.DataModel.Cities">
             <summary>
             Города
-            </summary>
-        </member>
-        <member name="P:Client.Api.v1.Models.Models.PropertyOffer.PropertyOfferCreatePhotoRequestModel.Id">
-            <summary>
-            Идентификатор файла
-            </summary>
-        </member>
-        <member name="P:Client.Api.v1.Models.Models.PropertyOffer.PropertyOfferCreatePhotoRequestModel.IsCover">
-            <summary>
-            Является ли фотография обложкой
             </summary>
         </member>
         <member name="P:Client.Api.v1.Models.Models.PropertyOffer.PropertyOfferCreateRequestModel.CityId">
@@ -183,6 +173,16 @@
         <member name="P:Client.Api.v1.Models.Models.PropertyOffer.PropertyOfferCreateRequestModel.ExchangeDetails">
             <summary>
             Информация о переезде
+            </summary>
+        </member>
+        <member name="P:Client.Api.v1.Models.Models.PropertyOffer.PropertyOfferCreatePhotoRequestModel.Id">
+            <summary>
+            Идентификатор файла
+            </summary>
+        </member>
+        <member name="P:Client.Api.v1.Models.Models.PropertyOffer.PropertyOfferCreatePhotoRequestModel.IsCover">
+            <summary>
+            Является ли фотография обложкой
             </summary>
         </member>
         <member name="T:Client.Api.v1.Models.Models.PropertyOffer.PropertyOfferExchangeDetailsModel">
