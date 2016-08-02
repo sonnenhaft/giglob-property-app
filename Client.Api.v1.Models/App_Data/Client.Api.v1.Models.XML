@@ -15,21 +15,6 @@
             Название станций
             </summary>
         </member>
-        <member name="P:Client.Api.v1.Models.Models.City.NearMetroStationModel.Id">
-            <summary>
-            Идентификатор, если есть
-            </summary>
-        </member>
-        <member name="P:Client.Api.v1.Models.Models.City.NearMetroStationModel.Name">
-            <summary>
-            Название
-            </summary>
-        </member>
-        <member name="P:Client.Api.v1.Models.Models.City.NearMetroStationModel.HexColor">
-            <summary>
-            Цвет в шестнадцатиричном формате
-            </summary>
-        </member>
         <member name="T:Client.Api.v1.Models.Models.City.CityModel">
             <summary>
             Модель города
@@ -63,6 +48,21 @@
         <member name="P:Client.Api.v1.Models.Models.City.DistrictModel.Name">
             <summary>
             Название
+            </summary>
+        </member>
+        <member name="P:Client.Api.v1.Models.Models.City.NearMetroStationModel.Id">
+            <summary>
+            Идентификатор, если есть
+            </summary>
+        </member>
+        <member name="P:Client.Api.v1.Models.Models.City.NearMetroStationModel.Name">
+            <summary>
+            Название
+            </summary>
+        </member>
+        <member name="P:Client.Api.v1.Models.Models.City.NearMetroStationModel.HexColor">
+            <summary>
+            Цвет в шестнадцатиричном формате
             </summary>
         </member>
         <member name="T:Client.Api.v1.Models.Models.Home.DataModel">

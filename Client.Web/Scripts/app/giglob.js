@@ -6,23 +6,24 @@ angular.module('giglob-app', [
     'templates',
     'component.config.router',
     'component.config.filters',
-    'components.config.data-access',
+    'component.config.data-access',
     "component.gheader",
     "component.gfooter",
     'component.city-popup',
     'component.carousel',
     'component.login',
     'component.flat-filter',
+    'component.tab-section',
+    'component.config.data-access',
     'component.multiselect-dropdown-g',
-    'component.tab-section'
+    'passToText'
 ]).directive('giglob', function (localStorageService) {
     return {
         templateUrl: 'app/giglob.html',
-        link: function ($scope) {
-        },
-        controller: function ($scope, $rootScope) {
-            if (localStorageService.get('access-token')) {
-                $rootScope.accessToken = localStorageService.get('access-token');
+        controller: function($scope) {},
+        link: function($scope,$rootScope) {
+            if(localStorageService.get('access-token')){
+                $rootScope.accessToken =  localStorageService.get('access-token');
             }
         }
     };

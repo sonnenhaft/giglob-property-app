@@ -52,5 +52,12 @@ namespace Client.Api.v1.Controllers
                 return NotFound();
             }
         }
+
+        [HttpGet]
+        [Authorize]
+        public IHttpActionResult MyOffers()
+        {
+            return Ok(_propertyOfferFacade.GetCurrentUserOffers());
+        }
     }
 }

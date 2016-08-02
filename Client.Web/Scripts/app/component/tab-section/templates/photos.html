@@ -1,4 +1,4 @@
-<form name="photoForm">
+﻿<form name="photoForm">
     <div class="download-list file-list">
         <div class="download-list-file-wrapper" ng-repeat="file in uploadedFiles track by $index" ng-click="setCover($index)">
             <img ngf-src="file">
@@ -28,4 +28,4 @@
 </form>
 
 
-<button class="button action action_next green large next" ng-click="saveAndGoTo(currentTab, tabCollectionType)">Сохранить и перейти дальше</button>
+<button class="button action action_next green large next" ng-click="saveAndGoTo(currentTab, tabCollectionType)" ng-disabled="!uploadedFiles.length">Сохранить и перейти дальше</button>
