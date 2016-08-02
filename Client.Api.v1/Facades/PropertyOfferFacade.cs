@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using Client.Api.v1.Models.Models.Common;
 using Client.Api.v1.Models.Models.PropertyOffer;
@@ -35,13 +35,13 @@ namespace Client.Api.v1.Facades
             _propertyOfferCreateCommandHandler.Handle(new PropertyOffer_CreateCommand(reqModel.Map<PropertyOfferCreateRequestModel, PropertyOfferCreateContext>()));
         }
 
-        public IEnumerable<PropertyOfferDataModel> GetAll(PropertyOfferGetAllOffersRequestModel req)
+        public IEnumerable<PropertyOfferListItemModel> GetAll(PropertyOfferGetAllOffersRequestModel req)
         {
             Offer_GetAllQuery query = req.Map<PropertyOfferGetAllOffersRequestModel,Offer_GetAllQuery>();
 
             IEnumerable<PropertyOffer> items = _propertyOfferGetAllCommandHandler.Handle(query);
 
-            return items.Map<IEnumerable<PropertyOffer>, IEnumerable<PropertyOfferDataModel>>();
+            return items.Map<IEnumerable<PropertyOffer>, IEnumerable<PropertyOfferListItemModel>>();
         }
 
         public IEnumerable<PropertyOfferModel> GetCurrentUserOffers()

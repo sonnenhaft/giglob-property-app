@@ -185,14 +185,19 @@
             Является ли фотография обложкой
             </summary>
         </member>
-        <member name="P:Client.Api.v1.Models.Models.PropertyOffer.PropertyOfferDataModel.Lat">
+        <member name="P:Client.Api.v1.Models.Models.PropertyOffer.PropertyOfferListItemModel.Lat">
             <summary>
             Широта
             </summary>
         </member>
-        <member name="P:Client.Api.v1.Models.Models.PropertyOffer.PropertyOfferDataModel.Lon">
+        <member name="P:Client.Api.v1.Models.Models.PropertyOffer.PropertyOfferListItemModel.Lon">
             <summary>
             Долгота
+            </summary>
+        </member>
+        <member name="P:Client.Api.v1.Models.Models.PropertyOffer.PropertyOfferListItemModel.NearMetroStationModel">
+            <summary>
+            Ближайшая станция метро
             </summary>
         </member>
         <member name="T:Client.Api.v1.Models.Models.PropertyOffer.PropertyOfferExchangeDetailsModel">

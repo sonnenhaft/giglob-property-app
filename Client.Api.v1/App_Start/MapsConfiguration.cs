@@ -33,7 +33,7 @@ namespace Client.Api.v1
             Mapper.Register<PropertyOfferCreateRequestModel, PropertyOfferCreateContext>();
             Mapper.Register<PropertyOfferCreatePhotoRequestModel, PropertyOfferCreatePhotoContext>();
 
-            Mapper.Register<PropertyOffer, PropertyOfferDataModel>()
+            Mapper.Register<PropertyOffer, PropertyOfferListItemModel>()
                 .Member(x=>x.Lat, y=>y.Location.Latitude)
                 .Member(x=>x.Lon, y=>y.Location.Longitude)
                 .Member(x=>x.Photos, y=>y.LocalPropertyOfferData.Photoes.Select(q=>q.FileId.ToString()));

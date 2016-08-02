@@ -78,10 +78,10 @@
     <Compile Include="Constants\RegexConstants.cs" />
     <Compile Include="Extensions\ContainerExtensions.cs" />
     <Compile Include="Models\Common\ResponseExamples\BadRequestResponseExampleProvider.cs" />
-    <Compile Include="Models\PropertyOffer\PropertyOfferDataModel.cs" />
+    <Compile Include="Models\PropertyOffer\PropertyOfferListItemModel.cs" />
     <Compile Include="Models\PropertyOffer\PropertyOfferExchangeDetailsModel.cs" />
     <Compile Include="Models\PropertyOffer\PropertyOfferGetAllOffersRequestModel.cs" />
-    <Compile Include="Models\PropertyOffer\ResponseExamples\OffersModelResponseExample.cs" />
+    <Compile Include="Models\PropertyOffer\ResponseExamples\PropertyOfferGetAllResponseExample.cs" />
     <Compile Include="Models\PropertyOffer\PropertyOfferGetRequestModel.cs" />
     <Compile Include="Models\PropertyOffer\PropertyOfferModel.cs" />
     <Compile Include="Models\PropertyOffer\Validators\PropertyOfferCreateRequestModelValidator.cs" />
