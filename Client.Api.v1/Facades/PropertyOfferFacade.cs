@@ -35,13 +35,13 @@ namespace Client.Api.v1.Facades
             _propertyOfferCreateCommandHandler.Handle(new PropertyOffer_CreateCommand(reqModel.Map<PropertyOfferCreateRequestModel, PropertyOfferCreateContext>()));
         }
 
-        public IEnumerable<PropertyOfferListItemModel> GetAll(PropertyOfferGetAllOffersRequestModel req)
+        public IEnumerable<PropertyOfferListItemModel> GetAll(PropertyOfferGetAllOffersRequestModel reqModel)
         {
-            Offer_GetAllQuery query = req.Map<PropertyOfferGetAllOffersRequestModel,Offer_GetAllQuery>();
+            Offer_GetAllQuery allOffersQuery = reqModel.Map<PropertyOfferGetAllOffersRequestModel,Offer_GetAllQuery>();
 
-            IEnumerable<PropertyOffer> items = _propertyOfferGetAllCommandHandler.Handle(query);
+            IEnumerable<PropertyOffer> offers = _propertyOfferGetAllCommandHandler.Handle(allOffersQuery);
 
-            return items.Map<IEnumerable<PropertyOffer>, IEnumerable<PropertyOfferListItemModel>>();
+            return offers.Map<IEnumerable<PropertyOffer>, IEnumerable<PropertyOfferListItemModel>>();
         }
 
         public IEnumerable<PropertyOfferModel> GetCurrentUserOffers()

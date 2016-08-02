@@ -35,9 +35,9 @@ namespace Client.Api.v1.Controllers
 
         [HttpGet]
         [SwaggerResponseExampleProvider(typeof(PropertyOfferGetAllResponseExample))]
-        public IHttpActionResult GetAll([FromUri(Name = "")] PropertyOfferGetAllOffersRequestModel request)
+        public IHttpActionResult GetAll([FromUri(Name = "")] PropertyOfferGetAllOffersRequestModel reqModel)
         {
-            return Ok(_propertyOfferFacade.GetAll(request));
+            return Ok(_propertyOfferFacade.GetAll(reqModel));
         }
 
         [SwaggerResponseExampleProvider(typeof(PropertyOfferGetResponseExample))]
