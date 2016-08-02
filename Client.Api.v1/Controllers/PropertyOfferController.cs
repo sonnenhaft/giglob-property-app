@@ -9,6 +9,7 @@ using Client.Api.v1.Models.Models.PropertyOffer;
 using Client.Api.v1.Models.Models.PropertyOffer.Examples;
 using Client.Api.v1.Models.Models.PropertyOffer.ResponseExamples;
 using Domain.Entities.Implementation.PropertyOffer.Enums;
+using Domain.Exceptions;
 using SwaggerResponseExampleModule;
 
 namespace Client.Api.v1.Controllers
@@ -33,10 +34,24 @@ namespace Client.Api.v1.Controllers
         }
 
         [HttpGet]
-        [SwaggerResponseExampleProvider(typeof(OffersModelResponseExample))]
-        public IHttpActionResult GetAll([FromUri(Name = "")] PropertyOfferGetAllOffersRequestModel request)
+        [SwaggerResponseExampleProvider(typeof(PropertyOfferGetResponseExample))]
+        public IHttpActionResult Get([FromUri(Name = "")] PropertyOfferGetRequestModel reqModel)
         {
-            return Ok(_propertyOfferFacade.GetAll(request));
+            try
+            {
+                return Ok(_propertyOfferFacade.Get(reqModel));
+            }
+            catch (NotFoundException)
+            {
+                return NotFound();
+            }
+        }
+
+        [HttpGet]
+        [Authorize]
+        public IHttpActionResult MyOffers()
+        {
+            return Ok(_propertyOfferFacade.GetCurrentUserOffers());
         }
     }
 }

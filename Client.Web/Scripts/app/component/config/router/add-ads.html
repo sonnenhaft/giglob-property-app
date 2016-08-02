@@ -1,17 +1,17 @@
-<div class="clearfix add-page">
+﻿<div class="clearfix add-page" ng-init="tabCollectionType = 'sale'">
     <div class="left-column clearfix">
         <header>
             <h1>Добавление объекта</h1>
         </header>
 
         <tabset class="type-switcher">
-            <tab heading="Продажа">
+            <tab heading="Продажа" ng-click="$parent.$parent.tabCollectionType = 'sale'">
                 <tabset class="add_tabs" vertical="true" type="navType" open-on-load="false">
                     <!--TODO: Use tabsMapping and ng-repeat-->
                     <tab-section ng-repeat="tab in tabs.sale track by tab.tabType" disabled="tab.disabled" current-tab="tab" model="model.sale[tab.tabType]" tab-collection-type="sale"></tab-section>
                 </tabset>
             </tab>
-            <tab heading="Обмен">
+            <tab heading="Обмен" ng-click="$parent.$parent.tabCollectionType = 'swap'">
                 <tabset class="add_tabs" vertical="true" type="navType" open-on-load="false">
                     <!--TODO: Use tabsMapping and ng-repeat-->
                     <tab-section ng-repeat="tab in tabs.swap track by tab.tabType" current-tab="tab" model="model.swap[tab.tabType]" tab-collection-type="swap"></tab-section>
@@ -20,17 +20,30 @@
         </tabset>
     </div>
     <div>
-        <a class="flat-card add_flat">
+        <a class="flat-card add_flat" ng-show="tabCollectionType === 'sale'">
+            <div class="preview-label">Предпросмотр</div>
+            <div class="card_image">
+                <img  alt="">
+            </div>
+            <div class="card_description">
+                <div class="card-title"  ui-sref="apartment-detail/:id">{{roomCountNames[model.sale.details.roomsCount - 1] + ' квартира'}}</div>
+                <div class="card-info"><span class="metro-label" style="background-color: red"></span> {{model.sale.location.selectedStations[0].name}},
+                    {{model.sale.details.area}} м<sup>2</sup>, {{model.sale.details.floor}} этаж
+                </div>
+                <div class="card-price">{{model.sale.details.price | currency : '' : ''}} &#8381;</div>
+            </div>
+        </a>
+        <a class="flat-card add_flat" ng-show="tabCollectionType !== 'sale'">
             <div class="preview-label">Предпросмотр</div>
             <div class="card_image">
                 <img src="../../content/images/flat/1.jpeg" alt="">
             </div>
             <div class="card_description">
-                <div class="card-title"  ui-sref="apartment-detail/:id">Однокомнатная квартира</div>
-                <div class="card-info"><span class="metro-label" style="background-color: red"></span> станция Метро,
-                    33 м<sup>2</sup>, 5 этаж
+                <div class="card-title"  ui-sref="apartment-detail/:id">{{roomCountNames[model.swap.details.roomsCount - 1] + ' квартира'}}</div>
+                <div class="card-info"><span class="metro-label" style="background-color: red"></span> {{model.swap.location.selectedStations[0].name}},
+                    {{model.swap.details.area}} м<sup>2</sup>, {{model.swap.details.floor}} этаж
                 </div>
-                <div class="card-price">1 000 000 &#8381;</div>
+                <div class="card-price">{{model.swap.details.price | currency : '' : ''}} &#8381;</div>
             </div>
         </a>
     </div>

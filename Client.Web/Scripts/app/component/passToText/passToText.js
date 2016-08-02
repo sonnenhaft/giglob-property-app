@@ -1,4 +1,4 @@
-angular.module('passToText',[]).directive('passToText', function () {
+﻿angular.module('passToText',[]).directive('passToText', function () {
     return {
         restrict: 'A',
         link: function (scope, element, attrs, ngModelCtrl) {

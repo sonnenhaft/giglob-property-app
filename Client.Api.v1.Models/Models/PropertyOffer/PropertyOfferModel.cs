@@ -108,6 +108,11 @@ namespace Client.Api.v1.Models.Models.PropertyOffer
         public PropertyType Type { get; set; }
 
         /// <summary>
+        /// Категория здания. Flat = 1, House = 2
+        /// </summary>
+        public BuildingCategory? BuildingCategory { get; set; }
+
+        /// <summary>
         /// Ближайшая станция метро
         /// </summary>
         public NearMetroStationModel NearMetroStationModel { get; set; }

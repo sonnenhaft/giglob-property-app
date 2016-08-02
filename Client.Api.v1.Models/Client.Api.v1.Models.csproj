@@ -82,6 +82,7 @@
     <Compile Include="Models\PropertyOffer\PropertyOfferExchangeDetailsModel.cs" />
     <Compile Include="Models\PropertyOffer\PropertyOfferGetAllOffersRequestModel.cs" />
     <Compile Include="Models\PropertyOffer\ResponseExamples\OffersModelResponseExample.cs" />
+    <Compile Include="Models\PropertyOffer\PropertyOfferGetRequestModel.cs" />
     <Compile Include="Models\PropertyOffer\PropertyOfferModel.cs" />
     <Compile Include="Models\PropertyOffer\Validators\PropertyOfferCreateRequestModelValidator.cs" />
     <Compile Include="Models\User\AuthResultModel.cs" />

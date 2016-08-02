@@ -8,7 +8,6 @@ namespace Client.Api
     {
         public static void Configure(JsonMediaTypeFormatter formatter)
         {
-            formatter.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
             formatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
         }
     }

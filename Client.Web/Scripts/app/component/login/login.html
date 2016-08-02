@@ -1,4 +1,4 @@
-<div class="row">
+﻿<div class="row">
     <div class="medium-4 columns">
         <div class="bg-image"></div>
         <div class="login-info" ng-if="activePage === 'login'">
@@ -68,7 +68,7 @@
                         </div>
                     </div>
                 </form>
-                <button ng-disabled="loginForm.$invalid" ng-click="signin()" type="submit" class="button btn-success">Вход</button>
+                <button ng-disabled="loginForm.$invalid" ng-click="signin()" type="submit" class="button btn-success">Войти</button>
             </div>
             <div ng-if="activePage==='registration' && notRegistered">
                 <div class="forms-header"> Регистрация через почту</div>
@@ -87,8 +87,8 @@
                             Проверьте правильность ввода
                         </div>
                         <div class="help-block"
-                             ng-show="regErr">
-                            Почта уже зарегистрирована
+                             ng-show="regErr && RegForm.email.$valid">
+                            Уже есть пользователь с такой почтой
                         </div>
                     </div>
                     <label>Пароль</label>
@@ -99,18 +99,19 @@
                                placeholder="Придумайте пароль"
                                name="password"
                                minlength="6"
+                               maxlength="130"
                                class="form-control"
                                required/>
                         <i class="icon"
                            ng-click="showpassword = !showpassword"
                            ng-class="{'icon-eye': !showpassword,'icon-eye-close': showpassword}"></i>
                         <div class="help-block"
-                             ng-show="loginForm.password.$error.required && loginForm.password.$touched">
+                             ng-show="RegForm.password.$error.required && RegForm.password.$touched">
                             Проверьте правильность ввода
                         </div>
                         <div class="help-block"
-                             ng-show="loginForm.password.$error.minlength && loginForm.password.$touched">
-                            Пароль должен быть больше 6 символов
+                             ng-show="(RegForm.password.$error.minlength || RegForm.password.$error.maxlength) && RegForm.password.$touched">
+                            Минимум 6, максимум 130 символов
                         </div>
                     </div>
                 </form>

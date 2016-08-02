@@ -1,4 +1,4 @@
-$switcher-border-radius: 5px;
+﻿$switcher-border-radius: 5px;
 $bgc: #ecf1f4;
 $tab-width: 473px;
 $tab-active-bg: #f8fafb;
@@ -157,6 +157,13 @@ $tab-active-bg: #f8fafb;
             margin-top: -5px;
           }
 
+        }
+        &.disabled {
+          a {
+            .tab_control {
+              display: none;
+            }
+          }
         }
 
         &.active {

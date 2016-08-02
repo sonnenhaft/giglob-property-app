@@ -1,4 +1,4 @@
-angular.module('giglob-app', [
+﻿angular.module('giglob-app', [
     'yaMap',
     'api.resource',
     'LocalStorageModule',
@@ -6,7 +6,7 @@ angular.module('giglob-app', [
     'templates',
     'component.config.router',
     'component.config.filters',
-    'components.config.data-access',
+    'component.config.data-access',
     "component.gheader",
     "component.gfooter",
     'component.city-popup',
@@ -14,8 +14,11 @@ angular.module('giglob-app', [
     'component.login',
     'component.flat-filter',
     'component.multiselect-dropdown-g',
-    'component.tab-section'
-]).directive('giglob', function(localStorageService) {
+    'component.tab-section',
+    'component.config.data-access',
+    'component.multiselect-dropdown-g',
+    'passToText'
+]).directive('giglob', function (localStorageService) {
     return {
         templateUrl: 'app/giglob.html',
         controller: function($scope) {},
