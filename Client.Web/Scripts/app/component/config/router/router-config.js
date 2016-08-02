@@ -1,5 +1,5 @@
-angular.module('component.config.router', ['ui.router', 'api.httpRequestInterceptor', 'api.resource', 'component.config.data-access'])
-    .config(function($stateProvider, $urlRouterProvider, EXCLUDED_DEMO_ROUTERS, $httpProvider) {
+angular.module('component.config.router', ['ui.router','api.httpRequestInterceptor','api.resource','component.config.data-access'])
+    .config(function($stateProvider, $urlRouterProvider, EXCLUDED_DEMO_ROUTERS,$locationProvider) {
     $urlRouterProvider.otherwise("/");
 
     $stateProvider
@@ -89,17 +89,40 @@ angular.module('component.config.router', ['ui.router', 'api.httpRequestIntercep
                 }();
                 $scope.testData.coords = {geometry:{type:'Point',coordinates:[$scope.testData.lon,$scope.testData.lat]}};
                 console.log($scope.testData);
+
             }
 
         })
         .state('search', {
             url: '/',
             templateUrl: 'app/component/config/router/search-page.html',
-            controller: function($scope, $stateParams, flatListFactory,localStorageService) {
-                console.log(localStorageService.get('city').id);
+            resolve : {
+              getFlats : function($state,$stateParams,flatListFactory,localStorageService){
+                  var params = {
+                      cityId : localStorageService.get('city').id,
+                      take: 10
+                  };
+                  return  flatListFactory.query(params).$promise.then(function(res){
+                      return res;
+                  });
+              }
+            },
+            controller: function($scope, $stateParams, getFlats,localStorageService) {
+                $scope.params = {
+                    cityId : localStorageService.get('city').id,
+                    take: 1000
+                };
+                $scope.flats = getFlats;
+                var server = 'http://api.giglob.local/file/get/';
+                $scope.flats.forEach(function(flat) {
+                    var obj = [];
+                    for (var i = 0; i < flat.photos.length; i++) {
+                        obj.push({'src': server + flat.photos[i]})
+                    }
+                    return flat.images = obj;
+                });
                 var markersMapping = {};
                 $scope.filteredFlats = [];
-                $scope.flats = flatListFactory.getAllFlats();
 
                 $scope.addMarkerToMapping = function(id, $target) {
                     markersMapping[id] = $target;
