@@ -36,14 +36,7 @@ namespace Client.Api.v1.Controllers
         [SwaggerResponseExampleProvider(typeof(PropertyOfferGetResponseExample))]
         public IHttpActionResult Get([FromUri(Name = "")] PropertyOfferGetRequestModel reqModel)
         {
-            try
-            {
-                return Ok(_propertyOfferFacade.Get(reqModel));
-            }
-            catch (NotFoundException)
-            {
-                return NotFound();
-            }
+            return Ok(_propertyOfferFacade.Get(reqModel));
         }
 
         [HttpGet]

@@ -1,7 +1,7 @@
 ﻿using System;
 using CQRS;
+using Domain.Exceptions;
 using Domain.Repositories;
-using Domain.Storages;
 
 namespace Domain.Entities.Implementation.File.Queries
 {
@@ -30,7 +30,7 @@ namespace Domain.Entities.Implementation.File.Queries
 
             if(file == null)
             {
-                throw new ArgumentException("File not found");
+                throw new NotFoundException("File not found");
             }
 
             return file;

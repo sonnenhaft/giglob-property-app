@@ -39,6 +39,7 @@ namespace Client.Api
             AuthConfiguration.ConfigureAuth(app);
             GlobalConfiguration.Configuration.EnableCors(new EnableCorsAttribute("*", "*", "*"));
             FluentValidationConfiguration.Configure(GlobalConfiguration.Configuration, container.GetInstance<ModelStateValidatorActionFilter>(), new SimpeInjectorValidatorFactory(container));
+            GlobalConfiguration.Configuration.Filters.Add(container.GetInstance<NotFoundActionFilter>());
             MapsConfiguration.Configure(container.GetInstance<ICurrentUserService>());
         }
     }

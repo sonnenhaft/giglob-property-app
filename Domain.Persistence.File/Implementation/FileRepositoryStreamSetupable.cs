@@ -74,7 +74,7 @@ namespace Domain.Persistence.File.Implementation
 
         private void InjectStream(Entities.Implementation.File.File file)
         {
-            if (file.Stream == null)
+            if (file != null && file.Stream == null)
             {
                 file.Stream = _fileStorage.Get(file.VirtualPath);
             }
