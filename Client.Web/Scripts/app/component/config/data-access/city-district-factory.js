@@ -1,6 +1,6 @@
 angular.module('component.config.data-access').factory('cityDistrictFactory',
     function($resource) {
-        var apiUrl = 'http://api.giglob.local/';//var apiUrl = document.getElementById('apiUrl').dataset.url;
+        var apiUrl = 'http://api.giglob.local';//var apiUrl = document.getElementById('apiUrl').dataset.url;
     return $resource(apiUrl + '/v1/home/getdata', null, {
         get: {
             method: 'GET',
