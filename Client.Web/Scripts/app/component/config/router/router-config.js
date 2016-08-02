@@ -1,6 +1,7 @@
-﻿angular.module('component.config.router', ['ui.router','api.httpRequestInterceptor','api.resource', 'component.config.data-access'])
-    .config(function($stateProvider, $urlRouterProvider, EXCLUDED_DEMO_ROUTERS, $httpProvider, $locationProvider) {
+﻿angular.module('component.config.router', ['ui.router']).config(function($stateProvider, $urlRouterProvider, EXCLUDED_DEMO_ROUTERS) {
     $urlRouterProvider.otherwise("/");
+
+
 
     $stateProvider
         .state('demo', {
@@ -36,7 +37,7 @@
                         hasDocs: true,
                         publishDate: 1469007765797
                     },
-                    coords: [38.715175, 55.833436],
+                    coords: [37.715175, 55.833436],
                     images: [{
                         src: '../content/images/flat/1.jpeg'
                     }, {
@@ -131,9 +132,17 @@
         .state('add-ads', {
             url: "/add-ads",
             templateUrl: 'app/component/config/router/add-ads.html',
-            controller: function ($scope, $element, $timeout, addFlatTabs) {
+            controller: function ($scope, $element, $timeout, addFlatTabs, giglobApi) {
                 $scope.tabs = addFlatTabs;
-                $scope.model = {
+                $scope.roomCountNames = [
+                    'Однокомнатная',
+                    'Двухкомнатная',
+                    'Трехкомнатная',
+                    'Четырхкомнатная',
+                    'Пятикомнатная',
+                    'Шестикомнатная'
+                ]
+                var defaultModel = {
                     sale: {
                         location: {
                             city: {
@@ -142,33 +151,39 @@
                             }
                         }
                     },
-                    swap: {}
+                    swap: {
+                        location: {
+                            city: {
+                                id: 1,
+                                name: 'Москва'
+                            }
+                        }
+                    }
 
                 };
+                $scope.model = angular.copy(defaultModel);
 
-                $scope.$on('addFormSubmitted', function(type) {
-                    console.log($scope.model);
+                $scope.$on('addFormSubmitted', function(event, type) {
+                    var offerTypeName = type === 0 ? 'sale' : 'swap';
 
                     $scope.model.postData = {
-                        cityId: $scope.model.location.city.id,
-                        districtId: $scope.model.location.district.id,
-                        streetName: $scope.model.location.street,
-                        houseNumber: 12,
-                        housing: '',
-                        apartmentNumber: '',
+                        cityId: $scope.model[offerTypeName].location.city.id,
+                        districtId: $scope.model[offerTypeName].location.district.id,
+                        streetName: $scope.model[offerTypeName].location.street,
+                        houseNumber: $scope.model[offerTypeName].location.build,
+                        housing: $scope.model[offerTypeName].location.housing,
+                        apartmentNumber: $scope.model[offerTypeName].location.flat,
                         lat: 0,
                         lon: 0,
-                        level: 0,
-                        areaSize: 0,
-                        roomCount: 0,
-                        type: 1,
-                        buildingCategory: 1,
-                        cost: 0,
-                        comment: '',
+                        level: $scope.model[offerTypeName].details.floor,
+                        areaSize: $scope.model[offerTypeName].details.area,
+                        roomCount: $scope.model[offerTypeName].details.roomsCount,
+                        type: $scope.model[offerTypeName].details.realEstateType.id,
+                        buildingCategory: $scope.model[offerTypeName].details.buildCategory.id,
+                        cost: $scope.model[offerTypeName].details.price,
+                        comment: $scope.model[offerTypeName].details.comment,
                         offerType: type,
-                        nearMetroBranchStationIds: [
-                            0
-                        ],
+                        nearMetroBranchStationIds: $scope.model[offerTypeName].location.selectedStations.map(function (item){return item.id}),
                         photoes: [],
                         documents: [],
                         exchangeDetails: {
@@ -180,6 +195,11 @@
                             "maxCost": 0
                         }
                     };
+
+                    giglobApi.save({type:'propertyoffer',action: 'create'}, $scope.model.postData, function () {
+                        $scope.model = {};
+                        $scope.model = angular.copy(defaultModel);
+                    });
 
                 })
             }
@@ -195,7 +215,7 @@
                     })
                 }
             }
-        })
+        });
 
 }).constant('EXCLUDED_DEMO_ROUTERS', [
     'demo',

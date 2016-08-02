@@ -1,4 +1,4 @@
-angular.module('component.city-popup', ['mm.foundation.modal', 'LocalStorageModule']).directive('cityPopup', function($modal, localStorageService){
+﻿angular.module('component.city-popup', ['mm.foundation.modal', 'LocalStorageModule']).directive('cityPopup', function($modal, localStorageService){
     return function($scope) {
         if(!localStorageService.get('city')) {
             $modal.open({

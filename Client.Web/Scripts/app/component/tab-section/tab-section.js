@@ -113,8 +113,8 @@ angular.module('component.tab-section', ['ngSanitize', 'ngFileUpload']).directiv
                 addFlatTabs[tabCollectionType][nexTabIndex].active = true;
             };
 
-            $scope.sendData = function() {
-                $rootScope.$broadcast('addFormSubmitted', 1);
+            $scope.sendData = function(type) {
+                $rootScope.$broadcast('addFormSubmitted', type);
             }
         }
     };

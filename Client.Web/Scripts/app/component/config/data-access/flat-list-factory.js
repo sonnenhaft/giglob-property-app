@@ -1,4 +1,4 @@
-angular.module('component.config.data-access', []).factory('flatListFactory', function() {
+angular.module('component.config.data-access').factory('flatListFactory', function() {
     var mockedFlatData = [
         {
             id: '1',

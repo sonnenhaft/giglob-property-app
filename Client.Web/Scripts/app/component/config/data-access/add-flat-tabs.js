@@ -1,4 +1,4 @@
-angular.module('components.config.data-access', []).value('addFlatTabs', {
+angular.module('component.config.data-access', []).value('addFlatTabs', {
     sale: [
         {
             tabTitle: 'Локация',

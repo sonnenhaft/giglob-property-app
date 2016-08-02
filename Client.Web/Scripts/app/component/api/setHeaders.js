@@ -1,4 +1,4 @@
-angular.module('api.httpRequestInterceptor',[]).factory('httpRequestInterceptor', function (localStorageService,$rootScope) {
+﻿angular.module('api.httpRequestInterceptor',[]).factory('httpRequestInterceptor', function (localStorageService,$rootScope) {
     return {
         request: function (config) {
 

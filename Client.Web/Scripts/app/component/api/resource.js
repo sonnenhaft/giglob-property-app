@@ -36,4 +36,3 @@ angular.module("api.resource", ["ngResource"])
                 }
             });
     });
-

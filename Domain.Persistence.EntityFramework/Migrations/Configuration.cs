@@ -1,4 +1,4 @@
-﻿using System.Diagnostics;
+﻿﻿using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -31,7 +31,6 @@ namespace Domain.Persistence.EntityFramework.Migrations
                 codeBase = Regex.Replace(codeBase, @"^file:[/]{2,3}", "")
                                    .Replace("/", @"\");
             }
-
             if (!Regex.IsMatch(codeBase, @"^[a-zA-Z]:\\"))
             {
                 codeBase = "//" + codeBase;
@@ -70,4 +69,3 @@ namespace Domain.Persistence.EntityFramework.Migrations
         }
     }
 }
-

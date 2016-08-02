@@ -4,6 +4,7 @@
         <div class="label-item">
             <div class="select-wrapper">
                 <select name="city"
+                        ng-change="$parent.selectCity()"
                         ng-options="option.name for option in data.cities track by option.id"
                         ng-model="$parent.model.city"
                         required></select>
@@ -20,19 +21,19 @@
         <label class="form-label">
             <div class="label-title">Дом</div>
             <div class="label-item">
-                <input type="text" ng-model="build" required>
+                <input type="text" ng-model="$parent.model.build" required>
             </div>
         </label>
         <label class="form-label">
             <div class="label-title">Корпус</div>
             <div class="label-item">
-                <input type="text" ng-model="housing">
+                <input type="text" ng-model="$parent.model.housing">
             </div>
         </label>
         <label class="form-label">
             <div class="label-title">Квартира</div>
             <div class="label-item">
-                <input type="text" ng-model="flat" class="error">
+                <input type="text" ng-model="$parent.model.flat" class="error">
                 <span class="error-message">Ошибка</span>
             </div>
         </label>
@@ -53,7 +54,7 @@
         <div class="label-title">Метро</div>
         <div class="label-item">
             <multiselect-dropdown-g class="add-station"
-                                    selected-items="selectedStations"></multiselect-dropdown-g>
+                                    selected-items="$parent.model.selectedStations"></multiselect-dropdown-g>
         </div>
 
     </label>

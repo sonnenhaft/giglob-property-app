@@ -12,11 +12,12 @@ angular.module('giglob-app', [
     'component.carousel',
     'component.login',
     'component.flat-filter',
+    'component.multiselect-dropdown-g',
     'component.tab-section',
     'component.config.data-access',
     'component.multiselect-dropdown-g',
-    'component.tab-section'
-]).directive('giglob', function(localStorageService) {
+    'passToText'
+]).directive('giglob', function (localStorageService) {
     return {
         templateUrl: 'app/giglob.html',
         controller: function($scope) {},

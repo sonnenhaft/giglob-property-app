@@ -18,7 +18,7 @@ namespace Client.Api.v1.Facades
 
         private readonly ICommandHandler<PropertyOffer_CreateCommand> _propertyOfferCreateCommandHandler;
         private readonly IQueryHandler<PropertyOffer_GetUserOffersQuery, IEnumerable<PropertyOffer>> _propertyOfferGetUserOffersQueryHandler;
-        private readonly IQueryHandler<PropertyOffer_GetQuery, PropertyOffer> _propertyOfferGetQueryHandler;
+        private readonly IQueryHandler<PropertyOffer_GetQuery, PropertyOffer> _propertyOfferGetQueryHandler; 
 
         public PropertyOfferFacade(ICurrentUserService currentUserService, ICommandHandler<PropertyOffer_CreateCommand> propertyOfferCreateCommandHandler, IQueryHandler<PropertyOffer_GetUserOffersQuery, IEnumerable<PropertyOffer>> propertyOfferGetUserOffersQueryHandler, IQueryHandler<PropertyOffer_GetQuery, PropertyOffer> propertyOfferGetQueryHandler)
         {
