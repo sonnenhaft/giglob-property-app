@@ -7,7 +7,7 @@
         </li>
     </ul>
     <div class="selection-wrapper">
-        <input type="text" class="dropdown-filter" ng-model="dropdownFilter" ng-change="showList = true; findStation()" placeholder="Добавить станцию"/>
+        <input type="text" class="dropdown-filter" ng-model="dropdownFilter" ng-change="showList = true; getStations(dropdownFilter)" placeholder="Добавить станцию" ng-model-options="{ debounce: 150 }"/>
         <ul class="dropdown-list" ng-show="showList && filteredItems.length">
             <li class="list-item" ng-repeat="item in filteredItems track by $index" ng-click="selectItem(item, $event)">
                 <span class="mid-dot" ng-style="{color: item.color}">&middot</span>

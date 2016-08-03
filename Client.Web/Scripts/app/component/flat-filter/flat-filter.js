@@ -12,6 +12,7 @@ angular.module('component.flat-filter', [
         link: function ($scope) {
             $scope.selectedRoomCount = [];
             $scope.selectedStations = [];
+            $scope.cityId = localStorageService.get('city').id;
             $scope.price = {
                 min: '',
                 max: ''
