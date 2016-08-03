@@ -1,4 +1,4 @@
-angular.module('component.tab-section', ['ngSanitize', 'ngFileUpload']).directive('tabSection', function(addFlatTabs, cityDistrictFactory, $rootScope) {
+angular.module('component.tab-section', ['ngSanitize', 'ngFileUpload']).directive('tabSection', function(addFlatTabs, cityDistrictFactory, $rootScope, Upload) {
     return {
         restrict: 'E',
         scope: {
@@ -10,6 +10,8 @@ angular.module('component.tab-section', ['ngSanitize', 'ngFileUpload']).directiv
         link: function($scope, $element) {
             $scope.addFlatTabs = addFlatTabs;
             $scope.uploadedFiles = [];
+            $scope.model = [];
+
             $scope.data = {
                 cities: [],
                 districts: [],
@@ -49,7 +51,7 @@ angular.module('component.tab-section', ['ngSanitize', 'ngFileUpload']).directiv
 
                 var dist = $scope.cityDistricts[$scope.model.city.id].districts;
 
-                var distList = []
+                var distList = [];
                 for(var item in dist){
                     distList.push({
                         id: item,
@@ -58,7 +60,7 @@ angular.module('component.tab-section', ['ngSanitize', 'ngFileUpload']).directiv
 
                 }
                 $scope.data.districts= distList;
-            }
+            };
 
             cityDistrictFactory.get().$promise.then(function(data){
                 $scope.cityDistricts = data;
@@ -79,6 +81,15 @@ angular.module('component.tab-section', ['ngSanitize', 'ngFileUpload']).directiv
                             file.formattedName = file.name.split('.')[0];
                             file.format = file.name.split('.').pop().toUpperCase();
                         }
+                        var upload = Upload.upload({
+                            url: 'http://giglobapi.igstest.ru/v1/file/upload',
+                            data: {File: file, FileName: file.name}
+                        });
+                        upload.then(function(file) {
+                            $scope.model.push(file.data);
+                        }, function(resp) {
+                        }, function(evt) {
+                        });
                         $scope.uploadedFiles.push(file);
                     });
                     !$scope.lastCoverIndex && $scope.setCover();
@@ -105,6 +116,7 @@ angular.module('component.tab-section', ['ngSanitize', 'ngFileUpload']).directiv
                     $scope.setCover(index, true);
                 }
             };
+
             $scope.saveAndGoTo = function (currentTab, tabCollectionType) {
                 var currentTabIndex = addFlatTabs[tabCollectionType].indexOf(currentTab);
                 var nexTabIndex = currentTabIndex + 1;
