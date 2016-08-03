@@ -7,14 +7,12 @@
         <tabset class="type-switcher">
             <tab heading="Продажа" ng-click="$parent.$parent.tabCollectionType = 'sale'">
                 <tabset class="add_tabs" vertical="true" type="navType" open-on-load="false">
-                    <!--TODO: Use tabsMapping and ng-repeat-->
-                    <tab-section ng-repeat="tab in tabs.sale track by tab.tabType" disabled="tab.disabled" current-tab="tab" model="model.sale[tab.tabType]" tab-collection-type="sale"></tab-section>
+                    <tab-section ng-repeat="tab in tabs.sale track by ::tab.tabType" disabled="tab.disabled" current-tab="tab" model="model.sale[tab.tabType]" tab-collection-type="sale"></tab-section>
                 </tabset>
             </tab>
             <tab heading="Обмен" ng-click="$parent.$parent.tabCollectionType = 'swap'">
                 <tabset class="add_tabs" vertical="true" type="navType" open-on-load="false">
-                    <!--TODO: Use tabsMapping and ng-repeat-->
-                    <tab-section ng-repeat="tab in tabs.swap track by tab.tabType" current-tab="tab" model="model.swap[tab.tabType]" tab-collection-type="swap"></tab-section>
+                    <tab-section ng-repeat="tab in tabs.swap track by ::tab.tabType" current-tab="tab" model="model.swap[tab.tabType]" tab-collection-type="swap"></tab-section>
                 </tabset>
             </tab>
         </tabset>
@@ -23,27 +21,27 @@
         <a class="flat-card add_flat" ng-show="tabCollectionType === 'sale'">
             <div class="preview-label">Предпросмотр</div>
             <div class="card_image">
-                <img  alt="">
+                <img ng-src="{{model.sale.photos[0].url}}" alt="">
             </div>
             <div class="card_description">
-                <div class="card-title"  ui-sref="apartment-detail/:id">{{roomCountNames[model.sale.details.roomsCount - 1] + ' квартира'}}</div>
-                <div class="card-info"><span class="metro-label" style="background-color: red"></span> {{model.sale.location.selectedStations[0].name}},
-                    {{model.sale.details.area}} м<sup>2</sup>, {{model.sale.details.floor}} этаж
+                <div class="card-title" ng-show="roomCountNames[model.sale.details.roomsCount - 1]">{{roomCountNames[model.sale.details.roomsCount - 1] + ' квартира'}}</div>
+                <div class="card-info"><span class="metro-label" style="background-color: red"></span> <span ng-show="model.sale.location.selectedStations[0].name">{{model.sale.location.selectedStations[0].name}}, </span>
+                    <span ng-show="model.sale.details.area">{{model.sale.details.area}} м<sup>2</sup>, </span><span ng-show="model.sale.details.floor">{{model.sale.details.floor}} этаж</span>
                 </div>
-                <div class="card-price">{{model.sale.details.price | currency : '' : ''}} &#8381;</div>
+                <div class="card-price" ng-show="model.sale.details.price">{{model.sale.details.price | currency : '&#8381;' : ''}}</div>
             </div>
         </a>
         <a class="flat-card add_flat" ng-show="tabCollectionType !== 'sale'">
             <div class="preview-label">Предпросмотр</div>
             <div class="card_image">
-                <img src="../../content/images/flat/1.jpeg" alt="">
+                <img ng-src="{{model.swap.photos[0].url}}" alt="">
             </div>
             <div class="card_description">
-                <div class="card-title"  ui-sref="apartment-detail/:id">{{roomCountNames[model.swap.details.roomsCount - 1] + ' квартира'}}</div>
-                <div class="card-info"><span class="metro-label" style="background-color: red"></span> {{model.swap.location.selectedStations[0].name}},
-                    {{model.swap.details.area}} м<sup>2</sup>, {{model.swap.details.floor}} этаж
+                <div class="card-title" ng-show="roomCountNames[model.swap.details.roomsCount - 1]">{{roomCountNames[model.swap.details.roomsCount - 1] + ' квартира'}}</div>
+                <div class="card-info"><span class="metro-label" style="background-color: red"></span> <span ng-show="model.swap.location.selectedStations[0].name">{{model.swap.location.selectedStations[0].name}}, </span>
+                    <span ng-show="model.swap.details.area">{{model.swap.details.area}} м<sup>2</sup>, </span><span ng-show="model.swap.details.floor">{{model.swap.details.floor}} этаж</span>
                 </div>
-                <div class="card-price">{{model.swap.details.price | currency : '' : ''}} &#8381;</div>
+                <div class="card-price" ng-show="model.swap.details.price">{{model.swap.details.price | currency : '&#8381;' : ''}}</div>
             </div>
         </a>
     </div>

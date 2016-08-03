@@ -1,5 +1,5 @@
 angular.module('component.config.router', ['ui.router','api.httpRequestInterceptor','api.resource','component.config.data-access'])
-    .config(function($stateProvider, $urlRouterProvider, EXCLUDED_DEMO_ROUTERS,$locationProvider) {
+    .config(function($stateProvider, $urlRouterProvider, EXCLUDED_DEMO_ROUTERS, $locationProvider) {
     $urlRouterProvider.otherwise("/");
 
     $stateProvider
@@ -208,8 +208,8 @@ angular.module('component.config.router', ['ui.router','api.httpRequestIntercept
                         comment: $scope.model[offerTypeName].details.comment,
                         offerType: type,
                         nearMetroBranchStationIds: $scope.model[offerTypeName].location.selectedStations.map(function (item){return item.id}),
-                        photoes: [],
-                        documents: [],
+                        photoes: $scope.model[offerTypeName].photos,
+                        documents: $scope.model[offerTypeName].docs,
                         exchangeDetails: {
                             "cityId": 0,
                             "districtId": 0,
