@@ -42,6 +42,7 @@ angular.module('component.carousel', [
             $scope.setNextImage = function ( index, e ) {
                 e.stopPropagation();
 
+                
                 var currIndex = $scope.currentIndex + index;
                 if ( currIndex < 0 ) {
                     currIndex = $scope.images.length - 1;
