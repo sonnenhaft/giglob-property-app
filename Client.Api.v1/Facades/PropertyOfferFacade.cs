@@ -23,7 +23,7 @@ namespace Client.Api.v1.Facades
         public PropertyOfferFacade(
             ICurrentUserService currentUserService,
             ICommandHandler<PropertyOffer_CreateCommand> propertyOfferCreateCommandHandler,
-            IQueryHandler<Offer_GetAllQuery, IEnumerable<PropertyOffer>> propertyOfferGetAllCommandHandler,
+            IQueryHandler<PropertyOffer_GetAllQuery, IEnumerable<PropertyOffer>> propertyOfferGetAllCommandHandler,
             IQueryHandler<PropertyOffer_GetUserOffersQuery, IEnumerable<PropertyOffer>> propertyOfferGetUserOffersQueryHandler,
             IQueryHandler<PropertyOffer_GetQuery, PropertyOffer> propertyOfferGetQueryHandler)
         {
