@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Domain.Authentication
+﻿namespace Domain.Authentication
 {
     public interface ICurrentUserService
     {

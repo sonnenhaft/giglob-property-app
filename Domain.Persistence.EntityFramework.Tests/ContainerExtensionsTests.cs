@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Domain.Persistence.EntityFramework.Extensions;
+﻿using Domain.Persistence.EntityFramework.Extensions;
 using Domain.Persistence.EntityFramework.Repositories.Implementation;
 using Domain.Persistence.EntityFramework.Tests.Misc.Entities;
 using Domain.Repositories;
@@ -28,12 +23,12 @@ namespace Domain.Persistence.EntityFramework.Tests
         [Test]
         public void RegisterDomainPersistenceEntityFrameworkDependencies_GetInstanceOfAggregateRootEntity_ReturnsEntityFrameworkRepository()
         {
-            using(_container.BeginExecutionContextScope())
+            using (_container.BeginExecutionContextScope())
             {
-                var expected = typeof(EntityFrameworkRepository<TestEntity, long>);
+                var expected = typeof (EntityFrameworkRepository<TestEntity, long>);
                 _container.RegisterDomainPersistenceEntityFrameworkDependencies();
 
-                var actual = _container.GetInstance(typeof(IRepository<TestEntity, long>));
+                var actual = _container.GetInstance(typeof (IRepository<TestEntity, long>));
 
                 Assert.AreEqual(expected, actual.GetType());
             }
@@ -42,26 +37,27 @@ namespace Domain.Persistence.EntityFramework.Tests
         [Test]
         public void RegisterDomainPersistenceEntityFrameworkDependencies_GetInstanceOfDeletableAggregateRootEntity_ReturnsDeletableEntityEntityFrameworkRepository()
         {
-            using(_container.BeginExecutionContextScope())
+            using (_container.BeginExecutionContextScope())
             {
-                var expected = typeof(DeletableEntityFrameworkRepository<TestDeletableEntity, long>);
+                var expected = typeof (DeletableEntityFrameworkRepository<TestDeletableEntity, long>);
                 _container.RegisterDomainPersistenceEntityFrameworkDependencies();
 
-                var actual = _container.GetInstance(typeof(IRepository<TestDeletableEntity, long>));
+                var actual = _container.GetInstance(typeof (IRepository<TestDeletableEntity, long>));
 
                 Assert.AreEqual(expected, actual.GetType());
             }
         }
 
         [Test]
-        public void RegisterDomainPersistenceEntityFrameworkDependencies_GetInstanceOfDeletableAggregateRootEntity_ReturnsDeletableEntityEntityFrameworkRepositoryWrappedAboveEntityFrameworkRepository()
+        public void RegisterDomainPersistenceEntityFrameworkDependencies_GetInstanceOfDeletableAggregateRootEntity_ReturnsDeletableEntityEntityFrameworkRepositoryWrappedAboveEntityFrameworkRepository(
+            )
         {
-            using(_container.BeginExecutionContextScope())
+            using (_container.BeginExecutionContextScope())
             {
-                var expected = typeof(EntityFrameworkRepository<TestDeletableEntity, long>);
+                var expected = typeof (EntityFrameworkRepository<TestDeletableEntity, long>);
                 _container.RegisterDomainPersistenceEntityFrameworkDependencies();
 
-                var actual = _container.GetInstance(typeof(IRepository<TestDeletableEntity, long>));
+                var actual = _container.GetInstance(typeof (IRepository<TestDeletableEntity, long>));
 
                 Assert.AreEqual(expected, ((DeletableEntityFrameworkRepository<TestDeletableEntity, long>) actual).Decoratee.GetType());
             }

@@ -9,7 +9,13 @@ namespace Client.Api
         public static void Configure(HttpRouteCollection routes)
         {
             RouteTable.Routes.Ignore("{resource}.axd/{*pathInfo}");
-            routes.MapUrlVersionedHttpRoute("Default", "{controller}/{action}/{id}", new { id = RouteParameter.Optional });
+            routes.MapUrlVersionedHttpRoute(
+                "Default",
+                "{controller}/{action}/{id}",
+                new
+                {
+                    id = RouteParameter.Optional
+                });
         }
     }
 }

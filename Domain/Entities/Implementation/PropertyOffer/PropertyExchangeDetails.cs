@@ -5,32 +5,32 @@
         public long Id { get; set; }
 
         /// <summary>
-        /// Идентификатор города
+        ///     Идентификатор города
         /// </summary>
         public long CityId { get; set; }
 
         /// <summary>
-        /// Идентификатор района
+        ///     Идентификатор района
         /// </summary>
         public long? DistrictId { get; set; }
 
         /// <summary>
-        /// Количество комнат
+        ///     Количество комнат
         /// </summary>
         public int RoomCount { get; set; }
 
         /// <summary>
-        /// Площадь недвижимости
+        ///     Площадь недвижимости
         /// </summary>
         public double AreaSize { get; set; }
 
         /// <summary>
-        /// Стоимость "От"
+        ///     Стоимость "От"
         /// </summary>
         public decimal MinCost { get; set; }
 
         /// <summary>
-        /// Стоимость "До"
+        ///     Стоимость "До"
         /// </summary>
         public decimal MaxCost { get; set; }
     }

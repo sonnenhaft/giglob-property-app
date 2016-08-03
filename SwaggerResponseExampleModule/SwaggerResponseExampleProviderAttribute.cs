@@ -13,9 +13,9 @@ namespace SwaggerResponseExampleModule
 
         public SwaggerResponseExampleProviderAttribute(int statusCode, Type exampleType, bool useObjectAsResponseType = false) : base(statusCode, null, null)
         {
-            Type responseType = typeof(object);
+            Type responseType = typeof (object);
 
-            if(!useObjectAsResponseType)
+            if (!useObjectAsResponseType)
             {
                 var exampleProvider = Activator.CreateInstance(exampleType) as ISwaggerResponseExampleProvider;
                 var example = exampleProvider.GetResponseExample();

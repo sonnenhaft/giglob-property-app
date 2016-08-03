@@ -4,7 +4,7 @@ using Domain.Entities.Implementation.PropertyOffer.Enums;
 
 namespace Domain.Entities.Implementation.PropertyOffer
 {
-    public class PropertyOffer: IAggregateRootEntity<long>, IDeletableEntity
+    public class PropertyOffer : IAggregateRootEntity<long>, IDeletableEntity
     {
         public PropertyOffer()
         {

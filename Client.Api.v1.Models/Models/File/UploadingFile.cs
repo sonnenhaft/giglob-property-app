@@ -6,6 +6,6 @@ namespace Client.Api.v1.Models.Models.File
     {
         public Stream Stream { get; set; }
 
-        public string FileName { get; set; } 
+        public string FileName { get; set; }
     }
 }

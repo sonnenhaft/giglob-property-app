@@ -1,27 +1,18 @@
-﻿using System;
-using System.Threading.Tasks;
-using System.Web.Hosting;
-using System.Web.Http;
+﻿using System.Web.Http;
 using System.Web.Http.Cors;
-using System.Web.Http.ExceptionHandling;
-using System.Web.Http.Validation;
 using ApiVersioningModule;
 using ApiVersioningModule.HttpControllerSelectors.ApiVersionResolvers.VersionNumberResolvers;
+using Client.Api;
 using Client.Api.ActionFilters;
 using Client.Api.Authentication;
-using Client.Api.Elmah;
 using Client.Api.FluentValidation;
 using Client.Api.v1;
 using Domain.Authentication;
-using Domain.Persistence.EntityFramework;
-using FluentValidation.WebApi;
 using Microsoft.Owin;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
 using Owin;
 using SimpleInjector;
 
-[assembly: OwinStartup(typeof(Client.Api.Startup))]
+[assembly: OwinStartup(typeof (Startup))]
 
 namespace Client.Api
 {

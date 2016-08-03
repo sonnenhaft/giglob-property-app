@@ -3,7 +3,7 @@ using Domain.Repositories;
 
 namespace Domain.Entities.User.Implementation.Queries
 {
-    public class User_GetQuery: IQuery
+    public class User_GetQuery : IQuery
     {
         public long Id { get; set; }
 
@@ -13,7 +13,7 @@ namespace Domain.Entities.User.Implementation.Queries
         }
     }
 
-    public class User_GetQueryHandler: IQueryHandler<User_GetQuery, User>
+    public class User_GetQueryHandler : IQueryHandler<User_GetQuery, User>
     {
         private readonly IUserRepository _userRepository;
 

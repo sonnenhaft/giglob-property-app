@@ -4,7 +4,7 @@ using Domain.Storages;
 
 namespace Domain.Persistence.File.Implementation
 {
-    public class FileEnumeratorStreamSetupable: IEnumerator<Entities.Implementation.File.File>
+    public class FileEnumeratorStreamSetupable : IEnumerator<Entities.Implementation.File.File>
     {
         private readonly IFileStorage _fileStorage;
         private readonly IEnumerator<Entities.Implementation.File.File> _decoratee;
@@ -42,12 +42,12 @@ namespace Domain.Persistence.File.Implementation
             {
                 var current = _current;
 
-                if(current == null)
+                if (current == null)
                 {
                     current = _decoratee.Current;
                 }
 
-                if(current.Stream == null)
+                if (current.Stream == null)
                 {
                     current.Stream = _fileStorage.Get(current.VirtualPath);
                 }

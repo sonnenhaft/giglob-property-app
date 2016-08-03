@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Domain.Entities.Implementation.City
+﻿namespace Domain.Entities.Implementation.City
 {
     public class MetroBranchStation
     {

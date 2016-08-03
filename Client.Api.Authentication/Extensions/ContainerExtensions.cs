@@ -15,7 +15,7 @@ namespace Client.Api.Authentication.Extensions
         {
             container.Register<IUserAuthorizationService, UserAuthorizationService>();
             container.Register<ICurrentUserService, CurrentUserService>();
-            container.Register(typeof(IUserStore<User, long>), typeof(UserStore), Lifestyle.Transient);
+            container.Register(typeof (IUserStore<User, long>), typeof (UserStore), Lifestyle.Transient);
         }
     }
 }

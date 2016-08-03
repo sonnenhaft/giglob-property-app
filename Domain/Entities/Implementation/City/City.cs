@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
 
 namespace Domain.Entities.Implementation.City
 {
-    public class City: IAggregateRootEntity<long>
+    public class City : IAggregateRootEntity<long>
     {
         public long Id { get; set; }
 

@@ -3,8 +3,8 @@ using CQRS;
 
 namespace Domain.UnitOfWork.CQRS.Decorators
 {
-    public class CommandHandlerUnitOfWorkDecorator<TCommand>: ICommandHandler<TCommand>
-        where TCommand: ICommand
+    public class CommandHandlerUnitOfWorkDecorator<TCommand> : ICommandHandler<TCommand>
+        where TCommand : ICommand
     {
         private readonly IUnitOfWorkFactory _unitOfWorkFactory;
         private readonly ICommandHandler<TCommand> _decoratee;
@@ -17,13 +17,13 @@ namespace Domain.UnitOfWork.CQRS.Decorators
 
         public void Handle(TCommand message)
         {
-            using(var uow = _unitOfWorkFactory.Create())
+            using (var uow = _unitOfWorkFactory.Create())
             {
                 try
                 {
                     _decoratee.Handle(message);
                 }
-                catch(Exception)
+                catch (Exception)
                 {
                     uow.Rollback();
                     throw;

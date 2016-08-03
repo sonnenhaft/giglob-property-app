@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Web.Http;
 using System.Web.Http.Description;
 using Newtonsoft.Json;
@@ -15,13 +14,13 @@ namespace SwaggerResponseExampleModule.OperationFilters
         {
             var responseAttributes = apiDescription.GetControllerAndActionAttributes<SwaggerResponseExampleProviderAttribute>();
 
-            foreach(var attr in responseAttributes)
+            foreach (var attr in responseAttributes)
             {
                 var response = operation.responses["200"];
 
                 var provider = (ISwaggerResponseExampleProvider) Activator.CreateInstance(attr.ExampleType);
 
-                if(response != null)
+                if (response != null)
                 {
                     AddExample(response, attr.HttpStatusCode, attr.ExampleType);
                 }
@@ -30,21 +29,21 @@ namespace SwaggerResponseExampleModule.OperationFilters
 
         private void AddExample(Response response, int statusCode, Type providerType)
         {
-            if(response.examples == null)
+            if (response.examples == null)
             {
                 response.examples = new Dictionary<string, Dictionary<string, object>>();
             }
 
             var exDic = response.examples as Dictionary<string, Dictionary<string, object>>;
 
-            if(!exDic.ContainsKey("application/json"))
+            if (!exDic.ContainsKey("application/json"))
             {
                 exDic.Add("application/json", new Dictionary<string, object>());
             }
 
-            var statusCodeString = string.Format("Response example for status code {0}", statusCode.ToString());
+            var statusCodeString = string.Format("Response example for status code {0}", statusCode);
 
-            if(!exDic["application/json"].ContainsKey(statusCodeString))
+            if (!exDic["application/json"].ContainsKey(statusCodeString))
             {
                 exDic["application/json"].Add(statusCodeString, null);
             }
@@ -55,12 +54,12 @@ namespace SwaggerResponseExampleModule.OperationFilters
 
         private static object FormatAsJson(ISwaggerResponseExampleProvider provider)
         {
-            var examples = new Dictionary<string, object>()
-            {
-                {
-                    "application/json", ApplySerializerSettings(provider.GetResponseExample())
-                }
-            };
+            var examples = new Dictionary<string, object>
+                           {
+                               {
+                                   "application/json", ApplySerializerSettings(provider.GetResponseExample())
+                               }
+                           };
 
             return examples;
         }

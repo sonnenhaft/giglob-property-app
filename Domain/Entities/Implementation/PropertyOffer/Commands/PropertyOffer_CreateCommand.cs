@@ -1,13 +1,11 @@
-﻿using System.Collections.Generic;
-using CQRS;
+﻿using CQRS;
 using Domain.Entities.Implementation.PropertyOffer.Dtos;
-using Domain.Entities.Implementation.PropertyOffer.Enums;
 using Domain.Repositories;
 using ExpressMapper.Extensions;
 
 namespace Domain.Entities.Implementation.PropertyOffer.Commands
 {
-    public class PropertyOffer_CreateCommand: ICommand
+    public class PropertyOffer_CreateCommand : ICommand
     {
         public PropertyOfferCreateContext CreateContext { get; set; }
 
@@ -17,7 +15,7 @@ namespace Domain.Entities.Implementation.PropertyOffer.Commands
         }
     }
 
-    public class PropertyOffer_CreateCommandHandler: ICommandHandler<PropertyOffer_CreateCommand>
+    public class PropertyOffer_CreateCommandHandler : ICommandHandler<PropertyOffer_CreateCommand>
     {
         private readonly IPropertyOfferRepository _propertyOfferRepository;
 

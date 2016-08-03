@@ -5,7 +5,7 @@ using Domain.Repositories;
 
 namespace Domain.Entities.Implementation.File.Queries
 {
-    public class File_GetQuery: IQuery
+    public class File_GetQuery : IQuery
     {
         public Guid Id { get; set; }
 
@@ -15,7 +15,7 @@ namespace Domain.Entities.Implementation.File.Queries
         }
     }
 
-    public class File_GetQueryHandler: IQueryHandler<File_GetQuery, File>
+    public class File_GetQueryHandler : IQueryHandler<File_GetQuery, File>
     {
         private readonly IFileRepository _fileRepository;
 
@@ -28,7 +28,7 @@ namespace Domain.Entities.Implementation.File.Queries
         {
             var file = _fileRepository.Get(query.Id);
 
-            if(file == null)
+            if (file == null)
             {
                 throw new NotFoundException("File not found");
             }

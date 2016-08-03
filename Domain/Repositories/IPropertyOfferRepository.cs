@@ -2,5 +2,5 @@
 
 namespace Domain.Repositories
 {
-    public interface IPropertyOfferRepository: IDeletableEntityRepository<PropertyOffer, long> { }
+    public interface IPropertyOfferRepository : IDeletableEntityRepository<PropertyOffer, long> { }
 }

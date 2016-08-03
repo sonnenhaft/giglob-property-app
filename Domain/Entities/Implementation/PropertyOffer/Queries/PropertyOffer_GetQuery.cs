@@ -1,11 +1,10 @@
-﻿using System;
-using CQRS;
+﻿using CQRS;
 using Domain.Exceptions;
 using Domain.Repositories;
 
 namespace Domain.Entities.Implementation.PropertyOffer.Queries
 {
-    public class PropertyOffer_GetQuery: IQuery
+    public class PropertyOffer_GetQuery : IQuery
     {
         public PropertyOffer_GetQuery(long id)
         {
@@ -15,7 +14,7 @@ namespace Domain.Entities.Implementation.PropertyOffer.Queries
         public long Id { get; set; }
     }
 
-    public class PropertyOffer_GetQueryHandler: IQueryHandler<PropertyOffer_GetQuery, PropertyOffer>
+    public class PropertyOffer_GetQueryHandler : IQueryHandler<PropertyOffer_GetQuery, PropertyOffer>
     {
         private readonly IPropertyOfferRepository _propertyOfferRepository;
 

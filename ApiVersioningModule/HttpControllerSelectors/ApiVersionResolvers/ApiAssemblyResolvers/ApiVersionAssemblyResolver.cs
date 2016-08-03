@@ -10,8 +10,12 @@ namespace ApiVersioningModule.HttpControllerSelectors.ApiVersionResolvers.ApiAss
     {
         public Assembly Resolve(IEnumerable<Assembly> apiVersionAssemblies, int version)
         {
-            return apiVersionAssemblies.FirstOrDefault(x => Regex.IsMatch(x.GetName()
-                                                                           .Name, "api.v" + version, RegexOptions.CultureInvariant | RegexOptions.IgnoreCase));
+            return apiVersionAssemblies.FirstOrDefault(
+                x => Regex.IsMatch(
+                    x.GetName()
+                     .Name,
+                    "api.v" + version,
+                    RegexOptions.CultureInvariant | RegexOptions.IgnoreCase));
         }
     }
 }

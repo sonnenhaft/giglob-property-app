@@ -2,6 +2,6 @@
 {
     public interface IAggregateRootEntity<TId>
     {
-         TId Id { get; set; }
+        TId Id { get; set; }
     }
 }

@@ -7,7 +7,7 @@ using Domain.Repositories;
 
 namespace Domain.Persistence.EntityFramework.Repositories.Implementation
 {
-    public class DeletableEntityFrameworkRepository<TEntity, TId>: IDeletableEntityRepository<TEntity, TId>
+    public class DeletableEntityFrameworkRepository<TEntity, TId> : IDeletableEntityRepository<TEntity, TId>
         where TEntity : IAggregateRootEntity<TId>, IDeletableEntity
     {
         protected readonly DbContext DbContext;
@@ -50,11 +50,11 @@ namespace Domain.Persistence.EntityFramework.Repositories.Implementation
         {
             var entities = Decoratee.GetAll();
 
-            if(!includeDeleted)
+            if (!includeDeleted)
             {
-                var parameterExpr = Expression.Parameter(typeof(TEntity));
+                var parameterExpr = Expression.Parameter(typeof (TEntity));
                 var isDeletedPropExpr = Expression.Property(parameterExpr, "IsDeleted");
-                var isDeletedExpr = Expression.Constant(false, typeof(bool));
+                var isDeletedExpr = Expression.Constant(false, typeof (bool));
                 var eqExpr = Expression.Equal(isDeletedPropExpr, isDeletedExpr);
                 var expr = Expression.Lambda<Func<TEntity, bool>>(eqExpr, parameterExpr);
 

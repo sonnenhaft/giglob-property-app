@@ -1,12 +1,11 @@
 ﻿using System;
 using System.IO;
-using Domain.Storages;
 
 namespace Domain.Entities.Implementation.File
 {
-    public class File: IAggregateRootEntity<Guid>, IDeletableEntity, IDisposable
+    public class File : IAggregateRootEntity<Guid>, IDeletableEntity, IDisposable
     {
-        public File(): this(Guid.NewGuid()) { }
+        public File() : this(Guid.NewGuid()) { }
 
         public File(Guid id)
         {

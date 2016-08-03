@@ -4,7 +4,7 @@ using SimpleInjector;
 
 namespace Client.Api.FluentValidation
 {
-    public class SimpeInjectorValidatorFactory: ValidatorFactoryBase
+    public class SimpeInjectorValidatorFactory : ValidatorFactoryBase
     {
         private readonly Container _container;
 

@@ -1,18 +1,13 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Data.Entity.Migrations;
 using System.IO;
-using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
-using Domain.Entities.Implementation.City;
 
 namespace Domain.Persistence.EntityFramework.Migrations
 {
-    using System;
-    using System.Data.Entity;
-    using System.Data.Entity.Migrations;
-    using System.Linq;
-
-    internal sealed class Configuration : DbMigrationsConfiguration<Domain.Persistence.EntityFramework.EntityFrameworkContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<EntityFrameworkContext>
     {
         public Configuration()
         {
@@ -22,14 +17,14 @@ namespace Domain.Persistence.EntityFramework.Migrations
 
         protected override void Seed(EntityFrameworkContext context)
         {
-            var codeBase = System.Reflection.Assembly.GetExecutingAssembly()
-                                 .GetName()
-                                 .CodeBase;
+            var codeBase = Assembly.GetExecutingAssembly()
+                                   .GetName()
+                                   .CodeBase;
 
             if (Regex.IsMatch(codeBase, @"^file:[/]{2,3}"))
             {
                 codeBase = Regex.Replace(codeBase, @"^file:[/]{2,3}", "")
-                                   .Replace("/", @"\");
+                                .Replace("/", @"\");
             }
             if (!Regex.IsMatch(codeBase, @"^[a-zA-Z]:\\"))
             {

@@ -1,18 +1,18 @@
 ﻿namespace Client.Api.v1.Models.Models.User
 {
     /// <summary>
-    /// Модель регистрации пользователя
+    ///     Модель регистрации пользователя
     /// </summary>
     public class UserRegisterRequestModel
     {
         /// <summary>
-        /// Электронная почта
+        ///     Электронная почта
         /// </summary>
         public string Email { get; set; }
 
         /// <summary>
-        /// Пароль
+        ///     Пароль
         /// </summary>
-        public string Password { get; set; } 
+        public string Password { get; set; }
     }
 }
