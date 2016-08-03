@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Data.Entity.Spatial;
 using System.Globalization;
 using System.Linq;
@@ -64,7 +65,15 @@ namespace Domain.Entities.Implementation.PropertyOffer.Queries
         public IEnumerable<PropertyOffer> Handle(PropertyOffer_GetAllQuery reqQuery)
         {
             var query = _offerRepository.GetAll()
-                                        .Where(x => x.LocalPropertyOfferData.CityId == reqQuery.CityId);
+                                        .Where(offer => offer.LocalPropertyOfferData.CityId == reqQuery.CityId)
+                                        .Include(offer => offer.LocalPropertyOfferData)
+                                        .Include(offer => offer.LocalPropertyOfferData.Photoes)
+                                        .Include(offer => offer.LocalPropertyOfferData.NearMetroStations)
+                                        .Include(offer => offer.LocalPropertyOfferData.NearMetroStations.Select(station => station.MetroBranchStation))
+                                        .Include(offer => offer.LocalPropertyOfferData.NearMetroStations.Select(station => station.MetroBranchStation.MetroBranch))
+                                        .Include(offer => offer.LocalPropertyOfferData.NearMetroStations.Select(station => station.MetroBranchStation.MetroStation))
+                                        .Include(offer => offer.ExternalPropertyOfferData)
+                                        .Include(offer => offer.PropertyExchangeDetails);;
 
             if (reqQuery.MaxCost.HasValue)
             {
