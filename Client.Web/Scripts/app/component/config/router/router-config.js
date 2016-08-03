@@ -108,13 +108,13 @@ angular.module('component.config.router', ['ui.router','api.httpRequestIntercept
                   });
               }
             },
-            controller: function($scope, $stateParams, getFlats,localStorageService) {
+            controller: function($scope, $stateParams, getFlats,localStorageService,currentServer) {
                 $scope.params = {
                     cityId : localStorageService.get('city').id,
                     take: 10000
                 };
                 $scope.flats = getFlats;
-                var server = 'http://api.giglob.local/file/get/';
+                var server = currentServer +'/file/get/';
                 $scope.flats.forEach(function(flat) {
                     var obj = [];
                     for (var i = 0; i < flat.photos.length; i++) {
