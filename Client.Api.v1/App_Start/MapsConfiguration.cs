@@ -42,7 +42,7 @@ namespace Client.Api.v1
                   .Member(model => model.Name, station => station.MetroBranchStation.MetroStation.Name)
                   .Member(model => model.HexColor, station => station.MetroBranchStation.MetroBranch != null ? station.MetroBranchStation.MetroBranch.HexColor : null);
 
-            Mapper.Register<PropertyOfferGetAllOffersRequestModel, Offer_GetAllQuery>();
+            Mapper.Register<PropertyOfferGetAllOffersRequestModel, PropertyOffer_GetAllQuery>();
             Mapper.Register<ViewPort, ViewPortDto>();
 
             Mapper.Register<PropertyOffer, PropertyOfferModel>()

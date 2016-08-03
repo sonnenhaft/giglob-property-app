@@ -17,11 +17,11 @@ namespace Client.Api.v1.Facades
         private readonly ICurrentUserService _currentUserService;
 
         private readonly ICommandHandler<PropertyOffer_CreateCommand> _propertyOfferCreateCommandHandler;
-        private readonly IQueryHandler<Offer_GetAllQuery, IEnumerable<PropertyOffer>> _propertyOfferGetAllCommandHandler;
+        private readonly IQueryHandler<PropertyOffer_GetAllQuery, IEnumerable<PropertyOffer>> _propertyOfferGetAllCommandHandler;
         private readonly IQueryHandler<PropertyOffer_GetUserOffersQuery, IEnumerable<PropertyOffer>> _propertyOfferGetUserOffersQueryHandler;
         private readonly IQueryHandler<PropertyOffer_GetQuery, PropertyOffer> _propertyOfferGetQueryHandler; 
 
-        public PropertyOfferFacade(ICurrentUserService currentUserService, ICommandHandler<PropertyOffer_CreateCommand> propertyOfferCreateCommandHandler, IQueryHandler<Offer_GetAllQuery, IEnumerable<PropertyOffer>> propertyOfferGetAllCommandHandler, IQueryHandler<PropertyOffer_GetUserOffersQuery, IEnumerable<PropertyOffer>> propertyOfferGetUserOffersQueryHandler, IQueryHandler<PropertyOffer_GetQuery, PropertyOffer> propertyOfferGetQueryHandler)
+        public PropertyOfferFacade(ICurrentUserService currentUserService, ICommandHandler<PropertyOffer_CreateCommand> propertyOfferCreateCommandHandler, IQueryHandler<PropertyOffer_GetAllQuery, IEnumerable<PropertyOffer>> propertyOfferGetAllCommandHandler, IQueryHandler<PropertyOffer_GetUserOffersQuery, IEnumerable<PropertyOffer>> propertyOfferGetUserOffersQueryHandler, IQueryHandler<PropertyOffer_GetQuery, PropertyOffer> propertyOfferGetQueryHandler)
         {
             _propertyOfferCreateCommandHandler = propertyOfferCreateCommandHandler;
             _propertyOfferGetAllCommandHandler = propertyOfferGetAllCommandHandler;
@@ -37,7 +37,7 @@ namespace Client.Api.v1.Facades
 
         public IEnumerable<PropertyOfferListItemModel> GetAll(PropertyOfferGetAllOffersRequestModel reqModel)
         {
-            Offer_GetAllQuery allOffersQuery = reqModel.Map<PropertyOfferGetAllOffersRequestModel,Offer_GetAllQuery>();
+            PropertyOffer_GetAllQuery allOffersQuery = reqModel.Map<PropertyOfferGetAllOffersRequestModel,PropertyOffer_GetAllQuery>();
 
             IEnumerable<PropertyOffer> offers = _propertyOfferGetAllCommandHandler.Handle(allOffersQuery);
 

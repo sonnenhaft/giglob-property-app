@@ -9,7 +9,7 @@ using Domain.Entities.Implementation.PropertyOffer.Dtos;
 
 namespace Domain.Entities.Implementation.PropertyOffer.Queries
 {
-    public class Offer_GetAllQuery : IQuery
+    public class PropertyOffer_GetAllQuery : IQuery
     {
         /// <summary>
         /// Ид города
@@ -52,7 +52,7 @@ namespace Domain.Entities.Implementation.PropertyOffer.Queries
         public ViewPortDto ViewPort { get; set; }
     }
 
-    public class Offer_GetAllQueryHandler : IQueryHandler<Offer_GetAllQuery, IEnumerable<PropertyOffer>>
+    public class Offer_GetAllQueryHandler : IQueryHandler<PropertyOffer_GetAllQuery, IEnumerable<PropertyOffer>>
     {
         private readonly IPropertyOfferRepository _offerRepository;
         private static readonly int CoordinateSystemId = 4326;
@@ -62,7 +62,7 @@ namespace Domain.Entities.Implementation.PropertyOffer.Queries
             _offerRepository = offerRepository;
         }
 
-        public IEnumerable<PropertyOffer> Handle(Offer_GetAllQuery reqQuery)
+        public IEnumerable<PropertyOffer> Handle(PropertyOffer_GetAllQuery reqQuery)
         {
             var query = _offerRepository.GetAll().Where(x => x.LocalPropertyOfferData.CityId == reqQuery.CityId);
 

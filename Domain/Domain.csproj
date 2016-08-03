@@ -78,7 +78,7 @@
     <Compile Include="Entities\Implementation\PropertyOffer\Dtos\PropertyOfferExchangeContext.cs" />
     <Compile Include="Entities\Implementation\PropertyOffer\Dtos\ViewPortDto.cs" />
     <Compile Include="Entities\Implementation\PropertyOffer\PropertyExchangeDetails.cs" />
-    <Compile Include="Entities\Implementation\PropertyOffer\Queries\Offer_GetAllQuery.cs" />
+    <Compile Include="Entities\Implementation\PropertyOffer\Queries\PropertyOffer_GetAllQuery.cs" />
     <Compile Include="Entities\Implementation\PropertyOffer\Queries\PropertyOffer_GetUserOffersQuery.cs" />
     <Compile Include="Entities\Implementation\PropertyOffer\Queries\PropertyOffer_GetQuery.cs" />
     <Compile Include="Entities\Implementation\User\User.cs" />
