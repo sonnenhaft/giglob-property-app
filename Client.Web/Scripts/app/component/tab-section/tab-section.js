@@ -83,7 +83,8 @@ angular.module('component.tab-section', ['ngSanitize', 'ngFileUpload']).directiv
                         }
                         var upload = Upload.upload({
                             url: 'http://giglobapi.igstest.ru/v1/file/upload',
-                            data: {File: file, FileName: file.name}
+                            data: {File: file, FileName: file.name},
+                            headers: {'Authorization':'Bearer ' + $rootScope.accessToken}
                         });
                         upload.then(function(file) {
                             $scope.model.push(file.data);
