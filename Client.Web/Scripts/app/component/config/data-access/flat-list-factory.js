@@ -1,5 +1,6 @@
-angular.module('component.config.data-access').factory('flatListFactory', function($resource) {
-        return $resource('http://api.giglob.local/v1/propertyoffer/getall',
+angular.module('component.config.data-access', ['api.currentServer']).factory('flatListFactory', function($resource,currentServer) {
+
+        return $resource(currentServer + '/v1/propertyoffer/getall',
             null,
             {
                 'query': {

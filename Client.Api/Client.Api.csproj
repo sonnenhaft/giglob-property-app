@@ -157,6 +157,11 @@
   <ItemGroup>
     <Content Include="App_Readme\Elmah.txt" />
     <Content Include="packages.config" />
+    <Content Include="storage\test1.jpeg" />
+    <Content Include="storage\test2.jpeg" />
+    <Content Include="storage\test3.jpeg" />
+    <Content Include="storage\test4.jpeg" />
+    <Content Include="storage\test5.jpeg" />
     <Content Include="Views\User\Mail\UserConfirmationMail.cshtml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

@@ -35,7 +35,8 @@ namespace Client.Api.v1
             Mapper.Register<PropertyOffer, PropertyOfferListItemModel>()
                   .Member(x => x.Lat, y => y.Location.Latitude)
                   .Member(x => x.Lon, y => y.Location.Longitude)
-                  .Member(x => x.Photos, y => y.LocalPropertyOfferData.Photoes.Select(q => q.FileId.ToString()));
+                  .Member(x => x.Photos, y => y.LocalPropertyOfferData.Photoes.Select(q => q.FileId.ToString()))
+                  .Member(model => model.NearMetroStationModel, offer => offer.IsLocal ? offer.LocalPropertyOfferData.NearMetroStations.FirstOrDefault() : null);
 
             Mapper.Register<PropertyNearMetroStation, NearMetroStationModel>()
                   .Member(model => model.Name, station => station.MetroBranchStation.MetroStation.Name)
@@ -84,14 +85,7 @@ namespace Client.Api.v1
 
                           return photoes;
                       })
-                  .Function(
-                      model => model.NearMetroStationModel,
-                      offer =>
-                      {
-                          var nearMetroStation = offer.LocalPropertyOfferData?.NearMetroStations.FirstOrDefault();
-
-                          return nearMetroStation;
-                      });
+                  .Function(model => model.NearMetroStationModel, offer => offer.IsLocal ? offer.LocalPropertyOfferData.NearMetroStations.FirstOrDefault() : null);
         }
     }
 }

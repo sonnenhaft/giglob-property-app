@@ -1,35 +1,31 @@
-angular.module("api.resource", ["ngResource"])
-    .factory('giglobApi', function ($resource) {
-        var API_URL = document.getElementById('apiUrl').dataset.url;
-        return  $resource(API_URL + '/v1/:type/:action', {});
+angular.module("api.resource", ["ngResource","api.currentServer"])
+    .factory('giglobApi', function ($resource,currentServer) {
+        return  $resource(currentServer+'/v1/:type/:action', {});
     })
-    .factory("register", function ($resource) {
-        var API_URL = document.getElementById('apiUrl').dataset.url;
-        return $resource(API_URL + '/v1/user/register',
+    .factory("register", function ($resource,currentServer) {
+
+        return $resource(currentServer + '/v1/user/register',
             null,
             {
                 'save': {method: 'POST'}
             });
     })
-    .factory('login', function ($resource) {
-        var API_URL = document.getElementById('apiUrl').dataset.url;
-        return $resource(API_URL + '/v1/user/signin',
+    .factory('login', function ($resource,currentServer) {
+        return $resource(currentServer + '/v1/user/signin',
             null,
             {
                 'save': {method: 'POST'}
             });
     })
-    .factory('confirm', function ($resource) {
-        var API_URL = document.getElementById('apiUrl').dataset.url;
-        return $resource(API_URL + '/v1/user/confirmemail',
+    .factory('confirm', function ($resource,currentServer) {
+        return $resource(currentServer + '/v1/user/confirmemail',
             null,
             {
                 'save': {method: 'POST'}
             });
     })
-    .factory('getProperty', function ($resource, $rootScope) {
-        var API_URL = document.getElementById('apiUrl').dataset.url;
-        return $resource(API_URL + '/v1/propertyoffer/get/:id',
+    .factory('getProperty', function ($resource, $rootScope,currentServer) {
+        return $resource(currentServer + '/v1/propertyoffer/get/:id',
             null,
             {
                 'save': {method: 'POST'},
