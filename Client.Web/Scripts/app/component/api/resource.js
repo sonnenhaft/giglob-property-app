@@ -11,6 +11,9 @@ angular.module("api.resource", ["ngResource","api.currentServer"])
             }
         });
     })
+    .factory('metroStations', function ($resource, currentServer) {
+        return  $resource(currentServer + '/v1/city/metrostations/:id', {});
+    })
     .factory("register", function ($resource,currentServer) {
 
         return $resource(currentServer + '/v1/user/register',
