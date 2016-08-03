@@ -84,7 +84,7 @@ angular.module('component.tab-section', ['ngSanitize', 'ngFileUpload']).directiv
                         var upload = Upload.upload({
                             url: 'http://giglobapi.igstest.ru/v1/file/upload',
                             data: {File: file, FileName: file.name},
-                            headers: {'Authorization':'Bearer ' + $rootScope.accessToken}
+                            headers: {'Authorization': 'Bearer ' + $rootScope.accessToken}
                         });
                         upload.then(function(file) {
                             $scope.model.push(file.data);
@@ -111,6 +111,7 @@ angular.module('component.tab-section', ['ngSanitize', 'ngFileUpload']).directiv
 
             $scope.removeFile = function (index, skipCover) {
                 $scope.uploadedFiles.splice(index, 1);
+                $scope.model.splice(index, 1);
 
                 if($scope.lastCoverIndex === index) {
                     index = $scope.uploadedFiles.length <= index ? index - 1 : index;
