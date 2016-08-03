@@ -6,9 +6,9 @@ using Domain.Repositories;
 
 namespace Domain.Entities.Implementation.City.Queries
 {
-    public class City_GetAllQuery: IQuery { }
+    public class City_GetAllQuery : IQuery { }
 
-    public class City_GetAllQueryHandler: IQueryHandler<City_GetAllQuery, IEnumerable<City>>
+    public class City_GetAllQueryHandler : IQueryHandler<City_GetAllQuery, IEnumerable<City>>
     {
         private readonly ICityRepository _cityRepository;
 
@@ -19,7 +19,9 @@ namespace Domain.Entities.Implementation.City.Queries
 
         public IEnumerable<City> Handle(City_GetAllQuery query)
         {
-            var cities = _cityRepository.GetAll().Include(x => x.Districts).ToList();
+            var cities = _cityRepository.GetAll()
+                                        .Include(x => x.Districts)
+                                        .ToList();
 
             return cities;
         }

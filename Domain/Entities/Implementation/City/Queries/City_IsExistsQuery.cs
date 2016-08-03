@@ -1,10 +1,9 @@
-﻿using System;
-using CQRS;
+﻿using CQRS;
 using Domain.Repositories;
 
 namespace Domain.Entities.Implementation.City.Queries
 {
-    public class City_IsExistsQuery: IQuery
+    public class City_IsExistsQuery : IQuery
     {
         public City_IsExistsQuery(long id)
         {

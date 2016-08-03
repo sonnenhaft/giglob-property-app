@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Client.Api.v1.Models.Models.City;
-using Client.Api.v1.Models.Models.Home;
 using CQRS;
 using Domain.Entities.Implementation.City;
 using Domain.Entities.Implementation.City.Queries;
 using ExpressMapper;
-using ExpressMapper.Extensions;
 
 namespace Client.Api.v1.Facades
 {
@@ -23,7 +19,8 @@ namespace Client.Api.v1.Facades
 
         public IEnumerable<NearMetroStationModel> GetAllMetroStations(long id, string stationName)
         {
-            List<MetroBranchStation> query = _cityGetAllMetroStationQueryHandler.Handle(new City_GetAllMetroBranchStationsQuery(id, stationName)).ToList();
+            List<MetroBranchStation> query = _cityGetAllMetroStationQueryHandler.Handle(new City_GetAllMetroBranchStationsQuery(id, stationName))
+                                                                                .ToList();
 
             return query.Select(Mapper.Map<MetroBranchStation, NearMetroStationModel>);
         }

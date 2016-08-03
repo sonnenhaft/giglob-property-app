@@ -4,7 +4,7 @@ using Domain.Repositories;
 
 namespace Domain.Entities.User.Implementation.Commands
 {
-    public class User_ConfirmEmailCommand: ICommand
+    public class User_ConfirmEmailCommand : ICommand
     {
         public Guid Token { get; set; }
 
@@ -14,7 +14,7 @@ namespace Domain.Entities.User.Implementation.Commands
         }
     }
 
-    public class User_ConfirmEmailCommandHandler: ICommandHandler<User_ConfirmEmailCommand>
+    public class User_ConfirmEmailCommandHandler : ICommandHandler<User_ConfirmEmailCommand>
     {
         private readonly IUserRepository _userRepository;
 
@@ -27,7 +27,7 @@ namespace Domain.Entities.User.Implementation.Commands
         {
             var user = _userRepository.GetByEmailConfirmationToken(command.Token);
 
-            if(user == null)
+            if (user == null)
             {
                 throw new ArgumentException("User not found");
             }

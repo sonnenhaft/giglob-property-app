@@ -8,7 +8,7 @@ namespace Client.Api
     {
         public static void Configure(ServicesContainer services)
         {
-            services.Add(typeof(IExceptionLogger), new ElmahExceptionLogger());
+            services.Add(typeof (IExceptionLogger), new ElmahExceptionLogger());
         }
     }
 }

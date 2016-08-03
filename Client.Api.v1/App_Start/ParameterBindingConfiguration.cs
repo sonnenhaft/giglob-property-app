@@ -8,15 +8,16 @@ namespace Client.Api.v1
     {
         public static void Configure(ParameterBindingRulesCollection rules)
         {
-            rules.Add(descriptor =>
-            {
-                if(descriptor.ParameterType == typeof(UploadingFile))
+            rules.Add(
+                descriptor =>
                 {
-                    return new MultipartFilesParameterBinding(descriptor);
-                }
+                    if (descriptor.ParameterType == typeof (UploadingFile))
+                    {
+                        return new MultipartFilesParameterBinding(descriptor);
+                    }
 
-                return null;
-            });
+                    return null;
+                });
         }
     }
 }

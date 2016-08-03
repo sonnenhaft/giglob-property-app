@@ -4,7 +4,7 @@ using Domain.Repositories;
 
 namespace Domain.Entities.User.Implementation.Queries
 {
-    public class User_CheckUserIsExistsByEmailConfirmationTokenQuery: IQuery
+    public class User_CheckUserIsExistsByEmailConfirmationTokenQuery : IQuery
     {
         public Guid Token { get; set; }
 

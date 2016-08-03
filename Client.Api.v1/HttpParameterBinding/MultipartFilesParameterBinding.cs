@@ -9,7 +9,7 @@ using Client.Api.v1.MultipartMemoryStreamProviders;
 
 namespace Client.Api.v1.HttpParameterBinding
 {
-    public class MultipartFilesParameterBinding: System.Web.Http.Controllers.HttpParameterBinding
+    public class MultipartFilesParameterBinding : System.Web.Http.Controllers.HttpParameterBinding
     {
         public MultipartFilesParameterBinding(HttpParameterDescriptor descriptor) : base(descriptor) { }
 
@@ -18,17 +18,17 @@ namespace Client.Api.v1.HttpParameterBinding
             var provider = new ExtendedMultipartMemoryStreamProvider();
             await actionContext.Request.Content.ReadAsMultipartAsync(provider);
             var fileStreamContent = provider.GetValues("File")
-                                      .FirstOrDefault();
+                                            .FirstOrDefault();
             var fileNameContent = provider.GetValues("FileName")
-                                   .FirstOrDefault();
+                                          .FirstOrDefault();
             var fileStream = fileStreamContent != null ? await fileStreamContent.ReadAsStreamAsync() : null;
             var fileName = fileNameContent != null ? await fileNameContent.ReadAsStringAsync() : null;
 
             actionContext.ActionArguments[Descriptor.ParameterName] = new UploadingFile
-            {
-                Stream = fileStream,
-                FileName = fileName
-            };
+                                                                      {
+                                                                          Stream = fileStream,
+                                                                          FileName = fileName
+                                                                      };
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
@@ -18,8 +17,14 @@ namespace ApiVersioningModule.HttpControllerSelectors.ApiVersionResolvers.Versio
 
         public int? Resolve(IEnumerable<Assembly> apiVersionAssemblies)
         {
-            return apiVersionAssemblies.Any(x => Regex.IsMatch(x.GetName()
-                                                                .Name, "api.v" + _version, RegexOptions.CultureInvariant | RegexOptions.IgnoreCase)) ? _version : (int?) null;
+            return apiVersionAssemblies.Any(
+                x => Regex.IsMatch(
+                    x.GetName()
+                     .Name,
+                    "api.v" + _version,
+                    RegexOptions.CultureInvariant | RegexOptions.IgnoreCase))
+                ? _version
+                : (int?) null;
         }
     }
 }

@@ -1,6 +1,4 @@
-﻿using Domain.Entities.User.Implementation;
-
-namespace Client.Api.v1.Models.Constants
+﻿namespace Client.Api.v1.Models.Constants
 {
     public class RegexConstants
     {

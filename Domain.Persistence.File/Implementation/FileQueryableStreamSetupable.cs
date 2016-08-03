@@ -7,7 +7,7 @@ using Domain.Storages;
 
 namespace Domain.Persistence.File.Implementation
 {
-    public class FileQueryableStreamSetupable: IQueryable<Entities.Implementation.File.File>
+    public class FileQueryableStreamSetupable : IQueryable<Entities.Implementation.File.File>
     {
         private readonly IFileStorage _fileStorage;
         private readonly IQueryable<Entities.Implementation.File.File> _decoratee;

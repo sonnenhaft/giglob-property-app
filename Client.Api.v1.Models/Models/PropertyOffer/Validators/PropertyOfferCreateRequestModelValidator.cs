@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using CQRS;
 using Domain.Entities.Implementation.City;
 using Domain.Entities.Implementation.City.Queries;
@@ -11,10 +8,7 @@ using Domain.Entities.Implementation.File.Queries;
 using Domain.Entities.Implementation.PropertyOffer.Enums;
 using Domain.Extensions;
 using FluentValidation;
-using FluentValidation.Resources;
 using FluentValidation.Results;
-using FluentValidation.Validators;
-using SimpleInjector;
 
 namespace Client.Api.v1.Models.Models.PropertyOffer.Validators
 {
@@ -76,54 +70,60 @@ namespace Client.Api.v1.Models.Models.PropertyOffer.Validators
                 .Must(longitude => longitude >= -180 && longitude <= 180)
                 .WithMessage("Некорректная долгота");
 
+            Custom(
+                model => ValidateCityIdDistrictIdAndMetroStations(
+                    (IQueryHandler<City_IsExistsQuery, bool>) serviceProvider.GetService(typeof (IQueryHandler<City_IsExistsQuery, bool>)),
+                    (IQueryHandler<City_GetAllDistrictsQuery, IEnumerable<District>>) serviceProvider.GetService(typeof (IQueryHandler<City_GetAllDistrictsQuery, IEnumerable<District>>)),
+                    (IQueryHandler<City_ContainsMetroBranchStationsWithGivenIdsQuery, bool>) serviceProvider.GetService(typeof (IQueryHandler<City_ContainsMetroBranchStationsWithGivenIdsQuery, bool>)),
+                    model.CityId,
+                    model.DistrictId,
+                    model.NearMetroBranchStationIds
+                    ));
 
-            Custom(model => ValidateCityIdDistrictIdAndMetroStations(
-                (IQueryHandler<City_IsExistsQuery, bool>)serviceProvider.GetService(typeof(IQueryHandler<City_IsExistsQuery, bool>)),
-                (IQueryHandler<City_GetAllDistrictsQuery, IEnumerable<District>>)serviceProvider.GetService(typeof(IQueryHandler<City_GetAllDistrictsQuery, IEnumerable<District>>)),
-                (IQueryHandler<City_ContainsMetroBranchStationsWithGivenIdsQuery, bool>)serviceProvider.GetService(typeof(IQueryHandler<City_ContainsMetroBranchStationsWithGivenIdsQuery, bool>)),
-                model.CityId,
-                model.DistrictId,
-                model.NearMetroBranchStationIds
-                ));
+            Custom(
+                model => ValidatePhotoes(
+                    (IQueryHandler<File_HasFilesWithGivenIdsAndExtensionsQuery, bool>) serviceProvider.GetService(typeof (IQueryHandler<File_HasFilesWithGivenIdsAndExtensionsQuery, bool>)),
+                    model.Photoes
+                    ));
 
-            Custom(model => ValidatePhotoes(
-                (IQueryHandler<File_HasFilesWithGivenIdsAndExtensionsQuery, bool>)serviceProvider.GetService(typeof(IQueryHandler<File_HasFilesWithGivenIdsAndExtensionsQuery, bool>)),
-                model.Photoes
-                ));
+            Custom(
+                model => ValidateDocuments(
+                    (IQueryHandler<File_HasFilesWithGivenIdsAndExtensionsQuery, bool>) serviceProvider.GetService(typeof (IQueryHandler<File_HasFilesWithGivenIdsAndExtensionsQuery, bool>)),
+                    model.Documents
+                    ));
 
-            Custom(model => ValidateDocuments(
-                (IQueryHandler<File_HasFilesWithGivenIdsAndExtensionsQuery, bool>)serviceProvider.GetService(typeof(IQueryHandler<File_HasFilesWithGivenIdsAndExtensionsQuery, bool>)),
-                model.Documents
-                ));
+            When(
+                x => x.OfferType == OfferType.Exchange && x.ExchangeDetails == null,
+                () =>
+                {
+                    RuleFor(model => model.ExchangeDetails)
+                        .NotNull()
+                        .WithMessage("Требуется заполнить форму \"Куда хочу переехать\"");
+                });
 
-            When(x => x.OfferType == OfferType.Exchange && x.ExchangeDetails == null, () =>
-            {
-                RuleFor(model => model.ExchangeDetails).NotNull()
-                  .WithMessage("Требуется заполнить форму \"Куда хочу переехать\"");
-            });
+            When(
+                x => x.OfferType == OfferType.Exchange && x.ExchangeDetails != null,
+                () =>
+                {
+                    RuleFor(model => model.ExchangeDetails.MinCost)
+                        .Must(cost => cost > 0 && cost < 1000000000000)
+                        .WithMessage("Некорректная стоимость");
 
-            When(x => x.OfferType == OfferType.Exchange && x.ExchangeDetails != null, () =>
-              {
-                  RuleFor(model => model.ExchangeDetails.MinCost)
-                    .Must(cost => cost > 0 && cost < 1000000000000)
-                    .WithMessage("Некорректная стоимость");
+                    RuleFor(model => model.ExchangeDetails.MaxCost)
+                        .Must(cost => cost > 0 && cost < 1000000000000)
+                        .WithMessage("Некорректная стоимость");
 
+                    RuleFor(model => model.ExchangeDetails)
+                        .Must(x => x.MinCost < x.MaxCost)
+                        .WithMessage("Стоимость \"От\" должна быть меньше стоимости \"До\"");
 
-                  RuleFor(model => model.ExchangeDetails.MaxCost)
-                    .Must(cost => cost > 0 && cost < 1000000000000)
-                    .WithMessage("Некорректная стоимость");
-
-
-                  RuleFor(model => model.ExchangeDetails)
-                      .Must(x => x.MinCost < x.MaxCost)
-                      .WithMessage("Стоимость \"От\" должна быть меньше стоимости \"До\"");
-
-                  Custom(model => ValidateCityIdDistrictId(
-                     (IQueryHandler<City_IsExistsQuery, bool>)serviceProvider.GetService(typeof(IQueryHandler<City_IsExistsQuery, bool>)),
-                     (IQueryHandler<City_GetAllDistrictsQuery, IEnumerable<District>>)serviceProvider.GetService(typeof(IQueryHandler<City_GetAllDistrictsQuery, IEnumerable<District>>)),
-                     model.CityId,
-                     model.DistrictId));
-              });
+                    Custom(
+                        model => ValidateCityIdDistrictId(
+                            (IQueryHandler<City_IsExistsQuery, bool>) serviceProvider.GetService(typeof (IQueryHandler<City_IsExistsQuery, bool>)),
+                            (IQueryHandler<City_GetAllDistrictsQuery, IEnumerable<District>>) serviceProvider.GetService(typeof (IQueryHandler<City_GetAllDistrictsQuery, IEnumerable<District>>)),
+                            model.CityId,
+                            model.DistrictId));
+                });
         }
 
         public ValidationFailure ValidateCityIdDistrictIdAndMetroStations(
@@ -152,7 +152,8 @@ namespace Client.Api.v1.Models.Models.PropertyOffer.Validators
                 return new ValidationFailure("DistrictId", "Некорректный район");
             }
 
-            if (districtId.HasValue && !cityDistricts.Select(x => x.Id).Contains(districtId.Value))
+            if (districtId.HasValue && !cityDistricts.Select(x => x.Id)
+                                                     .Contains(districtId.Value))
             {
                 return new ValidationFailure("DistrictId", "Некорректный район");
             }
@@ -166,10 +167,10 @@ namespace Client.Api.v1.Models.Models.PropertyOffer.Validators
         }
 
         public ValidationFailure ValidateCityIdDistrictId(
-          IQueryHandler<City_IsExistsQuery, bool> cityIsExistsQueryHandler,
-          IQueryHandler<City_GetAllDistrictsQuery, IEnumerable<District>> cityGetAllDistrictsQuery,
-          long cityId,
-          long? districtId)
+            IQueryHandler<City_IsExistsQuery, bool> cityIsExistsQueryHandler,
+            IQueryHandler<City_GetAllDistrictsQuery, IEnumerable<District>> cityGetAllDistrictsQuery,
+            long cityId,
+            long? districtId)
         {
             if (!cityIsExistsQueryHandler.Handle(new City_IsExistsQuery(cityId)))
             {
@@ -189,7 +190,8 @@ namespace Client.Api.v1.Models.Models.PropertyOffer.Validators
                 return new ValidationFailure("DistrictId", "Некорректный район");
             }
 
-            if (districtId.HasValue && !cityDistricts.Select(x => x.Id).Contains(districtId.Value))
+            if (districtId.HasValue && !cityDistricts.Select(x => x.Id)
+                                                     .Contains(districtId.Value))
             {
                 return new ValidationFailure("DistrictId", "Некорректный район");
             }
@@ -197,7 +199,9 @@ namespace Client.Api.v1.Models.Models.PropertyOffer.Validators
             return null;
         }
 
-        public ValidationFailure ValidatePhotoes(IQueryHandler<File_HasFilesWithGivenIdsAndExtensionsQuery, bool> fileHasFilesWithGivenIdsQuery, IEnumerable<PropertyOfferCreatePhotoRequestModel> photoes)
+        public ValidationFailure ValidatePhotoes(
+            IQueryHandler<File_HasFilesWithGivenIdsAndExtensionsQuery, bool> fileHasFilesWithGivenIdsQuery,
+            IEnumerable<PropertyOfferCreatePhotoRequestModel> photoes)
         {
             if (photoes != null && photoes.Any())
             {

@@ -35,7 +35,7 @@ namespace ApiVersioningModule.HttpControllerSelectors
         {
             var version = _apiVersionResolver.Resolve(request) ?? _noApiVersionResolver.Resolve(_apiVersionAssemblies.Value);
 
-            if(!version.HasValue)
+            if (!version.HasValue)
             {
                 return null;
             }
@@ -57,7 +57,10 @@ namespace ApiVersioningModule.HttpControllerSelectors
 
             var type = currVersionAssembly != null
                 ? currVersionAssembly.GetTypes()
-                                     .FirstOrDefault(x => !x.IsAbstract && typeof(IHttpController).IsAssignableFrom(x) && string.Equals(x.Name, string.Format("{0}{1}", controllerName, ControllerSuffix), StringComparison.InvariantCultureIgnoreCase))
+                                     .FirstOrDefault(
+                                         x =>
+                                             !x.IsAbstract && typeof (IHttpController).IsAssignableFrom(x)
+                                             && string.Equals(x.Name, string.Format("{0}{1}", controllerName, ControllerSuffix), StringComparison.InvariantCultureIgnoreCase))
                 : null;
 
             return type;
@@ -65,15 +68,23 @@ namespace ApiVersioningModule.HttpControllerSelectors
 
         private Assembly ResolveApiVersionAssembly(IEnumerable<Assembly> apiVersionAssemblies, int version)
         {
-            return apiVersionAssemblies.FirstOrDefault(x => Regex.IsMatch(x.GetName()
-                                                                           .Name, "api.v" + version, RegexOptions.CultureInvariant | RegexOptions.IgnoreCase));
+            return apiVersionAssemblies.FirstOrDefault(
+                x => Regex.IsMatch(
+                    x.GetName()
+                     .Name,
+                    "api.v" + version,
+                    RegexOptions.CultureInvariant | RegexOptions.IgnoreCase));
         }
 
         private IEnumerable<Assembly> ResolveApiVersionAssemblies()
         {
             var assemblies = AppDomain.CurrentDomain.GetAssemblies();
-            var apiVersionAssemblies = assemblies.Where(x => Regex.IsMatch(x.GetName()
-                                                                            .Name, "api.v([0-9]{1,3})", RegexOptions.CultureInvariant | RegexOptions.IgnoreCase));
+            var apiVersionAssemblies = assemblies.Where(
+                x => Regex.IsMatch(
+                    x.GetName()
+                     .Name,
+                    "api.v([0-9]{1,3})",
+                    RegexOptions.CultureInvariant | RegexOptions.IgnoreCase));
 
             return apiVersionAssemblies;
         }
@@ -87,19 +98,23 @@ namespace ApiVersioningModule.HttpControllerSelectors
             var controllerTypes = controllersResolver.GetControllerTypes(assembliesResolver);
             var duplicates = new List<string>();
 
-            foreach(var controllerType in controllerTypes)
+            foreach (var controllerType in controllerTypes)
             {
                 // For the dictionary key, strip "Controller" from the end of the type name.
                 // This matches the behavior of DefaultHttpControllerSelector.
-                var controllerName = controllerType.Name.Remove(controllerType.Name.Length - DefaultHttpControllerSelector.ControllerSuffix.Length);
+                var controllerName = controllerType.Name.Remove(controllerType.Name.Length - ControllerSuffix.Length);
 
-                var key = String.Format(CultureInfo.InvariantCulture, "{0}.{1}", controllerType.Assembly.GetName()
-                                                                                               .Name, controllerName);
+                var key = string.Format(
+                    CultureInfo.InvariantCulture,
+                    "{0}.{1}",
+                    controllerType.Assembly.GetName()
+                                  .Name,
+                    controllerName);
 
                 // Check for duplicate keys.
-                if(dictionary.Keys.Contains(key))
+                if (dictionary.Keys.Contains(key))
                 {
-                    if(!duplicates.Contains(key))
+                    if (!duplicates.Contains(key))
                     {
                         duplicates.Add(key);
                     }
@@ -110,7 +125,7 @@ namespace ApiVersioningModule.HttpControllerSelectors
                 }
             }
 
-            foreach(var duplicate in duplicates)
+            foreach (var duplicate in duplicates)
             {
                 dictionary.Remove(duplicate);
             }

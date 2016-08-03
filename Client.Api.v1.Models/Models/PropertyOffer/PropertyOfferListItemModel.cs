@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Client.Api.v1.Models.Models.City;
-using Domain.Entities.Implementation.PropertyOffer;
 
 namespace Client.Api.v1.Models.Models.PropertyOffer
 {
@@ -22,17 +20,17 @@ namespace Client.Api.v1.Models.Models.PropertyOffer
         public List<string> Photos { get; set; }
 
         /// <summary>
-        /// Широта
+        ///     Широта
         /// </summary>
         public double Lat { get; set; }
 
         /// <summary>
-        /// Долгота
+        ///     Долгота
         /// </summary>
         public double Lon { get; set; }
 
         /// <summary>
-        /// Ближайшая станция метро
+        ///     Ближайшая станция метро
         /// </summary>
         public NearMetroStationModel NearMetroStationModel { get; set; }
     }

@@ -5,7 +5,7 @@ using Domain.Storages;
 
 namespace Domain.Persistence.File.Implementation
 {
-    public class FileQueryProvider: IQueryProvider
+    public class FileQueryProvider : IQueryProvider
     {
         private readonly IFileStorage _fileStorage;
         private readonly IQueryProvider _decoratee;
@@ -22,7 +22,7 @@ namespace Domain.Persistence.File.Implementation
 
             if (query is IQueryable<Entities.Implementation.File.File>)
             {
-                query = new FileQueryableStreamSetupable(_fileStorage, (IQueryable<Entities.Implementation.File.File>)query);
+                query = new FileQueryableStreamSetupable(_fileStorage, (IQueryable<Entities.Implementation.File.File>) query);
             }
 
             return query;
@@ -32,7 +32,7 @@ namespace Domain.Persistence.File.Implementation
         {
             var query = _decoratee.CreateQuery<TElement>(expression);
 
-            if(typeof(TElement) == typeof(Entities.Implementation.File.File))
+            if (typeof (TElement) == typeof (Entities.Implementation.File.File))
             {
                 query = (IQueryable<TElement>) new FileQueryableStreamSetupable(_fileStorage, (IQueryable<Entities.Implementation.File.File>) query);
             }
@@ -44,14 +44,14 @@ namespace Domain.Persistence.File.Implementation
         {
             var result = _decoratee.Execute(expression);
 
-            if (result.GetType() == typeof(Entities.Implementation.File.File))
+            if (result.GetType() == typeof (Entities.Implementation.File.File))
             {
                 var file = result as Entities.Implementation.File.File;
                 file.Stream = _fileStorage.Get(file.VirtualPath);
             }
             else if (result is IEnumerable<Entities.Implementation.File.File>)
             {
-                var files = (IEnumerable<Entities.Implementation.File.File>)result;
+                var files = (IEnumerable<Entities.Implementation.File.File>) result;
 
                 foreach (var file in files)
                 {
@@ -66,16 +66,16 @@ namespace Domain.Persistence.File.Implementation
         {
             var result = _decoratee.Execute<TResult>(expression);
 
-            if (typeof(TResult) == typeof(Entities.Implementation.File.File))
+            if (typeof (TResult) == typeof (Entities.Implementation.File.File))
             {
                 var file = result as Entities.Implementation.File.File;
                 file.Stream = _fileStorage.Get(file.VirtualPath);
             }
-            else if(typeof(IEnumerable<Entities.Implementation.File.File>).IsAssignableFrom(typeof(TResult)))
+            else if (typeof (IEnumerable<Entities.Implementation.File.File>).IsAssignableFrom(typeof (TResult)))
             {
                 var files = (IEnumerable<Entities.Implementation.File.File>) result;
 
-                foreach(var file in files)
+                foreach (var file in files)
                 {
                     file.Stream = _fileStorage.Get(file.VirtualPath);
                 }

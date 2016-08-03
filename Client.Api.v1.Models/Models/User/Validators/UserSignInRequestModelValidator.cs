@@ -30,7 +30,7 @@ namespace Client.Api.v1.Models.Models.User.Validators
 
         private ValidationFailure CheckUserIsExists(User_CheckUserIsExistsByUsernameAndPasswordQueryHandler userCheckUserIsExistsByUsernameAndPasswordQueryHandler, string email, string password)
         {
-            if(!userCheckUserIsExistsByUsernameAndPasswordQueryHandler.Handle(new User_CheckUserIsExistsByUsernameAndPasswordQuery(email, password)))
+            if (!userCheckUserIsExistsByUsernameAndPasswordQueryHandler.Handle(new User_CheckUserIsExistsByUsernameAndPasswordQuery(email, password)))
             {
                 return new ValidationFailure("Password", "Почта или пароль указаны неверно");
             }

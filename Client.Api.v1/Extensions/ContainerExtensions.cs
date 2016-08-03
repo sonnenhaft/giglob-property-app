@@ -9,7 +9,7 @@ namespace Client.Api.v1.Extensions
     {
         public static void RegisterClientApiV1Dependencies(this Container container)
         {
-            container.Register(typeof(IFluentMailer), FluentMailerFactory.Create);
+            container.Register(typeof (IFluentMailer), FluentMailerFactory.Create);
             container.RegisterClientApiV1ModelsDependencies();
         }
     }

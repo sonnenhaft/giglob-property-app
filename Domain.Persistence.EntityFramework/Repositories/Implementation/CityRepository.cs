@@ -6,13 +6,13 @@ using Domain.Repositories;
 
 namespace Domain.Persistence.EntityFramework.Repositories.Implementation
 {
-    public class CityRepository : EntityFrameworkRepository<City,long>, ICityRepository
+    public class CityRepository : EntityFrameworkRepository<City, long>, ICityRepository
     {
         public CityRepository(DbContext dbContext) : base(dbContext) { }
 
         public IQueryable<District> GetCityDistricts(long cityId)
         {
-            if(!IsExists(cityId))
+            if (!IsExists(cityId))
             {
                 throw new ArgumentException("City not found");
             }

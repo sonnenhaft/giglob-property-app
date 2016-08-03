@@ -5,7 +5,7 @@ using Domain.Exceptions;
 
 namespace Client.Api.ActionFilters
 {
-    public class NotFoundActionFilter: ActionFilterAttribute
+    public class NotFoundActionFilter : ActionFilterAttribute
     {
         public override void OnActionExecuted(HttpActionExecutedContext actionExecutedContext)
         {

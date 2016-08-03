@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using CQRS;
 using Domain.Repositories;
@@ -37,10 +36,12 @@ namespace Domain.Entities.Implementation.City.Queries
 
             return
                 _cityRepository.GetAll()
-                    .Where(x => x.Id == query.Id)
-                    .SelectMany(x => x.MetroStations)
-                    .Where(x => x.Name.Contains(query.StationName))
-                    .SelectMany(x=>x.MetroStationBranches).Select(x=>x).ToList();
+                               .Where(x => x.Id == query.Id)
+                               .SelectMany(x => x.MetroStations)
+                               .Where(x => x.Name.Contains(query.StationName))
+                               .SelectMany(x => x.MetroStationBranches)
+                               .Select(x => x)
+                               .ToList();
         }
     }
 }

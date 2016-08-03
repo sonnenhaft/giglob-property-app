@@ -12,8 +12,12 @@ namespace ApiVersioningModule.HttpControllerSelectors.ApiVersionResolvers.ApiAss
         public IEnumerable<Assembly> Resolve()
         {
             var assemblies = AppDomain.CurrentDomain.GetAssemblies();
-            var apiVersionAssemblies = assemblies.Where(x => Regex.IsMatch(x.GetName()
-                                                                            .Name, "api.v([0-9]{1,3})", RegexOptions.CultureInvariant | RegexOptions.IgnoreCase));
+            var apiVersionAssemblies = assemblies.Where(
+                x => Regex.IsMatch(
+                    x.GetName()
+                     .Name,
+                    "api.v([0-9]{1,3})",
+                    RegexOptions.CultureInvariant | RegexOptions.IgnoreCase));
 
             return apiVersionAssemblies;
         }

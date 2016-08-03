@@ -6,7 +6,7 @@ using Domain.Repositories;
 
 namespace Domain.Entities.Implementation.File.Queries
 {
-    public class File_HasFilesWithGivenIdsAndExtensionsQuery: IQuery
+    public class File_HasFilesWithGivenIdsAndExtensionsQuery : IQuery
     {
         public File_HasFilesWithGivenIdsAndExtensionsQuery(IEnumerable<Guid> ids, IEnumerable<string> allowedExtensions)
         {
@@ -30,19 +30,19 @@ namespace Domain.Entities.Implementation.File.Queries
 
         public bool Handle(File_HasFilesWithGivenIdsAndExtensionsQuery query)
         {
-            if(query.Ids == null || !query.Ids.Any())
+            if (query.Ids == null || !query.Ids.Any())
             {
                 return true;
             }
 
-            if(query.AllowedExtensions == null || !query.AllowedExtensions.Any())
+            if (query.AllowedExtensions == null || !query.AllowedExtensions.Any())
             {
                 return false;
             }
 
             var allowedFileIds = _fileRepository.GetAll()
-                .Where(file => query.AllowedExtensions.Contains(file.Extension.ToLower()))
-                .Select(file => file.Id);
+                                                .Where(file => query.AllowedExtensions.Contains(file.Extension.ToLower()))
+                                                .Select(file => file.Id);
 
             return query.Ids.All(id => allowedFileIds.Contains(id));
         }

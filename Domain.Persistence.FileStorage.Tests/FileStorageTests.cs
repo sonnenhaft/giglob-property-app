@@ -34,7 +34,7 @@ namespace Domain.Persistence.FileStorage.Tests
             var filename = Guid.NewGuid()
                                .ToString();
 
-            using(var ms = new MemoryStream())
+            using (var ms = new MemoryStream())
             {
                 ms.Write(expected, 0, expected.Length);
                 _fileStorage.Create(ms, $@"~\files\{filename}", FileMode.CreateNew);
@@ -42,7 +42,7 @@ namespace Domain.Persistence.FileStorage.Tests
 
             byte[] actual = new byte[1024];
 
-            using(var fs = new FileStream($@"{AppDomain.CurrentDomain.BaseDirectory}\files\{filename}", FileMode.Open))
+            using (var fs = new FileStream($@"{AppDomain.CurrentDomain.BaseDirectory}\files\{filename}", FileMode.Open))
             {
                 fs.Read(actual, 0, (int) fs.Length);
             }
@@ -63,9 +63,8 @@ namespace Domain.Persistence.FileStorage.Tests
                 fs.Write(expected, 0, expected.Length);
             }
 
-
             byte[] actual = new byte[1024];
-            using(var result = _fileStorage.Get($@"~\files\{filename}"))
+            using (var result = _fileStorage.Get($@"~\files\{filename}"))
             {
                 result.Read(actual, 0, (int) result.Length);
             }

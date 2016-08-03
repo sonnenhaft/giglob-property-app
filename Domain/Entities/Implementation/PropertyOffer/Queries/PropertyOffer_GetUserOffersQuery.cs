@@ -16,7 +16,7 @@ namespace Domain.Entities.Implementation.PropertyOffer.Queries
         }
     }
 
-    public class PropertyOffer_GetUserOffersQueryHandler: IQueryHandler<PropertyOffer_GetUserOffersQuery, IEnumerable<PropertyOffer>>
+    public class PropertyOffer_GetUserOffersQueryHandler : IQueryHandler<PropertyOffer_GetUserOffersQuery, IEnumerable<PropertyOffer>>
     {
         private readonly IPropertyOfferRepository _propertyOfferRepository;
 

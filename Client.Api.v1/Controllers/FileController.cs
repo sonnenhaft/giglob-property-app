@@ -1,15 +1,9 @@
 ﻿using System;
-using System.Net;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Threading.Tasks;
 using System.Web.Http;
 using Client.Api.v1.Facades;
 using Client.Api.v1.Models.Models.Common;
-using Client.Api.v1.Models.Models.Common.ResponseExamples;
 using Client.Api.v1.Models.Models.File;
 using Client.Api.v1.Models.Models.File.ResponseExamples;
-using Client.Api.v1.Results;
 using SwaggerResponseExampleModule;
 
 namespace Client.Api.v1.Controllers
@@ -25,15 +19,23 @@ namespace Client.Api.v1.Controllers
 
         [HttpPost]
         [Authorize]
-        [SwaggerResponseExampleProvider(typeof(FileUploadResponseExample))]
+        [SwaggerResponseExampleProvider(typeof (FileUploadResponseExample))]
         public IHttpActionResult Upload(UploadingFile file)
         {
             var id = _fileFacade.Create(file);
             var result = new FileUploadResultModel
-            {
-                Id = id,
-                Url = Url.Link("Default", new { controller = "File", action = "Get", id = id }).ToLower()
-            };
+                         {
+                             Id = id,
+                             Url = Url.Link(
+                                 "Default",
+                                 new
+                                 {
+                                     controller = "File",
+                                     action = "Get",
+                                     id
+                                 })
+                                      .ToLower()
+                         };
 
             return Ok(result);
         }
@@ -43,5 +45,5 @@ namespace Client.Api.v1.Controllers
         {
             return _fileFacade.Get(reqModel.Id);
         }
-    }   
+    }
 }

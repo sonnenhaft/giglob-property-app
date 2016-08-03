@@ -10,13 +10,17 @@ namespace ApiVersioningModule.HttpControllerSelectors.ApiVersionResolvers.Versio
     {
         public int? Resolve(IEnumerable<Assembly> apiVersionAssemblies)
         {
-            var versions = apiVersionAssemblies.Select(x =>
-            {
-                var match = Regex.Match(x.GetName()
-                                         .Name, "api.v([0-9]{1,3})", RegexOptions.CultureInvariant | RegexOptions.IgnoreCase);
+            var versions = apiVersionAssemblies.Select(
+                x =>
+                {
+                    var match = Regex.Match(
+                        x.GetName()
+                         .Name,
+                        "api.v([0-9]{1,3})",
+                        RegexOptions.CultureInvariant | RegexOptions.IgnoreCase);
 
-                return int.Parse(match.Groups[1].Value);
-            });
+                    return int.Parse(match.Groups[1].Value);
+                });
 
             return versions.OrderByDescending(x => x)
                            .FirstOrDefault();

@@ -1,11 +1,10 @@
 ﻿using System.IO;
-using System.Web;
 using Domain.Storages;
 using Domain.Tools;
 
 namespace Domain.Persistence.FileStorage.Implementation
 {
-    public class FileStorage: IFileStorage
+    public class FileStorage : IFileStorage
     {
         private readonly IVirtualPathUtility _virtualPathUtility;
 
@@ -19,7 +18,7 @@ namespace Domain.Persistence.FileStorage.Implementation
             var fullPath = _virtualPathUtility.ConvertToFullPath(virtualPath);
             CreateDirectoryIfNotExists(fullPath);
 
-            using(var fs = new FileStream(fullPath, mode))
+            using (var fs = new FileStream(fullPath, mode))
             {
                 stream.Seek(0, SeekOrigin.Begin);
                 stream.CopyTo(fs);

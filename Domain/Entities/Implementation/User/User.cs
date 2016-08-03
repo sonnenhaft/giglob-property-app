@@ -3,7 +3,7 @@ using Microsoft.AspNet.Identity;
 
 namespace Domain.Entities.User.Implementation
 {
-    public class User: IUser<long>, IAggregateRootEntity<long>
+    public class User : IUser<long>, IAggregateRootEntity<long>
     {
         public long Id { get; set; }
 

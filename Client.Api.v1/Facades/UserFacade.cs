@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Configuration;
-using System.Net;
-using System.Net.Http;
-using System.Web;
-using System.Web.Http.Controllers;
 using Client.Api.v1.Models.Models.User;
 using Client.Api.v1.Models.Models.User.Mail;
 using CQRS;
@@ -11,7 +7,6 @@ using Domain.Entities.User.Implementation;
 using Domain.Entities.User.Implementation.Commands;
 using Domain.Entities.User.Implementation.Queries;
 using Domain.Entities.User.Services;
-using ExpressMapper.Extensions;
 using FluentMailer.Interfaces;
 
 namespace Client.Api.v1.Facades
@@ -27,7 +22,13 @@ namespace Client.Api.v1.Facades
 
         private readonly IQueryHandler<User_GetQuery, User> _userGetQueryHandler;
 
-        public UserFacade(IUserAuthorizationService userAuthorizationService, IFluentMailer fluentMailer, ICommandHandler<User_CreateCommand> userCreateCommandHandler, ICommandHandler<User_GenerateEmailConfirmationTokenCommand> userGenerateEmailConfirmationTokenCommandHandler, ICommandHandler<User_ConfirmEmailCommand> userConfirmEmailCommandHandler, IQueryHandler<User_GetQuery, User> userGetQueryHandler)
+        public UserFacade(
+            IUserAuthorizationService userAuthorizationService,
+            IFluentMailer fluentMailer,
+            ICommandHandler<User_CreateCommand> userCreateCommandHandler,
+            ICommandHandler<User_GenerateEmailConfirmationTokenCommand> userGenerateEmailConfirmationTokenCommandHandler,
+            ICommandHandler<User_ConfirmEmailCommand> userConfirmEmailCommandHandler,
+            IQueryHandler<User_GetQuery, User> userGetQueryHandler)
         {
             _userAuthorizationService = userAuthorizationService;
             _fluentMailer = fluentMailer;
@@ -44,10 +45,12 @@ namespace Client.Api.v1.Facades
             var user = _userGetQueryHandler.Handle(new User_GetQuery(command.Id));
             _userGenerateEmailConfirmationTokenCommandHandler.Handle(new User_GenerateEmailConfirmationTokenCommand(user.Id));
             _fluentMailer.CreateMessage()
-                         .WithView("~/Views/User/Mail/UserConfirmationMail.cshtml", new UserConfirmationMailModel
-                         {
-                             Url = ConfigurationManager.AppSettings["WebUrl"] + "/#/user/confirmemail/" + user.EmailConfirmationToken
-                         })
+                         .WithView(
+                             "~/Views/User/Mail/UserConfirmationMail.cshtml",
+                             new UserConfirmationMailModel
+                             {
+                                 Url = ConfigurationManager.AppSettings["WebUrl"] + "/#/user/confirmemail/" + user.EmailConfirmationToken
+                             })
                          .WithReceiver(user.Email)
                          .Send();
 
@@ -67,9 +70,9 @@ namespace Client.Api.v1.Facades
         private AuthResultModel SignIn(string email, string password)
         {
             return new AuthResultModel
-            {
-                AccessToken = _userAuthorizationService.GenerateAccessToken(email, password)
-            };
+                   {
+                       AccessToken = _userAuthorizationService.GenerateAccessToken(email, password)
+                   };
         }
     }
 }

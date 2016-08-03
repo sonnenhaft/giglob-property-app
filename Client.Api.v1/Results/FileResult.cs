@@ -8,7 +8,7 @@ using Domain.Entities.Implementation.File;
 
 namespace Client.Api.v1.Results
 {
-    public class FileResult: IHttpActionResult
+    public class FileResult : IHttpActionResult
     {
         private readonly File _file;
 
@@ -23,9 +23,9 @@ namespace Client.Api.v1.Results
             result.Content = new StreamContent(_file.Stream);
             result.Content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
             result.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment")
-            {
-                FileName = _file.Name
-            };
+                                                        {
+                                                            FileName = _file.Name
+                                                        };
 
             return Task.FromResult(result);
         }
