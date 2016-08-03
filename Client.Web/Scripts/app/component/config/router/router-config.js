@@ -76,6 +76,7 @@ angular.module('component.config.router', ['ui.router','api.httpRequestIntercept
                     return getProperty.query({id:$stateParams.id}).$promise.then(function(res){
                         return res
                     },function(err){
+                        console.log(err);
                         $state.go('search');
                     })
                 }
@@ -110,7 +111,7 @@ angular.module('component.config.router', ['ui.router','api.httpRequestIntercept
             controller: function($scope, $stateParams, getFlats,localStorageService) {
                 $scope.params = {
                     cityId : localStorageService.get('city').id,
-                    take: 1000
+                    take: 10000
                 };
                 $scope.flats = getFlats;
                 var server = 'http://api.giglob.local/file/get/';
