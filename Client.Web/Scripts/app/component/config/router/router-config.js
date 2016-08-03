@@ -144,13 +144,10 @@ angular.module('component.config.router', ['ui.router','api.httpRequestIntercept
         .state('my-ads', {
             url: "/my-ads",
             templateUrl: 'app/component/config/router/my-ads-page.html',
-            controller: function($scope, $element, $timeout, $resource, $rootScope, localStorageService) {
-                console.log('---', $rootScope.accessToken);
-                var User = $resource('http://api.giglob.local/v1/propertyoffer/myoffers', {'api_key':localStorageService.get('access-token')});
-                User.get()
-                    .$promise.then(function(user) {
-                        console.log(user);
-                    });
+            controller: function($scope, $element, $timeout, giglobApi) {
+                giglobApi.getMyOffers({type:'propertyoffer',action: 'myoffers'}, null, function (data) {
+                    console.log('===', data);
+                });
             }
         })
         .state('add-ads', {

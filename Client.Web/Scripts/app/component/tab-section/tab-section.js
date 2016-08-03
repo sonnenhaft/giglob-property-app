@@ -1,4 +1,4 @@
-angular.module('component.tab-section', ['ngSanitize', 'ngFileUpload']).directive('tabSection', function(addFlatTabs, cityDistrictFactory, $rootScope, Upload) {
+angular.module('component.tab-section', ['ngSanitize', 'ngFileUpload']).directive('tabSection', function(addFlatTabs, cityDistrictFactory, $rootScope, Upload, currentServer) {
     return {
         restrict: 'E',
         scope: {
@@ -82,7 +82,7 @@ angular.module('component.tab-section', ['ngSanitize', 'ngFileUpload']).directiv
                             file.format = file.name.split('.').pop().toUpperCase();
                         }
                         var upload = Upload.upload({
-                            url: 'http://giglobapi.igstest.ru/v1/file/upload',
+                            url: currentServer + '/v1/file/upload',
                             data: {File: file, FileName: file.name},
                             headers: {'Authorization': 'Bearer ' + $rootScope.accessToken}
                         });

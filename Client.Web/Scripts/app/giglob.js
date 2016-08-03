@@ -1,6 +1,7 @@
 angular.module('giglob-app', [
     'yaMap',
     'api.resource',
+    'api.currentServer',
     'LocalStorageModule',
     'mm.foundation',
     'templates',
@@ -26,4 +27,8 @@ angular.module('giglob-app', [
             }
         }
     };
+}).run(function ($rootScope, localStorageService) {
+    if(localStorageService.get('access-token')){
+        $rootScope.accessToken =  localStorageService.get('access-token');
+    }
 });
