@@ -51,12 +51,12 @@ namespace Domain.Entities.Implementation.PropertyOffer.Queries
         public ViewPortDto ViewPort { get; set; }
     }
 
-    public class Offer_GetAllQueryHandler : IQueryHandler<PropertyOffer_GetAllQuery, IEnumerable<PropertyOffer>>
+    public class PropertyOffer_GetAllQueryHandler : IQueryHandler<PropertyOffer_GetAllQuery, IEnumerable<PropertyOffer>>
     {
         private readonly IPropertyOfferRepository _offerRepository;
         private static readonly int CoordinateSystemId = 4326;
 
-        public Offer_GetAllQueryHandler(IPropertyOfferRepository offerRepository)
+        public PropertyOffer_GetAllQueryHandler(IPropertyOfferRepository offerRepository)
         {
             _offerRepository = offerRepository;
         }
