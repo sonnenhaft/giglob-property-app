@@ -1,11 +1,11 @@
 ﻿using System;
+using System.Data;
 using System.Data.Entity;
 using Domain.UnitOfWork;
-using IsolationLevel = System.Data.IsolationLevel;
 
 namespace Domain.Persistence.EntityFramework.UnitOfWork.Implementation
 {
-    public class EntityFrameworkUnitOfWork: IUnitOfWork
+    public class EntityFrameworkUnitOfWork : IUnitOfWork
     {
         private readonly DbContextTransaction _transaction;
         private readonly DbContext _dbContext;
@@ -29,7 +29,7 @@ namespace Domain.Persistence.EntityFramework.UnitOfWork.Implementation
             {
                 _transaction.Commit();
             }
-            catch(Exception)
+            catch (Exception)
             {
                 Rollback();
             }

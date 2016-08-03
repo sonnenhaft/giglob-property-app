@@ -4,7 +4,7 @@ using Domain.UnitOfWork;
 
 namespace Domain.Persistence.EntityFramework.UnitOfWork.Implementation
 {
-    public class EntityFrameworkUnitOfWorkFactory: IUnitOfWorkFactory
+    public class EntityFrameworkUnitOfWorkFactory : IUnitOfWorkFactory
     {
         private readonly DbContext _dbContext;
 

@@ -11,7 +11,7 @@ namespace ApiVersioningModule.HttpControllerSelectors.ApiVersionResolvers.Versio
             var success = request.GetRouteData()
                                  .Values.TryGetValue("version", out versionObj);
 
-            if(!success)
+            if (!success)
             {
                 return null;
             }

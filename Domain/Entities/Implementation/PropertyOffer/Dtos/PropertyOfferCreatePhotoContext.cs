@@ -5,12 +5,12 @@ namespace Domain.Entities.Implementation.PropertyOffer.Dtos
     public class PropertyOfferCreatePhotoContext
     {
         /// <summary>
-        /// Идентификатор файла
+        ///     Идентификатор файла
         /// </summary>
         public Guid Id { get; set; }
 
         /// <summary>
-        /// Является ли фотография обложкой
+        ///     Является ли фотография обложкой
         /// </summary>
         public bool IsCover { get; set; }
     }

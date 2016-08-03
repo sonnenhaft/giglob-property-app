@@ -1,31 +1,35 @@
 angular.module("api.resource", ["ngResource"])
     .factory('giglobApi', function ($resource) {
-        return  $resource('http://giglobapi.igstest.ru/v1/:type/:action', {});
+        var API_URL = document.getElementById('apiUrl').dataset.url;
+        return  $resource(API_URL + '/v1/:type/:action', {});
     })
     .factory("register", function ($resource) {
-
-        return $resource('http://giglobapi.igstest.ru/v1/user/register',
+        var API_URL = document.getElementById('apiUrl').dataset.url;
+        return $resource(API_URL + '/v1/user/register',
             null,
             {
                 'save': {method: 'POST'}
             });
     })
     .factory('login', function ($resource) {
-        return $resource('http://giglobapi.igstest.ru/v1/user/signin',
+        var API_URL = document.getElementById('apiUrl').dataset.url;
+        return $resource(API_URL + '/v1/user/signin',
             null,
             {
                 'save': {method: 'POST'}
             });
     })
     .factory('confirm', function ($resource) {
-        return $resource('http://giglobapi.igstest.ru/v1/user/confirmemail',
+        var API_URL = document.getElementById('apiUrl').dataset.url;
+        return $resource(API_URL + '/v1/user/confirmemail',
             null,
             {
                 'save': {method: 'POST'}
             });
     })
     .factory('getProperty', function ($resource, $rootScope) {
-        return $resource('http://api.giglob.local/v1/propertyoffer/get/:id',
+        var API_URL = document.getElementById('apiUrl').dataset.url;
+        return $resource(API_URL + '/v1/propertyoffer/get/:id',
             null,
             {
                 'save': {method: 'POST'},

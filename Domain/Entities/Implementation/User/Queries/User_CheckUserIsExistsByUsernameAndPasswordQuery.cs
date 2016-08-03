@@ -3,7 +3,7 @@ using Domain.Entities.User.Services;
 
 namespace Domain.Entities.User.Implementation.Queries
 {
-    public class User_CheckUserIsExistsByUsernameAndPasswordQuery: IQuery
+    public class User_CheckUserIsExistsByUsernameAndPasswordQuery : IQuery
     {
         public string UserName { get; set; }
 

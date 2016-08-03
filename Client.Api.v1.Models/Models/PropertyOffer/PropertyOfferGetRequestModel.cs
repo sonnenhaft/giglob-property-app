@@ -2,5 +2,5 @@
 
 namespace Client.Api.v1.Models.Models.PropertyOffer
 {
-    public class PropertyOfferGetRequestModel: IdentifyModel<long> { }
+    public class PropertyOfferGetRequestModel : IdentifyModel<long> { }
 }

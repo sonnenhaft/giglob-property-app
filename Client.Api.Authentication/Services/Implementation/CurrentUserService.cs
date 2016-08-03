@@ -5,7 +5,7 @@ using Microsoft.AspNet.Identity;
 
 namespace Client.Api.Authentication.Services.Implementation
 {
-    public class CurrentUserService: ICurrentUserService
+    public class CurrentUserService : ICurrentUserService
     {
         public bool IsAuthenticated()
         {
@@ -14,7 +14,7 @@ namespace Client.Api.Authentication.Services.Implementation
 
         public long GetId()
         {
-            if(!IsAuthenticated())
+            if (!IsAuthenticated())
             {
                 throw new Exception("User not authenticated");
             }

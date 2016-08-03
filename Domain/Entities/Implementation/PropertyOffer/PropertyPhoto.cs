@@ -12,6 +12,6 @@ namespace Domain.Entities.Implementation.PropertyOffer
 
         public bool IsDeleted { get; set; }
 
-        public virtual File.File File { get; set; } 
+        public virtual File.File File { get; set; }
     }
 }

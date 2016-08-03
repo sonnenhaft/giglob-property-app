@@ -1,8 +1,8 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web.Http.Description;
 using Swashbuckle.Swagger;
-using System.Collections.Generic;
-using System.Text.RegularExpressions;
 
 namespace ApiVersioningModule.Swagger
 {
@@ -10,21 +10,22 @@ namespace ApiVersioningModule.Swagger
     {
         public void Apply(SwaggerDocument swaggerDoc, SchemaRegistry schemaRegistry, IApiExplorer apiExplorer)
         {
-            if(swaggerDoc.paths.Any(x => x.Key.Contains("{version}") || x.Key.ToLower()
-                                                                         .Contains(".")))
+            if (swaggerDoc.paths.Any(
+                x => x.Key.Contains("{version}") || x.Key.ToLower()
+                                                     .Contains(".")))
             {
                 var newPaths = new Dictionary<string, PathItem>();
 
-                foreach(var path in swaggerDoc.paths)
+                foreach (var path in swaggerDoc.paths)
                 {
                     var newPathKey = path.Key.ToLower();
 
-                    if(newPathKey.Contains("{version}"))
+                    if (newPathKey.Contains("{version}"))
                     {
                         newPathKey = newPathKey.Replace("{version}", swaggerDoc.info.version);
                     }
 
-                    if(newPathKey.Contains("."))
+                    if (newPathKey.Contains("."))
                     {
                         newPathKey = Regex.Replace(newPathKey, @"(/[a-z0-9\.]+\.)([a-z0-9]+)/", x => "/" + x.Groups[2].Value + "/");
                     }
@@ -35,8 +36,8 @@ namespace ApiVersioningModule.Swagger
                 swaggerDoc.paths = newPaths;
             }
 
-            foreach(var pathItem in swaggerDoc.paths.Where(x => IsPathItemContainsPathsWithParameter(x.Value, "version"))
-                                              .Select(x => x.Value))
+            foreach (var pathItem in swaggerDoc.paths.Where(x => IsPathItemContainsPathsWithParameter(x.Value, "version"))
+                                               .Select(x => x.Value))
             {
                 RemoveParameterFromPathItem(pathItem, "version");
             }
@@ -49,7 +50,7 @@ namespace ApiVersioningModule.Swagger
 
         private void RemoveParameterByName(Operation operation, string name)
         {
-            if(operation != null)
+            if (operation != null)
             {
                 var parameter = operation.parameters.FirstOrDefault(x => x.name == name);
                 operation.parameters.Remove(parameter);

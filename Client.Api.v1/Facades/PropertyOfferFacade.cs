@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics.Contracts;
-using Client.Api.v1.Models.Models.Common;
 using Client.Api.v1.Models.Models.PropertyOffer;
 using CQRS;
 using Domain.Authentication;
@@ -19,9 +18,14 @@ namespace Client.Api.v1.Facades
         private readonly ICommandHandler<PropertyOffer_CreateCommand> _propertyOfferCreateCommandHandler;
         private readonly IQueryHandler<PropertyOffer_GetAllQuery, IEnumerable<PropertyOffer>> _propertyOfferGetAllCommandHandler;
         private readonly IQueryHandler<PropertyOffer_GetUserOffersQuery, IEnumerable<PropertyOffer>> _propertyOfferGetUserOffersQueryHandler;
-        private readonly IQueryHandler<PropertyOffer_GetQuery, PropertyOffer> _propertyOfferGetQueryHandler; 
+        private readonly IQueryHandler<PropertyOffer_GetQuery, PropertyOffer> _propertyOfferGetQueryHandler;
 
-        public PropertyOfferFacade(ICurrentUserService currentUserService, ICommandHandler<PropertyOffer_CreateCommand> propertyOfferCreateCommandHandler, IQueryHandler<PropertyOffer_GetAllQuery, IEnumerable<PropertyOffer>> propertyOfferGetAllCommandHandler, IQueryHandler<PropertyOffer_GetUserOffersQuery, IEnumerable<PropertyOffer>> propertyOfferGetUserOffersQueryHandler, IQueryHandler<PropertyOffer_GetQuery, PropertyOffer> propertyOfferGetQueryHandler)
+        public PropertyOfferFacade(
+            ICurrentUserService currentUserService,
+            ICommandHandler<PropertyOffer_CreateCommand> propertyOfferCreateCommandHandler,
+            IQueryHandler<Offer_GetAllQuery, IEnumerable<PropertyOffer>> propertyOfferGetAllCommandHandler,
+            IQueryHandler<PropertyOffer_GetUserOffersQuery, IEnumerable<PropertyOffer>> propertyOfferGetUserOffersQueryHandler,
+            IQueryHandler<PropertyOffer_GetQuery, PropertyOffer> propertyOfferGetQueryHandler)
         {
             _propertyOfferCreateCommandHandler = propertyOfferCreateCommandHandler;
             _propertyOfferGetAllCommandHandler = propertyOfferGetAllCommandHandler;

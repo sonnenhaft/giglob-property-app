@@ -9,7 +9,7 @@ namespace ApiVersioningModule.Swagger
     {
         public void Apply(SwaggerDocument swaggerDoc, SchemaRegistry schemaRegistry, IApiExplorer apiExplorer)
         {
-            if(swaggerDoc.paths.Any(x => !x.Key.Contains("{version}") && !Regex.IsMatch(x.Key, "^/v[0-9]{1,2}")))
+            if (swaggerDoc.paths.Any(x => !x.Key.Contains("{version}") && !Regex.IsMatch(x.Key, "^/v[0-9]{1,2}")))
             {
                 swaggerDoc.paths = swaggerDoc.paths.Where(x => x.Key.Contains("{version}") || Regex.IsMatch(x.Key, "^/v[0-9]{1,2}"))
                                              .ToDictionary(x => x.Key, x => x.Value);

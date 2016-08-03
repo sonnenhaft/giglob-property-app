@@ -7,7 +7,7 @@ using Domain.Repositories;
 
 namespace Domain.Persistence.EntityFramework.Repositories.Implementation
 {
-    public class EntityFrameworkRepository<TEntity, TId>: IRepository<TEntity, TId>
+    public class EntityFrameworkRepository<TEntity, TId> : IRepository<TEntity, TId>
         where TEntity : class, IAggregateRootEntity<TId>
     {
         protected DbContext DbContext;
@@ -20,13 +20,13 @@ namespace Domain.Persistence.EntityFramework.Repositories.Implementation
         public void Add(TEntity entity)
         {
             DbContext.Set<TEntity>()
-                      .Add(entity);
+                     .Add(entity);
         }
 
         public TEntity Get(TId id)
         {
             return DbContext.Set<TEntity>()
-                             .Find(id);
+                            .Find(id);
         }
 
         public IQueryable<TEntity> GetAll()
@@ -37,7 +37,7 @@ namespace Domain.Persistence.EntityFramework.Repositories.Implementation
         public void Remove(TEntity entity)
         {
             DbContext.Set<TEntity>()
-                      .Remove(entity);
+                     .Remove(entity);
         }
 
         public void SaveChanges()
@@ -47,13 +47,14 @@ namespace Domain.Persistence.EntityFramework.Repositories.Implementation
 
         public bool IsExists(TId id)
         {
-            var parameterExpr = Expression.Parameter(typeof(TEntity));
+            var parameterExpr = Expression.Parameter(typeof (TEntity));
             var idPropExpr = Expression.Property(parameterExpr, "Id");
-            var idExpr = Expression.Constant(id, typeof(TId));
+            var idExpr = Expression.Constant(id, typeof (TId));
             var eqExpr = Expression.Equal(idPropExpr, idExpr);
             var expr = Expression.Lambda<Func<TEntity, bool>>(eqExpr, parameterExpr);
 
-            return GetAll().Any(expr);
+            return GetAll()
+                .Any(expr);
         }
     }
 }

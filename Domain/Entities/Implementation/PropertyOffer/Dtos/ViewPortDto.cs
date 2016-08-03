@@ -23,22 +23,22 @@
         public double LeftBottomLon { get; set; }
 
         /// <summary>
-        /// Верхная правая точка широты
+        ///     Верхная правая точка широты
         /// </summary>
         public double RightTopLat { get; set; }
 
         /// <summary>
-        /// Верхная правая точка долготы
+        ///     Верхная правая точка долготы
         /// </summary>
         public double RightTopLon { get; set; }
 
         /// <summary>
-        /// Нижняя правая точка широты
+        ///     Нижняя правая точка широты
         /// </summary>
         public double RightBottomLat { get; set; }
 
         /// <summary>
-        /// Нижняя правая точка долготы
+        ///     Нижняя правая точка долготы
         /// </summary>
         public double RightBottomLon { get; set; }
     }

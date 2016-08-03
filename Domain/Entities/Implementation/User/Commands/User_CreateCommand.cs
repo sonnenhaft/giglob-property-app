@@ -3,7 +3,7 @@ using Domain.Entities.User.Services;
 
 namespace Domain.Entities.User.Implementation.Commands
 {
-    public class User_CreateCommand: ICommand
+    public class User_CreateCommand : ICommand
     {
         public User_CreateCommand(string email, string password)
         {
@@ -18,7 +18,7 @@ namespace Domain.Entities.User.Implementation.Commands
         public long Id { get; set; }
     }
 
-    public class User_CreateCommandHandler: ICommandHandler<User_CreateCommand>
+    public class User_CreateCommandHandler : ICommandHandler<User_CreateCommand>
     {
         private readonly IUserAuthorizationService _userAuthorizationService;
 

@@ -4,7 +4,7 @@ using Elmah;
 
 namespace Client.Api.Elmah
 {
-    public class ElmahExceptionLogger: ExceptionLogger
+    public class ElmahExceptionLogger : ExceptionLogger
     {
         public override void Log(ExceptionLoggerContext context)
         {

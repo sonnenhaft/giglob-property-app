@@ -2,12 +2,11 @@
 using Client.Api.v1.Models.Constants;
 using Domain.Entities.User.Implementation.Queries;
 using FluentValidation;
-using FluentValidation.Results;
 using SimpleInjector;
 
 namespace Client.Api.v1.Models.Models.User.Validators
 {
-    public class UserRegisterRequestModelValidator: AbstractValidator<UserRegisterRequestModel>
+    public class UserRegisterRequestModelValidator : AbstractValidator<UserRegisterRequestModel>
     {
         public UserRegisterRequestModelValidator(Container container)
         {
@@ -19,7 +18,9 @@ namespace Client.Api.v1.Models.Models.User.Validators
                 .WithMessage("Некорректный адрес электронной почты")
                 .Must(x => x.Length <= 64)
                 .WithMessage("Максимальная длина - 64 символа")
-                .Must(x => !container.GetInstance<User_CheckUserIsExistsByEmailQueryHandler>().Handle(new User_CheckUserIsExistsByEmailQuery(x)))
+                .Must(
+                    x => !container.GetInstance<User_CheckUserIsExistsByEmailQueryHandler>()
+                                   .Handle(new User_CheckUserIsExistsByEmailQuery(x)))
                 .WithMessage("Введенная почта уже зарегистрирована в системе");
 
             RuleFor(x => x.Password)

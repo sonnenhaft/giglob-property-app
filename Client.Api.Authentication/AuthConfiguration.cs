@@ -14,23 +14,23 @@ namespace Client.Api.Authentication
         static AuthConfiguration()
         {
             OAuthOptions = new OAuthAuthorizationServerOptions
-            {
-                TokenEndpointPath = new PathString("/token"),
-                AuthenticationType = DefaultAuthenticationTypes.ExternalBearer,
-                AllowInsecureHttp = true,
-                AccessTokenExpireTimeSpan = TimeSpan.FromDays(15),
-                AuthorizeEndpointPath = new PathString("/api/user/externalsignin")
-            };
+                           {
+                               TokenEndpointPath = new PathString("/token"),
+                               AuthenticationType = DefaultAuthenticationTypes.ExternalBearer,
+                               AllowInsecureHttp = true,
+                               AccessTokenExpireTimeSpan = TimeSpan.FromDays(15),
+                               AuthorizeEndpointPath = new PathString("/api/user/externalsignin")
+                           };
 
             OAuthBearerOptions = new OAuthBearerAuthenticationOptions
-            {
-                AuthenticationType = OAuthOptions.AuthenticationType,
-                AuthenticationMode = OAuthOptions.AuthenticationMode,
-                AccessTokenFormat = OAuthOptions.AccessTokenFormat,
-                AccessTokenProvider = OAuthOptions.AccessTokenProvider,
-                Description = OAuthOptions.Description,
-                SystemClock = OAuthOptions.SystemClock
-            };
+                                 {
+                                     AuthenticationType = OAuthOptions.AuthenticationType,
+                                     AuthenticationMode = OAuthOptions.AuthenticationMode,
+                                     AccessTokenFormat = OAuthOptions.AccessTokenFormat,
+                                     AccessTokenProvider = OAuthOptions.AccessTokenProvider,
+                                     Description = OAuthOptions.Description,
+                                     SystemClock = OAuthOptions.SystemClock
+                                 };
         }
 
         public static void ConfigureAuth(IAppBuilder app)

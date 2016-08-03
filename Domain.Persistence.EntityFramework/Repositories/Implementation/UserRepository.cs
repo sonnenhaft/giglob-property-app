@@ -7,7 +7,7 @@ using Domain.Repositories;
 
 namespace Domain.Persistence.EntityFramework.Repositories.Implementation
 {
-    public class UserRepository: EntityFrameworkRepository<User, long>, IUserRepository
+    public class UserRepository : EntityFrameworkRepository<User, long>, IUserRepository
     {
         public UserRepository(DbContext dbContext) : base(dbContext) { }
 
@@ -35,7 +35,8 @@ namespace Domain.Persistence.EntityFramework.Repositories.Implementation
 
         private string PrepareEmail(string email)
         {
-            return Regex.Replace(email, @"^([^@]+)", x => x.Groups[1].Value.Replace(".", "")).ToLower();
+            return Regex.Replace(email, @"^([^@]+)", x => x.Groups[1].Value.Replace(".", ""))
+                        .ToLower();
         }
     }
 }

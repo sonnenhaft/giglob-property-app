@@ -1,8 +1,9 @@
 ﻿using System.Web.Routing;
+using Client.Web;
 using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartup(typeof(Client.Web.Startup))]
+[assembly: OwinStartup(typeof (Startup))]
 
 namespace Client.Web
 {

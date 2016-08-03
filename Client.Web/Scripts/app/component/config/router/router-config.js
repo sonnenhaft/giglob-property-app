@@ -15,7 +15,8 @@ angular.module('component.config.router', ['ui.router','api.httpRequestIntercept
                     return !(EXCLUDED_DEMO_ROUTERS.indexOf(moduleName) + 1);
                 });
             }
-        }).state('demo-example', {
+        })
+        .state('demo-example', {
             url: '/demo/:name',
             templateUrl: function ($stateParams){
                 var name = $stateParams.name;
@@ -60,7 +61,8 @@ angular.module('component.config.router', ['ui.router','api.httpRequestIntercept
                     }]
                 }
             }
-        }).state('apartment-detail', {
+        })
+        .state('apartment-detail', {
             url: "/apartment-detail/:id",
             templateUrl: 'app/component/config/router/apartment-detail.html',
 
@@ -74,8 +76,9 @@ angular.module('component.config.router', ['ui.router','api.httpRequestIntercept
                     return getProperty.query({id:$stateParams.id}).$promise.then(function(res){
                         return res
                     },function(err){
-                        $state.go('home');
+                        $state.go('search');
                     })
+                }
             },
             controller: function($scope, $stateParams,getInfo) {
                 $scope.testData = getInfo;
@@ -89,20 +92,7 @@ angular.module('component.config.router', ['ui.router','api.httpRequestIntercept
                 $scope.testData.coords = {geometry:{type:'Point',coordinates:[$scope.testData.lon,$scope.testData.lat]}};
                 console.log($scope.testData);
             }
-
-        }
     })
-        
-        // @TODO delete if unneeded
-        /*.state('apartment-detail', {
-            url: "/apartment-detail/:id",
-            templateUrl: 'app/component/config/router/apartment-detail.html',
-            controller: function($scope, $filter, $state, $stateParams, flatListFactory) {
-                var flats = flatListFactory.getAllFlats();
-                $scope.flat = $filter('filter')(flats, {id: $state.params.id}, true)[0];
->>>>>>> a2295f6ed42cd24f519ff48da3566fc8e4718450
-            }
-        })*/
         .state('search', {
             url: '/',
             templateUrl: 'app/component/config/router/search-page.html',
@@ -153,10 +143,12 @@ angular.module('component.config.router', ['ui.router','api.httpRequestIntercept
         .state('my-ads', {
             url: "/my-ads",
             templateUrl: 'app/component/config/router/my-ads-page.html',
-            controller: function($scope) {
-                $scope.tabModel = {
-                    location: {}
-                }
+            controller: function($scope, $element, $timeout, $resource, $rootScope) {
+                /*var User = $resource('http://api.giglob.local/v1/propertyoffer/myoffers');
+                User.get({'api_key':$rootScope.accessToken})
+                    .$promise.then(function(user) {
+                        console.log(user);
+                    });*/
             }
         })
         .state('add-ads', {
@@ -171,7 +163,7 @@ angular.module('component.config.router', ['ui.router','api.httpRequestIntercept
                     'Четырхкомнатная',
                     'Пятикомнатная',
                     'Шестикомнатная'
-                ]
+                ];
                 var defaultModel = {
                     sale: {
                         location: {

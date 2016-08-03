@@ -4,7 +4,7 @@ using SimpleInjector;
 
 namespace Client.Api.v1.Models.Models.User.Validators
 {
-    public class UserConfirmEmailRequestModelValidator: AbstractValidator<UserConfiirmEmailRequestModel>
+    public class UserConfirmEmailRequestModelValidator : AbstractValidator<UserConfiirmEmailRequestModel>
     {
         public UserConfirmEmailRequestModelValidator(Container container)
         {
@@ -12,8 +12,9 @@ namespace Client.Api.v1.Models.Models.User.Validators
                 .Cascade(CascadeMode.StopOnFirstFailure)
                 .NotEmpty()
                 .WithMessage("Токен не указан")
-                .Must(x => container.GetInstance<User_CheckUserIsExistsByEmailConfirmationTokenQueryHandler>()
-                                    .Handle(new User_CheckUserIsExistsByEmailConfirmationTokenQuery(x)))
+                .Must(
+                    x => container.GetInstance<User_CheckUserIsExistsByEmailConfirmationTokenQueryHandler>()
+                                  .Handle(new User_CheckUserIsExistsByEmailConfirmationTokenQuery(x)))
                 .WithMessage("Недействительный токен");
         }
     }

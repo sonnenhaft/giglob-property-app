@@ -6,7 +6,7 @@ using Domain.Storages;
 
 namespace Domain.Entities.Implementation.File.Commands
 {
-    public class File_CreateCommand: ICommand
+    public class File_CreateCommand : ICommand
     {
         public Guid Id { get; set; }
 
@@ -22,7 +22,7 @@ namespace Domain.Entities.Implementation.File.Commands
         }
     }
 
-    public class File_CreateCommandHandler: ICommandHandler<File_CreateCommand>
+    public class File_CreateCommandHandler : ICommandHandler<File_CreateCommand>
     {
         private readonly IFileStorage _fileStorage;
         private readonly IFileRepository _fileRepository;

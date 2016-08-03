@@ -11,7 +11,7 @@ namespace Client.Api.v1.Facades
     public class FileFacade
     {
         private readonly ICommandHandler<File_CreateCommand> _fileCreateCommandHandler;
-        private readonly IQueryHandler<File_GetQuery, File> _fileGetQueryHandler; 
+        private readonly IQueryHandler<File_GetQuery, File> _fileGetQueryHandler;
 
         public FileFacade(ICommandHandler<File_CreateCommand> fileCreateCommandHandler, IQueryHandler<File_GetQuery, File> fileGetQueryHandler)
         {

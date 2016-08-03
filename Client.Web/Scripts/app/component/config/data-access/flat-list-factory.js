@@ -1,6 +1,4 @@
-angular.module('component.config.data-access', []).factory('flatListFactory', function($resource) {
-
-
+angular.module('component.config.data-access').factory('flatListFactory', function($resource) {
         return $resource('http://api.giglob.local/v1/propertyoffer/getall',
             null,
             {
@@ -9,5 +7,4 @@ angular.module('component.config.data-access', []).factory('flatListFactory', fu
                     isArray : true
                 }
             });
-
 });

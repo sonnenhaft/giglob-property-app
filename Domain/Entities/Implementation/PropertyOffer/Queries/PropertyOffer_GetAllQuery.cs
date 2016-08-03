@@ -3,51 +3,50 @@ using System.Data.Entity.Spatial;
 using System.Globalization;
 using System.Linq;
 using CQRS;
-using Domain.Repositories;
 using Domain.Entities.Implementation.PropertyOffer.Dtos;
-
+using Domain.Repositories;
 
 namespace Domain.Entities.Implementation.PropertyOffer.Queries
 {
     public class PropertyOffer_GetAllQuery : IQuery
     {
         /// <summary>
-        /// Ид города
+        ///     Ид города
         /// </summary>
         public long CityId { get; set; }
 
         /// <summary>
-        /// Кол-во записей для получения
+        ///     Кол-во записей для получения
         /// </summary>
         public int Take { get; set; }
 
         /// <summary>
-        /// Кол-во эл-в для пропуска
+        ///     Кол-во эл-в для пропуска
         /// </summary>
         public int Skip { get; set; }
 
         /// <summary>
-        /// Стоимость От
+        ///     Стоимость От
         /// </summary>
         public decimal? MinCost { get; set; }
 
         /// <summary>
-        /// Стоимость До
+        ///     Стоимость До
         /// </summary>
         public decimal? MaxCost { get; set; }
 
         /// <summary>
-        /// Кол-во комнат
+        ///     Кол-во комнат
         /// </summary>
         public int? RoomCount { get; set; }
 
         /// <summary>
-        /// Ид метро
+        ///     Ид метро
         /// </summary>
         public IEnumerable<long> MetroIds { get; set; }
 
         /// <summary>
-        /// Видимая область на карте
+        ///     Видимая область на карте
         /// </summary>
         public ViewPortDto ViewPort { get; set; }
     }
@@ -64,7 +63,8 @@ namespace Domain.Entities.Implementation.PropertyOffer.Queries
 
         public IEnumerable<PropertyOffer> Handle(PropertyOffer_GetAllQuery reqQuery)
         {
-            var query = _offerRepository.GetAll().Where(x => x.LocalPropertyOfferData.CityId == reqQuery.CityId);
+            var query = _offerRepository.GetAll()
+                                        .Where(x => x.LocalPropertyOfferData.CityId == reqQuery.CityId);
 
             if (reqQuery.MaxCost.HasValue)
             {
@@ -88,25 +88,28 @@ namespace Domain.Entities.Implementation.PropertyOffer.Queries
 
             if (reqQuery.ViewPort != null)
             {
-                var polygonStringDefinition = string.Format(CultureInfo.InvariantCulture.NumberFormat, "POLYGON(({0} {1}, {2} {3}, {4} {5}, {6} {7}, {8} {9}))",
-                 reqQuery.ViewPort.LeftTopLon, 
-                 reqQuery.ViewPort.LeftTopLat,
-                 reqQuery.ViewPort.LeftBottomLon,
-                 reqQuery.ViewPort.LeftBottomLat,
-                 reqQuery.ViewPort.RightBottomLon,
-                 reqQuery.ViewPort.RightBottomLat,
-                 reqQuery.ViewPort.RightTopLon,
-                 reqQuery.ViewPort.RightTopLat,
-                 reqQuery.ViewPort.LeftTopLon,
-                 reqQuery.ViewPort.LeftTopLat);
+                var polygonStringDefinition = string.Format(
+                    CultureInfo.InvariantCulture.NumberFormat,
+                    "POLYGON(({0} {1}, {2} {3}, {4} {5}, {6} {7}, {8} {9}))",
+                    reqQuery.ViewPort.LeftTopLon,
+                    reqQuery.ViewPort.LeftTopLat,
+                    reqQuery.ViewPort.LeftBottomLon,
+                    reqQuery.ViewPort.LeftBottomLat,
+                    reqQuery.ViewPort.RightBottomLon,
+                    reqQuery.ViewPort.RightBottomLat,
+                    reqQuery.ViewPort.RightTopLon,
+                    reqQuery.ViewPort.RightTopLat,
+                    reqQuery.ViewPort.LeftTopLon,
+                    reqQuery.ViewPort.LeftTopLat);
 
                 DbGeography polygon = DbGeography.PolygonFromText(polygonStringDefinition, CoordinateSystemId);
                 query = query.Where(x => x.Location.Intersects(polygon));
             }
 
             List<PropertyOffer> offers = query.OrderByDescending(x => x.CreationDate)
-                .Skip(reqQuery.Skip)
-                .Take(reqQuery.Take).ToList();
+                                              .Skip(reqQuery.Skip)
+                                              .Take(reqQuery.Take)
+                                              .ToList();
 
             return offers;
         }

@@ -3,22 +3,22 @@
 namespace Client.Api.v1.Models.Models.City
 {
     /// <summary>
-    /// Модель города
+    ///     Модель города
     /// </summary>
     public class CityModel
     {
         /// <summary>
-        /// Идентификатор
+        ///     Идентификатор
         /// </summary>
         public long Id { get; set; }
 
         /// <summary>
-        /// Название
+        ///     Название
         /// </summary>
         public string Name { get; set; }
 
         /// <summary>
-        /// Районы
+        ///     Районы
         /// </summary>
         public IEnumerable<DistrictModel> Districts { get; set; }
     }

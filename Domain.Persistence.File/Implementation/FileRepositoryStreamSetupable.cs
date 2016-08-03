@@ -5,7 +5,7 @@ using Domain.Storages;
 
 namespace Domain.Persistence.File.Implementation
 {
-    public class FileRepositoryStreamSetupable: IFileRepository
+    public class FileRepositoryStreamSetupable : IFileRepository
     {
         private readonly IFileStorage _fileStorage;
         private readonly IFileRepository _decoratee;

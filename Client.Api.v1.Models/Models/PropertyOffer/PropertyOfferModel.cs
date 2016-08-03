@@ -8,117 +8,117 @@ namespace Client.Api.v1.Models.Models.PropertyOffer
     public class PropertyOfferModel
     {
         /// <summary>
-        /// Идентификатор города, если есть
+        ///     Идентификатор города, если есть
         /// </summary>
         public long? CityId { get; set; }
 
         /// <summary>
-        /// Название города
+        ///     Название города
         /// </summary>
         public string CityName { get; set; }
 
         /// <summary>
-        /// Идентификатор
+        ///     Идентификатор
         /// </summary>
         public long Id { get; set; }
 
         /// <summary>
-        /// Идентификатор района, если есть
+        ///     Идентификатор района, если есть
         /// </summary>
         public long? DistrictId { get; set; }
 
         /// <summary>
-        /// Название района
+        ///     Название района
         /// </summary>
         public string DistrictName { get; set; }
 
         /// <summary>
-        /// Стоимость
+        ///     Стоимость
         /// </summary>
         public decimal Cost { get; set; }
 
         /// <summary>
-        /// Комментарий
+        ///     Комментарий
         /// </summary>
         public string Comment { get; set; }
 
         /// <summary>
-        /// Дата публикации
+        ///     Дата публикации
         /// </summary>
         public DateTime CreationDate { get; set; }
 
         /// <summary>
-        /// Тип предложения. Sale = 1, Exchange = 2
+        ///     Тип предложения. Sale = 1, Exchange = 2
         /// </summary>
         public OfferType OfferType { get; set; }
 
         /// <summary>
-        /// Широта
+        ///     Широта
         /// </summary>
         public double Lat { get; set; }
 
         /// <summary>
-        /// Долгота
+        ///     Долгота
         /// </summary>
         public double Lon { get; set; }
 
         /// <summary>
-        /// Название улицы
+        ///     Название улицы
         /// </summary>
         public string StreetName { get; set; }
 
         /// <summary>
-        /// Номер дома
+        ///     Номер дома
         /// </summary>
         public string HouseNumber { get; set; }
 
         /// <summary>
-        /// Корпус дома
+        ///     Корпус дома
         /// </summary>
         public string Housing { get; set; }
 
         /// <summary>
-        /// Номер квартиры
+        ///     Номер квартиры
         /// </summary>
         public string ApartmentNumber { get; set; }
 
         /// <summary>
-        /// Этаж
+        ///     Этаж
         /// </summary>
         public int Level { get; set; }
 
         /// <summary>
-        /// Площадь недвижимости
+        ///     Площадь недвижимости
         /// </summary>
         public double AreaSize { get; set; }
 
         /// <summary>
-        /// Количество комнат
+        ///     Количество комнат
         /// </summary>
         public int RoomCount { get; set; }
 
         /// <summary>
-        /// Владелец загрузил документы на объект недвижимости
+        ///     Владелец загрузил документы на объект недвижимости
         /// </summary>
         public bool OwnerUploadedDocuments { get; set; }
 
         /// <summary>
-        /// Тип недвижимости. NewBuilding = 1, Resale = 2
+        ///     Тип недвижимости. NewBuilding = 1, Resale = 2
         /// </summary>
         public PropertyType Type { get; set; }
 
         /// <summary>
-        /// Категория здания. Flat = 1, House = 2
+        ///     Категория здания. Flat = 1, House = 2
         /// </summary>
         public BuildingCategory? BuildingCategory { get; set; }
 
         /// <summary>
-        /// Ближайшая станция метро
+        ///     Ближайшая станция метро
         /// </summary>
         public NearMetroStationModel NearMetroStationModel { get; set; }
 
         /// <summary>
-        /// Ссылки на фотографии объекта недвижимости
+        ///     Ссылки на фотографии объекта недвижимости
         /// </summary>
         public IEnumerable<string> PhotoUrls { get; set; }
     }

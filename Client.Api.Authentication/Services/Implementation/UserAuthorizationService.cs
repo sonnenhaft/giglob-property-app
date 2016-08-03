@@ -3,7 +3,6 @@ using System.Security.Claims;
 using System.Text.RegularExpressions;
 using Domain.Entities.User.Implementation;
 using Domain.Entities.User.Services;
-using Domain.Repositories;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Infrastructure;
 using Microsoft.Owin.Security;
@@ -24,10 +23,10 @@ namespace Client.Api.Authentication.Services
             email = PrepareEmail(email);
 
             var user = new User
-            {
-                Email = email,
-                UserName = email
-            };
+                       {
+                           Email = email,
+                           UserName = email
+                       };
 
             _userManager.Create(user, password);
 
@@ -68,7 +67,8 @@ namespace Client.Api.Authentication.Services
 
         private string PrepareEmail(string email)
         {
-            return Regex.Replace(email, @"^([^@]+)", x => x.Groups[1].Value.Replace(".", "")).ToLower();
+            return Regex.Replace(email, @"^([^@]+)", x => x.Groups[1].Value.Replace(".", ""))
+                        .ToLower();
         }
     }
 }
