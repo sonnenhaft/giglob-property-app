@@ -8,8 +8,9 @@
            ng-class="{added: isAdded}"
              ngf-drop="uploadFiles($files, true, 'doc')"
              ngf-select="uploadFiles($files, true, 'doc')"
-             ngf-validate="{size: {max: '5MB'}, pattern: '.doc,.pdf,.docx,.pages,.txt'}"
-             ngf-max-files="20"
+             ngf-accept="'application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/x-iwork-pages-sffpages,application/vnd.oasis.opendocument.formula'"
+             ngf-validate="{size: {max: '5MB'}, pattern: '.doc,.pdf,.docx,.pages'}"
+             ngf-max-files="2"
              multiple="true">
             <div class="download-list-uploader-text">
                 <div class="download-description">
