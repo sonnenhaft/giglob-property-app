@@ -98,9 +98,9 @@ angular.module('component.config.router', ['ui.router','api.httpRequestIntercept
             url: '/',
             templateUrl: 'app/component/config/router/search-page.html',
             resolve : {
-              getFlats : function($state,$stateParams,flatListFactory,localStorageService){
+              getFlats : function($state, $stateParams, flatListFactory, localStorageService){
                   var params = {
-                      cityId : localStorageService.get('city') ? localStorageService.get('city').id :1,
+                      cityId : localStorageService.get('city') ? localStorageService.get('city').id : 1,
                       take: 10
                   };
                   return  flatListFactory.query(params).$promise.then(function(res){
@@ -108,20 +108,20 @@ angular.module('component.config.router', ['ui.router','api.httpRequestIntercept
                   });
               }
             },
-            controller: function($scope, $stateParams, getFlats,localStorageService,currentServer) {
+            controller: function($scope, $stateParams, getFlats, localStorageService, currentServer) {
                 $scope.params = {
-                    cityId :  localStorageService.get('city') ? localStorageService.get('city').id :1,
+                    cityId :  localStorageService.get('city') ? localStorageService.get('city').id : 1,
                     take: 10000
                 };
                 $scope.flats = getFlats;
-                var server = currentServer +'/file/get/';
+                var server = currentServer + '/file/get/';
                 $scope.flats.forEach(function(flat) {
                     var obj = [];
                     for (var i = 0; i < flat.photos.length; i++) {
                         obj.push({'src': server + flat.photos[i]})
                     }
                     flat.images = obj;
-                    flat.coords = {geometry:{type:'Point',coordinates:[flat.lon,flat.lat]}};
+                    flat.coords = {geometry:{type:'Point', coordinates:[flat.lon,flat.lat]}};
                 });
                 var markersMapping = {};
                 $scope.filteredFlats = $scope.flats;
@@ -130,14 +130,13 @@ angular.module('component.config.router', ['ui.router','api.httpRequestIntercept
                     markersMapping[id] = $target;
                 };
 
-                $scope.setHighlighting = function(id, value, $e) {
-                    var marker = $e ? $e.get('target') : markersMapping[id];
+                $scope.setHighlighting = function(id, value) {
                     var image = value ? 'map-icon-hover' : 'map-icon-small';
 
                     $scope.filteredFlats.find(function(flat) {
                         return flat.id === id;
                     }).highlighted = value;
-                    marker.options.set('iconImageHref', '../content/images/' + image + '.svg');
+                    markersMapping[id].options.set('iconImageHref', '../content/images/' + image + '.svg');
                 };
             }
         })
@@ -145,7 +144,7 @@ angular.module('component.config.router', ['ui.router','api.httpRequestIntercept
             url: "/my-ads",
             templateUrl: 'app/component/config/router/my-ads-page.html',
             controller: function($scope, $stateParams, giglobApi) {
-                giglobApi.getMyOffers({type:'propertyoffer',action: 'myoffers'}, null, function (data) {
+                giglobApi.getMyOffers({type: 'propertyoffer', action: 'myoffers'}, null, function (data) {
                     $scope.myOffers = data;
                 });
             }
@@ -226,7 +225,7 @@ angular.module('component.config.router', ['ui.router','api.httpRequestIntercept
                         }
                     };
 
-                    giglobApi.save({type:'propertyoffer',action: 'create'}, $scope.model.postData, function () {
+                    giglobApi.save({type: 'propertyoffer', action: 'create'}, $scope.model.postData, function () {
                         $scope.model = {};
                         $scope.model = angular.copy(defaultModel);
                         closeAllTabs();

@@ -1,14 +1,14 @@
-angular.module("api.resource", ["ngResource","api.currentServer"])
+angular.module("api.resource", ['ngResource', 'api.currentServer'])
     .factory('giglobApi', function ($resource, currentServer, $rootScope) {
         return  $resource(currentServer+'/v1/:type/:action',  null, {
             'getMyOffers': {
                 method: 'GET',
                 isArray: true,
-                headers: {'Authorization':'Bearer ' + $rootScope.accessToken}
+                headers: {'Authorization': 'Bearer ' + $rootScope.accessToken}
             },
             'save': {
                 method: 'POST',
-                headers: {'Authorization':'Bearer ' + $rootScope.accessToken}
+                headers: {'Authorization': 'Bearer ' + $rootScope.accessToken}
             }
         });
     })
@@ -44,7 +44,7 @@ angular.module("api.resource", ["ngResource","api.currentServer"])
                 'save': {method: 'POST'},
                 'query': {
                     method: 'GET',
-                    headers: {'Authorization':'Bearer ' + $rootScope.accessToken},
+                    headers: {'Authorization': 'Bearer ' + $rootScope.accessToken},
                     params: {id: '@id'}
                 }
             });
