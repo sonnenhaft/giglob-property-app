@@ -184,6 +184,15 @@ angular.module('component.config.router', ['ui.router','api.httpRequestIntercept
                 };
                 $scope.model = angular.copy(defaultModel);
 
+                function closeAllTabs () {
+                    addFlatTabs.sale.forEach(function (item) {
+                        item.active = false;
+                    });
+                    addFlatTabs.swap.forEach(function (item) {
+                        item.active = false;
+                    });
+                }
+
                 $scope.$on('addFormSubmitted', function(event, type) {
                     var offerTypeName = type === 0 ? 'sale' : 'swap';
 
@@ -220,9 +229,11 @@ angular.module('component.config.router', ['ui.router','api.httpRequestIntercept
                     giglobApi.save({type:'propertyoffer',action: 'create'}, $scope.model.postData, function () {
                         $scope.model = {};
                         $scope.model = angular.copy(defaultModel);
+                        closeAllTabs();
+                        $scope.$emit('objectSaved');
                     });
 
-                })
+                });
             }
         })
         .state('confirm', {
