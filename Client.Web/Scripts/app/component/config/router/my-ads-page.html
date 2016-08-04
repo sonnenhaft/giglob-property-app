@@ -1,80 +1,19 @@
 <div class="my-flats">
-    <a class="flat-card" ui-sref="apartment-detail({id: 1})">
+    <a class="flat-card" ui-sref="apartment-detail({id: flat.id})" ng-repeat="flat in myOffers track by flat.id" ng-class="">
         <div class="card_image">
-            <img src="../../content/images/flat/1.jpeg" alt="">
+            <img ng-src="{{flat.photoUrls[0]}}" alt="">
         </div>
         <div class="card_description">
-            <div class="card-title"  ui-sref="apartment-detail/:id">Однокомнатная квартира</div>
-            <div class="card-info"><span class="metro-label" style="background-color: red"></span> станция Метро,
-                33 м<sup>2</sup>, 5 этаж
+            <div class="card-title"  ui-sref="apartment-detail/:id">{{flat.roomCount}}-комнатная на ул. {{flat.streetName}}</div>
+            <div class="card-info">
+                <span ng-if="flat.nearMetroStationModel"><span class="metro-label" ng-style="{'background-color': '#'+flat.nearMetroStationModel.hexColor}"></span> {{flat.nearMetroStationModel.name}},</span>
+                {{flat.areaSize}} м<sup>2</sup>, {{flat.level}} этаж
             </div>
-            <div class="card-price">1 000 000 &#8381;</div>
-        </div>
-    </a>
-    <a class="flat-card" ui-sref="apartment-detail({id: 1})">
-        <div class="card_image">
-            <img src="../../content/images/flat/1.jpeg" alt="">
-        </div>
-        <div class="card_description">
-            <div class="card-title"  ui-sref="apartment-detail/:id">Однокомнатная квартира</div>
-            <div class="card-info"><span class="metro-label" style="background-color: red"></span> станция Метро,
-                33 м<sup>2</sup>, 5 этаж
-            </div>
-            <div class="card-price">1 000 000 &#8381;</div>
-        </div>
-    </a>
-    <a class="flat-card" ui-sref="apartment-detail({id: 1})">
-        <div class="card_image">
-            <img src="../../content/images/flat/1.jpeg" alt="">
-        </div>
-        <div class="card_description">
-            <div class="card-title"  ui-sref="apartment-detail/:id">Однокомнатная квартира</div>
-            <div class="card-info"><span class="metro-label" style="background-color: red"></span> станция Метро,
-                33 м<sup>2</sup>, 5 этаж
-            </div>
-            <div class="card-price">1 000 000 &#8381;</div>
-        </div>
-    </a>
-    <a class="flat-card" ui-sref="apartment-detail({id: 1})">
-        <div class="card_image">
-            <img src="../../content/images/flat/1.jpeg" alt="">
-        </div>
-        <div class="card_description">
-            <div class="card-title"  ui-sref="apartment-detail/:id">Однокомнатная квартира</div>
-            <div class="card-info"><span class="metro-label" style="background-color: red"></span> станция Метро,
-                33 м<sup>2</sup>, 5 этаж
-            </div>
-            <div class="card-price">1 000 000 &#8381;</div>
-        </div>
-    </a>
-    <a class="flat-card" ui-sref="apartment-detail({id: 1})">
-        <div class="card_image">
-            <img src="../../content/images/flat/1.jpeg" alt="">
-        </div>
-        <div class="card_description">
-            <div class="card-title"  ui-sref="apartment-detail/:id">Однокомнатная квартира</div>
-            <div class="card-info"><span class="metro-label" style="background-color: red"></span> станция Метро,
-                33 м<sup>2</sup>, 5 этаж
-            </div>
-            <div class="card-price">1 000 000 &#8381;</div>
-        </div>
-    </a>
-    <a class="flat-card" ui-sref="apartment-detail({id: 1})">
-        <div class="card_image">
-            <img src="../../content/images/flat/1.jpeg" alt="">
-        </div>
-        <div class="card_description">
-            <div class="card-title"  ui-sref="apartment-detail/:id">Однокомнатная квартира</div>
-            <div class="card-info"><span class="metro-label" style="background-color: red"></span> станция Метро,
-                33 м<sup>2</sup>, 5 этаж
-            </div>
-            <div class="card-price">1 000 000 &#8381;</div>
+            <div class="card-price">{{flat.cost | currency : '₽' : ' '}}</div>
         </div>
     </a>
 
     <div class="add_flat_ctrl" ui-sref="add-ads">
         <div class="title">Добавить объект</div>
     </div>
-
-
 </div>

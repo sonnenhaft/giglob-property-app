@@ -74,7 +74,7 @@ angular.module('component.tab-section', ['ngSanitize', 'ngFileUpload']).directiv
                 $scope.selectCity();
             });
 
-            $scope.uploadFiles = function (files, getMeta) {
+            $scope.uploadFiles = function (files, getMeta, type) {
                 if (files && files.length) {
                     files.forEach(function(file) {
                         if(getMeta) {
@@ -87,8 +87,13 @@ angular.module('component.tab-section', ['ngSanitize', 'ngFileUpload']).directiv
                             headers: {'Authorization': 'Bearer ' + $rootScope.accessToken}
                         });
                         upload.then(function(file) {
-                            $scope.model.push(file.data);
-                            $scope.setCoverModel();
+                            if (type == 'doc'){
+                                $scope.model.push(file.data.id);
+                            }else{
+                                $scope.model.push(file.data);
+                                $scope.setCoverModel();
+                            }
+
                         }, function(resp) {
                         }, function(evt) {
                         });
@@ -119,14 +124,17 @@ angular.module('component.tab-section', ['ngSanitize', 'ngFileUpload']).directiv
 
             };
 
-            $scope.removeFile = function (index, skipCover) {
+            $scope.removeFile = function (index, skipCover, type) {
                 $scope.uploadedFiles.splice(index, 1);
                 $scope.model.splice(index, 1);
 
                 if($scope.lastCoverIndex === index) {
                     index = $scope.uploadedFiles.length <= index ? index - 1 : index;
                     $scope.setCover(index, true);
-                    $scope.setCoverModel(index, true);
+                    if (type != 'doc'){
+                        $scope.setCoverModel(index, true);
+                    }
+
                 }
             };
 

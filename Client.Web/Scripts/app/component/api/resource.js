@@ -3,6 +3,7 @@ angular.module("api.resource", ["ngResource","api.currentServer"])
         return  $resource(currentServer+'/v1/:type/:action',  null, {
             'getMyOffers': {
                 method: 'GET',
+                isArray: true,
                 headers: {'Authorization':'Bearer ' + $rootScope.accessToken}
             },
             'save': {
