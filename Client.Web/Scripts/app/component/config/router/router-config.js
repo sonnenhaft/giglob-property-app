@@ -98,20 +98,44 @@ angular.module('component.config.router', ['ui.router','api.httpRequestIntercept
             url: '/',
             templateUrl: 'app/component/config/router/search-page.html',
             resolve : {
-              getFlats : function($state,$stateParams,flatListFactory,localStorageService){
+              getFlats : function($state,$stateParams,flatListFactory,localStorageService,currentServer){
+                  var server = currentServer +'/file/get/';
                   var params = {
                       cityId : localStorageService.get('city') ? localStorageService.get('city').id :1,
-                      take: 10
+                      take: 6
                   };
                   return  flatListFactory.query(params).$promise.then(function(res){
+                      res.forEach(function(flat){
+                          var obj = [];
+                          for (var i = 0; i < flat.photos.length; i++) {
+                              obj.push({'src': server + flat.photos[i]})
+                          }
+                          flat.images = obj;
+                          flat.coords = {geometry:{type:'Point',coordinates:[flat.lon,flat.lat]}};
+                      });
                       return res;
                   });
               }
             },
-            controller: function($scope, $stateParams, getFlats,localStorageService,currentServer) {
+            controller: function($scope, $stateParams, flatListFactory,getFlats,localStorageService,currentServer) {
                 $scope.params = {
                     cityId :  localStorageService.get('city') ? localStorageService.get('city').id :1,
-                    take: 10000
+                    take: 6,
+                    skip:0
+                };
+                $scope.getFlats = function(params){
+                    flatListFactory.query(params).$promise.then(function(res){
+                        res.forEach(function(flat){
+                            var obj = [];
+                            for (var i = 0; i < flat.photos.length; i++) {
+                                obj.push({'src': server + flat.photos[i]})
+                            }
+                            flat.images = obj;
+                            flat.coords = {geometry:{type:'Point',coordinates:[flat.lon,flat.lat]}};
+                        });
+                        $scope.flats.push(res);
+                        $scope.filteredFlats = $scope.flats;
+                    });
                 };
                 $scope.flats = getFlats;
                 var server = currentServer +'/file/get/';
@@ -123,13 +147,38 @@ angular.module('component.config.router', ['ui.router','api.httpRequestIntercept
                     flat.images = obj;
                     flat.coords = {geometry:{type:'Point',coordinates:[flat.lon,flat.lat]}};
                 });
+                window.onscroll = function(ev) {
+                    if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight) {
+                        $scope.params.take+=6;
+                        $scope.params.skip+=6;
+                        $scope.getFlats($scope.params);
+                    }
+                };
                 var markersMapping = {};
                 $scope.filteredFlats = $scope.flats;
 
                 $scope.addMarkerToMapping = function(id, $target) {
                     markersMapping[id] = $target;
                 };
-
+                $scope.sendCoords = function(event){
+                    var coords = event.get('newBounds');
+                    console.log(coords);
+                    $scope.params={
+                        cityId :  localStorageService.get('city') ? localStorageService.get('city').id :1,
+                        take: 10000,
+                        'viewPort.leftBottomLon':coords[0][0],
+                        'viewPort.leftBottomLat' : coords[0][1],
+                        'viewPort.rightTopLon' : coords[1][0],
+                        'viewPort.rightTopLat' : coords[1][1],
+                        'viewPort.rightBottomLon' :coords[0][0],
+                        'viewPort.rightBottomLat' : coords[1][1],
+                        'viewPort.leftTopLon' : coords[1][0],
+                        'viewPort.leftTopLat' : coords[0][1]
+                    };
+                    flatListFactory.query($scope.params).$promise.then(function(res){
+                        console.log(res);
+                    })
+                };
                 $scope.setHighlighting = function(id, value, $e) {
                     var marker = $e ? $e.get('target') : markersMapping[id];
                     var image = value ? 'map-icon-hover' : 'map-icon-small';
