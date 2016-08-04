@@ -1,7 +1,7 @@
 ﻿using CQRS;
 using Domain.Repositories;
 
-namespace Domain.Entities.User.Implementation.Queries
+namespace Domain.Entities.Implementation.User.Queries
 {
     public class User_GetQuery : IQuery
     {

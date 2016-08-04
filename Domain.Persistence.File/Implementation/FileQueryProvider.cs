@@ -44,7 +44,7 @@ namespace Domain.Persistence.File.Implementation
         {
             var result = _decoratee.Execute(expression);
 
-            if (result.GetType() == typeof (Entities.Implementation.File.File))
+            if (result is Entities.Implementation.File.File)
             {
                 var file = result as Entities.Implementation.File.File;
                 file.Stream = _fileStorage.Get(file.VirtualPath);
@@ -69,6 +69,8 @@ namespace Domain.Persistence.File.Implementation
             if (typeof (TResult) == typeof (Entities.Implementation.File.File))
             {
                 var file = result as Entities.Implementation.File.File;
+
+                // ReSharper disable once PossibleNullReferenceException
                 file.Stream = _fileStorage.Get(file.VirtualPath);
             }
             else if (typeof (IEnumerable<Entities.Implementation.File.File>).IsAssignableFrom(typeof (TResult)))

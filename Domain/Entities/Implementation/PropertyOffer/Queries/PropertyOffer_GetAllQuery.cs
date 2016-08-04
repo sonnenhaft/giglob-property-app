@@ -73,7 +73,7 @@ namespace Domain.Entities.Implementation.PropertyOffer.Queries
                                         .Include(offer => offer.LocalPropertyOfferData.NearMetroStations.Select(station => station.MetroBranchStation.MetroBranch))
                                         .Include(offer => offer.LocalPropertyOfferData.NearMetroStations.Select(station => station.MetroBranchStation.MetroStation))
                                         .Include(offer => offer.ExternalPropertyOfferData)
-                                        .Include(offer => offer.PropertyExchangeDetails);;
+                                        .Include(offer => offer.PropertyExchangeDetails);
 
             if (reqQuery.MaxCost.HasValue)
             {

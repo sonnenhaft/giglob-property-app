@@ -1,4 +1,4 @@
-﻿using Domain.Entities.User.Implementation.Queries;
+﻿using Domain.Entities.Implementation.User.Queries;
 using FluentValidation;
 using SimpleInjector;
 

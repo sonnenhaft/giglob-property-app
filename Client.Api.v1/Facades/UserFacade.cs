@@ -3,10 +3,10 @@ using System.Configuration;
 using Client.Api.v1.Models.Models.User;
 using Client.Api.v1.Models.Models.User.Mail;
 using CQRS;
-using Domain.Entities.User.Implementation;
-using Domain.Entities.User.Implementation.Commands;
-using Domain.Entities.User.Implementation.Queries;
-using Domain.Entities.User.Services;
+using Domain.Entities.Implementation.User;
+using Domain.Entities.Implementation.User.Commands;
+using Domain.Entities.Implementation.User.Queries;
+using Domain.Entities.Implementation.User.Services;
 using FluentMailer.Interfaces;
 
 namespace Client.Api.v1.Facades

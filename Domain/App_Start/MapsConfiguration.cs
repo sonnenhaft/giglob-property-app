@@ -23,10 +23,7 @@ namespace Domain
                   .Member(
                       offer => offer.Location,
                       context => DbGeography.FromText(
-                          string.Format(
-                              "POINT({0} {1})",
-                              context.Lon.ToString(CultureInfo.InvariantCulture),
-                              context.Lat.ToString(CultureInfo.InvariantCulture))))
+                          $"POINT({context.Lon.ToString(CultureInfo.InvariantCulture)} {context.Lat.ToString(CultureInfo.InvariantCulture)})"))
                   .Member(offer => offer.LocalPropertyOfferData.OwnerId, context => currentUserService.GetId())
                   .Member(offer => offer.LocalPropertyOfferData.CityId, context => context.CityId)
                   .Member(offer => offer.LocalPropertyOfferData.DistrictId, context => context.DistrictId)

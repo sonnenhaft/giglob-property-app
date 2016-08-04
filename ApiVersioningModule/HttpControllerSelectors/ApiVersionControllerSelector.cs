@@ -55,13 +55,11 @@ namespace ApiVersioningModule.HttpControllerSelectors
         {
             var currVersionAssembly = ResolveApiVersionAssembly(_apiVersionAssemblies.Value, version);
 
-            var type = currVersionAssembly != null
-                ? currVersionAssembly.GetTypes()
-                                     .FirstOrDefault(
-                                         x =>
-                                             !x.IsAbstract && typeof (IHttpController).IsAssignableFrom(x)
-                                             && string.Equals(x.Name, string.Format("{0}{1}", controllerName, ControllerSuffix), StringComparison.InvariantCultureIgnoreCase))
-                : null;
+            var type = currVersionAssembly?.GetTypes()
+                                           .FirstOrDefault(
+                                               x =>
+                                                   !x.IsAbstract && typeof (IHttpController).IsAssignableFrom(x)
+                                                   && string.Equals(x.Name, $"{controllerName}{ControllerSuffix}", StringComparison.InvariantCultureIgnoreCase));
 
             return type;
         }

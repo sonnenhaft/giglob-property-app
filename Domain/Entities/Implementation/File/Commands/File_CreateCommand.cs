@@ -36,9 +36,11 @@ namespace Domain.Entities.Implementation.File.Commands
         public void Handle(File_CreateCommand command)
         {
             var extension = command.FileName.Contains(".") ? command.FileName.Substring(command.FileName.LastIndexOf(".") + 1) : "";
-            var file = new File(command.Id);
-            file.Extension = extension;
-            file.Name = command.FileName;
+            var file = new File(command.Id)
+                       {
+                           Extension = extension,
+                           Name = command.FileName
+                       };
             var fileName = $"{file.Id}.{extension}";
             var virtualPath = $"~/storage/{fileName}";
 

@@ -134,29 +134,7 @@ namespace Client.Api.v1.Models.Models.PropertyOffer.Validators
             long? districtId,
             IEnumerable<long> nearMetroBranchStationIds)
         {
-            if (!cityIsExistsQueryHandler.Handle(new City_IsExistsQuery(cityId)))
-            {
-                return new ValidationFailure("CityId", "Некорректный город");
-            }
-
-            var cityDistricts = cityGetAllDistrictsQuery.Handle(new City_GetAllDistrictsQuery(cityId));
-            var cityHasDistricts = cityDistricts.Any();
-
-            if (cityHasDistricts && !districtId.HasValue)
-            {
-                return new ValidationFailure("DistrictId", "Укажите район");
-            }
-
-            if (!cityHasDistricts && districtId.HasValue)
-            {
-                return new ValidationFailure("DistrictId", "Некорректный район");
-            }
-
-            if (districtId.HasValue && !cityDistricts.Select(x => x.Id)
-                                                     .Contains(districtId.Value))
-            {
-                return new ValidationFailure("DistrictId", "Некорректный район");
-            }
+            ValidateCityIdDistrictId(cityIsExistsQueryHandler, cityGetAllDistrictsQuery, cityId, districtId);
 
             if (!cityContainsMetroBranchStationsWithGivenIdsQueryHandler.Handle(new City_ContainsMetroBranchStationsWithGivenIdsQuery(cityId, nearMetroBranchStationIds)))
             {
@@ -177,7 +155,8 @@ namespace Client.Api.v1.Models.Models.PropertyOffer.Validators
                 return new ValidationFailure("CityId", "Некорректный город");
             }
 
-            var cityDistricts = cityGetAllDistrictsQuery.Handle(new City_GetAllDistrictsQuery(cityId));
+            var cityDistricts = cityGetAllDistrictsQuery.Handle(new City_GetAllDistrictsQuery(cityId))
+                                                        .ToList();
             var cityHasDistricts = cityDistricts.Any();
 
             if (cityHasDistricts && !districtId.HasValue)
@@ -185,13 +164,8 @@ namespace Client.Api.v1.Models.Models.PropertyOffer.Validators
                 return new ValidationFailure("DistrictId", "Укажите район");
             }
 
-            if (!cityHasDistricts && districtId.HasValue)
-            {
-                return new ValidationFailure("DistrictId", "Некорректный район");
-            }
-
-            if (districtId.HasValue && !cityDistricts.Select(x => x.Id)
-                                                     .Contains(districtId.Value))
+            if (districtId.HasValue && (!cityHasDistricts || !cityDistricts.Select(x => x.Id)
+                                                                           .Contains(districtId.Value)))
             {
                 return new ValidationFailure("DistrictId", "Некорректный район");
             }

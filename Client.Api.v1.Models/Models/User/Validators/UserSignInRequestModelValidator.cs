@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 using Client.Api.v1.Models.Constants;
-using Domain.Entities.User.Implementation.Queries;
+using Domain.Entities.Implementation.User.Queries;
 using FluentValidation;
 using FluentValidation.Results;
 using SimpleInjector;

@@ -10,10 +10,7 @@ namespace Client.Api.Elmah
         {
             var signal = ErrorSignal.FromCurrentContext();
 
-            if (signal != null)
-            {
-                signal.Raise(context.Exception, HttpContext.Current);
-            }
+            signal?.Raise(context.Exception, HttpContext.Current);
         }
     }
 }

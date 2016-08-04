@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Web.Http;
 using System.Web.Http.Description;
 using Newtonsoft.Json;
@@ -18,48 +19,34 @@ namespace SwaggerResponseExampleModule.OperationFilters
             {
                 var response = operation.responses["200"];
 
-                var provider = (ISwaggerResponseExampleProvider) Activator.CreateInstance(attr.ExampleType);
-
                 if (response != null)
                 {
-                    AddExample(response, attr.HttpStatusCode, attr.ExampleType);
+                    response.examples = AddExample(response.examples as Dictionary<string, Dictionary<string, object>>, attr.HttpStatusCode, attr.ExampleType);
                 }
             }
         }
 
-        private void AddExample(Response response, int statusCode, Type providerType)
+        private object AddExample(Dictionary<string, Dictionary<string, object>> examples, int statusCode, Type providerType)
         {
-            if (response.examples == null)
+            if (examples == null)
             {
-                response.examples = new Dictionary<string, Dictionary<string, object>>();
+                examples = new Dictionary<string, Dictionary<string, object>>();
             }
 
-            var exDic = response.examples as Dictionary<string, Dictionary<string, object>>;
-
-            if (!exDic.ContainsKey("application/json"))
+            if (!examples.ContainsKey("application/json"))
             {
-                exDic.Add("application/json", new Dictionary<string, object>());
+                examples.Add("application/json", new Dictionary<string, object>());
             }
 
-            var statusCodeString = string.Format("Response example for status code {0}", statusCode);
+            var statusCodeString = $"Response example for status code {statusCode}";
 
-            if (!exDic["application/json"].ContainsKey(statusCodeString))
+            if (!examples["application/json"].ContainsKey(statusCodeString))
             {
-                exDic["application/json"].Add(statusCodeString, null);
+                examples["application/json"].Add(statusCodeString, null);
             }
 
             var provider = (ISwaggerResponseExampleProvider) Activator.CreateInstance(providerType);
-            exDic["application/json"][statusCodeString] = ApplySerializerSettings(provider.GetResponseExample());
-        }
-
-        private static object FormatAsJson(ISwaggerResponseExampleProvider provider)
-        {
-            var examples = new Dictionary<string, object>
-                           {
-                               {
-                                   "application/json", ApplySerializerSettings(provider.GetResponseExample())
-                               }
-                           };
+            examples["application/json"][statusCodeString] = ApplySerializerSettings(provider.GetResponseExample());
 
             return examples;
         }
