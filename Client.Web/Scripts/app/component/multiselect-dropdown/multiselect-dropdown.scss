@@ -48,6 +48,8 @@
         visibility: hidden;
         color: #ccc;
         float: right;
+        position: absolute;
+        right: 0;
       }
       &:hover {
         .list-item-remove {
@@ -57,6 +59,14 @@
       }
     }
   }
+
+  .dropdown-selected-list {
+    .list-item {
+      position: relative;
+      display: inline-block;
+    }
+  }
+
   .dropdown-list {
     position: absolute;
     width: 100%;
