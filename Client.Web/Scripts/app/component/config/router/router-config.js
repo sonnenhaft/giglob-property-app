@@ -100,7 +100,7 @@ angular.module('component.config.router', ['ui.router','api.httpRequestIntercept
             resolve : {
               getFlats : function($state,$stateParams,flatListFactory,localStorageService){
                   var params = {
-                      cityId : localStorageService.get('city').id,
+                      cityId : localStorageService.get('city') ? localStorageService.get('city').id :1,
                       take: 10
                   };
                   return  flatListFactory.query(params).$promise.then(function(res){
@@ -110,7 +110,7 @@ angular.module('component.config.router', ['ui.router','api.httpRequestIntercept
             },
             controller: function($scope, $stateParams, getFlats,localStorageService,currentServer) {
                 $scope.params = {
-                    cityId : localStorageService.get('city').id,
+                    cityId :  localStorageService.get('city') ? localStorageService.get('city').id :1,
                     take: 10000
                 };
                 $scope.flats = getFlats;
