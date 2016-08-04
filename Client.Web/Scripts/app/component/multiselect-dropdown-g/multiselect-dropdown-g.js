@@ -13,7 +13,7 @@ angular.module('component.multiselect-dropdown-g', []).directive('multiselectDro
                 if(!$scope.cityId) {
                     return;
                 }
-                metroStations.get({id: $scope.cityId, stationName: metroName}, function (stations) {
+                metroStations.query({id: $scope.cityId, stationName: metroName}, function (stations) {
                     $scope.filteredItems  = stations;
                 });
             };

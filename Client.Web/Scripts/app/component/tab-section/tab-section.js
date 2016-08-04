@@ -88,6 +88,7 @@ angular.module('component.tab-section', ['ngSanitize', 'ngFileUpload']).directiv
                         });
                         upload.then(function(file) {
                             $scope.model.push(file.data);
+                            $scope.setCoverModel();
                         }, function(resp) {
                         }, function(evt) {
                         });
@@ -109,6 +110,15 @@ angular.module('component.tab-section', ['ngSanitize', 'ngFileUpload']).directiv
 
             };
 
+            $scope.setCoverModel = function (index, skip) {
+                if ($scope.model.length){
+                    !skip && ($scope.model[$scope.lastCoverIndex || 0].isCover = false);
+                    $scope.lastCoverIndex = index || 0;
+                    $scope.model[$scope.lastCoverIndex].isCover = true;
+                }
+
+            };
+
             $scope.removeFile = function (index, skipCover) {
                 $scope.uploadedFiles.splice(index, 1);
                 $scope.model.splice(index, 1);
@@ -116,6 +126,7 @@ angular.module('component.tab-section', ['ngSanitize', 'ngFileUpload']).directiv
                 if($scope.lastCoverIndex === index) {
                     index = $scope.uploadedFiles.length <= index ? index - 1 : index;
                     $scope.setCover(index, true);
+                    $scope.setCoverModel(index, true);
                 }
             };
 

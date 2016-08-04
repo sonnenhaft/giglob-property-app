@@ -1,7 +1,7 @@
 angular.module('component.flat-filter', [
     'component.multiselect-list',
     'component.multiselect-dropdown'
-]).directive('flatFilter', function($filter) {
+]).directive('flatFilter', function($filter, localStorageService) {
     return {
         replace: true,
         templateUrl: 'app/component/flat-filter/flat-filter.html',
