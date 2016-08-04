@@ -10,7 +10,7 @@ namespace ApiVersioningModule.Swagger
             return Regex.IsMatch(
                 apiDescription.ActionDescriptor.ControllerDescriptor.ControllerType.Assembly.GetName()
                               .Name,
-                string.Format("api.v{0}", targetApiVersion),
+                $"api.v{targetApiVersion}",
                 RegexOptions.CultureInvariant | RegexOptions.IgnoreCase);
         }
     }
