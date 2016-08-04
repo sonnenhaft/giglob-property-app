@@ -235,11 +235,6 @@
                 Стоимость "До"
             </summary>
         </member>
-        <member name="P:Client.Api.v1.Models.Models.PropertyOffer.PropertyOfferGetAllOffersRequestModel.CityId">
-            <summary>
-                Ид города
-            </summary>
-        </member>
         <member name="P:Client.Api.v1.Models.Models.PropertyOffer.PropertyOfferGetAllOffersRequestModel.Skip">
             <summary>
                 Кол-во эл-в для пропуска

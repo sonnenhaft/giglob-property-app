@@ -5,11 +5,6 @@ namespace Client.Api.v1.Models.Models.PropertyOffer
     public class PropertyOfferGetAllOffersRequestModel
     {
         /// <summary>
-        ///     Ид города
-        /// </summary>
-        public long CityId { get; set; }
-
-        /// <summary>
         ///     Кол-во эл-в для пропуска
         /// </summary>
         public int Skip { get; set; }
