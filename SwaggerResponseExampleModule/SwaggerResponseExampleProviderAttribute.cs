@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.Contracts;
 using System.Net;
 using SwaggerResponseExampleModule.Providers.Interfaces;
 using Swashbuckle.Swagger.Annotations;
@@ -13,11 +14,15 @@ namespace SwaggerResponseExampleModule
 
         public SwaggerResponseExampleProviderAttribute(int statusCode, Type exampleType, bool useObjectAsResponseType = false) : base(statusCode, null, null)
         {
+            Contract.Requires(typeof(ISwaggerResponseExampleProvider).IsAssignableFrom(exampleType));
+
             Type responseType = typeof (object);
 
             if (!useObjectAsResponseType)
             {
                 var exampleProvider = Activator.CreateInstance(exampleType) as ISwaggerResponseExampleProvider;
+
+                // ReSharper disable once PossibleNullReferenceException
                 var example = exampleProvider.GetResponseExample();
                 responseType = example.GetType();
             }
