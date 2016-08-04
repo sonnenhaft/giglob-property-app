@@ -41,7 +41,7 @@ namespace SwaggerResponseExampleModule.OperationFilters
                 exDic.Add("application/json", new Dictionary<string, object>());
             }
 
-            var statusCodeString = string.Format("Response example for status code {0}", statusCode);
+            var statusCodeString = $"Response example for status code {statusCode}";
 
             if (!exDic["application/json"].ContainsKey(statusCodeString))
             {
