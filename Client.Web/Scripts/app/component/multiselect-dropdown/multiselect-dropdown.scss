@@ -38,6 +38,7 @@
       padding: 2px 15px;
       cursor: pointer;
       text-indent: -11px;
+      white-space: nowrap;
       .mid-dot {
         font-size: 30px;
         line-height: 1px;
@@ -60,6 +61,8 @@
     position: absolute;
     width: 100%;
     top: 29px;
+    overflow-x: hidden;
+    max-height: 400px;
     border: 1px solid #ccc;
     border-top: 0;
     z-index: 100;
