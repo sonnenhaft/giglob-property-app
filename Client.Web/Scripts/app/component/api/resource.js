@@ -1,6 +1,19 @@
 angular.module("api.resource", ["ngResource","api.currentServer"])
-    .factory('giglobApi', function ($resource,currentServer) {
-        return  $resource(currentServer+'/v1/:type/:action', {});
+    .factory('giglobApi', function ($resource, currentServer, $rootScope) {
+        return  $resource(currentServer+'/v1/:type/:action',  null, {
+            'getMyOffers': {
+                method: 'GET',
+                isArray: true,
+                headers: {'Authorization':'Bearer ' + $rootScope.accessToken}
+            },
+            'save': {
+                method: 'POST',
+                headers: {'Authorization':'Bearer ' + $rootScope.accessToken}
+            }
+        });
+    })
+    .factory('metroStations', function ($resource, currentServer) {
+        return  $resource(currentServer + '/v1/city/metrostations/:id', {});
     })
     .factory("register", function ($resource,currentServer) {
 

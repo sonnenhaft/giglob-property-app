@@ -15,7 +15,7 @@
   }
   .download-list {
     padding: 20px 0;
-    .file-list {
+    &.file-list {
       width: 305px;
     }
     .download-list-file-wrapper {
@@ -101,7 +101,7 @@
         top: 7px;
         right: 7px;
         opacity: 0.2;
-        background: #000 url('../../../content/images/delete-doc.svg') no-repeat center center;
+        background: #000 url('../../../images/delete-doc.svg') no-repeat center center;
         transition: opacity 0.3s ease;
         &:hover {
           opacity: 0.35;
@@ -147,7 +147,7 @@
       display: inline-block;
       width: 296px;
       height: 300px;
-      background: url('../../../content/images/plus-icon.svg') no-repeat 50% 40%;
+      background: url('../../../images/plus-icon.svg') no-repeat 50% 40%;
       border-radius: 5px;
       border: solid 1px #d4dee4;
       cursor: pointer;

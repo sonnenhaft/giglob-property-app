@@ -1,5 +1,5 @@
 angular.module('component.config.router', ['ui.router','api.httpRequestInterceptor','api.resource','component.config.data-access'])
-    .config(function($stateProvider, $urlRouterProvider, EXCLUDED_DEMO_ROUTERS,$locationProvider) {
+    .config(function($stateProvider, $urlRouterProvider, EXCLUDED_DEMO_ROUTERS, $locationProvider) {
     $urlRouterProvider.otherwise("/");
 
     $stateProvider
@@ -144,12 +144,10 @@ angular.module('component.config.router', ['ui.router','api.httpRequestIntercept
         .state('my-ads', {
             url: "/my-ads",
             templateUrl: 'app/component/config/router/my-ads-page.html',
-            controller: function($scope, $element, $timeout, $resource, $rootScope) {
-                /*var User = $resource('http://api.giglob.local/v1/propertyoffer/myoffers');
-                User.get({'api_key':$rootScope.accessToken})
-                    .$promise.then(function(user) {
-                        console.log(user);
-                    });*/
+            controller: function($scope, $stateParams, giglobApi) {
+                giglobApi.getMyOffers({type:'propertyoffer',action: 'myoffers'}, null, function (data) {
+                    $scope.myOffers = data;
+                });
             }
         })
         .state('add-ads', {
@@ -207,8 +205,8 @@ angular.module('component.config.router', ['ui.router','api.httpRequestIntercept
                         comment: $scope.model[offerTypeName].details.comment,
                         offerType: type,
                         nearMetroBranchStationIds: $scope.model[offerTypeName].location.selectedStations.map(function (item){return item.id}),
-                        photoes: [],
-                        documents: [],
+                        photoes: $scope.model[offerTypeName].photos,
+                        documents: $scope.model[offerTypeName].docs,
                         exchangeDetails: {
                             "cityId": 0,
                             "districtId": 0,

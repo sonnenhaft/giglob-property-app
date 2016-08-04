@@ -1,4 +1,4 @@
-angular.module('component.tab-section', ['ngSanitize', 'ngFileUpload']).directive('tabSection', function(addFlatTabs, cityDistrictFactory, $rootScope) {
+angular.module('component.tab-section', ['ngSanitize', 'ngFileUpload']).directive('tabSection', function(addFlatTabs, cityDistrictFactory, $rootScope, Upload, currentServer) {
     return {
         restrict: 'E',
         scope: {
@@ -10,6 +10,8 @@ angular.module('component.tab-section', ['ngSanitize', 'ngFileUpload']).directiv
         link: function($scope, $element) {
             $scope.addFlatTabs = addFlatTabs;
             $scope.uploadedFiles = [];
+            $scope.model = [];
+
             $scope.data = {
                 cities: [],
                 districts: [],
@@ -49,7 +51,7 @@ angular.module('component.tab-section', ['ngSanitize', 'ngFileUpload']).directiv
 
                 var dist = $scope.cityDistricts[$scope.model.city.id].districts;
 
-                var distList = []
+                var distList = [];
                 for(var item in dist){
                     distList.push({
                         id: item,
@@ -58,7 +60,7 @@ angular.module('component.tab-section', ['ngSanitize', 'ngFileUpload']).directiv
 
                 }
                 $scope.data.districts= distList;
-            }
+            };
 
             cityDistrictFactory.get().$promise.then(function(data){
                 $scope.cityDistricts = data;
@@ -72,13 +74,29 @@ angular.module('component.tab-section', ['ngSanitize', 'ngFileUpload']).directiv
                 $scope.selectCity();
             });
 
-            $scope.uploadFiles = function (files, getMeta) {
+            $scope.uploadFiles = function (files, getMeta, type) {
                 if (files && files.length) {
                     files.forEach(function(file) {
                         if(getMeta) {
                             file.formattedName = file.name.split('.')[0];
                             file.format = file.name.split('.').pop().toUpperCase();
                         }
+                        var upload = Upload.upload({
+                            url: currentServer + '/v1/file/upload',
+                            data: {File: file, FileName: file.name},
+                            headers: {'Authorization': 'Bearer ' + $rootScope.accessToken}
+                        });
+                        upload.then(function(file) {
+                            if (type == 'doc'){
+                                $scope.model.push(file.data.id);
+                            }else{
+                                $scope.model.push(file.data);
+                                $scope.setCoverModel();
+                            }
+
+                        }, function(resp) {
+                        }, function(evt) {
+                        });
                         $scope.uploadedFiles.push(file);
                     });
                     !$scope.lastCoverIndex && $scope.setCover();
@@ -97,14 +115,29 @@ angular.module('component.tab-section', ['ngSanitize', 'ngFileUpload']).directiv
 
             };
 
-            $scope.removeFile = function (index, skipCover) {
+            $scope.setCoverModel = function (index, skip) {
+                if ($scope.model.length){
+                    !skip && ($scope.model[$scope.lastCoverIndex || 0].isCover = false);
+                    $scope.lastCoverIndex = index || 0;
+                    $scope.model[$scope.lastCoverIndex].isCover = true;
+                }
+
+            };
+
+            $scope.removeFile = function (index, skipCover, type) {
                 $scope.uploadedFiles.splice(index, 1);
+                $scope.model.splice(index, 1);
 
                 if($scope.lastCoverIndex === index) {
                     index = $scope.uploadedFiles.length <= index ? index - 1 : index;
                     $scope.setCover(index, true);
+                    if (type != 'doc'){
+                        $scope.setCoverModel(index, true);
+                    }
+
                 }
             };
+
             $scope.saveAndGoTo = function (currentTab, tabCollectionType) {
                 var currentTabIndex = addFlatTabs[tabCollectionType].indexOf(currentTab);
                 var nexTabIndex = currentTabIndex + 1;

@@ -1,7 +1,7 @@
 angular.module('component.flat-filter', [
     'component.multiselect-list',
     'component.multiselect-dropdown'
-]).directive('flatFilter', function($filter) {
+]).directive('flatFilter', function($filter, localStorageService) {
     return {
         replace: true,
         templateUrl: 'app/component/flat-filter/flat-filter.html',
@@ -12,6 +12,7 @@ angular.module('component.flat-filter', [
         link: function ($scope) {
             $scope.selectedRoomCount = [];
             $scope.selectedStations = [];
+            $scope.cityId = localStorageService.get('city').id;
             $scope.price = {
                 min: '',
                 max: ''

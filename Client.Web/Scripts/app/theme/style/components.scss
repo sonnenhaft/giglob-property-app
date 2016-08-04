@@ -70,6 +70,17 @@ html,body {
   position: relative;
   overflow: hidden;
 
+  .metro-label {
+    background-color: rgb(1, 158, 224);
+    display: inline-block;
+    width: 4px;
+    height: 4px;
+    vertical-align: middle;
+    margin-top: -3px;
+    margin-right: 3px;
+    border-radius: 2px;
+  }
+
   .card_image {
     width: 100%;
     height: 207px;
