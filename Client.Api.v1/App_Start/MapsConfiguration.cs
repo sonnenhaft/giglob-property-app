@@ -12,7 +12,7 @@ using Domain.Entities.Implementation.PropertyOffer;
 using Domain.Entities.Implementation.PropertyOffer.Dtos;
 using Domain.Entities.Implementation.PropertyOffer.Enums;
 using Domain.Entities.Implementation.PropertyOffer.Queries;
-using Domain.Entities.User.Implementation;
+using Domain.Entities.Implementation.User;
 using ExpressMapper;
 
 namespace Client.Api.v1
