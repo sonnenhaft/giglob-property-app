@@ -11,7 +11,7 @@ namespace Client.Api.Tools.Implementation
 
             if (virtualPath.StartsWith("/"))
             {
-                virtualPath = string.Format("~{0}", virtualPath);
+                virtualPath = $"~{virtualPath}";
             }
 
             if (virtualPath.StartsWith("~"))
