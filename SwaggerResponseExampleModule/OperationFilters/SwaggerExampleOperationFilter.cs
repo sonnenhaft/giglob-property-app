@@ -21,12 +21,12 @@ namespace SwaggerResponseExampleModule.OperationFilters
 
                 if (response != null)
                 {
-                    AddExample(response.examples as Dictionary<string, Dictionary<string, object>>, attr.HttpStatusCode, attr.ExampleType);
+                    response.examples = AddExample(response.examples as Dictionary<string, Dictionary<string, object>>, attr.HttpStatusCode, attr.ExampleType);
                 }
             }
         }
 
-        private void AddExample(Dictionary<string, Dictionary<string, object>> examples, int statusCode, Type providerType)
+        private object AddExample(Dictionary<string, Dictionary<string, object>> examples, int statusCode, Type providerType)
         {
             if (examples == null)
             {
@@ -47,16 +47,6 @@ namespace SwaggerResponseExampleModule.OperationFilters
 
             var provider = (ISwaggerResponseExampleProvider) Activator.CreateInstance(providerType);
             examples["application/json"][statusCodeString] = ApplySerializerSettings(provider.GetResponseExample());
-        }
-
-        private static object FormatAsJson(ISwaggerResponseExampleProvider provider)
-        {
-            var examples = new Dictionary<string, object>
-                           {
-                               {
-                                   "application/json", ApplySerializerSettings(provider.GetResponseExample())
-                               }
-                           };
 
             return examples;
         }
