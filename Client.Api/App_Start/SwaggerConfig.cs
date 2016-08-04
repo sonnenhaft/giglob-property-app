@@ -1,8 +1,8 @@
 using System;
 using System.Web.Http;
-using Api.Common.Models.Swagger.OperationFilters;
 using ApiVersioningModule.Swagger;
 using Client.Api;
+using Client.Api.Swagger.OperationFilters;
 using SwaggerResponseExampleModule.OperationFilters;
 using Swashbuckle.Application;
 using WebActivatorEx;

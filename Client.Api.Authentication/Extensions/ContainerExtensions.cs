@@ -2,8 +2,8 @@
 using Client.Api.Authentication.Services.Implementation;
 using Client.Api.Authentication.Stores;
 using Domain.Authentication;
-using Domain.Entities.User.Implementation;
-using Domain.Entities.User.Services;
+using Domain.Entities.Implementation.User;
+using Domain.Entities.Implementation.User.Services;
 using Microsoft.AspNet.Identity;
 using SimpleInjector;
 

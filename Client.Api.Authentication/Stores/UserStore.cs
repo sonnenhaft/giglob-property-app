@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
-using Domain.Entities.User.Implementation;
+using Domain.Entities.Implementation.User;
 using Domain.Repositories;
 using Microsoft.AspNet.Identity;
 

@@ -1,7 +1,7 @@
 ﻿using CQRS;
-using Domain.Entities.User.Services;
+using Domain.Entities.Implementation.User.Services;
 
-namespace Domain.Entities.User.Implementation.Queries
+namespace Domain.Entities.Implementation.User.Queries
 {
     public class User_CheckUserIsExistsByUsernameAndPasswordQuery : IQuery
     {
