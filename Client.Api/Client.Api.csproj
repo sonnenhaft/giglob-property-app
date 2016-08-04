@@ -184,6 +184,7 @@
   <ItemGroup>
     <Compile Include="ActionFilters\ModelStateValidatorActionFilter.cs" />
     <Compile Include="ActionFilters\NotFoundActionFilter.cs" />
+    <Compile Include="ActionFilters\TimeoutActionFilter.cs" />
     <Compile Include="App_Start\ElmahConfiguration.cs" />
     <Compile Include="App_Start\FluentValidationConfiguration.cs" />
     <Compile Include="App_Start\JsonFormatterConfiguration.cs" />

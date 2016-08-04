@@ -31,6 +31,7 @@ namespace Client.Api
             GlobalConfiguration.Configuration.EnableCors(new EnableCorsAttribute("*", "*", "*"));
             FluentValidationConfiguration.Configure(GlobalConfiguration.Configuration, container.GetInstance<ModelStateValidatorActionFilter>(), new SimpeInjectorValidatorFactory(container));
             GlobalConfiguration.Configuration.Filters.Add(container.GetInstance<NotFoundActionFilter>());
+            GlobalConfiguration.Configuration.Filters.Add(container.GetInstance<TimeoutActionFilter>());
             MapsConfiguration.Configure(container.GetInstance<ICurrentUserService>());
         }
     }
