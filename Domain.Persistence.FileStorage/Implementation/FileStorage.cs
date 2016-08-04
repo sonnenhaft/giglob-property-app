@@ -28,7 +28,7 @@ namespace Domain.Persistence.FileStorage.Implementation
         public Stream Get(string virtualPath)
         {
             var fullPath = _virtualPathUtility.ConvertToFullPath(virtualPath);
-            var fs = File.Open(fullPath, FileMode.Open, FileAccess.Read, FileShare.None);
+            var fs = new FileStream(fullPath, FileMode.Open, FileAccess.Read, FileShare.Read);
 
             return fs;
         }
