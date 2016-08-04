@@ -37,7 +37,7 @@ namespace Domain.Persistence.FileStorage.Implementation
         {
             var directory = Path.GetDirectoryName(path);
 
-            if (!Directory.Exists(directory))
+            if (directory != null && !Directory.Exists(directory))
             {
                 Directory.CreateDirectory(directory);
             }
