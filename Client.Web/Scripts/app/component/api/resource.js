@@ -1,5 +1,5 @@
 angular.module("api.resource", ["ngResource","api.currentServer"])
-    .factory('giglobApi', function ($resource, currentServer, $rootScope, localStorageService) {
+    .factory('giglobApi', function ($resource, currentServer, $rootScope) {
         return  $resource(currentServer+'/v1/:type/:action',  null, {
             'getMyOffers': {
                 method: 'GET',
@@ -8,7 +8,7 @@ angular.module("api.resource", ["ngResource","api.currentServer"])
             },
             'save': {
                 method: 'POST',
-                headers: {'Authorization':'Bearer ' + localStorageService.get('access-token')}
+                headers: {'Authorization':'Bearer ' + $rootScope.accessToken}
             }
         });
     })
