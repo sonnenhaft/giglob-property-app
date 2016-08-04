@@ -31,7 +31,7 @@ namespace Domain.Persistence.EntityFramework.Migrations
                 codeBase = "//" + codeBase;
             }
 
-            string binDirectory = null;
+            string binDirectory;
 
             try
             {
