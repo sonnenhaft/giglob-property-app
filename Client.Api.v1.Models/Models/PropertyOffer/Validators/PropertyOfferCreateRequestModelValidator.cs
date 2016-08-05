@@ -62,14 +62,6 @@ namespace Client.Api.v1.Models.Models.PropertyOffer.Validators
                 .NotEmpty()
                 .WithMessage("Введите комментарий");
 
-            RuleFor(model => model.Lat)
-                .Must(latitude => latitude >= -90 && latitude <= 90)
-                .WithMessage("Некорректная широта");
-
-            RuleFor(model => model.Lon)
-                .Must(longitude => longitude >= -180 && longitude <= 180)
-                .WithMessage("Некорректная долгота");
-
             Custom(
                 model => ValidateCityIdDistrictIdAndMetroStations(
                     (IQueryHandler<City_IsExistsQuery, bool>) serviceProvider.GetService(typeof (IQueryHandler<City_IsExistsQuery, bool>)),
