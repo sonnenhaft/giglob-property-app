@@ -5,7 +5,6 @@ angular.module('giglob-app', [
     'LocalStorageModule',
     'mm.foundation',
     'templates',
-    'component.config.addFlat',
     'component.config.data-access',
     'component.config.filters',
     'component.config.router',
