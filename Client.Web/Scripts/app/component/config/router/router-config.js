@@ -156,7 +156,7 @@ angular.module('component.config.router', ['ui.router','api.httpRequestIntercept
         .state('my-ads', {
             url: "/my-ads",
             templateUrl: 'app/component/config/router/my-ads-page.html',
-            controller: function($scope, $stateParams, giglobApi) {
+            controller : function($scope, $stateParams, giglobApi) {
                 giglobApi.getMyOffers({type: 'propertyoffer', action: 'myoffers'}, null, function (data) {
                     $scope.myOffers = data;
                 });
