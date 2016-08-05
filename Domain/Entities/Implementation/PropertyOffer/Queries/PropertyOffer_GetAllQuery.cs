@@ -5,6 +5,7 @@ using System.Globalization;
 using System.Linq;
 using CQRS;
 using Domain.Entities.Implementation.PropertyOffer.Dtos;
+using Domain.Entities.Implementation.PropertyOffer.Enums;
 using Domain.Repositories;
 
 namespace Domain.Entities.Implementation.PropertyOffer.Queries
@@ -34,7 +35,7 @@ namespace Domain.Entities.Implementation.PropertyOffer.Queries
         /// <summary>
         ///     Кол-во комнат
         /// </summary>
-        public int? RoomCount { get; set; }
+        public IEnumerable<RoomCount> RoomCount { get; set; }
 
         /// <summary>
         ///     Ид метро
@@ -79,9 +80,13 @@ namespace Domain.Entities.Implementation.PropertyOffer.Queries
                 query = query.Where(x => x.Cost >= reqQuery.MinCost.Value);
             }
 
-            if (reqQuery.RoomCount.HasValue)
+            if (reqQuery.RoomCount.Any())
             {
-                query = query.Where(x => x.RoomCount == reqQuery.RoomCount.Value);
+                List<int> roomsCount = reqQuery.RoomCount.Select(x => (int)x).ToList();
+
+                query = roomsCount.Contains((int)RoomCount.More) ? 
+                    query.Where(x => roomsCount.Contains(x.RoomCount) || x.RoomCount >= 4) : 
+                    query.Where(x => roomsCount.Contains(x.RoomCount));
             }
 
             if (reqQuery.MetroIds != null && reqQuery.MetroIds.Any())
