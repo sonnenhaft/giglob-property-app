@@ -103,28 +103,36 @@ angular.module('component.config.router', ['ui.router','api.httpRequestIntercept
                       cityId : localStorageService.get('city') ? localStorageService.get('city').id : 1,
                       take: 10
                   };
+
                   return flatListFactory.query(params).$promise.then(function(res){
                       return res;
                   });
               }
             },
             controller: function($scope, $stateParams, getFlats, localStorageService, currentServer, flatListFactory) {
-                $scope.$on('applyFilter', function(e, params) {
+                $scope.filteredFlats = [];
+                $scope.flats = [];
+                $scope.$on('applyFilter', function(e, params,flag) {
                     var server = currentServer + '/file/get/';
 
                     flatListFactory.query(params).$promise.then(function(res){
-                        $scope.flats = res;
 
-                        $scope.flats.forEach(function(flat) {
+                    res.forEach(function(flat) {
                             var obj = [];
                             for (var i = 0; i < flat.photos.length; i++) {
                                 obj.push({'src': server + flat.photos[i]})
                             }
                             flat.images = obj;
                             flat.coords = {geometry: {type:'Point', coordinates:[flat.lon,flat.lat]}};
+                            if(!flag){
+                                $scope.flats.push(flat);
+                                $scope.filteredFlats.push(flat);
+                            }
                         });
-
-                        $scope.filteredFlats = $scope.flats;
+                        if(flag){
+                            $scope.flats = angular.copy(res);
+                            $scope.filteredFlats = angular.copy(res);
+                        }
                     });
                 });
 

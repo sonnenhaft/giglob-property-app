@@ -17,11 +17,12 @@ angular.module('component.flat-filter', [
                 min: '',
                 max: ''
             };
-            $scope.roomCount = [{name: '1', value: '1'}, {name: '2', value: '2'}, {name: '3', value: '3'}, {name: '4+', value: '4+'}];
+            $scope.roomCount = [{name: '1', value: '1'}, {name: '2', value: '2'}, {name: '3', value: '3'}, {name: '4+', value: '4'}];
             $scope.applyFilter = function() {
-                var params = {
+                $scope.params = {
+                    cityId : localStorageService.get('city') ? localStorageService.get('city').id : 1,
                     skip: 0,
-                    take: 20,
+                    take: 6,
                     minCost: $scope.price.min,
                     maxCost: $scope.price.max,
                     roomCount: ($scope.selectedRoomCount[0] || {}).value,
@@ -30,7 +31,15 @@ angular.module('component.flat-filter', [
                     })
                 };
 
-                $scope.$emit('applyFilter', params)
+                $scope.$emit('applyFilter', $scope.params,true)
+            };
+            window.onscroll = function() {
+                if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight) {
+                    $scope.params.skip+=6;
+                    $scope.params.take+=6;
+                    $scope.$emit('applyFilter', $scope.params,false);
+                    console.log("Bottom of page");
+                }
             };
 
             $scope.applyFilter();
