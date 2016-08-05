@@ -19,12 +19,20 @@ angular.module('component.flat-filter', [
             };
             $scope.roomCount = [{name: '1', value: '1'}, {name: '2', value: '2'}, {name: '3', value: '3'}, {name: '4+', value: '4+'}];
             $scope.applyFilter = function() {
-                $scope.filteredFlats = $filter('flatFilter')(
-                    $scope.allFlats,
-                    $scope.selectedRoomCount,
-                    $scope.selectedStations,
-                    $scope.price);
+                var params = {
+                    skip: 0,
+                    take: 20,
+                    minCost: $scope.price.min,
+                    maxCost: $scope.price.max,
+                    roomCount: ($scope.selectedRoomCount[0] || {}).value,
+                    metroIds: $scope.selectedStations.map(function (station) {
+                        return station.id;
+                    })
+                };
+
+                $scope.$emit('applyFilter', params)
             };
+
             $scope.applyFilter();
         }
     };

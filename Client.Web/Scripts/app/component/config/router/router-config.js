@@ -103,28 +103,33 @@ angular.module('component.config.router', ['ui.router','api.httpRequestIntercept
                       cityId : localStorageService.get('city') ? localStorageService.get('city').id : 1,
                       take: 10
                   };
-                  return  flatListFactory.query(params).$promise.then(function(res){
+                  return flatListFactory.query(params).$promise.then(function(res){
                       return res;
                   });
               }
             },
-            controller: function($scope, $stateParams, getFlats, localStorageService, currentServer) {
-                $scope.params = {
-                    cityId :  localStorageService.get('city') ? localStorageService.get('city').id : 1,
-                    take: 10000
-                };
-                $scope.flats = getFlats;
-                var server = currentServer + '/file/get/';
-                $scope.flats.forEach(function(flat) {
-                    var obj = [];
-                    for (var i = 0; i < flat.photos.length; i++) {
-                        obj.push({'src': server + flat.photos[i]})
-                    }
-                    flat.images = obj;
-                    flat.coords = {geometry:{type:'Point', coordinates:[flat.lon,flat.lat]}};
+            controller: function($scope, $stateParams, getFlats, localStorageService, currentServer, flatListFactory) {
+                $scope.$on('applyFilter', function(e, params) {
+                    var server = currentServer + '/file/get/';
+
+                    flatListFactory.query(params).$promise.then(function(res){
+                        $scope.flats = res;
+
+                        $scope.flats.forEach(function(flat) {
+                            var obj = [];
+                            for (var i = 0; i < flat.photos.length; i++) {
+                                obj.push({'src': server + flat.photos[i]})
+                            }
+                            flat.images = obj;
+                            flat.coords = {geometry: {type:'Point', coordinates:[flat.lon,flat.lat]}};
+                        });
+
+                        $scope.filteredFlats = $scope.flats;
+                    });
                 });
+
+
                 var markersMapping = {};
-                $scope.filteredFlats = $scope.flats;
 
                 $scope.addMarkerToMapping = function(id, $target) {
                     markersMapping[id] = $target;
