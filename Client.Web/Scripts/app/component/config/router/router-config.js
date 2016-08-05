@@ -202,8 +202,6 @@ angular.module('component.config.router', ['ui.router','api.httpRequestIntercept
                         houseNumber: $scope.model[offerTypeName].location.build,
                         housing: $scope.model[offerTypeName].location.housing,
                         apartmentNumber: $scope.model[offerTypeName].location.flat,
-                        lat: 0,
-                        lon: 0,
                         level: $scope.model[offerTypeName].details.floor,
                         areaSize: $scope.model[offerTypeName].details.area,
                         roomCount: $scope.model[offerTypeName].details.roomsCount,
