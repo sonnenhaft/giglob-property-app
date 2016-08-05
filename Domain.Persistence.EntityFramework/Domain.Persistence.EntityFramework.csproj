@@ -75,6 +75,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\DbConfig.cs" />
     <Compile Include="Conventions\DatabaseConvention.cs" />
     <Compile Include="EntityFrameworkContext.cs" />
     <Compile Include="Extensions\ContainerExtensions.cs" />
@@ -85,8 +86,8 @@
     <Compile Include="Repositories\Implementation\EntityFrameworkRepository.cs" />
     <Compile Include="Repositories\Implementation\FileRepository.cs" />
     <Compile Include="Repositories\Implementation\PropertyOfferRepository.cs" />
-    <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="Repositories\Implementation\UserRepository.cs" />
+    <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="UnitOfWork\Implementation\EntityFrameworkUnitOfWork.cs" />
     <Compile Include="UnitOfWork\Implementation\EntityFrameworkUnitOfWorkFactory.cs" />
   </ItemGroup>
@@ -101,7 +102,22 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="..\packages\Microsoft.SqlServer.Types.11.0.2\nativeBinaries\x64\msvcr100.dll">
+      <Link>SqlServerTypes\x64\msvcr100.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\packages\Microsoft.SqlServer.Types.11.0.2\nativeBinaries\x64\SqlServerSpatial110.dll">
+      <Link>SqlServerTypes\x64\SqlServerSpatial110.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\packages\Microsoft.SqlServer.Types.11.0.2\nativeBinaries\x86\msvcr100.dll">
+      <Link>SqlServerTypes\x86\msvcr100.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\packages\Microsoft.SqlServer.Types.11.0.2\nativeBinaries\x86\SqlServerSpatial110.dll">
+      <Link>SqlServerTypes\x86\SqlServerSpatial110.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="SQL\cities.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

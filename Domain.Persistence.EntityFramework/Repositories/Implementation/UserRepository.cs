@@ -2,7 +2,7 @@
 using System.Data.Entity;
 using System.Linq;
 using System.Text.RegularExpressions;
-using Domain.Entities.User.Implementation;
+using Domain.Entities.Implementation.User;
 using Domain.Repositories;
 
 namespace Domain.Persistence.EntityFramework.Repositories.Implementation

@@ -1,5 +1,7 @@
 $line: 40px;
 .gfooter {
+  position: relative;
+  z-index: 999;
   background: #464646;
   height: 150px;
   padding: 45px 40px;

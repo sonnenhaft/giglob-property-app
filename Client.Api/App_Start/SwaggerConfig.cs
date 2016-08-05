@@ -1,8 +1,8 @@
 using System;
 using System.Web.Http;
-using Api.Common.Models.Swagger.OperationFilters;
 using ApiVersioningModule.Swagger;
 using Client.Api;
+using Client.Api.Swagger.OperationFilters;
 using SwaggerResponseExampleModule.OperationFilters;
 using Swashbuckle.Application;
 using WebActivatorEx;
@@ -19,8 +19,8 @@ namespace Client.Api
                                .EnableSwagger(
                                    c =>
                                    {
-                                       c.IncludeXmlComments(string.Format(@"{0}\bin\App_Data\Client.Api.v1.XML", AppDomain.CurrentDomain.BaseDirectory));
-                                       c.IncludeXmlComments(string.Format(@"{0}\bin\App_Data\Client.Api.v1.Models.XML", AppDomain.CurrentDomain.BaseDirectory));
+                                       c.IncludeXmlComments($@"{AppDomain.CurrentDomain.BaseDirectory}\bin\App_Data\Client.Api.v1.XML");
+                                       c.IncludeXmlComments($@"{AppDomain.CurrentDomain.BaseDirectory}\bin\App_Data\Client.Api.v1.Models.XML");
 
                                        c.MultipleApiVersions(
                                            SwaggerVersionSupportResolver.Resolve,

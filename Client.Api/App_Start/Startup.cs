@@ -1,4 +1,5 @@
-﻿using System.Web.Http;
+﻿using System.Web.Hosting;
+using System.Web.Http;
 using System.Web.Http.Cors;
 using ApiVersioningModule;
 using ApiVersioningModule.HttpControllerSelectors.ApiVersionResolvers.VersionNumberResolvers;
@@ -8,9 +9,12 @@ using Client.Api.Authentication;
 using Client.Api.FluentValidation;
 using Client.Api.v1;
 using Domain.Authentication;
+using Domain.Persistence.EntityFramework;
+using Domain.Tools;
 using Microsoft.Owin;
 using Owin;
 using SimpleInjector;
+using SimpleInjector.Extensions.ExecutionContextScoping;
 
 [assembly: OwinStartup(typeof (Startup))]
 
@@ -31,7 +35,16 @@ namespace Client.Api
             GlobalConfiguration.Configuration.EnableCors(new EnableCorsAttribute("*", "*", "*"));
             FluentValidationConfiguration.Configure(GlobalConfiguration.Configuration, container.GetInstance<ModelStateValidatorActionFilter>(), new SimpeInjectorValidatorFactory(container));
             GlobalConfiguration.Configuration.Filters.Add(container.GetInstance<NotFoundActionFilter>());
+            GlobalConfiguration.Configuration.Filters.Add(container.GetInstance<TimeoutActionFilter>());
             MapsConfiguration.Configure(container.GetInstance<ICurrentUserService>());
+
+            using (container.BeginExecutionContextScope())
+            {
+                var virtualPathUtility = container.GetInstance<IVirtualPathUtility>();
+
+                DbConfig.Configure(virtualPathUtility.ConvertToFullPath("~/bin"));
+            }
+
         }
     }
 }

@@ -3,13 +3,13 @@
         <div class="download-list-file-wrapper doc" ng-repeat="file in uploadedFiles track by $index" ng-click="setCover($index)">
             <div class="file-label-name">{{file.formattedName}}</div>
             <div class="label file-label-format {{file.format.toLowerCase()}}">{{file.format}}</div>
-            <div class="file-label-remove" ng-click="removeFile($index, true);"></div>
+            <div class="file-label-remove" ng-click="removeFile($index, true, 'doc');"></div>
         </div><div class="download-list-uploader"
            ng-class="{added: isAdded}"
-             ngf-drop="uploadFiles($files, true)"
-             ngf-select="uploadFiles($files, true)"
-             ngf-validate="{size: {max: '5MB'}, pattern: '.doc,.pdf,.docx,.pages,.txt'}"
-             ngf-max-files="20"
+             ngf-drop="uploadFiles($files, true, 'doc')"
+             ngf-select="uploadFiles($files, true, 'doc')"
+             ngf-validate="{size: {max: '5MB'}, pattern: '.doc,.pdf,.docx,.pages'}"
+             ngf-max-files="2"
              multiple="true">
             <div class="download-list-uploader-text">
                 <div class="download-description">

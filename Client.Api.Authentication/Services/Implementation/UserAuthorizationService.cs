@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Security.Claims;
 using System.Text.RegularExpressions;
-using Domain.Entities.User.Implementation;
-using Domain.Entities.User.Services;
+using Domain.Entities.Implementation.User;
+using Domain.Entities.Implementation.User.Services;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Infrastructure;
 using Microsoft.Owin.Security;
 
-namespace Client.Api.Authentication.Services
+namespace Client.Api.Authentication.Services.Implementation
 {
     public class UserAuthorizationService : IUserAuthorizationService
     {

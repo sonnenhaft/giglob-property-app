@@ -45,7 +45,7 @@ namespace ApiVersioningModule.Swagger
 
         private bool IsOperationContainsParameter(Operation operation, string name)
         {
-            return operation != null && operation.parameters != null && operation.parameters.Any(x => x.name == name);
+            return operation?.parameters != null && operation.parameters.Any(x => x.name == name);
         }
 
         private void RemoveParameterByName(Operation operation, string name)

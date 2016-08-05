@@ -1,21 +1,21 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Http.Filters;
-using Domain.Exceptions;
 
 namespace Client.Api.ActionFilters
 {
-    public class NotFoundActionFilter : ActionFilterAttribute
+    public class TimeoutActionFilter : ActionFilterAttribute
     {
         public override void OnActionExecuted(HttpActionExecutedContext actionExecutedContext)
         {
             base.OnActionExecuted(actionExecutedContext);
 
-            if (actionExecutedContext.Exception != null && actionExecutedContext.Exception.GetType() == typeof (NotFoundException))
+            if (actionExecutedContext.Exception != null && actionExecutedContext.Exception.GetType() == typeof (TimeoutException))
             {
-                actionExecutedContext.Response = actionExecutedContext.Request.CreateResponse(HttpStatusCode.NotFound, actionExecutedContext.Exception.Message);
+                actionExecutedContext.Response = actionExecutedContext.Request.CreateResponse(HttpStatusCode.RequestTimeout, actionExecutedContext.Exception.Message);
             }
         }
 
@@ -26,7 +26,7 @@ namespace Client.Api.ActionFilters
                 {
                     base.OnActionExecutedAsync(actionExecutedContext, cancellationToken);
 
-                    if (actionExecutedContext.Exception != null && actionExecutedContext.Exception.GetType() == typeof(NotFoundException))
+                    if (actionExecutedContext.Exception != null && actionExecutedContext.Exception.GetType() == typeof (TimeoutException))
                     {
                         actionExecutedContext.Response = actionExecutedContext.Request.CreateResponse(HttpStatusCode.RequestTimeout, actionExecutedContext.Exception.Message);
                     }

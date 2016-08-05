@@ -1,5 +1,5 @@
-angular.module('component.config.router', ['ui.router','api.httpRequestInterceptor','api.resource','component.config.addFlat'])
-    .config(function($stateProvider, $urlRouterProvider, EXCLUDED_DEMO_ROUTERS,$locationProvider) {
+angular.module('component.config.router', ['ui.router','api.httpRequestInterceptor','api.resource','component.config.data-access'])
+    .config(function($stateProvider, $urlRouterProvider, EXCLUDED_DEMO_ROUTERS, $locationProvider) {
     $urlRouterProvider.otherwise("/");
 
     $stateProvider
@@ -98,61 +98,61 @@ angular.module('component.config.router', ['ui.router','api.httpRequestIntercept
             url: '/',
             templateUrl: 'app/component/config/router/search-page.html',
             resolve : {
-              getFlats : function($state,$stateParams,flatListFactory,localStorageService){
+              getFlats : function($state, $stateParams, flatListFactory, localStorageService){
                   var params = {
                       cityId : localStorageService.get('city') ? localStorageService.get('city').id : 1,
                       take: 10
                   };
-                  console.log(params);
-                  return  flatListFactory.query(params).$promise.then(function(res){
 
+                  return flatListFactory.query(params).$promise.then(function(res){
                       return res;
                   });
               }
             },
-            controller: function($scope, $stateParams, getFlats,localStorageService,currentServer,addFlatTabs) {
-                $scope.params = {
-                    cityId :localStorageService.get('city') ? localStorageService.get('city').id : 1,
-                    take: 10000
-                };
-                console.log(addFlatTabs);
-                $scope.flats = getFlats;
-                var server = currentServer +'/file/get/';
-                $scope.flats.forEach(function(flat) {
-                    var obj = [];
-                    for (var i = 0; i < flat.photos.length; i++) {
-                        obj.push({'src': server + flat.photos[i]})
-                    }
-                    flat.images = obj;
-                    flat.coords = {geometry:{type:'Point',coordinates:[flat.lon,flat.lat]}};
+            controller: function($scope, $stateParams, getFlats, localStorageService, currentServer, flatListFactory) {
+                $scope.$on('applyFilter', function(e, params) {
+                    var server = currentServer + '/file/get/';
+
+                    flatListFactory.query(params).$promise.then(function(res){
+                        $scope.flats = res;
+
+                        $scope.flats.forEach(function(flat) {
+                            var obj = [];
+                            for (var i = 0; i < flat.photos.length; i++) {
+                                obj.push({'src': server + flat.photos[i]})
+                            }
+                            flat.images = obj;
+                            flat.coords = {geometry: {type:'Point', coordinates:[flat.lon,flat.lat]}};
+                        });
+
+                        $scope.filteredFlats = $scope.flats;
+                    });
                 });
+
+
                 var markersMapping = {};
-                $scope.filteredFlats = $scope.flats;
 
                 $scope.addMarkerToMapping = function(id, $target) {
                     markersMapping[id] = $target;
                 };
 
-                $scope.setHighlighting = function(id, value, $e) {
-                    var marker = $e ? $e.get('target') : markersMapping[id];
+                $scope.setHighlighting = function(id, value) {
                     var image = value ? 'map-icon-hover' : 'map-icon-small';
 
                     $scope.filteredFlats.find(function(flat) {
                         return flat.id === id;
                     }).highlighted = value;
-                    marker.options.set('iconImageHref', '../content/images/' + image + '.svg');
+                    markersMapping[id].options.set('iconImageHref', '../content/images/' + image + '.svg');
                 };
             }
         })
         .state('my-ads', {
             url: "/my-ads",
             templateUrl: 'app/component/config/router/my-ads-page.html',
-            controller: function($scope, $element, $timeout, $resource, $rootScope) {
-                /*var User = $resource('http://api.giglob.local/v1/propertyoffer/myoffers');
-                User.get({'api_key':$rootScope.accessToken})
-                    .$promise.then(function(user) {
-                        console.log(user);
-                    });*/
+            controller: function($scope, $stateParams, giglobApi) {
+                giglobApi.getMyOffers({type: 'propertyoffer', action: 'myoffers'}, null, function (data) {
+                    $scope.myOffers = data;
+                });
             }
         })
         .state('add-ads', {
@@ -189,6 +189,15 @@ angular.module('component.config.router', ['ui.router','api.httpRequestIntercept
                 };
                 $scope.model = angular.copy(defaultModel);
 
+                function closeAllTabs () {
+                    addFlatTabs.sale.forEach(function (item) {
+                        item.active = false;
+                    });
+                    addFlatTabs.swap.forEach(function (item) {
+                        item.active = false;
+                    });
+                }
+
                 $scope.$on('addFormSubmitted', function(event, type) {
                     var offerTypeName = type === 0 ? 'sale' : 'swap';
 
@@ -199,8 +208,6 @@ angular.module('component.config.router', ['ui.router','api.httpRequestIntercept
                         houseNumber: $scope.model[offerTypeName].location.build,
                         housing: $scope.model[offerTypeName].location.housing,
                         apartmentNumber: $scope.model[offerTypeName].location.flat,
-                        lat: 0,
-                        lon: 0,
                         level: $scope.model[offerTypeName].details.floor,
                         areaSize: $scope.model[offerTypeName].details.area,
                         roomCount: $scope.model[offerTypeName].details.roomsCount,
@@ -210,8 +217,8 @@ angular.module('component.config.router', ['ui.router','api.httpRequestIntercept
                         comment: $scope.model[offerTypeName].details.comment,
                         offerType: type,
                         nearMetroBranchStationIds: $scope.model[offerTypeName].location.selectedStations.map(function (item){return item.id}),
-                        photoes: [],
-                        documents: [],
+                        photoes: $scope.model[offerTypeName].photos,
+                        documents: $scope.model[offerTypeName].docs,
                         exchangeDetails: {
                             "cityId": 0,
                             "districtId": 0,
@@ -222,12 +229,14 @@ angular.module('component.config.router', ['ui.router','api.httpRequestIntercept
                         }
                     };
 
-                    giglobApi.save({type:'propertyoffer',action: 'create'}, $scope.model.postData, function () {
+                    giglobApi.save({type: 'propertyoffer', action: 'create'}, $scope.model.postData, function () {
                         $scope.model = {};
                         $scope.model = angular.copy(defaultModel);
+                        closeAllTabs();
+                        $scope.$emit('objectSaved');
                     });
 
-                })
+                });
             }
         })
         .state('confirm', {

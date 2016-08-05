@@ -2,7 +2,7 @@
 using CQRS;
 using Domain.Repositories;
 
-namespace Domain.Entities.User.Implementation.Commands
+namespace Domain.Entities.Implementation.User.Commands
 {
     public class User_ConfirmEmailCommand : ICommand
     {

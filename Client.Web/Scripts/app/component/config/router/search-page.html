@@ -13,7 +13,7 @@
                     </div>
                     <div class="card_description">
                         <div class="card-title"  ui-sref="apartment-detail/:id">{{flat.roomCount}}-комнатная на ул. {{flat.streetName}}</div>
-                        <div class="card-info"><span class="metro-label" ng-style="{'background': '#'+flat.nearMetroStationModel.hexColor}"></span> {{flat.nearMetroStationModel.name}},
+                        <div class="card-info"><span class="metro-label" ng-style="{'background-color': '#'+flat.nearMetroStationModel.hexColor}"></span> {{flat.nearMetroStationModel.name}},
                             {{flat.areaSize}} м<sup>2</sup>, {{flat.level}} этаж
                         </div>
                         <div class="card-price">{{flat.cost | currency : '₽' : ' '}}</div>

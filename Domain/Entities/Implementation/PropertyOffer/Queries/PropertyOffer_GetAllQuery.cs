@@ -12,11 +12,6 @@ namespace Domain.Entities.Implementation.PropertyOffer.Queries
     public class PropertyOffer_GetAllQuery : IQuery
     {
         /// <summary>
-        ///     Ид города
-        /// </summary>
-        public long CityId { get; set; }
-
-        /// <summary>
         ///     Кол-во записей для получения
         /// </summary>
         public int Take { get; set; }
@@ -65,7 +60,6 @@ namespace Domain.Entities.Implementation.PropertyOffer.Queries
         public IEnumerable<PropertyOffer> Handle(PropertyOffer_GetAllQuery reqQuery)
         {
             var query = _offerRepository.GetAll()
-                                        .Where(offer => offer.LocalPropertyOfferData.CityId == reqQuery.CityId)
                                         .Include(offer => offer.LocalPropertyOfferData)
                                         .Include(offer => offer.LocalPropertyOfferData.Photoes)
                                         .Include(offer => offer.LocalPropertyOfferData.NearMetroStations)
@@ -73,7 +67,7 @@ namespace Domain.Entities.Implementation.PropertyOffer.Queries
                                         .Include(offer => offer.LocalPropertyOfferData.NearMetroStations.Select(station => station.MetroBranchStation.MetroBranch))
                                         .Include(offer => offer.LocalPropertyOfferData.NearMetroStations.Select(station => station.MetroBranchStation.MetroStation))
                                         .Include(offer => offer.ExternalPropertyOfferData)
-                                        .Include(offer => offer.PropertyExchangeDetails);;
+                                        .Include(offer => offer.PropertyExchangeDetails);
 
             if (reqQuery.MaxCost.HasValue)
             {

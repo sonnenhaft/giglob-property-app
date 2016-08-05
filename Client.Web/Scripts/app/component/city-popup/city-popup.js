@@ -7,10 +7,10 @@
                 backdrop: 'static',
                 closeOnClick: false,
                 keyboard: false,
-                controller: function($scope, $http, $modalInstance, localStorageService) {
+                controller: function($scope, $http, $modalInstance, localStorageService, currentServer) {
                     $scope.changeCity = function () {
                         //TODO вынести в отдельный API сервис
-                        $http.get('http://giglobapi.igstest.ru/v1/home/getdata').then(function (res) {
+                        $http.get(currentServer + '/v1/home/getdata').then(function (res) {
                             $scope.cities = res.data.cities;
                             $scope.autocomplete = true;
                         });

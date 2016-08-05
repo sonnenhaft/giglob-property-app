@@ -1,7 +1,7 @@
 ﻿using CQRS;
-using Domain.Entities.User.Services;
+using Domain.Entities.Implementation.User.Services;
 
-namespace Domain.Entities.User.Implementation.Commands
+namespace Domain.Entities.Implementation.User.Commands
 {
     public class User_CreateCommand : ICommand
     {
