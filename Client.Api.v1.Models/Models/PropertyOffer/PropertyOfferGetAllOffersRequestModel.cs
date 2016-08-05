@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Domain.Entities.Implementation.PropertyOffer.Enums;
 
 namespace Client.Api.v1.Models.Models.PropertyOffer
 {
@@ -27,7 +28,7 @@ namespace Client.Api.v1.Models.Models.PropertyOffer
         /// <summary>
         ///     Кол-во комнат
         /// </summary>
-        public int? RoomCount { get; set; }
+        public IEnumerable<RoomCount> RoomCount { get; set; }
 
         /// <summary>
         ///     Ид метро
