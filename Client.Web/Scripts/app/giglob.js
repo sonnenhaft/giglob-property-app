@@ -4,18 +4,19 @@ angular.module('giglob-app', [
     'LocalStorageModule',
     'mm.foundation',
     'templates',
-    'component.config.router',
+    'component.config.addFlat',
+    'component.config.data-access',
     'component.config.filters',
+    'component.config.router',
     "component.gheader",
     "component.gfooter",
-    'component.city-popup',
     'component.carousel',
     'component.login',
     'component.flat-filter',
-    'component.config.data-access',
     'component.tab-section',
     'component.multiselect-dropdown-g',
-    'passToText'
+    'passToText',
+    'component.city-popup'
 ]).directive('giglob', function (localStorageService) {
     return {
         templateUrl: 'app/giglob.html',

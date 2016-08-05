@@ -1,4 +1,4 @@
-angular.module('component.config.router', ['ui.router','api.httpRequestInterceptor','api.resource','component.config.data-access'])
+angular.module('component.config.router', ['ui.router','api.httpRequestInterceptor','api.resource','component.config.addFlat'])
     .config(function($stateProvider, $urlRouterProvider, EXCLUDED_DEMO_ROUTERS,$locationProvider) {
     $urlRouterProvider.otherwise("/");
 
@@ -100,19 +100,22 @@ angular.module('component.config.router', ['ui.router','api.httpRequestIntercept
             resolve : {
               getFlats : function($state,$stateParams,flatListFactory,localStorageService){
                   var params = {
-                      cityId : localStorageService.get('city').id,
+                      cityId : localStorageService.get('city') ? localStorageService.get('city').id : 1,
                       take: 10
                   };
+                  console.log(params);
                   return  flatListFactory.query(params).$promise.then(function(res){
+
                       return res;
                   });
               }
             },
-            controller: function($scope, $stateParams, getFlats,localStorageService,currentServer) {
+            controller: function($scope, $stateParams, getFlats,localStorageService,currentServer,addFlatTabs) {
                 $scope.params = {
-                    cityId : localStorageService.get('city').id,
+                    cityId :localStorageService.get('city') ? localStorageService.get('city').id : 1,
                     take: 10000
                 };
+                console.log(addFlatTabs);
                 $scope.flats = getFlats;
                 var server = currentServer +'/file/get/';
                 $scope.flats.forEach(function(flat) {

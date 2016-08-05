@@ -1,4 +1,4 @@
-angular.module('component.tab-section', ['ngSanitize', 'ngFileUpload']).directive('tabSection', function(addFlatTabs, cityDistrictFactory, $rootScope) {
+angular.module('component.tab-section', ['ngSanitize', 'ngFileUpload','component.config.addFlat']).directive('tabSection', function(addFlatTabs,cityDistrictFactory,$rootScope) {
     return {
         restrict: 'E',
         scope: {
@@ -58,7 +58,7 @@ angular.module('component.tab-section', ['ngSanitize', 'ngFileUpload']).directiv
 
                 }
                 $scope.data.districts= distList;
-            }
+            };
 
             cityDistrictFactory.get().$promise.then(function(data){
                 $scope.cityDistricts = data;
