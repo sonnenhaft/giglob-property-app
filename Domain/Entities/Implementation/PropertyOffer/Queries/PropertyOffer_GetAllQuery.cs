@@ -80,7 +80,7 @@ namespace Domain.Entities.Implementation.PropertyOffer.Queries
                 query = query.Where(x => x.Cost >= reqQuery.MinCost.Value);
             }
 
-            if (reqQuery.RoomCount.Any())
+            if (reqQuery.RoomCount!=null && reqQuery.RoomCount.Any())
             {
                 List<int> roomsCount = reqQuery.RoomCount.Select(x => (int)x).ToList();
 
