@@ -40,12 +40,7 @@ namespace Domain.Persistence.File.Implementation
         {
             get
             {
-                var current = _current;
-
-                if (current == null)
-                {
-                    current = _decoratee.Current;
-                }
+                var current = _current ?? _decoratee.Current;
 
                 if (current.Stream == null)
                 {

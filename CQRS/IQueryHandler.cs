@@ -1,6 +1,6 @@
 ﻿namespace CQRS
 {
-    public interface IQueryHandler<TQuery, TResult>
+    public interface IQueryHandler<in TQuery, out TResult>
         where TQuery : IQuery
     {
         TResult Handle(TQuery query);

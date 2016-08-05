@@ -28,7 +28,7 @@ namespace Domain.Persistence.FileStorage.Implementation
         public Stream Get(string virtualPath)
         {
             var fullPath = _virtualPathUtility.ConvertToFullPath(virtualPath);
-            var fs = File.Open(fullPath, FileMode.Open, FileAccess.Read, FileShare.None);
+            var fs = new FileStream(fullPath, FileMode.Open, FileAccess.Read, FileShare.Read);
 
             return fs;
         }
@@ -37,7 +37,7 @@ namespace Domain.Persistence.FileStorage.Implementation
         {
             var directory = Path.GetDirectoryName(path);
 
-            if (!Directory.Exists(directory))
+            if (directory != null && !Directory.Exists(directory))
             {
                 Directory.CreateDirectory(directory);
             }

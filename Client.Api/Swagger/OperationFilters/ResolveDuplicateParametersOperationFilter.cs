@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 using System.Web.Http.Description;
 using Swashbuckle.Swagger;
 
-namespace Api.Common.Models.Swagger.OperationFilters
+namespace Client.Api.Swagger.OperationFilters
 {
     public class ResolveDuplicateParametersOperationFilter : IOperationFilter
     {

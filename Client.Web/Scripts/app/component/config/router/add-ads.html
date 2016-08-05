@@ -18,41 +18,23 @@
         </tabset>
     </div>
     <div>
-        <a class="flat-card add_flat" ng-show="tabCollectionType === 'sale'">
+        <a class="flat-card add_flat">
             <div class="preview-label">Предпросмотр</div>
             <div class="card_image">
-                <div ng-show="!model.sale.photos.length" style="font-size: 14px; font-weight: 700; text-align: center; color: #7d98a7; background-color: #e0e9ee; height: 100%; padding: 87px 105px;">Фотографии ещё не загружены</div>
-                <img ng-src="{{model.sale.photos | coverPhotoUrl}}" alt="">
+                <div ng-show="!model[tabCollectionType].photos.length" style="font-size: 14px; font-weight: 700; text-align: center; color: #7d98a7; background-color: #e0e9ee; height: 100%; padding: 87px 105px;">Фотографии ещё не загружены</div>
+                <img ng-src="{{model[tabCollectionType].photos | coverPhotoUrl}}" alt="">
             </div>
             <div class="card_description">
-                <div ng-hide="model.sale.details.price || model.sale.details.floor || model.sale.details.area || model.sale.details.roomsCount || model.sale.location.selectedStations[0].name"
+                <div ng-hide="model[tabCollectionType].details.price || model[tabCollectionType].details.floor || model[tabCollectionType].details.area || model[tabCollectionType].details.roomsCount || model[tabCollectionType].location.selectedStations[0].name"
                      style="font-size: 16px; font-weight: 500; line-height: 1.31; text-align: center; color: #181818; padding: 17px;">Здесь будет информация о вашем объекте</div>
 
-                <div class="card-title" ng-show="roomCountNames[model.sale.details.roomsCount - 1]">{{roomCountNames[model.sale.details.roomsCount - 1] + ' квартира'}}</div>
+                <div class="card-title" ng-show="roomCountNames[model[tabCollectionType].details.roomsCount - 1]">{{roomCountNames[model[tabCollectionType].details.roomsCount - 1] + ' квартира'}}</div>
                 <div class="card-info">
-                    <span class="metro-label" ng-show="model.sale.location.selectedStations[0].name" ng-style="{'background-color': '#' + model.sale.location.selectedStations[0].hexColor}"></span>
-                    <span ng-show="model.sale.location.selectedStations[0].name">{{model.sale.location.selectedStations[0].name}}, </span>
-                    <span ng-show="model.sale.details.area">{{model.sale.details.area}} м<sup>2</sup>, </span><span ng-show="model.sale.details.floor">{{model.sale.details.floor}} этаж</span>
+                    <span class="metro-label" ng-show="model[tabCollectionType].location.selectedStations[0].name" ng-style="{'background-color': '#' + model[tabCollectionType].location.selectedStations[0].hexColor}"></span>
+                    <span ng-show="model[tabCollectionType].location.selectedStations[0].name">{{model[tabCollectionType].location.selectedStations[0].name}}, </span>
+                    <span ng-show="model[tabCollectionType].details.area">{{model[tabCollectionType].details.area}} м<sup>2</sup>, </span><span ng-show="model[tabCollectionType].details.floor">{{model[tabCollectionType].details.floor}} этаж</span>
                 </div>
-                <div class="card-price" ng-show="model.sale.details.price">{{model.sale.details.price | currency : '&#8381;' : ''}}</div>
-            </div>
-        </a>
-        <a class="flat-card add_flat" ng-show="tabCollectionType !== 'sale'">
-            <div class="preview-label">Предпросмотр</div>
-            <div class="card_image">
-                <div ng-show="!model.swap.photos.length" style="font-size: 14px; font-weight: 700; text-align: center; color: #7d98a7; background-color: #e0e9ee; height: 100%; padding: 87px 105px;">Фотографии ещё не загружены</div>
-                <img ng-src="{{model.swap.photos | coverPhotoUrl}}" alt="">
-            </div>
-            <div class="card_description">
-                <div ng-hide="model.swap.details.floor || model.swap.details.area || model.swap.details.roomsCount || model.swap.location.selectedStations[0].name"
-                     style="font-size: 16px; font-weight: 500; line-height: 1.31; text-align: center; color: #181818; padding: 17px;">Здесь будет информация о вашем объекте</div>
-                <div class="card-title" ng-show="roomCountNames[model.swap.details.roomsCount - 1]">{{roomCountNames[model.swap.details.roomsCount - 1] + ' квартира'}}</div>
-                <div class="card-info">
-                    <span class="metro-label" ng-show="model.swap.location.selectedStations[0].name" ng-style="{'background-color': '#' + model.swap.location.selectedStations[0].hexColor}"></span>
-                    <span ng-show="model.swap.location.selectedStations[0].name">{{model.swap.location.selectedStations[0].name}}, </span>
-                    <span ng-show="model.swap.details.area">{{model.swap.details.area}} м<sup>2</sup>, </span><span ng-show="model.swap.details.floor">{{model.swap.details.floor}} этаж</span>
-                </div>
-                <div class="card-price" ng-show="model.swap.details.price">{{model.swap.details.price | currency : '&#8381;' : ''}}</div>
+                <div class="card-price" ng-show="model[tabCollectionType].details.price">{{model[tabCollectionType].details.price | currency : '&#8381;' : ''}}</div>
             </div>
         </a>
     </div>
