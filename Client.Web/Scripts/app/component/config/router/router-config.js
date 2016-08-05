@@ -100,8 +100,7 @@ angular.module('component.config.router', ['ui.router','api.httpRequestIntercept
             resolve : {
               getFlats : function($state, $stateParams, flatListFactory, localStorageService){
                   var params = {
-                      cityId : localStorageService.get('city') ? localStorageService.get('city').id : 1,
-                      take: 10
+                      take: 6
                   };
 
                   return flatListFactory.query(params).$promise.then(function(res){
@@ -164,6 +163,13 @@ angular.module('component.config.router', ['ui.router','api.httpRequestIntercept
         })
         .state('add-ads', {
             url: "/add-ads",
+            resolve : {
+                checkPerm : function($rootScope,$state) {
+                    if(!$rootScope.accessToken) {
+                        $state.go('search');
+                    }
+                }
+            },
             templateUrl: 'app/component/config/router/add-ads.html',
             controller: function ($scope, $element, $timeout, addFlatTabs, giglobApi) {
                 $scope.tabs = addFlatTabs;

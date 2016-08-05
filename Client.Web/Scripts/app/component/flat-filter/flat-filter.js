@@ -20,7 +20,6 @@ angular.module('component.flat-filter', [
             $scope.roomCount = [{name: '1', value: '1'}, {name: '2', value: '2'}, {name: '3', value: '3'}, {name: '4+', value: '4'}];
             $scope.applyFilter = function() {
                 $scope.params = {
-                    cityId : localStorageService.get('city') ? localStorageService.get('city').id : 1,
                     skip: 0,
                     take: 6,
                     minCost: $scope.price.min,
