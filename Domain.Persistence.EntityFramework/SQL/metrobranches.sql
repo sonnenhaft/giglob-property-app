@@ -110,7 +110,7 @@ INSERT INTO [dbo].[MetroStations]
 		('Октябрьское поле',@cityId),
 		('Орехово',@cityId),
 		('Отрадное',@cityId),
-		('Охотныйряд',@cityId),
+		('Охотный ряд',@cityId),
 		('Павелецкая',@cityId),
 		('Парк культуры',@cityId),
 		('Парк Победы',@cityId),
