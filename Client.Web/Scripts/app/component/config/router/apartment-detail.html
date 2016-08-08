@@ -11,7 +11,7 @@
                     кв. {{testData.apartmentNumber}}
                 </h4>
                 <span style="font-weight: 500;">{{testData.cost | currency : '₽' : ' '}}</span>
-                <span style="font-weight: 500;padding-left: 20px;">
+                <span style="font-weight: 500;padding-left: 20px;" ng-show="testData.nearMetroStationModel">
                     <svg width="16" height="11" viewBox="337.5 232.3 125 85.9" style="margin-right: 3px">
                         <polygon ng-attr-fill="#{{testData.nearMetroStationModel.hexColor}}"
                                  points="453.9,306.2 424.7,232.3 400,275.5 375.4,232.3 346.1,306.2

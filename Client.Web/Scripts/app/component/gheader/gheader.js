@@ -30,6 +30,7 @@
             $scope.logout = function(){
                 localStorageService.remove('access-token');
                 $rootScope.accessToken = undefined;
+                $state.go('search');
             }
         }
     };
