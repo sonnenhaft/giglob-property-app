@@ -1,4 +1,5 @@
-﻿using System.Web.Http;
+﻿using System.Linq;
+using System.Web.Http;
 using Client.Api.v1.Facades;
 using Client.Api.v1.Models.Models.Common.ResponseExamples;
 using Client.Api.v1.Models.Models.PropertyOffer;

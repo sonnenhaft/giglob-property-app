@@ -28,13 +28,16 @@ namespace Client.Api.v1.Models.Models.PropertyOffer
         /// <summary>
         ///     Кол-во комнат
         /// </summary>
-        public IEnumerable<RoomCount> RoomCount { get; set; }
+        public RoomCount RoomCount { get; set; }
 
         /// <summary>
         ///     Ид метро
         /// </summary>
         public IEnumerable<long> MetroIds { get; set; }
 
+        /// <summary>
+        /// Видимая область на карте
+        /// </summary>
         public ViewPort ViewPort { get; set; }
     }
 
