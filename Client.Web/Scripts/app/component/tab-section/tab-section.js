@@ -1,4 +1,5 @@
 angular.module('component.tab-section', ['ngSanitize', 'ngFileUpload']).directive('tabSection', function(addFlatTabs, cityDistrictFactory, $rootScope, Upload, currentServer) {
+
     return {
         restrict: 'E',
         scope: {
@@ -148,7 +149,13 @@ angular.module('component.tab-section', ['ngSanitize', 'ngFileUpload']).directiv
 
             $scope.sendData = function(type) {
                 $rootScope.$broadcast('addFormSubmitted', type);
-            }
+            };
+
+            $scope.$on('objectSaved', function () {
+                if($scope.uploadedFiles) {
+                    $scope.uploadedFiles = [];
+                }
+            });
         }
     };
 });

@@ -62,14 +62,6 @@ namespace Client.Api.v1.Models.Models.PropertyOffer.Validators
                 .NotEmpty()
                 .WithMessage("Введите комментарий");
 
-            RuleFor(model => model.Lat)
-                .Must(latitude => latitude >= -90 && latitude <= 90)
-                .WithMessage("Некорректная широта");
-
-            RuleFor(model => model.Lon)
-                .Must(longitude => longitude >= -180 && longitude <= 180)
-                .WithMessage("Некорректная долгота");
-
             Custom(
                 model => ValidateCityIdDistrictIdAndMetroStations(
                     (IQueryHandler<City_IsExistsQuery, bool>) serviceProvider.GetService(typeof (IQueryHandler<City_IsExistsQuery, bool>)),
@@ -121,8 +113,8 @@ namespace Client.Api.v1.Models.Models.PropertyOffer.Validators
                         model => ValidateCityIdDistrictId(
                             (IQueryHandler<City_IsExistsQuery, bool>) serviceProvider.GetService(typeof (IQueryHandler<City_IsExistsQuery, bool>)),
                             (IQueryHandler<City_GetAllDistrictsQuery, IEnumerable<District>>) serviceProvider.GetService(typeof (IQueryHandler<City_GetAllDistrictsQuery, IEnumerable<District>>)),
-                            model.CityId,
-                            model.DistrictId));
+                            model.ExchangeDetails.CityId,
+                            model.ExchangeDetails.DistrictId));
                 });
         }
 
@@ -134,14 +126,12 @@ namespace Client.Api.v1.Models.Models.PropertyOffer.Validators
             long? districtId,
             IEnumerable<long> nearMetroBranchStationIds)
         {
-            ValidateCityIdDistrictId(cityIsExistsQueryHandler, cityGetAllDistrictsQuery, cityId, districtId);
-
             if (!cityContainsMetroBranchStationsWithGivenIdsQueryHandler.Handle(new City_ContainsMetroBranchStationsWithGivenIdsQuery(cityId, nearMetroBranchStationIds)))
             {
                 return new ValidationFailure("NearMetroBranchStationIds", "Некорректные станции метро");
             }
 
-            return null;
+            return ValidateCityIdDistrictId(cityIsExistsQueryHandler, cityGetAllDistrictsQuery, cityId, districtId);
         }
 
         public ValidationFailure ValidateCityIdDistrictId(

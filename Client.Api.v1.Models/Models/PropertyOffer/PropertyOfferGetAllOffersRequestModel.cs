@@ -1,14 +1,10 @@
 ﻿using System.Collections.Generic;
+using Domain.Entities.Implementation.PropertyOffer.Enums;
 
 namespace Client.Api.v1.Models.Models.PropertyOffer
 {
     public class PropertyOfferGetAllOffersRequestModel
     {
-        /// <summary>
-        ///     Ид города
-        /// </summary>
-        public long CityId { get; set; }
-
         /// <summary>
         ///     Кол-во эл-в для пропуска
         /// </summary>
@@ -32,13 +28,16 @@ namespace Client.Api.v1.Models.Models.PropertyOffer
         /// <summary>
         ///     Кол-во комнат
         /// </summary>
-        public int? RoomCount { get; set; }
+        public RoomCount RoomCount { get; set; }
 
         /// <summary>
         ///     Ид метро
         /// </summary>
         public IEnumerable<long> MetroIds { get; set; }
 
+        /// <summary>
+        /// Видимая область на карте
+        /// </summary>
         public ViewPort ViewPort { get; set; }
     }
 

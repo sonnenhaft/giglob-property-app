@@ -228,6 +228,10 @@
       <Project>{717604b5-8cec-4bde-86aa-ad06542e0661}</Project>
       <Name>Domain.Persistence.File</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Domain.YandexGeocoder\Domain.YandexGeocoder.csproj">
+      <Project>{640910a0-16a5-4a11-9d3a-e7401326d08c}</Project>
+      <Name>Domain.YandexGeocoder</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Domain\Domain.csproj">
       <Project>{13607ee9-8b76-4fe3-bcf2-0c09eef929bb}</Project>
       <Name>Domain</Name>

@@ -38,6 +38,7 @@
       padding: 2px 15px;
       cursor: pointer;
       text-indent: -11px;
+      white-space: nowrap;
       .mid-dot {
         font-size: 30px;
         line-height: 1px;
@@ -47,6 +48,8 @@
         visibility: hidden;
         color: #ccc;
         float: right;
+        position: absolute;
+        right: 0;
       }
       &:hover {
         .list-item-remove {
@@ -56,10 +59,20 @@
       }
     }
   }
+
+  .dropdown-selected-list {
+    .list-item {
+      position: relative;
+      display: inline-block;
+    }
+  }
+
   .dropdown-list {
     position: absolute;
     width: 100%;
     top: 29px;
+    overflow-x: hidden;
+    max-height: 400px;
     border: 1px solid #ccc;
     border-top: 0;
     z-index: 100;

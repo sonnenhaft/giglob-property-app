@@ -7,11 +7,6 @@
                 backdrop: 'static',
                 closeOnClick: false,
                 keyboard: false,
-                resolve: {
-                    items: function () {
-                        console.log('123');
-                    }
-                },
                 controller: function($scope, $http, $modalInstance, localStorageService, currentServer) {
                     $scope.changeCity = function () {
                         //TODO вынести в отдельный API сервис

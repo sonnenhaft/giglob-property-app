@@ -1,9 +1,10 @@
-﻿.button {
+.button {
   outline: none !important;
   margin:0;
   &.round {
     padding: 10px 25px;
     font-size: 14px;
+    margin:0;
   }
   &.alert {
     background-color: #ff6f37;

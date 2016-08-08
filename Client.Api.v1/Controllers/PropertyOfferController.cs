@@ -1,9 +1,12 @@
-﻿using System.Web.Http;
+﻿using System;
+using System.Linq;
+using System.Web.Http;
 using Client.Api.v1.Facades;
 using Client.Api.v1.Models.Models.Common.ResponseExamples;
 using Client.Api.v1.Models.Models.PropertyOffer;
 using Client.Api.v1.Models.Models.PropertyOffer.Examples;
 using Client.Api.v1.Models.Models.PropertyOffer.ResponseExamples;
+using Domain.Geocoder.Exceptions;
 using SwaggerResponseExampleModule;
 
 namespace Client.Api.v1.Controllers
@@ -22,7 +25,21 @@ namespace Client.Api.v1.Controllers
         [SwaggerResponseExampleProvider(typeof (SuccessResponseExample))]
         public IHttpActionResult Create(PropertyOfferCreateRequestModel reqModel)
         {
-            _propertyOfferFacade.Create(reqModel);
+            try
+            {
+                _propertyOfferFacade.Create(reqModel);
+            }
+            catch (Exception ex)
+            {
+                if (ex.GetType() == typeof (GeoPointNotFoundException))
+                {
+                    ModelState.AddModelError("Location", "Невозможно найти адрес, проверьте правильность ввода");
+
+                    return BadRequest(ModelState);
+                }
+
+                throw;
+            }
 
             return Ok();
         }

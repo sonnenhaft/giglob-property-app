@@ -17,4 +17,11 @@ angular.module('component.config.filters', []).filter('flatFilter', function ($f
         });
         return $filter('orderBy')(filteredFlats, 'summary.publishDate');
     };
+}).filter('coverPhotoUrl', function () {
+    return function (photos) {
+        if(photos && photos.length > 0)
+        return photos.some(function (item) {
+            return item.isCover;
+        }).url;
+    }
 });

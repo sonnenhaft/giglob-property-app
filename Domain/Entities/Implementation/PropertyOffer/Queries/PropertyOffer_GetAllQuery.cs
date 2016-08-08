@@ -5,17 +5,13 @@ using System.Globalization;
 using System.Linq;
 using CQRS;
 using Domain.Entities.Implementation.PropertyOffer.Dtos;
+using Domain.Entities.Implementation.PropertyOffer.Enums;
 using Domain.Repositories;
 
 namespace Domain.Entities.Implementation.PropertyOffer.Queries
 {
     public class PropertyOffer_GetAllQuery : IQuery
     {
-        /// <summary>
-        ///     Ид города
-        /// </summary>
-        public long CityId { get; set; }
-
         /// <summary>
         ///     Кол-во записей для получения
         /// </summary>
@@ -39,7 +35,7 @@ namespace Domain.Entities.Implementation.PropertyOffer.Queries
         /// <summary>
         ///     Кол-во комнат
         /// </summary>
-        public int? RoomCount { get; set; }
+        public RoomCount RoomCount { get; set; }
 
         /// <summary>
         ///     Ид метро
@@ -54,8 +50,8 @@ namespace Domain.Entities.Implementation.PropertyOffer.Queries
 
     public class PropertyOffer_GetAllQueryHandler : IQueryHandler<PropertyOffer_GetAllQuery, IEnumerable<PropertyOffer>>
     {
-        private readonly IPropertyOfferRepository _offerRepository;
         private static readonly int CoordinateSystemId = 4326;
+        private readonly IPropertyOfferRepository _offerRepository;
 
         public PropertyOffer_GetAllQueryHandler(IPropertyOfferRepository offerRepository)
         {
@@ -65,7 +61,6 @@ namespace Domain.Entities.Implementation.PropertyOffer.Queries
         public IEnumerable<PropertyOffer> Handle(PropertyOffer_GetAllQuery reqQuery)
         {
             var query = _offerRepository.GetAll()
-                                        .Where(offer => offer.LocalPropertyOfferData.CityId == reqQuery.CityId)
                                         .Include(offer => offer.LocalPropertyOfferData)
                                         .Include(offer => offer.LocalPropertyOfferData.Photoes)
                                         .Include(offer => offer.LocalPropertyOfferData.NearMetroStations)
@@ -85,9 +80,13 @@ namespace Domain.Entities.Implementation.PropertyOffer.Queries
                 query = query.Where(x => x.Cost >= reqQuery.MinCost.Value);
             }
 
-            if (reqQuery.RoomCount.HasValue)
+            if (reqQuery.RoomCount > 0)
             {
-                query = query.Where(x => x.RoomCount == reqQuery.RoomCount.Value);
+                query = query.Where(offer => ((reqQuery.RoomCount & RoomCount.More) == RoomCount.More && offer.RoomCount >= 4) 
+                || (((reqQuery.RoomCount & RoomCount.One) == RoomCount.One) && offer.RoomCount == 1)
+                || (((reqQuery.RoomCount & RoomCount.Two) == RoomCount.Two) && offer.RoomCount == 2)
+                || (((reqQuery.RoomCount & RoomCount.Three) == RoomCount.Three) && offer.RoomCount == 3)
+                );
             }
 
             if (reqQuery.MetroIds != null && reqQuery.MetroIds.Any())
@@ -111,14 +110,14 @@ namespace Domain.Entities.Implementation.PropertyOffer.Queries
                     reqQuery.ViewPort.LeftTopLon,
                     reqQuery.ViewPort.LeftTopLat);
 
-                DbGeography polygon = DbGeography.PolygonFromText(polygonStringDefinition, CoordinateSystemId);
+                var polygon = DbGeography.PolygonFromText(polygonStringDefinition, CoordinateSystemId);
                 query = query.Where(x => x.Location.Intersects(polygon));
             }
 
-            List<PropertyOffer> offers = query.OrderByDescending(x => x.CreationDate)
-                                              .Skip(reqQuery.Skip)
-                                              .Take(reqQuery.Take)
-                                              .ToList();
+            var offers = query.OrderByDescending(x => x.CreationDate)
+                              .Skip(reqQuery.Skip)
+                              .Take(reqQuery.Take)
+                              .ToList();
 
             return offers;
         }
