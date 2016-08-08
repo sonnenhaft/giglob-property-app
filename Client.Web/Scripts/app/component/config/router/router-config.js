@@ -123,7 +123,7 @@ angular.module('component.config.router', ['ui.router','api.httpRequestIntercept
                     take: 6,
                     skip:0
                 };
-                $scope.getFlats = function(params){
+                $scope.getFlats = function(params,push){
                     flatListFactory.query(params).$promise.then(function(res){
                         res.forEach(function(flat){
                             var obj = [];
@@ -132,9 +132,15 @@ angular.module('component.config.router', ['ui.router','api.httpRequestIntercept
                             }
                             flat.images = obj;
                             flat.coords = {geometry:{type:'Point',coordinates:[flat.lon,flat.lat]}};
+                            if(push){
+                                $scope.flats.push(flat);
+                                $scope.filteredFlats.push(flat);
+                            }
                         });
-                        $scope.flats.push(res);
-                        $scope.filteredFlats = $scope.flats;
+                        if(!push){
+                            $scope.flats = res;
+                            $scope.filteredFlats = res;
+                        }
                     });
                 };
                 $scope.flats = getFlats;
@@ -151,7 +157,7 @@ angular.module('component.config.router', ['ui.router','api.httpRequestIntercept
                     if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight) {
                         $scope.params.take+=6;
                         $scope.params.skip+=6;
-                        $scope.getFlats($scope.params);
+                        $scope.getFlats($scope.params,true);
                     }
                 };
                 var markersMapping = {};
@@ -170,14 +176,12 @@ angular.module('component.config.router', ['ui.router','api.httpRequestIntercept
                         'viewPort.leftBottomLat' : coords[0][1],
                         'viewPort.rightTopLon' : coords[1][0],
                         'viewPort.rightTopLat' : coords[1][1],
-                        'viewPort.rightBottomLon' :coords[0][0],
+                        'viewPort.rightBottomLon' : coords[0][0],
                         'viewPort.rightBottomLat' : coords[1][1],
                         'viewPort.leftTopLon' : coords[1][0],
                         'viewPort.leftTopLat' : coords[0][1]
                     };
-                    flatListFactory.query($scope.params).$promise.then(function(res){
-                        console.log(res);
-                    })
+                    $scope.getFlats($scope.params);
                 };
                 $scope.setHighlighting = function(id, value, $e) {
                     var marker = $e ? $e.get('target') : markersMapping[id];
