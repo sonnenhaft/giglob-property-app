@@ -8,7 +8,7 @@ angular.module('giglob-app', [
     'component.config.data-access',
     'component.config.filters',
     'component.config.router',
-    "component.gheader",
+    "component.header",
     "component.gfooter",
     'component.carousel',
     'component.login',

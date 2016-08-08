@@ -37,16 +37,6 @@ namespace Domain.Entities.Implementation.PropertyOffer.Dtos
         public string ApartmentNumber { get; set; }
 
         /// <summary>
-        ///     Широта
-        /// </summary>
-        public double Lat { get; set; }
-
-        /// <summary>
-        ///     Долгота
-        /// </summary>
-        public double Lon { get; set; }
-
-        /// <summary>
         ///     Этаж
         /// </summary>
         public int Level { get; set; }

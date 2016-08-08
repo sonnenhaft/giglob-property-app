@@ -105,16 +105,6 @@
                 Номер квартиры
             </summary>
         </member>
-        <member name="P:Client.Api.v1.Models.Models.PropertyOffer.PropertyOfferCreateRequestModel.Lat">
-            <summary>
-                Широта
-            </summary>
-        </member>
-        <member name="P:Client.Api.v1.Models.Models.PropertyOffer.PropertyOfferCreateRequestModel.Lon">
-            <summary>
-                Долгота
-            </summary>
-        </member>
         <member name="P:Client.Api.v1.Models.Models.PropertyOffer.PropertyOfferCreateRequestModel.Level">
             <summary>
                 Этаж

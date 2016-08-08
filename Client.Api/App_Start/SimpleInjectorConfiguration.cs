@@ -8,6 +8,7 @@ using Domain.Persistence.EntityFramework.Extensions;
 using Domain.Persistence.File.Extensions;
 using Domain.Persistence.FileStorage.Extensions;
 using Domain.Tools;
+using Domain.YandexGeocoder.Extensions;
 using SimpleInjector;
 using SimpleInjector.Extensions.ExecutionContextScoping;
 using SimpleInjector.Integration.WebApi;
@@ -27,12 +28,13 @@ namespace Client.Api
             container.RegisterDomainPersistenceEntityFrameworkDependencies();
             container.RegisterDomainPersistenceFileStorageDependencies();
             container.RegisterDomainPersistanceFileDependencies();
+            container.RegisterDomainYandexGeocoderDependencies();
+            container.RegisterClientApiAuthenticationDependencies();
+            container.RegisterClientApiV1Dependencies();
 
             container.RegisterSingleton<IServiceProvider>(container);
             container.Register<IVirtualPathUtility, VirtualPathUtility>(Lifestyle.Scoped);
 
-            container.RegisterClientApiAuthenticationDependencies();
-            container.RegisterClientApiV1Dependencies();
             GlobalConfiguration.Configuration.DependencyResolver = new SimpleInjectorWebApiDependencyResolver(container);
         }
     }

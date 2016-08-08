@@ -119,6 +119,9 @@
     <Compile Include="Exceptions\NotFoundException.cs" />
     <Compile Include="Extensions\ContainerExtensions.cs" />
     <Compile Include="Extensions\EnumExtensions.cs" />
+    <Compile Include="Geocoder\Exceptions\GeoPointNotFoundException.cs" />
+    <Compile Include="Geocoder\GeoPoint.cs" />
+    <Compile Include="Geocoder\IGeocoder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ICityRepository.cs" />
     <Compile Include="Repositories\IDeletableEntityRepository.cs" />
