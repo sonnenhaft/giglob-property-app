@@ -24,13 +24,15 @@ angular.module('component.tab-section', [
             };
 
             $scope.selectCity = function () {
-                $scope.data.districts = $scope.cityDistricts[$scope.model.city.id].districtsAsArray;
+                var cityObj = $scope.cityDistricts.filter(function(obj){return obj.id === $scope.model.city.id});
+                $scope.data.districts = cityObj[0].districts;
             };
 
             cityDistrictFactory.get().$promise.then(function (data) {
                 $scope.cityDistricts = data.asArray;
                 $scope.data.cities = data.asMap;
                 $scope.model.city = $scope.model.city || data.asArray[0];
+                console.log($scope.model.city);
                 $scope.selectCity();
             });
 
