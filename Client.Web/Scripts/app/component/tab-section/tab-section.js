@@ -1,6 +1,7 @@
 angular.module('component.tab-section', [
     'ngSanitize',
-    'ngFileUpload'
+    'ngFileUpload',
+    'component.strict-price-input'
 ]).directive('tabSection', function (addFlatTabs, cityDistrictFactory, $rootScope, Upload, currentServer) {
     return {
         restrict: 'E',

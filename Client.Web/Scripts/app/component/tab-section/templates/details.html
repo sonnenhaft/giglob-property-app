@@ -48,7 +48,9 @@
     <label class="form-label">
         <div class="label-title">Стоимость в рублях</div>
         <div class="label-item">
-            <input type="text" ng-model="$parent.model.price" ng-pattern="'\\d*'" ng-maxlength="12"  placeholder="Стоимость объекта" required>
+            <input type="text" ng-model="$parent.model.price"
+                   strict-price-input placeholder="Стоимость объекта"
+                   required>
         </div>
     </label>
 
