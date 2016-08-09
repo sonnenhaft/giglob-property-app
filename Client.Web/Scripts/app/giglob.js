@@ -23,8 +23,9 @@ angular.module('giglob-app', [
         controller: function($scope) {},
         link: function($scope) {}
     };
-}).run(function ($rootScope, localStorageService) {
-    if(localStorageService.get('access-token')){
-        $rootScope.accessToken =  localStorageService.get('access-token');
+}).run(function ($http, localStorageService) {
+    var token = localStorageService.get('access-token');
+    if(token){
+        $http.defaults.headers.common.Authorization = 'Bearer ' + token;
     }
 });

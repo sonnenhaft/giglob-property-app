@@ -1,35 +1,33 @@
-﻿angular.module('component.header',[]).directive('gheader', function() {
+﻿angular.module('component.header', []).directive('gheader', function () {
     return {
         restrict: 'E',
         templateUrl: 'app/component/gheader/gheader.html',
         scope: true,
-        link: function($scope) {
-        },
-        controller: function($scope,$modal,localStorageService,$rootScope,$state){
-
-            $scope.login = function(state){
-                var modalInstance = $modal.open({
-                    templateUrl:'app/component/login/login.html',
-                    windowClass:'entry-point',
-                    controller:'loginCtrl'
+        controller: function ($scope, $modal, localStorageService, $rootScope, $state, $http) {
+            $scope.accessToken = localStorageService.get('access-token');
+            $scope.login = function (state) {
+                $modal.open({
+                    templateUrl: 'app/component/login/login.html',
+                    windowClass: 'entry-point',
+                    controller: 'loginCtrl'
+                }).result.then(function () {
+                    $scope.accessToken = localStorageService.get('access-token');
+                    state ? $state.go(state) : console.log('something went wrong while logining')
                 });
-                modalInstance.result.then(function(){state ? $state.go(state) : console.log('123') });
             };
 
-            $scope.addAds = function(){
-                if($rootScope.accessToken){
+            $scope.addAds = function () {
+                if (localStorageService.get('access-token')) {
                     $state.go('add-ads');
-                }else{
+                } else {
                     $scope.login('add-ads');
                 }
-
             };
 
-
-
-            $scope.logout = function(){
+            $scope.logout = function () {
                 localStorageService.remove('access-token');
-                $rootScope.accessToken = undefined;
+                $scope.accessToken = localStorageService.get('access-token');
+                $http.defaults.headers.common.Authorization = undefined;
                 $state.go('search');
             }
         }

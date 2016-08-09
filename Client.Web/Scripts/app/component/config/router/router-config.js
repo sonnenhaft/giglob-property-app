@@ -1,4 +1,4 @@
-angular.module('component.config.router', ['ui.router', 'api.httpRequestInterceptor', 'api.resource', 'component.config.data-access'])
+angular.module('component.config.router', ['ui.router', 'api.resource', 'component.config.data-access'])
     .config(function ($stateProvider, $urlRouterProvider, EXCLUDED_DEMO_ROUTERS, $locationProvider) {
         $urlRouterProvider.otherwise("/");
 
@@ -170,7 +170,7 @@ angular.module('component.config.router', ['ui.router', 'api.httpRequestIntercep
                 url: "/add-ads",
                 resolve: {
                     checkPerm: function ($rootScope, $state) {
-                        if (!$rootScope.accessToken) {
+                        if (!localStorageService.get('access-token')) {
                             $state.go('search');
                         }
                     }

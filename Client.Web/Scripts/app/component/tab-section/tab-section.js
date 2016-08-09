@@ -43,8 +43,7 @@ angular.module('component.tab-section', [
                         }
                         var upload = Upload.upload({
                             url: currentServer + '/v1/file/upload',
-                            data: {File: file, FileName: file.name},
-                            headers: {'Authorization': 'Bearer ' + $rootScope.accessToken}
+                            data: {File: file, FileName: file.name}
                         });
                         upload.then(function (file) {
                             if (type == 'doc') {
