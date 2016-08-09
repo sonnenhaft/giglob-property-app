@@ -7,17 +7,18 @@
                 <span class="count">{{filteredFlats.length}}</span> предложений
             </div>
             <div class="offers_list clearfix">
-                <a class="flat-card" ui-sref="apartment-detail({id: flat.id})" ng-repeat="flat in filteredFlats track by flat.id" ng-class="{active: flat.highlighted}" ng-mouseenter="setHighlighting(flat.id, true)" ng-mouseleave="setHighlighting(flat.id, false)">
+
+                <a class="flat-card" ui-sref="apartment-detail({id: flat.id})" ng-repeat="flat in filteredFlats | limitTo:pagination track by flat.id  " ng-class="{active: flat.highlighted}" ng-mouseenter="setHighlighting(flat.id, true)" ng-mouseleave="setHighlighting(flat.id, false)">
                     <div class="card_image">
                         <img ng-src="{{flat.images[0].src}}" alt="">
                     </div>
                     <div class="card_description">
                         <div class="card-title"  ui-sref="apartment-detail/:id">{{flat.roomCount}}-комнатная на ул. {{flat.streetName}}</div>
                         <div class="card-info">
-                            <div ng-show="flat.nearMetroStationModel">
+                            <span ng-show="flat.nearMetroStationModel">
                                 <span class="metro-label" ng-style="{'background-color': '#'+flat.nearMetroStationModel.hexColor}"></span>
                                 {{flat.nearMetroStationModel.name}},
-                            </div>
+                            </span>
                             {{flat.areaSize}} м<sup>2</sup>, {{flat.level}} этаж
                         </div>
                         <div class="card-price">{{flat.cost | currency : '₽' : ' '}}</div>

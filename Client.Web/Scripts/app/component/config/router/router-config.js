@@ -96,7 +96,6 @@ angular.module('component.config.router', ['ui.router', 'api.resource', 'compone
                             coordinates: [$scope.testData.lon, $scope.testData.lat]
                         }
                     };
-                    console.log($scope.testData);
                 }
             })
             .state('search', {
@@ -119,6 +118,7 @@ angular.module('component.config.router', ['ui.router', 'api.resource', 'compone
                     $scope.flats = [];
                     $scope.$on('applyFilter', function (e, params, flag) {
                         var server = currentServer + '/file/get/';
+                        $scope.pagination = 6;
                         flatListFactory.query(params).$promise.then(function (res) {
 
                             res.forEach(function (flat) {
@@ -139,6 +139,16 @@ angular.module('component.config.router', ['ui.router', 'api.resource', 'compone
                             }
                         });
                     });
+
+                    $scope.pagination = 6;
+                    window.onscroll = function() {
+                        if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight) {
+                            $scope.$apply(function(){
+                                $scope.pagination +=6;
+                            });
+                            console.log('bottom page');
+                        }
+                    };
 
                     var markersMapping = {};
 

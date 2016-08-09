@@ -17,6 +17,7 @@ angular.module('component.flat-filter', [
                 min: '',
                 max: ''
             };
+
             var coords = [];
             $rootScope.mapInit = function(e){
                 coords = e._bounds;
@@ -30,7 +31,7 @@ angular.module('component.flat-filter', [
             $scope.applyFilter = function() {
                 $scope.params = {
                     skip: 0,
-                    take: 6,
+                    take: 300,
                     minCost: $scope.price.min,
                     maxCost: $scope.price.max,
                     roomCount: (getArraySum($scope.selectedRoomCount) || {}.value),
@@ -50,29 +51,6 @@ angular.module('component.flat-filter', [
                 $scope.$emit('applyFilter', $scope.params,true)
             };
 
-            if(!$rootScope._city){
-                $scope.params = {
-                    skip: 0,
-                    take: 6,
-                    minCost: $scope.price.min,
-                    maxCost: $scope.price.max,
-                    roomCount: (getArraySum($scope.selectedRoomCount) || {}.value),
-                    metroIds: $scope.selectedStations.map(function (station) {
-                        return station.id;
-                    })
-                };
-
-                $scope.$emit('applyFilter', $scope.params,true)
-            }
-
-            window.onscroll = function() {
-                if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight) {
-                    $scope.params.skip+=6;
-                    $scope.params.take+=6;
-                    $scope.$emit('applyFilter', $scope.params,false);
-                    console.log("Bottom of page");
-                }
-            };
 
             function getArraySum(arr){
                 var sum = 0;
