@@ -169,7 +169,7 @@ angular.module('component.config.router', ['ui.router', 'api.resource', 'compone
             .state('add-ads', {
                 url: "/add-ads",
                 resolve: {
-                    checkPerm: function ($rootScope, $state) {
+                    checkPerm: function ($rootScope, $state,localStorageService) {
                         if (!localStorageService.get('access-token')) {
                             $state.go('search');
                         }
