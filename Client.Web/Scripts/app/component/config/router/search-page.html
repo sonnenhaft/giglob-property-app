@@ -27,11 +27,12 @@
             </div>
         </div>
     </div>
-    <div class="right-column column">
+    <div class="right-column column" ng-if="_city">
         <div class="search-map">
             <ya-map ya-zoom="10"
-                    ya-center="[37.62,55.747]" ya-controls
-                    ya-event-boundschange="sendCoords($event)">
+                    ya-center="{{_city}}" ya-controls
+                    ya-after-init="mapInit($target)"
+                    ya-event-boundschange="mapChange($event)">
                 <ya-geo-object ng-repeat="flat in flats track by flat.id" ya-source="flat.coords"
                                ya-show-all="true"
                                ya-options="{
@@ -46,6 +47,5 @@
                 </ya-geo-object>
             </ya-map>
         </div>
-
     </div>
 </div>

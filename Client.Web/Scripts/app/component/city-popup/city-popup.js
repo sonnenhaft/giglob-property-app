@@ -1,4 +1,4 @@
-﻿angular.module('component.city-popup', ['mm.foundation.modal', 'LocalStorageModule']).directive('cityPopup', function($modal, localStorageService){
+﻿angular.module('component.city-popup', ['mm.foundation.modal', 'LocalStorageModule']).directive('cityPopup', function($modal,$rootScope, localStorageService){
     return function($scope) {
         if(!localStorageService.get('city')) {
             $modal.open({
@@ -26,16 +26,20 @@
                     };
 
                     $scope.ok = function () {
-                        localStorageService.set('city', {id:1,name:'Moscow'});
+                        localStorageService.set('city', {id:1,name:'Москва'});
+                        $rootScope._city = 'Москва';
                         $modalInstance.close();
                     };
 
                     $scope.selected = function (name) {
                         localStorageService.set('city', name);
+                        $rootScope._city = name.name;
                         $modalInstance.close();
                     };
                 }
             });
+        }else{
+            $rootScope._city = localStorageService.get('city').name;
         }
     }
 });

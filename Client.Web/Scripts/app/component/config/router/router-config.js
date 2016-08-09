@@ -119,7 +119,6 @@ angular.module('component.config.router', ['ui.router', 'api.httpRequestIntercep
                     $scope.flats = [];
                     $scope.$on('applyFilter', function (e, params, flag) {
                         var server = currentServer + '/file/get/';
-
                         flatListFactory.query(params).$promise.then(function (res) {
 
                             res.forEach(function (flat) {
@@ -146,22 +145,7 @@ angular.module('component.config.router', ['ui.router', 'api.httpRequestIntercep
                     $scope.addMarkerToMapping = function (id, $target) {
                         markersMapping[id] = $target;
                     };
-                    $scope.sendCoords = function (event) {
-                        var coords = event.get('newBounds');
-                        console.log(coords);
-                        $scope.params = {
-                            take: 6,
-                            'viewPort.leftBottomLon': coords[0][0],
-                            'viewPort.leftBottomLat': coords[0][1],
-                            'viewPort.rightTopLon': coords[1][0],
-                            'viewPort.rightTopLat': coords[1][1],
-                            'viewPort.rightBottomLon': coords[0][0],
-                            'viewPort.rightBottomLat': coords[1][1],
-                            'viewPort.leftTopLon': coords[1][0],
-                            'viewPort.leftTopLat': coords[0][1]
-                        };
-                        $scope.getFlats($scope.params);
-                    };
+
 
                     $scope.setHighlighting = function (id, value) {
                         var image = value ? 'map-icon-hover' : 'map-icon-small';
