@@ -229,22 +229,24 @@ angular.module('component.config.router', ['ui.router', 'api.resource', 'compone
                     $scope.$on('addFormSubmitted', function (event, type) {
                         var offerTypeName = type === 0 ? 'sale' : 'swap';
 
+                        var location = $scope.model[offerTypeName].location;
+                        var details = $scope.model[offerTypeName].details;
                         $scope.model.postData = {
-                            cityId: $scope.model[offerTypeName].location.city.id,
-                            districtId: $scope.model[offerTypeName].location.district.id,
-                            streetName: $scope.model[offerTypeName].location.street,
-                            houseNumber: $scope.model[offerTypeName].location.build,
-                            housing: $scope.model[offerTypeName].location.housing,
-                            apartmentNumber: $scope.model[offerTypeName].location.flat,
-                            level: $scope.model[offerTypeName].details.floor,
-                            areaSize: $scope.model[offerTypeName].details.area,
-                            roomCount: $scope.model[offerTypeName].details.roomsCount,
-                            type: $scope.model[offerTypeName].details.realEstateType.id,
-                            buildingCategory: $scope.model[offerTypeName].details.buildCategory.id,
-                            cost: $scope.model[offerTypeName].details.price,
-                            comment: $scope.model[offerTypeName].details.comment,
+                            cityId: location.city.id,
+                            districtId: location.district ? location.district.id : undefined,
+                            streetName: location.street,
+                            houseNumber: location.build,
+                            housing: location.housing,
+                            apartmentNumber: location.flat,
+                            level: details.floor,
+                            areaSize: details.area,
+                            roomCount: details.roomsCount,
+                            type: details.realEstateType.id,
+                            buildingCategory: details.buildCategory.id,
+                            cost: details.price,
+                            comment: details.comment,
                             offerType: type,
-                            nearMetroBranchStationIds: $scope.model[offerTypeName].location.selectedStations.map(function (item) {
+                            nearMetroBranchStationIds: location.selectedStations.map(function (item) {
                                 return item.id
                             }),
                             photoes: $scope.model[offerTypeName].photos,
