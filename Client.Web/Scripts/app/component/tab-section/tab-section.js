@@ -32,7 +32,6 @@ angular.module('component.tab-section', [
                 $scope.cityDistricts = data.asArray;
                 $scope.data.cities = data.asMap;
                 $scope.model.city = $scope.model.city || data.asArray[0];
-                console.log($scope.model.city);
                 $scope.selectCity();
             });
 
