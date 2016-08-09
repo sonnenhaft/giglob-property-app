@@ -3,7 +3,9 @@
   "version": "0.0.1",
   "description": "",
   "main": "giglob",
-  "scripts": {},
+  "scripts": {
+    "start": "gulp dev"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/IngeniusSystems/GiGlob.git"
