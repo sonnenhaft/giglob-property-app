@@ -191,7 +191,7 @@ angular.module('component.config.router', [
                     }
                 },
                 templateUrl: 'app/component/config/router/add-ads.html',
-                controller: function ($scope, $element, $timeout, flatCreationTabsList, giglobApi, $rootScope) {
+                controller: function ($scope, $element, $timeout, flatCreationTabsList, giglobApi, $rootScope, $state) {
                     $scope.tabs = flatCreationTabsList;
                     $scope.roomCountNames = [
                         'Однокомнатная',
@@ -288,10 +288,9 @@ angular.module('component.config.router', [
                         };
 
                         giglobApi.save({type: 'propertyoffer', action: 'create'}, $scope.model.postData, function () {
-                            $scope.model = {};
-                            $scope.model = angular.copy(defaultModel);
                             closeAllTabs();
                             $rootScope.$emit('api.object-saved');
+                            $state.go('my-ads');
                         });
 
                     });
