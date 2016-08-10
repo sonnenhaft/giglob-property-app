@@ -17,16 +17,13 @@ angular.module('giglob-app', [
     'component.multiselect-dropdown-g',
     'passToText',
     'component.city-popup'
-]).directive('giglob', function (localStorageService) {
+]).directive('giglob', function () {
     return {
         templateUrl: 'app/giglob.html',
         controller: function($scope,$rootScope) {
-            $rootScope.$on( "$locationChangeSuccess", function(event, next, current) {
+            $rootScope.$on( "$locationChangeSuccess", function() {
                 $scope.curState = window.location.hash;
-                console.log( window.location);
-                console.log($scope.curState);
             });
-
         },
         link: function($scope) {}
     };
