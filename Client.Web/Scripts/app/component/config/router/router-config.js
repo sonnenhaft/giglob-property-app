@@ -190,8 +190,8 @@ angular.module('component.config.router', [
                     }
                 },
                 templateUrl: 'app/component/config/router/add-ads.html',
-                controller: function ($scope, $element, $timeout, addFlatTabs, giglobApi) {
-                    $scope.tabs = addFlatTabs;
+                controller: function ($scope, $element, $timeout, flatCreationTabsList, giglobApi, $rootScope) {
+                    $scope.tabs = flatCreationTabsList;
                     $scope.roomCountNames = [
                         'Однокомнатная',
                         'Двухкомнатная',
@@ -222,10 +222,10 @@ angular.module('component.config.router', [
                     $scope.model = angular.copy(defaultModel);
 
                     function closeAllTabs() {
-                        addFlatTabs.sale.forEach(function (item) {
+                        flatCreationTabsList.sale.forEach(function (item) {
                             item.active = false;
                         });
-                        addFlatTabs.swap.forEach(function (item) {
+                        flatCreationTabsList.swap.forEach(function (item) {
                             item.active = false;
                         });
                     }
@@ -269,7 +269,7 @@ angular.module('component.config.router', [
                             $scope.model = {};
                             $scope.model = angular.copy(defaultModel);
                             closeAllTabs();
-                            $scope.$emit('objectSaved');
+                            $rootScope.$emit('api.object-saved');
                         });
 
                     });
