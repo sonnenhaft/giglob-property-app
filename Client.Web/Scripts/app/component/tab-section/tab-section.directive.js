@@ -14,7 +14,7 @@ angular.module('component.tab-section', [
         link: function ($scope) {
             $scope.flatCreationTabsList = flatCreationTabsList;
             $scope.uploadedFiles = [];
-            $scope.model = [];
+            $scope.model = $scope.model || [];
             $scope.data = {
                 cities: [],
                 districts: [],

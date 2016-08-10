@@ -220,6 +220,27 @@ angular.module('component.config.router', [
 
                     };
                     $scope.model = angular.copy(defaultModel);
+                    $scope.$watchGroup([
+                        'model[tabCollectionType].location',
+                        'model[tabCollectionType].details'
+                    ], function (group) {
+                        $scope.modelLocation = group[0];
+                        $scope.modelDetails = group[1] || {};
+                    });
+
+                    $scope.$watch(function () {
+                        var d = $scope.modelDetails || {};
+                        var l = $scope.modelLocation || {};
+                        var s = l.selectedStations;
+
+                        var hasDetails = d.price || d.floor || d.area || d.roomsCount;
+                        var hasStation = (s && s.length && s[0].name);
+                        var hasLocation = l.street || l.build || l.housing || l.flat;
+                        
+                        return hasDetails || hasLocation || hasStation
+                    }, function (isNotEmpty) {
+                        $scope.isNotEmpty = isNotEmpty;
+                    });
 
                     function closeAllTabs() {
                         flatCreationTabsList.sale.forEach(function (item) {
