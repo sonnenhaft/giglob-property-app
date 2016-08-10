@@ -1,5 +1,5 @@
 <div class="my-flats">
-    <a class="flat-card" ui-sref="apartment-detail({id: flat.id})" ng-repeat="flat in myOffers track by flat.id" ng-class="">
+    <a class="flat-card fixed-height" ui-sref="apartment-detail({id: flat.id})" ng-repeat="flat in myOffers track by flat.id" ng-class="">
         <div class="card_image">
             <img ng-src="{{flat.photoUrls[0]}}" alt="">
         </div>

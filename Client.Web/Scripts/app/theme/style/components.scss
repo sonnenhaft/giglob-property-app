@@ -71,6 +71,10 @@ html,body {
   position: relative;
   overflow: hidden;
 
+  .fixed-height {
+    height: 328px;
+  }
+
   .metro-label {
     background-color: rgb(1, 158, 224);
     display: inline-block;
