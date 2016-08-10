@@ -7,7 +7,7 @@
             $scope.accessToken = localStorageService.get('access-token');
             $scope.login = function (state) {
                 $modal.open({
-                    templateUrl: 'app/component/login/login.html',
+                    templateUrl: 'app/component/login-page/login.html',
                     windowClass: 'entry-point',
                     controller: 'loginController'
                 }).result.then(function () {
