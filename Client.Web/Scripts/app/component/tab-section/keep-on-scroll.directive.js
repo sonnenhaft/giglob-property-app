@@ -4,7 +4,6 @@ angular.module('component.keep-on-scroll', [
     return function ($scope, $element) {
         var clone;
         var offsetTop;
-        var initialMargin = $element.css('margin-left') || '0px';
         var moveElement = function () {
             if (!clone) {
                 offsetTop = $element[0].getBoundingClientRect().top;
@@ -14,13 +13,13 @@ angular.module('component.keep-on-scroll', [
                     clone = $element.clone().css('visibility', 'hidden');
                     $element.css({position: 'fixed', 'z-index': 10, top: '8px'}).after(clone);
                 }
-                $element.css('margin-left', initialMargin - $window.scrollX + 'px');
+                $element.css('margin-left', -$window.scrollX + 'px');
             } else {
                 if (clone) {
                     clone.remove();
                     clone = null;
                 }
-                $element.css({position: 'relative', 'margin-left': initialMargin});
+                $element.css({position: 'relative', 'margin-left': '0px'});
             }
         };
 
