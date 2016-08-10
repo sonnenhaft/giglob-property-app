@@ -48,5 +48,5 @@
         <label style="width: 80%" for="confirm">После публикации перейти к добавлению объекта</label>
     </div>
 
-    <button class="button action action_next orange large finish" ng-disabled="!changeForm.$valid" ng-click="sendData(1)">Сохранить и опубликовать</button>
+    <button class="button action action_next orange large finish" ng-disabled="!changeForm.$valid || isPublishing" ng-click="sendData(1)">Сохранить и опубликовать</button>
 </form>

@@ -110,11 +110,14 @@ angular.module('component.tab-section', [
                 tabs[ tabCollectionType ][ nexTabIndex ].active = true;
             };
 
-            var isCreationAction = false;
             $scope.sendData = function ( type ) {
-                isCreationAction = type === 0;
-                $rootScope.$broadcast('addFormSubmitted', type);
+                $scope.isPublishing = true;
+                $rootScope.$broadcast('add.form-submitted', type);
             };
+
+            $rootScope.$on('api.property-offer-saved', function () {
+                $scope.isPublishing = false;
+            });
         }
     };
 });

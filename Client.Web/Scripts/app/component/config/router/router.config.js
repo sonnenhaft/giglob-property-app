@@ -225,7 +225,7 @@ angular.module('component.config.router', [
                 });
             }
 
-            $scope.$on('addFormSubmitted', function ( event, type ) {
+            $scope.$on('add.form-submitted', function ( event, type ) {
                 var offerTypeName = type === 0 ? 'sale' : 'swap';
 
                 var location = $scope.model[ offerTypeName ].location;
@@ -263,6 +263,7 @@ angular.module('component.config.router', [
                 giglobApi.save({ type: 'propertyoffer', action: 'create' }, $scope.model.postData, function () {
                     closeAllTabs();
                     successTimeoutPopup(1500).then(function () {
+                        $rootScope.$broadcast('api.property-offer-saved');
                         $state.go('my-ads')
                     });
                 });
