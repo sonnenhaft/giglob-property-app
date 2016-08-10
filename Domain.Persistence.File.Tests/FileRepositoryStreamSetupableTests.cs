@@ -25,8 +25,22 @@ namespace Domain.Persistence.File.Tests
             new Random().NextBytes(_fileBytes);
 
             fileRepositoryMock.Setup(x => x.GetAll())
-                              .Returns(new EnumerableQuery<Entities.Implementation.File.File>(new List<Entities.Implementation.File.File>
-                              {
+                              .Returns(
+                                  new EnumerableQuery<Entities.Implementation.File.File>(
+                                      new List<Entities.Implementation.File.File>
+                                      {
+                                          new Entities.Implementation.File.File
+                                          {
+                                              Id = Guid.NewGuid(),
+                                              CreationDate = DateTime.UtcNow,
+                                              IsDeleted = false,
+                                              Extension = "txt",
+                                              Name = "test.txt",
+                                              VirtualPath = "vpath"
+                                          }
+                                      }));
+            fileRepositoryMock.Setup(x => x.Get(It.IsAny<Guid>()))
+                              .Returns(
                                   new Entities.Implementation.File.File
                                   {
                                       Id = Guid.NewGuid(),
@@ -35,18 +49,7 @@ namespace Domain.Persistence.File.Tests
                                       Extension = "txt",
                                       Name = "test.txt",
                                       VirtualPath = "vpath"
-                                  }
-                              }));
-            fileRepositoryMock.Setup(x => x.Get(It.IsAny<Guid>()))
-                              .Returns(new Entities.Implementation.File.File
-                              {
-                                  Id = Guid.NewGuid(),
-                                  CreationDate = DateTime.UtcNow,
-                                  IsDeleted = false,
-                                  Extension = "txt",
-                                  Name = "test.txt",
-                                  VirtualPath = "vpath"
-                              });
+                                  });
 
             fileStorageMock.Setup(x => x.Get("vpath"))
                            .Returns(() => new MemoryStream(_fileBytes));
@@ -60,8 +63,8 @@ namespace Domain.Persistence.File.Tests
             var expected = _fileBytes;
             var actual = new byte[_fileBytes.Length];
 
-            using(var file = _fileRepositoryStreamSetupable.GetAll()
-                                                           .First())
+            using (var file = _fileRepositoryStreamSetupable.GetAll()
+                                                            .First())
             {
                 file.Stream.Read(actual, 0, (int) file.Stream.Length);
             }
@@ -75,7 +78,7 @@ namespace Domain.Persistence.File.Tests
             var expected = _fileBytes;
             var actual = new byte[_fileBytes.Length];
 
-            using(var file = _fileRepositoryStreamSetupable.Get(Guid.Empty))
+            using (var file = _fileRepositoryStreamSetupable.Get(Guid.Empty))
             {
                 file.Stream.Read(actual, 0, (int) file.Stream.Length);
             }

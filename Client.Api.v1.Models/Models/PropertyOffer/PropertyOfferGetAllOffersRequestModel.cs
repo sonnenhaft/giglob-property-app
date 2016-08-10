@@ -36,7 +36,7 @@ namespace Client.Api.v1.Models.Models.PropertyOffer
         public IEnumerable<long> MetroIds { get; set; }
 
         /// <summary>
-        /// Видимая область на карте
+        ///     Видимая область на карте
         /// </summary>
         public ViewPort ViewPort { get; set; }
     }

@@ -21,16 +21,18 @@ namespace Client.Api.v1.Facades
         public DataModel GetData()
         {
             List<City> query = _cityGetAllQueryHandler.Handle(new City_GetAllQuery())
-                                               .ToList();
-            query.ForEach(x =>
-            {
-                x.Districts = x.Districts.OrderBy(q => q.Name).ToList();
-            });
+                                                      .ToList();
+            query.ForEach(
+                x =>
+                {
+                    x.Districts = x.Districts.OrderBy(q => q.Name)
+                                   .ToList();
+                });
 
             var model = new DataModel
-            {
-                Cities = query.Map<IEnumerable<City>, IEnumerable<CityModel>>()
-            };
+                        {
+                            Cities = query.Map<IEnumerable<City>, IEnumerable<CityModel>>()
+                        };
 
             return model;
         }

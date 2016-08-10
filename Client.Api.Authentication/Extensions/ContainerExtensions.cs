@@ -1,5 +1,4 @@
-﻿using Client.Api.Authentication.Services;
-using Client.Api.Authentication.Services.Implementation;
+﻿using Client.Api.Authentication.Services.Implementation;
 using Client.Api.Authentication.Stores;
 using Domain.Authentication;
 using Domain.Entities.Implementation.User;

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.Contracts;
 using System.Web.Http;
 using System.Web.Http.Description;
 using Newtonsoft.Json;

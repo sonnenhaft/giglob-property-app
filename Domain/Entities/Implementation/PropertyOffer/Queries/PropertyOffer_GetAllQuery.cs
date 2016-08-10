@@ -82,11 +82,12 @@ namespace Domain.Entities.Implementation.PropertyOffer.Queries
 
             if (reqQuery.RoomCount > 0)
             {
-                query = query.Where(offer => ((reqQuery.RoomCount & RoomCount.More) == RoomCount.More && offer.RoomCount >= 4) 
-                || (((reqQuery.RoomCount & RoomCount.One) == RoomCount.One) && offer.RoomCount == 1)
-                || (((reqQuery.RoomCount & RoomCount.Two) == RoomCount.Two) && offer.RoomCount == 2)
-                || (((reqQuery.RoomCount & RoomCount.Three) == RoomCount.Three) && offer.RoomCount == 3)
-                );
+                query = query.Where(
+                    offer => ((reqQuery.RoomCount & RoomCount.More) == RoomCount.More && offer.RoomCount >= 4)
+                             || (((reqQuery.RoomCount & RoomCount.One) == RoomCount.One) && offer.RoomCount == 1)
+                             || (((reqQuery.RoomCount & RoomCount.Two) == RoomCount.Two) && offer.RoomCount == 2)
+                             || (((reqQuery.RoomCount & RoomCount.Three) == RoomCount.Three) && offer.RoomCount == 3)
+                    );
             }
 
             if (reqQuery.MetroIds != null && reqQuery.MetroIds.Any())
