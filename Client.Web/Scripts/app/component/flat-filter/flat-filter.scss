@@ -2,7 +2,9 @@
   padding: 25px 30px 25px;
   border-radius: 10px;
   background: #ffffff;
-  position: relative;
+  position: fixed;
+  top:100px;
+  z-index:100;
 
   .input-container {
     float: left;

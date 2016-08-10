@@ -1,6 +1,6 @@
 <div class="search-page clearfix">
     <div class="left-column column">
-        <flat-filter class="flat_filter" all-flats="flats" filtered-flats="filteredFlats" keep-on-scroll></flat-filter>
+        <flat-filter class="flat_filter" all-flats="flats" filtered-flats="filteredFlats"></flat-filter>
 
         <div class="offers">
             <div class="title">
@@ -29,7 +29,7 @@
         </div>
     </div>
     <div class="right-column column" ng-if="_city">
-        <div class="search-map" keep-on-scroll set-height>
+        <div class="search-map"  set-height>
             <ya-map ya-zoom="10"
                     ya-center="{{_city}}" ya-controls
                     ya-after-init="mapInit($target)"

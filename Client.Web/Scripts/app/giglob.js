@@ -20,7 +20,14 @@ angular.module('giglob-app', [
 ]).directive('giglob', function (localStorageService) {
     return {
         templateUrl: 'app/giglob.html',
-        controller: function($scope) {},
+        controller: function($scope,$rootScope) {
+            $rootScope.$on( "$locationChangeSuccess", function(event, next, current) {
+                $scope.curState = window.location.hash;
+                console.log( window.location);
+                console.log($scope.curState);
+            });
+
+        },
         link: function($scope) {}
     };
 }).run(function ($http, localStorageService,$rootScope) {
@@ -29,4 +36,5 @@ angular.module('giglob-app', [
     if(token){
         $http.defaults.headers.common.Authorization = 'Bearer ' + token;
     }
+
 });

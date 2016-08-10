@@ -24,10 +24,13 @@
 
   .search-map {
     width: 687px;
-    height: 500px;
+    position:fixed;
+    top:80px;
+    bottom:0;
   }
   
   .offers {
+    margin-top:150px;
     .title {
       font-size: 18px;
       font-weight: 900;

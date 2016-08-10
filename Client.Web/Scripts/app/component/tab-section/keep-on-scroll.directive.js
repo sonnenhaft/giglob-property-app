@@ -11,7 +11,7 @@ angular.module('component.keep-on-scroll', [
             if ($window.scrollY > offsetTop) {
                 if (!clone) {
                     clone = $element.clone().css('visibility', 'hidden');
-                    $element.css({position: 'fixed', 'z-index': 10, top: '8px'}).after(clone);
+                    $element.css({position: 'fixed', 'z-index': 10, top: '0px'}).after(clone);
                 }
                 $element.css('margin-left', -$window.scrollX + 'px');
             } else {
