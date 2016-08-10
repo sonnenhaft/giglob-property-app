@@ -14,7 +14,7 @@
             <tab heading="Обмен" ng-click="$parent.$parent.tabCollectionType = 'swap'">
                 <tabset class="add_tabs" vertical="true" type="navType" open-on-load="false">
                     <tab-section ng-repeat="tab in tabs.swap track by ::tab.tabType" current-tab="tab"
-                                 model="model.swap[tab.tabType]" tab-collection-type="swap"></tab-section>
+                                 model="model.swap[tab.tabType]" tab-collection-type="swap" tabs="tabs"></tab-section>
                 </tabset>
             </tab>
         </tabset>
