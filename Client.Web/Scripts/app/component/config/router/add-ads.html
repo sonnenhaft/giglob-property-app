@@ -35,15 +35,11 @@
                     Здесь будет информация о вашем объекте
                 </div>
                 <div ng-show="isNotEmpty">
-                    <div class="card-title" ng-show="roomCountNames[modelDetails.roomsCount - 1]">
-                        {{roomCountNames[modelDetails.roomsCount - 1] + ' квартира'}}
-                    </div>
-                    <div class="card-info">
-                        <div><b>{{modelLocation.city.name}}</b></div>
-                        <span ng-show="modelLocation.street">&nbsp;улица</span>
-                        {{modelLocation.street}} {{modelLocation.build}}
-                        <span ng-show="modelLocation.housing">&nbsp;корп.</span>{{modelLocation.housing}}
-                        <span ng-show="modelLocation.flat">&nbsp;кв.</span>{{modelLocation.flat}}
+                    <div class="card-title">
+                        <span  ng-show="roomCountNames[modelDetails.roomsCount - 1]">{{roomCountNames[modelDetails.roomsCount - 1] + ' квартира'}} по</span>
+
+                        <span ng-show="modelLocation.street">&nbsp;ул.</span>
+                        {{modelLocation.street}}
                     </div>
                     <div class="card-info">
                     <span class="metro-label" ng-show="modelLocation.selectedStations[0].name"
