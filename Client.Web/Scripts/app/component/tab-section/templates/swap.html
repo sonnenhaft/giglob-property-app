@@ -11,7 +11,7 @@
 
     </label>
 
-    <label class="form-label">
+    <label class="form-label" ng-if="data.districts.length">
         <div class="label-title">Район</div>
         <div class="label-item">
             <select name="district"
@@ -19,7 +19,6 @@
                     ng-model="$parent.model.district"
                     required></select>
         </div>
-
     </label>
 
     <label class="form-label">
