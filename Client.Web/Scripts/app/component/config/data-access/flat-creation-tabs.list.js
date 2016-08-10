@@ -15,8 +15,7 @@
             tabTitle: 'Фотографии',
             tabDescription: 'Настоящие фотографии объекта',
             tabType: 'photos',
-            disabled: 'disabled',
-            active: true
+            disabled: 'disabled'
         },
         {
             tabTitle: 'Документы',
