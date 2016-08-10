@@ -1,6 +1,7 @@
 angular.module('component.config.router', [
     'ui.router',
     'component.keep-on-scroll',
+    'component.set-height',
     'api.resource',
     'component.config.data-access'
 ]).config(function ($stateProvider, $urlRouterProvider, EXCLUDED_DEMO_ROUTERS, $locationProvider) {

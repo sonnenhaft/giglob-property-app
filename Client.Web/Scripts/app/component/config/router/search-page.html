@@ -29,7 +29,7 @@
         </div>
     </div>
     <div class="right-column column" ng-if="_city">
-        <div class="search-map" keep-on-scroll>
+        <div class="search-map" keep-on-scroll set-height>
             <ya-map ya-zoom="10"
                     ya-center="{{_city}}" ya-controls
                     ya-after-init="mapInit($target)"
