@@ -1,7 +1,10 @@
 ﻿<form name="photoForm">
     <div class="download-list file-list">
-        <div class="download-list-file-wrapper" ng-repeat="file in uploadedFiles track by $index" ng-click="setCover($index)">
+        <div class="download-list-file-wrapper" ng-repeat="file in uploadedFiles track by $index"
+             ng-click="setCover($index)">
+
             <img ngf-src="file">
+
             <div class="label file-label-cover" ng-class="{active: file.isCover}">Обложка</div>
             <div title="Удалить" class="file-label-remove" ng-click="removeFile($index);"></div>
         </div>
@@ -11,22 +14,31 @@
              ngf-accept="'image/png,image/jpeg'"
              ngf-drop="uploadFiles($files)"
              ngf-select="uploadFiles($files)"
-             ngf-validate="{size: {max: '5MB'}, pattern: '.jpeg,.jpg,.png', totalSize: {max: '50MB'}}"
+             ngf-model-invalid="invalidFiles"
+             ngf-validate="{size: {max: '10MB'}, pattern: '.jpeg,.jpg,.png', totalSize: {max: '200MB'}}"
              ngf-max-files="20"
              multiple="true">
             <div class="download-list-uploader-text">
                 <div class="download-description">
-                    <strong>Перетащите</strong> на это поле фотографии объекта, или <span class="add-control">выберите</span> их вручную
+                    <strong>Перетащите</strong> на это поле фотографии объекта, или <span
+                        class="add-control">выберите</span> их вручную
                 </div>
                 <span class="add-text">Добавить</span>
             </div>
         </div>
-        <div></div>
+        <div>
+            <div class="download-error" ng-repeat="file in invalidFiles"> Ошибка: файл '{{file.name}}'
+            <span if="file.$errorParam.maxSize" >Максимальный размер файла не должен превышать {{file.$errorParam}}. </span>
+            <span if="file.$errorParam.pattern" >Неподдерживаемый формат файла </span>
+            </div>
+        </div>
         <div class="download-info">
-            Вы можете загрузить любое количество файлов. Формат файлов: jpg и png размером до 5 мегабайт каждый.
+            Вы можете загрузить любое количество файлов. Формат файлов: jpg и png размером до 10 мегабайт каждый.
         </div>
     </div>
 </form>
 
 
-<button class="button action action_next green large next" ng-click="saveAndGoTo(currentTab, tabCollectionType)" ng-disabled="!uploadedFiles.length">Сохранить и перейти дальше</button>
+<button class="button action action_next green large next" ng-click="saveAndGoTo(currentTab, tabCollectionType)"
+        ng-disabled="!uploadedFiles.length">Сохранить и перейти дальше
+</button>
