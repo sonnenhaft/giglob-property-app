@@ -72,7 +72,12 @@ namespace Client.Api.v1
                                             }
                                         };
 
-                          var photoes = offer.LocalPropertyOfferData?.Photoes.Select(
+                          var photoes = offer.LocalPropertyOfferData?
+                          .Photoes
+                          .Select((photo, i) => new { Photo = photo, OriginalOrder = i})
+                          .OrderBy(photoWrapper => photoWrapper.Photo.IsCover ? 0 : photoWrapper.OriginalOrder)
+                          .Select(photoWrapper => photoWrapper.Photo)
+                          .Select(
                               photo => new UrlHelper(request).Link(
                                   "Default",
                                   new
