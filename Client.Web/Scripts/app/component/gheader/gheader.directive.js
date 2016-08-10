@@ -9,7 +9,7 @@
                 $modal.open({
                     templateUrl: 'app/component/login/login.html',
                     windowClass: 'entry-point',
-                    controller: 'loginCtrl'
+                    controller: 'loginController'
                 }).result.then(function () {
                     $scope.accessToken = localStorageService.get('access-token');
                     state ? $state.go(state) : console.log('something went wrong while logining')

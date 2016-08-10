@@ -1,7 +1,7 @@
 var gulp = require('gulp');
 
 var src = {
-    js: 'app/**/*.js',
+    js: ['app/**/*.module.js', 'app/**/*.js'],
     scss: 'app/**/*.scss',
     css: 'app/**/*.css',
     buildCss: ['lib/**/*.css', 'app/**/*.css'],
@@ -66,7 +66,7 @@ gulp.task('_serve', function () {
     var inject = require('gulp-inject');
 
     return gulp.src('resources/index.html')
-        .pipe(inject(gulp.src([src.js, src.css], {read: false})))
+        .pipe(inject(gulp.src(src.js.concat([src.css]), {read: false})))
         .pipe(gulp.dest('./'));
 });
 

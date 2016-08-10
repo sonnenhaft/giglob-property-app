@@ -1,4 +1,4 @@
-﻿angular.module('component.config.data-access', []).factory('flatCreationTabsList', function () {
+﻿angular.module('component.config.data-access').factory('flatCreationTabsList', function () {
     var saleTabs = [
         {
             tabTitle: 'Локация',
