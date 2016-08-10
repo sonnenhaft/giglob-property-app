@@ -21,6 +21,7 @@ angular.module('component.flat-filter', [
 
             var coords = [];
             $rootScope.mapInit = function(e){
+                console.log(e);
                 coords = e._bounds;
                 $scope.applyFilter();
             };
@@ -48,7 +49,7 @@ angular.module('component.flat-filter', [
                     'viewPort.rightBottomLon': coords[1][0],
                     'viewPort.rightBottomLat': coords[0][1]
                 };
-
+                console.log($scope.params);
                 $scope.$emit('applyFilter', $scope.params,true)
             };
 
