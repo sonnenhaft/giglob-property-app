@@ -22,7 +22,12 @@
             tabDescription: 'Свидетельство о собственности, <br>кадастровый номер',
             tabType: 'docs',
             disabled: 'disabled'
-        }
+        },
+        {    tabTitle: 'Куда хочу переехать',
+            tabDescription: 'Адрес, площадь, комнаты, стоимость',
+            tabType: 'swap',
+            disabled: 'disabled',
+            active: true}
     ];
     return {
         sale: angular.copy(saleTabs),
@@ -30,7 +35,8 @@
             tabTitle: 'Куда хочу переехать',
             tabDescription: 'Адрес, площадь, комнаты, стоимость',
             tabType: 'swap',
-            disabled: 'disabled'
+            disabled: 'disabled',
+            active: true
         } ])
     }
 });

@@ -38,8 +38,8 @@
     <label class="form-label">
         <div class="label-title">Стоимость, &#8381;</div>
         <div class="double-input">
-            <input type="text" ng-model="$parent.model.minPrice" strict-price-input placeholder="От" required>
-            <input type="text" ng-model="$parent.model.maxPrice" strict-price-input placeholder="До" required>
+            <input type="text" ng-model="$parent.model.minPrice" strict-price-input placeholder="От" ng-required="!$parent.model.minPrice && !$parent.model.maxPrice">
+            <input type="text" ng-model="$parent.model.maxPrice" strict-price-input placeholder="До" ng-required="!$parent.model.minPrice && !$parent.model.maxPrice" >
         </div>
     </label>
 
