@@ -71,7 +71,7 @@ html,body {
   position: relative;
   overflow: hidden;
 
-  .fixed-height {
+  &.fixed-height {
     height: 328px;
   }
 
