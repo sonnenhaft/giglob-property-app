@@ -162,6 +162,11 @@
         padding-top: 102px;
       }
     }
+    .download-error{
+      color: #cf2a0e;
+      font-size: 14px;
+      margin-bottom: 5px;
+    }
   }
 
   .label-warn {
@@ -190,8 +195,5 @@
     margin: 30px 0;
   }
 
-  .download-error{
-    color: #cf2a0e;
-    font-size: 14px;
-  }
+
 }

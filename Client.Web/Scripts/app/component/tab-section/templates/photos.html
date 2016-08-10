@@ -1,8 +1,7 @@
-﻿<form name="photoForm">
+﻿﻿<form name="photoForm">
     <div class="download-list file-list">
         <div class="download-list-file-wrapper" ng-repeat="file in uploadedFiles track by $index"
              ng-click="setCover($index)">
-
             <img ngf-src="file">
 
             <div class="label file-label-cover" ng-class="{active: file.isCover}">Обложка</div>
@@ -27,9 +26,9 @@
             </div>
         </div>
         <div>
-            <div class="download-error" ng-repeat="file in invalidFiles"> Ошибка: файл '{{file.name}}'
-            <span if="file.$errorParam.maxSize" >Максимальный размер файла не должен превышать {{file.$errorParam}}. </span>
-            <span if="file.$errorParam.pattern" >Неподдерживаемый формат файла </span>
+            <div class="download-error" ng-repeat="file in invalidFiles"> <b>Ошибка</b>: файл '{{file.name}}'.
+                <div if="file.$errorParam.maxSize"> - Максимальный размер не должен превышать 10MB. </div>
+                <div if="file.$errorParam.pattern"> - Неподдерживаемый формат('.jpeg,.jpg,.png') </div>
             </div>
         </div>
         <div class="download-info">

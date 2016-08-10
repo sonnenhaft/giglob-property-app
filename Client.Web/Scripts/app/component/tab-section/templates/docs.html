@@ -8,6 +8,7 @@
            ng-class="{added: isAdded}"
              ngf-drop="uploadFiles($files, true, 'doc')"
              ngf-select="uploadFiles($files, true, 'doc')"
+             ngf-model-invalid="invalidFiles"
              ngf-validate="{size: {max: '5MB'}, pattern: '.doc,.pdf,.docx,.pages'}"
              ngf-max-files="2"
              multiple="true">
@@ -18,12 +19,18 @@
                 <span class="add-text">Добавить</span>
             </div>
         </div>
-        <div></div>
+        <div>
+            <div class="download-error" ng-repeat="file in invalidFiles"> <b>Ошибка</b>: файл '{{file.name}}'.
+                <div if="file.$errorParam.maxSize"> - Максимальный размер не должен превышать 5MB. </div>
+                <div if="file.$errorParam.pattern"> - Неподдерживаемый формат('.doc,.pdf,.docx,.pages') </div>
+            </div>
+        </div>
 
         <div class="label-warn info">
             Вам необходимо загрузить <strong>свидетельство о собственности
             и кадастровый номер</strong>. Документы нужны для модерации и будут просмотрены только модератором
         </div>
+
 
         <div class="download-info">
             Вы можете загрузить любое количество файлов. Формат файлов: doc, docx, pages и pdf размером до 5 мегабайт каждый.
