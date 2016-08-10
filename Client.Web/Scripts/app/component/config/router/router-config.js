@@ -1,5 +1,9 @@
-angular.module('component.config.router', ['ui.router', 'api.resource', 'component.config.data-access'])
-    .config(function ($stateProvider, $urlRouterProvider, EXCLUDED_DEMO_ROUTERS, $locationProvider) {
+angular.module('component.config.router', [
+    'ui.router',
+    'component.keep-on-scroll',
+    'api.resource',
+    'component.config.data-access'
+]).config(function ($stateProvider, $urlRouterProvider, EXCLUDED_DEMO_ROUTERS, $locationProvider) {
         $urlRouterProvider.otherwise("/");
 
         $stateProvider
