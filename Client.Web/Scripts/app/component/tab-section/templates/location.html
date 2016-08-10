@@ -37,7 +37,7 @@
             </div>
         </label>
     </div>
-    <label class="form-label">
+    <label class="form-label" ng-if="data.districts.length">
         <div class="label-title">Район</div>
         <div class="label-item">
             <div class="select-wrapper">
@@ -47,16 +47,16 @@
                         required></select>
             </div>
         </div>
-
     </label>
     <label class="form-label">
         <div class="label-title">Метро</div>
         <div class="label-item">
-            <multiselect-dropdown-g class="add-station"
-                                    selected-items="$parent.model.selectedStations" city-id="$parent.model.city.id"></multiselect-dropdown-g>
+            <multiselect-dropdown-g city-id="$parent.model.city.id"
+                                    selected-items="$parent.model.selectedStations"
+                                    class="add-station"></multiselect-dropdown-g>
         </div>
-
     </label>
-
-    <button class="button action action_next green large next" ng-disabled="!locationForm.$valid" ng-click="saveAndGoTo(currentTab, tabCollectionType)">Сохранить и перейти дальше</button>
+    <button class="button action action_next green large next" ng-disabled="!locationForm.$valid"
+            ng-click="saveAndGoTo(currentTab, tabCollectionType)">Сохранить и перейти дальше
+    </button>
 </form>

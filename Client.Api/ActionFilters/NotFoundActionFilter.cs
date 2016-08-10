@@ -26,7 +26,7 @@ namespace Client.Api.ActionFilters
                 {
                     base.OnActionExecutedAsync(actionExecutedContext, cancellationToken);
 
-                    if (actionExecutedContext.Exception != null && actionExecutedContext.Exception.GetType() == typeof(NotFoundException))
+                    if (actionExecutedContext.Exception != null && actionExecutedContext.Exception.GetType() == typeof (NotFoundException))
                     {
                         actionExecutedContext.Response = actionExecutedContext.Request.CreateResponse(HttpStatusCode.RequestTimeout, actionExecutedContext.Exception.Message);
                     }

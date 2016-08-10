@@ -2,7 +2,7 @@ angular.module('component.tab-section', [
     'ngSanitize',
     'ngFileUpload',
     'component.strict-price-input'
-]).directive('tabSection', function (addFlatTabs, cityDistrictFactory, $rootScope, Upload, currentServer) {
+]).directive('tabSection', function (flatCreationTabsList, cityDistrictFactory, $rootScope, Upload, currentServer) {
     return {
         restrict: 'E',
         scope: {
@@ -12,9 +12,9 @@ angular.module('component.tab-section', [
         },
         templateUrl: 'app/component/tab-section/tab-section.html',
         link: function ($scope) {
-            $scope.addFlatTabs = addFlatTabs;
+            $scope.flatCreationTabsList = flatCreationTabsList;
             $scope.uploadedFiles = [];
-            $scope.model = [];
+            $scope.model = $scope.model || [];
             $scope.data = {
                 cities: [],
                 districts: [],
@@ -24,7 +24,7 @@ angular.module('component.tab-section', [
             };
 
             $scope.selectCity = function () {
-                var cityObj = $scope.cityDistricts.filter(function(obj){return obj.id === $scope.model.city.id});
+                var cityObj = $scope.cityDistricts.filter(function (obj) {return obj.id === $scope.model.city.id});
                 $scope.data.districts = cityObj[0].districts;
             };
 
@@ -99,18 +99,23 @@ angular.module('component.tab-section', [
             };
 
             $scope.saveAndGoTo = function (currentTab, tabCollectionType) {
-                var currentTabIndex = addFlatTabs[tabCollectionType].indexOf(currentTab);
+                var currentTabIndex = flatCreationTabsList[tabCollectionType].indexOf(currentTab);
                 var nexTabIndex = currentTabIndex + 1;
-                addFlatTabs[tabCollectionType][currentTabIndex].filled = true;
-                addFlatTabs[tabCollectionType][nexTabIndex].disabled = '';
-                addFlatTabs[tabCollectionType][nexTabIndex].active = true;
+                flatCreationTabsList[tabCollectionType][currentTabIndex].filled = true;
+                flatCreationTabsList[tabCollectionType][nexTabIndex].disabled = '';
+                flatCreationTabsList[tabCollectionType][nexTabIndex].active = true;
             };
 
+            var isCreationAction = false;
             $scope.sendData = function (type) {
+                isCreationAction = type === 0;
                 $rootScope.$broadcast('addFormSubmitted', type);
             };
 
-            $scope.$on('objectSaved', function () {
+            $rootScope.$on('api.object-saved', function () {
+                if (isCreationAction) {
+                    $scope.saveAndGoTo($scope.currentTab, $scope.tabCollectionType);
+                }
                 if ($scope.uploadedFiles) {
                     $scope.uploadedFiles = [];
                 }

@@ -49,8 +49,8 @@ namespace Domain.Persistence.EntityFramework.Tests
         }
 
         [Test]
-        public void RegisterDomainPersistenceEntityFrameworkDependencies_GetInstanceOfDeletableAggregateRootEntity_ReturnsDeletableEntityEntityFrameworkRepositoryWrappedAboveEntityFrameworkRepository(
-            )
+        public void 
+            RegisterDomainPersistenceEntityFrameworkDependencies_GetInstanceOfDeletableAggregateRootEntity_ReturnsDeletableEntityEntityFrameworkRepositoryWrappedAboveEntityFrameworkRepository()
         {
             using (_container.BeginExecutionContextScope())
             {

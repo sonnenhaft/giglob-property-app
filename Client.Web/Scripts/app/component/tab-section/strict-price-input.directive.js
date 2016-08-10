@@ -13,9 +13,15 @@ angular.module('component.strict-price-input', [
                 }
                 if (val !== digits) {
                     $element.val(digits);
-                    ngModel.$setViewValue(number);
+                    ngModel.$setViewValue(digits);
                 }
             });
+
+            ngModel.$parsers.unshift(function (spacedNumber) {
+                var number = (spacedNumber || '').replace(/\s/g, '') - 0;
+                return isNaN(number) ? undefined : number;
+            });
+
         }
     }
 });

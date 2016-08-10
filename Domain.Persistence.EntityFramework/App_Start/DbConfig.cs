@@ -1,10 +1,12 @@
-﻿namespace Domain.Persistence.EntityFramework
+﻿using SqlServerTypes;
+
+namespace Domain.Persistence.EntityFramework
 {
     public class DbConfig
     {
         public static void Configure(string binariesPath)
         {
-            SqlServerTypes.Utilities.LoadNativeAssemblies(binariesPath);
+            Utilities.LoadNativeAssemblies(binariesPath);
         }
     }
 }

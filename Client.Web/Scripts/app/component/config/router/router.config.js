@@ -1,5 +1,9 @@
-angular.module('component.config.router', ['ui.router', 'api.resource', 'component.config.data-access'])
-    .config(function ($stateProvider, $urlRouterProvider, EXCLUDED_DEMO_ROUTERS, $locationProvider) {
+angular.module('component.config.router', [
+    'ui.router',
+    'component.keep-on-scroll',
+    'api.resource',
+    'component.config.data-access'
+]).config(function ($stateProvider, $urlRouterProvider, EXCLUDED_DEMO_ROUTERS, $locationProvider) {
         $urlRouterProvider.otherwise("/");
 
         $stateProvider
@@ -186,8 +190,8 @@ angular.module('component.config.router', ['ui.router', 'api.resource', 'compone
                     }
                 },
                 templateUrl: 'app/component/config/router/add-ads.html',
-                controller: function ($scope, $element, $timeout, addFlatTabs, giglobApi) {
-                    $scope.tabs = addFlatTabs;
+                controller: function ($scope, $element, $timeout, flatCreationTabsList, giglobApi, $rootScope) {
+                    $scope.tabs = flatCreationTabsList;
                     $scope.roomCountNames = [
                         'Однокомнатная',
                         'Двухкомнатная',
@@ -216,12 +220,33 @@ angular.module('component.config.router', ['ui.router', 'api.resource', 'compone
 
                     };
                     $scope.model = angular.copy(defaultModel);
+                    $scope.$watchGroup([
+                        'model[tabCollectionType].location',
+                        'model[tabCollectionType].details'
+                    ], function (group) {
+                        $scope.modelLocation = group[0];
+                        $scope.modelDetails = group[1] || {};
+                    });
+
+                    $scope.$watch(function () {
+                        var d = $scope.modelDetails || {};
+                        var l = $scope.modelLocation || {};
+                        var s = l.selectedStations;
+
+                        var hasDetails = d.price || d.floor || d.area || d.roomsCount;
+                        var hasStation = (s && s.length && s[0].name);
+                        var hasLocation = l.street || l.build || l.housing || l.flat;
+                        
+                        return hasDetails || hasLocation || hasStation
+                    }, function (isNotEmpty) {
+                        $scope.isNotEmpty = isNotEmpty;
+                    });
 
                     function closeAllTabs() {
-                        addFlatTabs.sale.forEach(function (item) {
+                        flatCreationTabsList.sale.forEach(function (item) {
                             item.active = false;
                         });
-                        addFlatTabs.swap.forEach(function (item) {
+                        flatCreationTabsList.swap.forEach(function (item) {
                             item.active = false;
                         });
                     }
@@ -229,22 +254,24 @@ angular.module('component.config.router', ['ui.router', 'api.resource', 'compone
                     $scope.$on('addFormSubmitted', function (event, type) {
                         var offerTypeName = type === 0 ? 'sale' : 'swap';
 
+                        var location = $scope.model[offerTypeName].location;
+                        var details = $scope.model[offerTypeName].details;
                         $scope.model.postData = {
-                            cityId: $scope.model[offerTypeName].location.city.id,
-                            districtId: $scope.model[offerTypeName].location.district.id,
-                            streetName: $scope.model[offerTypeName].location.street,
-                            houseNumber: $scope.model[offerTypeName].location.build,
-                            housing: $scope.model[offerTypeName].location.housing,
-                            apartmentNumber: $scope.model[offerTypeName].location.flat,
-                            level: $scope.model[offerTypeName].details.floor,
-                            areaSize: $scope.model[offerTypeName].details.area,
-                            roomCount: $scope.model[offerTypeName].details.roomsCount,
-                            type: $scope.model[offerTypeName].details.realEstateType.id,
-                            buildingCategory: $scope.model[offerTypeName].details.buildCategory.id,
-                            cost: $scope.model[offerTypeName].details.price,
-                            comment: $scope.model[offerTypeName].details.comment,
+                            cityId: location.city.id,
+                            districtId: location.district ? location.district.id : undefined,
+                            streetName: location.street,
+                            houseNumber: location.build,
+                            housing: location.housing,
+                            apartmentNumber: location.flat,
+                            level: details.floor,
+                            areaSize: details.area,
+                            roomCount: details.roomsCount,
+                            type: details.realEstateType.id,
+                            buildingCategory: details.buildCategory.id,
+                            cost: details.price,
+                            comment: details.comment,
                             offerType: type,
-                            nearMetroBranchStationIds: $scope.model[offerTypeName].location.selectedStations.map(function (item) {
+                            nearMetroBranchStationIds: location.selectedStations.map(function (item) {
                                 return item.id
                             }),
                             photoes: $scope.model[offerTypeName].photos,
@@ -263,7 +290,7 @@ angular.module('component.config.router', ['ui.router', 'api.resource', 'compone
                             $scope.model = {};
                             $scope.model = angular.copy(defaultModel);
                             closeAllTabs();
-                            $scope.$emit('objectSaved');
+                            $rootScope.$emit('api.object-saved');
                         });
 
                     });

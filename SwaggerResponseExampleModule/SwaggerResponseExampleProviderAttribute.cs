@@ -14,7 +14,7 @@ namespace SwaggerResponseExampleModule
 
         public SwaggerResponseExampleProviderAttribute(int statusCode, Type exampleType, bool useObjectAsResponseType = false) : base(statusCode, null, null)
         {
-            Contract.Requires(typeof(ISwaggerResponseExampleProvider).IsAssignableFrom(exampleType));
+            Contract.Requires(typeof (ISwaggerResponseExampleProvider).IsAssignableFrom(exampleType));
 
             Type responseType = typeof (object);
 
