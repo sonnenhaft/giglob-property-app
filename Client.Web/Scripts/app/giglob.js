@@ -14,7 +14,7 @@ angular.module('giglob-app', [
     'component.login',
     'component.flat-filter',
     'component.tab-section',
-    'component.multiselect-dropdown-g',
+    'component.metro-station-multiselect',
     'passToText',
     'component.city-popup'
 ]).directive('giglob', function () {

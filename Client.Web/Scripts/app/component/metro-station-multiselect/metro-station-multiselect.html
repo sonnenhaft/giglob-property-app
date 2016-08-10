@@ -1,4 +1,4 @@
-<div class="multiselect-dropdown-g" on-click-outside="showList = false;">
+<div class="metro-station-multiselect" on-click-outside="showList = false;">
     <ul class="dropdown-selected-list" ng-show="selectedItems.length">
         <li class="list-item" ng-repeat="item in selectedItems track by $index" ng-click="removeItem($index)">
             <span class="mid-dot" ng-style="{color: '#' + item.hexColor}">&middot</span>
@@ -7,16 +7,14 @@
         </li>
     </ul>
     <div class="selection-wrapper">
-        <input type="text" class="dropdown-filter" ng-model="dropdownFilter" ng-change="showList = true; getStations(dropdownFilter)" placeholder="Добавить станцию" ng-model-options="{ debounce: 150 }"/>
-        <ul class="dropdown-list" ng-show="showList && filteredItems.length">
-            <li class="list-item" ng-repeat="item in filteredItems track by $index" ng-click="selectItem(item, $event)">
+        <input type="text" class="dropdown-filter" ng-model="stationName" ng-change="showList = true;"
+               placeholder="Добавить станцию" ng-model-options="{ debounce: 150 }"/>
+        <ul class="dropdown-list" ng-show="showList && cityStations.length">
+            <li class="list-item" ng-repeat="item in cityStations track by $index" ng-click="selectItem(item, $event)">
                 <span class="mid-dot" ng-style="{color: '#' + item.hexColor}">&middot</span>
                 {{item.name}}
             </li>
         </ul>
     </div>
-
-
-
     <div class="add_icon" ng-click="showList = !showList">+</div>
 </div>
