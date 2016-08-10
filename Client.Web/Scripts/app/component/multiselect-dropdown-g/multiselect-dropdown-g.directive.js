@@ -19,6 +19,8 @@ angular.module('component.multiselect-dropdown-g', []).directive('multiselectDro
             };
 
             $scope.selectItem = function (item, $e) {
+                $scope.dropdownFilter = '';
+                $scope.filteredItems = [];
                 $e.stopPropagation();
 
                 !$scope.selectedItems.some(function(selectedItem) {

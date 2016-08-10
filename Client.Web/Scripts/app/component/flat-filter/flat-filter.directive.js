@@ -45,6 +45,8 @@ angular.module('component.flat-filter', [
                     'viewPort.rightTopLat': coords[1][1],
                     'viewPort.leftTopLon': coords[0][0],
                     'viewPort.leftTopLat': coords[1][1],
+                    // 'viewPort.rightBottomTopLon': coords[1][0],
+                    // 'viewPort.rightBottomTopLat': coords[0][1]
                     'viewPort.rightBottomLon': coords[1][0],
                     'viewPort.rightBottomLat': coords[0][1]
                 };
