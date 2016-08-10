@@ -25,17 +25,12 @@
         }
     ];
     return {
-        sale: angular.copy(saleTabs).concat([{
-            tabTitle: 'Объект добавлен',
-            tabDescription: 'Объект добавлен',
-            tabType: 'add_confirmation',
-            invisible: true
-        }]),
-        swap: angular.copy(saleTabs).concat([{
+        sale: angular.copy(saleTabs),
+        swap: angular.copy(saleTabs).concat([ {
             tabTitle: 'Куда хочу переехать',
             tabDescription: 'Адрес, площадь, комнаты, стоимость',
             tabType: 'swap',
             disabled: 'disabled'
-        }])
+        } ])
     }
 });

@@ -3,24 +3,24 @@ angular.module('component.config.router', [
     'component.keep-on-scroll',
     'component.set-height',
     'api.resource',
-    'component.config.data-access'
-]).config(function ( $stateProvider, $urlRouterProvider, EXCLUDED_DEMO_ROUTERS, $locationProvider ) {
+    'component.config.data-access',
+    'component.success-timeout-popup'
+]).config(function ( $stateProvider, $urlRouterProvider, EXCLUDED_DEMO_ROUTERS ) {
     $urlRouterProvider.otherwise("/");
 
-    $stateProvider
-        .state('demo', {
-            url: "/demo",
-            templateUrl: "app/component/config/router/demo-page.html",
-            controller: function ( $scope, $state ) {
-                $scope.routes = $state.get().filter(function ( route ) {
-                    return !!route.name && EXCLUDED_DEMO_ROUTERS.indexOf(route.name) === -1;
-                });
+    $stateProvider.state('demo', {
+        url: "/demo",
+        templateUrl: "app/component/config/router/demo-page.html",
+        controller: function ( $scope, $state ) {
+            $scope.routes = $state.get().filter(function ( route ) {
+                return !!route.name && EXCLUDED_DEMO_ROUTERS.indexOf(route.name) === -1;
+            });
 
-                $scope.modules = angular.modules.filter(function ( moduleName ) {
-                    return !(EXCLUDED_DEMO_ROUTERS.indexOf(moduleName) + 1);
-                });
-            }
-        }).state('demo-example', {
+            $scope.modules = angular.modules.filter(function ( moduleName ) {
+                return !(EXCLUDED_DEMO_ROUTERS.indexOf(moduleName) + 1);
+            });
+        }
+    }).state('demo-example', {
         url: '/demo/:name',
         templateUrl: function ( $stateParams ) {
             var name = $stateParams.name;
@@ -179,7 +179,7 @@ angular.module('component.config.router', [
             }
         },
         templateUrl: 'app/component/config/router/add-ads.html',
-        controller: function ( $scope, $element, $timeout, flatCreationTabsList, giglobApi, $rootScope, $state ) {
+        controller: function ( $scope, $element, $timeout, flatCreationTabsList, giglobApi, $rootScope, $state, successTimeoutPopup ) {
             $scope.tabs = angular.copy(flatCreationTabsList);
             $scope.roomCountNames = [
                 'Однокомнатная',
@@ -262,8 +262,9 @@ angular.module('component.config.router', [
 
                 giglobApi.save({ type: 'propertyoffer', action: 'create' }, $scope.model.postData, function () {
                     closeAllTabs();
-                    $rootScope.$emit('api.object-saved');
-                    $state.go('my-ads');
+                    successTimeoutPopup(1500).then(function () {
+                        $state.go('my-ads')
+                    });
                 });
 
             });
@@ -280,7 +281,6 @@ angular.module('component.config.router', [
             }
         }
     });
-
 }).constant('EXCLUDED_DEMO_ROUTERS', [
     'demo',
     'demo-example',

@@ -1,0 +1,22 @@
+.success-timeout-popup {
+  width: 500px;
+  height: 330px;
+  padding-top: 100px;
+  background-color: white;
+  border-radius: 13px;
+  text-align: center;
+  outline: none;
+  box-shadow: none;
+  border: none;
+  .success-close {
+    position: absolute;
+    right: -30px;
+    top: -16px;
+    color: #D1D3D5;
+    font-size: 29px;
+    cursor: pointer;
+    &:hover {
+      color: #c7c9cb;
+    }
+  }
+}

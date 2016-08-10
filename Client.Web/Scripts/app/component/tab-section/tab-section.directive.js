@@ -2,17 +2,17 @@ angular.module('component.tab-section', [
     'ngSanitize',
     'ngFileUpload',
     'component.strict-price-input'
-]).directive('tabSection', function ( flatCreationTabsList, cityDistrictFactory, $rootScope, Upload, currentServer, $q ) {
+]).directive('tabSection', function ( cityDistrictFactory, $rootScope, Upload, currentServer, $q ) {
     return {
         restrict: 'E',
         scope: {
             model: '=?',
             currentTab: '=',
-            tabCollectionType: '@'
+            tabCollectionType: '@',
+            tabs: '='
         },
         templateUrl: 'app/component/tab-section/tab-section.html',
         link: function ( $scope ) {
-            $scope.flatCreationTabsList = flatCreationTabsList;
             $scope.uploadedFiles = [];
             $scope.model = $scope.model || [];
             $scope.data = {
@@ -102,11 +102,12 @@ angular.module('component.tab-section', [
             };
 
             $scope.saveAndGoTo = function ( currentTab, tabCollectionType ) {
-                var currentTabIndex = flatCreationTabsList[ tabCollectionType ].indexOf(currentTab);
+                var tabs = $scope.tabs;
+                var currentTabIndex = tabs[ tabCollectionType ].indexOf(currentTab);
                 var nexTabIndex = currentTabIndex + 1;
-                flatCreationTabsList[ tabCollectionType ][ currentTabIndex ].filled = true;
-                flatCreationTabsList[ tabCollectionType ][ nexTabIndex ].disabled = '';
-                flatCreationTabsList[ tabCollectionType ][ nexTabIndex ].active = true;
+                tabs[ tabCollectionType ][ currentTabIndex ].filled = true;
+                tabs[ tabCollectionType ][ nexTabIndex ].disabled = '';
+                tabs[ tabCollectionType ][ nexTabIndex ].active = true;
             };
 
             var isCreationAction = false;
@@ -114,15 +115,6 @@ angular.module('component.tab-section', [
                 isCreationAction = type === 0;
                 $rootScope.$broadcast('addFormSubmitted', type);
             };
-
-            $rootScope.$on('api.object-saved', function () {
-                if ( isCreationAction ) {
-                    $scope.saveAndGoTo($scope.currentTab, $scope.tabCollectionType);
-                }
-                if ( $scope.uploadedFiles ) {
-                    $scope.uploadedFiles = [];
-                }
-            });
         }
     };
 });

@@ -8,7 +8,7 @@
                 <tabset class="add_tabs" vertical="true" type="navType" open-on-load="false">
                     <tab-section ng-repeat="tab in tabs.sale track by ::tab.tabType" disabled="tab.disabled"
                                  current-tab="tab" model="model.sale[tab.tabType]"
-                                 tab-collection-type="sale"></tab-section>
+                                 tab-collection-type="sale" tabs="tabs"></tab-section>
                 </tabset>
             </tab>
             <tab heading="Обмен" ng-click="$parent.$parent.tabCollectionType = 'swap'">
